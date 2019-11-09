@@ -1,0 +1,156 @@
+.card {
+    box-shadow: 10px 10px 10px -10px rgba(9,9,16,.2);
+}
+
+.air {
+    box-shadow: -1px 1px 7px -1px rgba(9,9,16,.2) !important;
+}
+
+#app {
+    position: relative;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.toast {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    z-index: 99;
+    min-width: 250px;
+}
+
+th {
+    width: 20% !important;
+}
+
+.carousel-inner {
+    max-height: 370px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+}
+
+.right-topbar {
+    min-height: 370px;
+}
+
+a.nav-link {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.searchbar {
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    border-right: none;
+    width: 60%;
+}
+
+.searchinput {
+    border: 0 !important;
+    outline: 0 !important;
+    border-radius: 20px !important;
+    -webkit-appearance: none !important;
+    letter-spacing: 1px !important;
+    font-size: .9em !important;
+    width: 80% !important;
+}
+
+.searchinput:focus {
+    box-shadow: none;
+    outline: none;
+    border: 0;
+}
+
+.search-btn {
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+form {
+    position: relative;
+}
+
+.top-stores {
+    position: relative;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.top-stores-indicators {
+    position: absolute;
+    top: 40%;
+    border-radius: 50px;
+    background: black;
+    opacity: 0.8;
+    border: none;
+    z-index: 99;
+}
+
+.top-stores .col-6 {
+    transition: margin-left .6s ease-in-out;
+}
+
+.top-stores-indicators.left {
+    left: 0;
+    display: none;
+}
+
+.top-stores-indicators.right {
+    right: 0;
+}
+
+.card-img-top {
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Top Items Styles */
+.top-items .card {
+    position: relative;
+    height: 175px;
+}
+
+.top-items img {
+    object-fit: cover;
+}
+
+.top-items .price {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+.navbar-toggler {
+    border-radius: 20px !important;
+}
+
+@media screen and (max-width: 520px){
+    th {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 770px){
+    .top-stores-indicators.left {
+        left: 0;
+    }
+
+    .top-stores-indicators.right {
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .searchbar {
+        margin-left: 20px;
+    }
+}
