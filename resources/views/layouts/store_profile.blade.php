@@ -44,7 +44,6 @@
 
             </div>
         </div>
-        <!--
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2" id="ftco-navbar">
             <div class="container">
               <a class="navbar-brand" href="index.html">Modist</a>
@@ -73,13 +72,11 @@
               </div>
             </div>
           </nav>
-        -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2"
-            id="ftco-navbar">
-            <div class="container">
+<!--
+        <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top shadow-sm">
+            <div class="container d-flex justify-content-between">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <span class="d-none d-md-block text-dark"
-                        style='letter-spacing: 2px; font-weight: 300; font-family: "Lato", Arial, sans-serif;'>{{ config('app.name', 'OpenMarket') }}</span>
+                    <span class="d-none d-md-block">{{ config('app.name', 'OpenMarket') }}</span>
                     <i class="fa fa-home fa-2x d-md-none text-secondary"></i>
                 </a>
                 <form class="form-inline my-2 my-lg-0 bg-white searchbar p-0 justify-content-between">
@@ -89,22 +86,28 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                    aria-controls="ftco-nav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="ftco-nav">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                     <ul class="navbar-nav ml-auto">
+
                         @guest
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Account <i class="fa fa-user"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="{{route('login')}}">Login</a>
-                                <a class="dropdown-item" href="{{route('register')}}">Register</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}" aria-label="Login">{{ __('Login') }} <i
+                                    class="fa fa-sign-in"></i></a>
                         </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}"
+                                aria-label="Register">{{ __('Register') }} <i class="fa fa-user-plus"
+                                    title="Register"></i></a>
+                        </li>
+                        @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -135,80 +138,11 @@
                 </div>
             </div>
         </nav>
-
+    -->
         <main class="pb-4">
-            <!--            <div class="my-5 d-none d-sm-block"></div> -->
             @yield('content')
         </main>
     </div>
-    <footer class="ftco-footer bg-light ftco-section">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2"
-                            style='font-family: "Lato", Arial, sans-serif;'>
-                            {{ config('app.name', 'OpenMarket') }}</h2>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                            <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
-                                        class="fa fa-twitter"></span></a></li>
-                            <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
-                                        class="fa fa-facebook"></span></a></li>
-                            <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
-                                        class="fa fa-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Menu</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block text-secondary">Home</a></li>
-                            <li><a href="#" class="py-2 d-block text-secondary">Stores</a></li>
-                            <li><a href="#" class="py-2 d-block text-secondary">Cart</a></li>
-                            <li><a href="{{route('contactus')}}" class="py-2 d-block text-secondary">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Help</h2>
-                        <div class="d-flex">
-                            <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                <li><a href="#" class="py-2 d-block text-secondary">Terms &amp; Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">Privacy Policy</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">FAQs</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li class="pb-2"><span class="fa fa-map fa-fw"></span><span class="text">Market Circle, Takoradi</span></li>
-                                <li><a href="tel:+233 557 821 040" class="text-secondary"><span class="fa fa-phone fa-fw"></span><span class="text">+233 557 821 040</span></a></li>
-                                <li><a href="#" class="text-secondary"><span class="fa fa-envelope fa-fw"></span><span
-                                            class="text">info@openmarket.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p>
-                        Copyright © <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
     <script>
         var map, infoWindow;
 

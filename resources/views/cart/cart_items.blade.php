@@ -1,6 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="hero-wrap hero-bread bg-light" style="background-image: url('images/bg_6.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <h1 class="mb-0 bread"
+                    style='font-family: "Lato", Arial, sans-serif; font-weight: 100; font-size: 40px;'>My Cart</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">{{__('home')}}</a></span>
+                    <span>Cart</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated cart-items">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate fadeInUp ftco-animated">
+                <div class="cart-total mb-3">
+                    <h3>Cart Totals</h3>
+                    <p class="d-flex">
+                        <span>Subtotal</span>
+                        <span>$20.60</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Delivery</span>
+                        <span>$0.00</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Discount</span>
+                        <span>$3.00</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span>$17.60</span>
+                    </p>
+                </div>
+                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 .col-sm-12 mt-2 cart-items" style="overflow-x: scroll">
@@ -77,4 +142,5 @@
         </div>
     </div>
 </div>
+-->
 @endsection

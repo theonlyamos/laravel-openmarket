@@ -37,4 +37,8 @@ class StoreController extends Controller
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price]);
     }
+
+    public function dashboard(){
+        return view("store.dashboard");
+    }
 }

@@ -73,7 +73,7 @@ const getCart = async function () {
     let cart = await localStorage.getItem("cart");
     if (cart) {
         cart = JSON.parse(cart);
-        $(".cart").text(Object.keys(cart).length)
+        $(".cart-count").text(Object.keys(cart).length)
     }
 }
 
@@ -141,6 +141,21 @@ $(() => {
             let totalPrice = 0;
             let totalQuantity = 0;
             for (var item in cart) {
+                cartItems += '<tr class="text-center">'
+                cartItems += '<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>'
+                cartItems += '<td class="image-prod">'
+                cartItems += '<div class="img" style="background-image:url(https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_500/'+item+'.png);">'
+                cartItems += '</div></td>'
+                cartItems += '<td class="product-name">'
+                cartItems += '<h3 style="font-weight: 400">' + cart[item].name + '</h3>'
+                cartItems += '<p>' + cart[item].description + '</p></td>'
+                cartItems += '<td class="price">&dollar;' + cart[item].price + '</td>'
+                cartItems += '<td class="quantity">'
+                cartItems += '<div class="input-group mb-3">'
+                cartItems += '<input type="text" name="quantity" class="quantity form-control input-number" value="'+cart[item].quantity+'" min="1" max="100">'
+                cartItems += '</div></td>'
+                cartItems += '<td class="total">&dollar;' + cart[item].price + '</td></tr>'
+/*
                 cartItems += '<div class="card p-3 mb-2 border-0 total-price '+item+'" style="position: relative"">'
                 cartItems += '<div class="row d-flex align-items-center">'
                 cartItems += '<div class="col-2 text-center">'
@@ -159,11 +174,11 @@ $(() => {
                 cartItems += 'btn-action" data-action="delete" data-target="'+item+'" style="position: absolute; '
                 cartItems += 'top: 30%; right: 20px;">'
                 cartItems += '<i class="fa fa-times-circle"></i></button></div>'
-
+*/
                 totalPrice += parseFloat(cart[item].price);
                 totalQuantity += parseInt(cart[item].quantity);
             }
-
+/*
             cartItems += '<div class="card p-3 mb-2 border-0 bg-primary total-price" style="position: relative"">'
             cartItems += '<div class="row d-flex align-items-center text-white">'
             cartItems += '<div class="col-2"><strong>Total</strong></div>'
@@ -171,8 +186,8 @@ $(() => {
             cartItems += '<div class="col-2"><strong id="totalQuantity">' + totalQuantity + '</strong></div>'
             cartItems += '<div class="col-3"><strong>&dollar;<span id="totalPrice">' + totalPrice.toFixed(2) + '<span></strong></div>'
             cartItems += '</div></div>'
-
-            $(".cart-items").append(cartItems);
+*/
+            $(".cart-items table tbody").append(cartItems);
         }
     }
 

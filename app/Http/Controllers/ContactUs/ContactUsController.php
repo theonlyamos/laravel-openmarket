@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Cart;
+namespace App\Http\Controllers\ContactUs;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class ContactUsController extends Controller
 {
     //
 
     public function index(){
-        return view("cart.cart_items");
+        return view('contactus');
     }
 }

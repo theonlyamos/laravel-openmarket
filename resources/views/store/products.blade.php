@@ -6,8 +6,8 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('store', $store->id)}}">{{$store->name}}</a>
+                    <li class="breadcrumb-item"><a class="text-secondary" href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item active"><a class="text-secondary" href="{{route('store', $store->id)}}">{{$store->name}}</a>
                     </li>
                 </ol>
             </nav>
@@ -112,11 +112,11 @@
                                 <div class="pricing">
                                     <p class="price"><span>&dollar;{{$item->price}}</span></p>
                                 </div>
-                                <p class="bottom-area d-flex px-3 text-center">
-                                    <a href="#" class="add-to-cart text-center text-white py-2 mr-1"><span>Add to cart
+                                <p class="bottom-area d-flex px-3 text-center bg-white">
+                                    <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart
                                             <i class="fa fa-cart-plus ml-1"></i></span></a>
-                                    <a href="#" class="buy-now text-center py-2">Buy now<span><i
-                                                class="fa fa-shopping-cart ml-1"></i></span></a>
+                                    <a href="#" class="buy-now text-right ml-auto py-2"><span><i
+                                                class="fa fa-heart ml-1"></i></span></a>
                                 </p>
                             </div>
                         </div>
@@ -137,45 +137,49 @@
                                         -->
                     @endforeach
                 </div>
-                <nav aria-label="...">
-                    <ul class="pagination">
-                        @php
-                        $prev_page = $page-1;
-                        $next_page = $page+1;
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                @php
+                                $prev_page = $page-1;
+                                $next_page = $page+1;
 
-                        $last_page = $pagination-1;
-                        @endphp
-                        @if ($page == 1)
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        @else
-                        <li class="page-item">
-                            <a class="page-link" href="{{route('store', $store->id)}}?p={{$prev_page}}" tabindex="-1"
-                                aria-disabled="true">Previous</a>
-                        </li>
-                        @endif
-                        @for ($i = 1; $i < $pagination; $i++) @if ($i==$page) <li class="page-item active">
-                            <a class="page-link" href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
-                            </li>
-                            @else
-                            <li class="page-item">
-                                <a class="page-link" href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
-                            </li>
-                            @endif
-                            @endfor
-                            @if ($page == $last_page)
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                            </li>
-                            @else
-                            <li class="page-item">
-                                <a class="page-link" href="{{route('store', $store->id)}}?p={{$next_page}}"
-                                    tabindex="-1" aria-disabled="true">Next</a>
-                            </li>
-                            @endif
-                    </ul>
-                </nav>
+                                $last_page = $pagination-1;
+                                @endphp
+                                @if ($page == 1)
+                                <li class="disabled">
+                                    <a href="#" tabindex="-1" aria-disabled="true">&lt;</a>
+                                </li>
+                                @else
+                                <li>
+                                    <a href="{{route('store', $store->id)}}?p={{$prev_page}}" tabindex="-1"
+                                        aria-disabled="true">&lt;</a>
+                                </li>
+                                @endif
+                                @for ($i = 1; $i < $pagination; $i++) @if ($i==$page) <li class="active">
+                                    <a href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
+                                    </li>
+                                    @else
+                                    <li>
+                                        <a href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
+                                    </li>
+                                    @endif
+                                    @endfor
+                                @if ($page == $last_page)
+                                <li class="disabled">
+                                    <a class="disabled" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
+                                </li>
+                                @else
+                                <li>
+                                    <a href="{{route('store', $store->id)}}?p={{$next_page}}"
+                                        tabindex="-1" aria-disabled="true">&gt;</a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -30,8 +30,11 @@ Route::group(['prefix' => 'product'], function () {
 
 Route::group(['prefix' => 'store'], function () {
     Route::get("/", 'Store\StoreController@index');
+    Route::get("/{id}/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
     Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store");
 });
+
+Route::get('/contactus', 'ContactUs\ContactUsController@index')->name('contactus');
 
 Auth::routes();
 

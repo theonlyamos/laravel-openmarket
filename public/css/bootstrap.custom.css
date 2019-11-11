@@ -8208,7 +8208,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 10px;
+    font-size: 12px;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-left: 20px;
@@ -8399,12 +8399,11 @@ h1, h2, h3, h4, h5,
         .hero-wrap .slider-text .breadcrumbs span a {
           color: #000000; }
     .hero-wrap .slider-text .bread {
-      font-weight: 800;
-      color: #000000;
-      font-size: 30px;
-      font-family: "Open Sans", Arial, sans-serif;
-      letter-spacing: 3px;
-      text-transform: uppercase; }
+        font-weight: 100;
+        color: #000000;
+        font-size: 40px;
+        font-family: "Lato", Arial, sans-serif;
+        letter-spacing: 3px; }
     .hero-wrap .slider-text .btn-primary {
       border: 1px solid rgba(255, 255, 255, 0.4);
       -webkit-border-radius: 30px;
@@ -8415,7 +8414,7 @@ h1, h2, h3, h4, h5,
         background: #fff !important;
         color: #000000; }
   .hero-wrap.hero-bread {
-    padding: 12em 0; }
+    padding: 7em 0; }
 
 .mouse {
   position: absolute;
@@ -8960,7 +8959,7 @@ h1, h2, h3, h4, h5,
       color: rgba(0, 0, 0, 0.3); }
     .product .text .bottom-area {
       position: absolute;
-      top: -65px;
+      top: -40px;
       left: 0;
       right: 0;
       opacity: 0;
@@ -8972,8 +8971,7 @@ h1, h2, h3, h4, h5,
       z-index: 1; }
       .product .text .bottom-area a {
         color: #000000;
-        width: 100%;
-        background: #fff; }
+    }
       .product .text .bottom-area a.add-to-cart, .product .text .bottom-area a.buy-now {
         font-size: 11px;
         color: #000000;
@@ -8982,17 +8980,11 @@ h1, h2, h3, h4, h5,
         .product .text .bottom-area a.add-to-cart i, .product .text .bottom-area a.buy-now i {
           font-size: 16px; }
       .product .text .bottom-area a.add-to-cart {
-        background: #000000;
-        color: #fff; }
-        .product .text .bottom-area a.add-to-cart:hover {
-          background: #dbcc8f;
-          color: #fff; }
-      .product .text .bottom-area a.buy-now {
-        background: #fff;
         color: #000000; }
-        .product .text .bottom-area a.buy-now:hover {
-          background: #dbcc8f;
-          color: #fff; }
+
+      .product .text .bottom-area a.buy-now {
+        color: #000000; }
+
       @media (max-width: 991.98px) {
         .product .text .bottom-area {
           opacity: 1; } }
@@ -9291,7 +9283,6 @@ h1, h2, h3, h4, h5,
     border: 1px solid transparent !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; }
     .table tbody tr td.product-remove a {
-      background: #dbcc8f;
       padding: 4px 10px;
       color: #000000;
       -webkit-border-radius: 2px;
@@ -9667,9 +9658,8 @@ textarea.form-control {
 .ftco-footer {
   font-size: 14px;
   padding: 7em 0;
-  color: rgba(255, 255, 255, 0.8);
   background: #4e4e4e;
-  background: #000000; }
+ }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
@@ -9680,12 +9670,11 @@ textarea.form-control {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #fff; }
+ }
   .ftco-footer .ftco-footer-widget ul li {
     font-size: 14px;
     margin-bottom: 0px; }
-    .ftco-footer .ftco-footer-widget ul li a {
-      color: rgba(255, 255, 255, 0.8); }
+
   .ftco-footer .ftco-footer-widget .btn-primary {
     border: 2px solid #fff !important; }
     .ftco-footer .ftco-footer-widget .btn-primary:hover {
@@ -9700,7 +9689,6 @@ textarea.form-control {
     width: 50px;
     display: block;
     float: left;
-    background: #dbcc8f;
     border-radius: 50%;
     position: relative; }
     .ftco-footer-social li a span {
