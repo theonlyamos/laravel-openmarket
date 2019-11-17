@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function PHPSTORM_META\type;
+
 class StoreController extends Controller
 {
     //
@@ -15,6 +17,12 @@ class StoreController extends Controller
     }
 
     public function products($id, Request $request){
+        if ($request->has('categories')){
+            $category = $request->query('categories');
+        }
+        if ($request->has('subcategories')){
+            $subcategory = $request->query('subcategories');
+        }
         $from = 1;
         $limit = 20;
         $page = 1;
@@ -38,7 +46,17 @@ class StoreController extends Controller
                                        "min_price" => $min_price, "max_price" => $max_price]);
     }
 
-    public function dashboard(){
-        return view("store.dashboard");
+    public function dashboard($id, $page = ""){
+        $pages = ["dashboard" => ["name" => "dashboard", "icon" => "flaticon2-analytics-2"],
+                  "products"  => ["name" => "products",  "icon" => "flaticon-app"],
+                  "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
+                  "customers" => ["name" => "customers", "icon" => "flaticon2-group"],
+                  "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
+                  "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
+                  "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
+        if (!empty($page)){
+            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "id" => $id]);
+        }
+        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages, "id" => $id]);
     }
 }

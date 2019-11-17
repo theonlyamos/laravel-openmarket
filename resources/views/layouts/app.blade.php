@@ -74,7 +74,7 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2"
+        <nav class="navbar navbar-expand-md navbar-light ftco_navbar bg-light ftco-navbar-light-2 border border-bottom"
             id="ftco-navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -89,7 +89,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#ftco-nav"
                     aria-controls="ftco-nav" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -100,7 +100,7 @@
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Account <i class="fa fa-user"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <div class="dropdown-menu border-0 bg-light" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{route('login')}}">Login</a>
                                 <a class="dropdown-item" href="{{route('register')}}">Register</a>
                             </div>

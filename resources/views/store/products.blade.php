@@ -23,12 +23,10 @@
                         @foreach ($categories as $cat)
                         <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
                             data-position="top" title="{{$cat->name}}">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="{{$cat->name}}Check">
-                                <label class="custom-control-label" for="{{$cat->name}}Check">
-                                    <a href="#" class="nav-link text-secondary p-0">
-                                        <small>{{$cat->name}}</small>
-                                    </a>
+                            <div class="form-check d-flex align-items-center">
+                                <input type="checkbox" class="form-check-input product-check" data-target="categories" value="{{$cat->name}}" id="{{$cat->name}}Check">
+                                <label class="form-check-label pt-1" for="{{$cat->name}}Check">
+                                    <small>{{$cat->name}}</small>
                                 </label>
                             </div>
                         </li>
@@ -45,12 +43,10 @@
                         @foreach ($subcategories as $subcat)
                         <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
                             data-position="top" title="{{$subcat->name}}">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="{{$subcat->name}}Check">
-                                <label class="custom-control-label" for="{{$subcat->name}}Check">
-                                    <a href="#" class="nav-link text-secondary p-0">
-                                        <small>{{$subcat->name}}</small>
-                                    </a>
+                            <div class="form-check d-flex align-items-center">
+                                <input type="checkbox" class="form-check-input product-check" data-target="subcategories" value="{{$subcat->name}}" id="{{$subcat->name}}Check">
+                                <label class="form-check-label pt-1" for="{{$subcat->name}}Check">
+                                    <small>{{$subcat->name}}</small>
                                 </label>
                             </div>
                         </li>

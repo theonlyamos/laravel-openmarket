@@ -229,4 +229,22 @@ $(() => {
         }
     })
 
+    // Store Products Page Scripts
+    $(".product-check").on('change', (e) => {
+        var target = $(e.target);
+        if (target.is(':checked')){
+            var field = target.data('target');
+            var value = target.val();
+            var search = location.search;
+
+            if (search){
+                search += `&${field}=${value}`;
+                location.search = search;
+            }else {
+                search = `?${field}=[${value}]`;
+                location.search = search;
+            }
+        }
+    })
+
 })
