@@ -16,7 +16,7 @@ class StoreController extends Controller
     //
 
     public function index(){
-        return "Hello World";
+        return view("store.index2");
     }
 
     public function products($id, Request $request){
