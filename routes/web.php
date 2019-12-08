@@ -11,6 +11,14 @@
 |
 */
 
+Route::domain('{store}.openmart.ga')->group(function(){
+    Route::get("/", 'Store\StoreController@index');
+    Route::post("/{id}/add_product", 'Store\StoreController@add_product')->name("add_product");
+    Route::get("/{id}/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
+    Route::get("/{id}/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
+    Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store");
+});
+
 Route::get('/', 'Index\IndexController@index');
 
 Route::group(['prefix' => 'product'], function () {
