@@ -11,7 +11,7 @@
 |
 */
 
-Route::domain('{store}.openmart.ga')->group(function(){
+Route::domain('store.openmart.ga')->group(function(){
     Route::get("/", 'Store\StoreController@index');
     Route::post("/{id}/add_product", 'Store\StoreController@add_product')->name("add_product");
     Route::get("/{id}/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
