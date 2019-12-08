@@ -74,7 +74,7 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-md navbar-light ftco_navbar bg-light ftco-navbar-light-2 border border-bottom"
+        <nav class="navbar navbar-expand-md navbar-light ftco_navbar bg-light ftco-navbar-light-2 py-3 border border-bottom"
             id="ftco-navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -82,7 +82,7 @@
                         style='letter-spacing: 2px; font-weight: 300; font-family: "Lato", Arial, sans-serif;'>{{ config('app.name', 'OpenMarket') }}</span>
                     <i class="fa fa-home fa-2x d-md-none text-secondary"></i>
                 </a>
-                <form class="form-inline my-2 my-lg-0 bg-white searchbar p-0 justify-content-between">
+                <form class="form-inline my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air">
                     <input class="form-control mr-sm-2 searchinput bg-light text-secondary" type="search"
                         placeholder="Search" aria-label="Search" name="search" required>
                     <button class="btn btn-light my-2 my-sm-0 d-none d-md-block search-btn" type="submit">
@@ -100,7 +100,7 @@
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Account <i class="fa fa-user"></i></a>
-                            <div class="dropdown-menu border-0 bg-light" aria-labelledby="dropdown04">
+                            <div class="dropdown-menu air border-0 rounded-0 bg-light" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{route('login')}}">Login</a>
                                 <a class="dropdown-item" href="{{route('register')}}">Register</a>
                             </div>
@@ -112,10 +112,19 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <div class="dropdown-menu rounded-0 air" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}/dashboard">
+                                    <i class="fa fa-database fa-fw"></i><small>{{ __('Dashboard') }}</small>
+                                </a>
+                                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}/orders">
+                                    <i class="fa fa-shopping-basket fa-fw"></i><small>{{ __('Orders') }}</small>
+                                </a>
+                                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}/account">
+                                        <i class="fa fa-user fa-fw"></i><small>{{ __('Account') }}</small>
+                                </a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"

@@ -26,7 +26,12 @@
 			});
 		</script>
 
-		<!--end::Fonts -->
+        <!--end::Fonts -->
+
+        <!--begin::Page Custom Styles(used by this page) -->
+        @yield('styles')
+
+		<!--end::Page Custom Styles -->
 
 		<!--begin::Page Vendors Styles(used by this page) -->
 		<link href="{{asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -88,7 +93,7 @@
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="demo3/index.html">
+				<a href="/store/{{$id}}/dashboard">
 					<img alt="Logo" src="{{asset('assets/media/logos/logo-2-sm.png')}}" />
 				</a>
 			</div>
@@ -110,7 +115,7 @@
 					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item  " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="demo3/index.html">
+							<a href="/store/{{$id}}/dashboard">
 								<img alt="Logo" src="{{asset('assets/media/logos/logo-4.png')}}" />
 							</a>
 						</div>
@@ -928,7 +933,7 @@
 						<!-- begin:: Content Head -->
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
                                 <div class="kt-subheader__main">
-                                    <h3 class="kt-subheader__title">{{$title}}</h3>
+                                    <h3 class="kt-subheader__title">{{Str::title($title)}}</h3>
                                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                                     <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10">
                                         Add New
@@ -1761,8 +1766,8 @@
 
 		<!--begin::Page Vendors(used by this page) -->
 		<script src="{{asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
-		<script src="/maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-		<script src="{{asset('assets/vendors/custom/gmaps/gmaps.js')}}" type="text/javascript"></script>
+		<!-- <script src="/maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script> -->
+		<!-- <script src="{{asset('assets/vendors/custom/gmaps/gmaps.js')}}" type="text/javascript"></script>-->
 
 		<!--end::Page Vendors -->
 

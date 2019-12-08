@@ -232,19 +232,122 @@ $(() => {
     // Store Products Page Scripts
     $(".product-check").on('change', (e) => {
         var target = $(e.target);
+        var field = target.data('target');
+        var value = target.val();
+        var search = location.search;
+        var t = {};
+        if (localStorage.hasOwnProperty('search')){
+            t = JSON.parse(localStorage.getItem('search'))
+        }
         if (target.is(':checked')){
-            var field = target.data('target');
-            var value = target.val();
-            var search = location.search;
-
             if (search){
-                search += `&${field}=${value}`;
-                location.search = search;
+                var items = search.split('&');
+                items[0]
+                if (items[0].startsWith('?page')){
+                    items.shift();
+                }
+                if (items.length > 0){
+                    for (var i = 0; i<items.length; i++){
+                        var v = items[i].split('=');
+                        if (t.hasOwnProperty(v[0])){
+                            t[v[0]] = [...v[1].split(',')]
+                        }
+                        else {
+                            t[v[0]] = v[1].split(',');
+                        }
+
+                        if (t.hasOwnProperty(field)){
+                            if (!t[field].includes(value)){
+                                t[field].push(value)
+                            }
+                        }
+                        else {
+                            t[field] = [value]
+                        }
+
+                    }
+                }
+                else {
+                    if (Object.keys(t).length){
+                        if (Object.keys(t).includes(field)){
+                            if (!t[field].includes(value)){
+                                t[field].push(value)
+                            }
+                        }
+                        else {
+                            t[field] = [value];
+                        }
+                    }
+                    else {
+
+                        t[field] = [value];
+                    }
+                }
+
+
+                //search += `&${field}=${value}`;
+                //location.search = search;
+
             }else {
-                search = `?${field}=[${value}]`;
-                location.search = search;
+                t[field] = [value];
+                //search = `?${field}=${value}`;
+                //location.search = search;
+            }
+            localStorage.setItem('search', JSON.stringify(t))
+            console.log(t);
+        }
+        else {
+            if (search){
+                var items = search.split('&');
+                if (items[0].startsWith('?page')){
+                    items.shift();
+                }
+
+                if (items.length > 0){
+                    for (var i=0; i< items.length; i++){
+                        var v = items[i].split("=")
+                        console.log(v)
+                    }
+                }
+
+                if (Object.keys(t).length){
+                    if (Object.keys(t).includes(field)){
+                        if (t[field].includes(value)){
+                            t[field].splice(t[field].indexOf(value), 1);
+                            if (!t[field].length) delete t[field];
+                        }
+                    }
+                }
+
+                //search += `&${field}=${value}`;
+                //location.search = search;
+                localStorage.setItem('search', JSON.stringify(t))
+            }else {
+
+                //search = `?${field}=${value}`;
+                //location.search = search;
+            }
+
+            console.log(t);
+        }
+        var s = "";
+        if (search){
+            s += location.search.split('&')[0];
+            for (var k in t){
+                s += `&${k}=${t[k].join(',')}`;
             }
         }
+        else{
+            for (var k in t){
+                if (s){
+                    s += `&${k}=${t[k].join(',')}`;
+                }
+                else {
+                    s += `?${k}=${t[k].join(',')}`;
+                }
+            }
+        }
+        //location.search = s;
     })
 
 })

@@ -17,20 +17,32 @@
                 <div class="card border-0">
                     <ul class="list-group list-group-flush">
                         @isset($categories)
-                        <li class="list-group-item bg-light text-center text-dark py-1">
-                            <small>Categories</small>
-                        </li>
-                        @foreach ($categories as $cat)
-                        <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
-                            data-position="top" title="{{$cat->name}}">
-                            <div class="form-check d-flex align-items-center">
-                                <input type="checkbox" class="form-check-input product-check" data-target="categories" value="{{$cat->name}}" id="{{$cat->name}}Check">
-                                <label class="form-check-label pt-1" for="{{$cat->name}}Check">
-                                    <small>{{$cat->name}}</small>
-                                </label>
-                            </div>
-                        </li>
-                        @endforeach
+                            <li class="list-group-item bg-light text-center text-dark py-1">
+                                <small>Categories</small>
+                            </li>
+                            @foreach ($categories as $cat)
+                                @if (in_array($cat->name, $cats))
+                                    <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
+                                        data-position="top" title="{{$cat->name}}">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked value="{{$cat->name}}" class="custom-control-input product-check" data-target="categories" id="{{$cat->name}}">
+                                            <label class="custom-control-label" for="{{$cat->name}}">
+                                                <small>{{$cat->name}}</small>
+                                            </label>
+                                        </div>
+                                    </li>
+                                @else
+                                    <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
+                                        data-position="top" title="{{$cat->name}}">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" value="{{$cat->name}}" class="custom-control-input product-check" data-target="categories" id="{{$cat->name}}">
+                                            <label class="custom-control-label" for="{{$cat->name}}">
+                                                <small>{{$cat->name}}</small>
+                                            </label>
+                                        </div>
+                                    </li>
+                                @endif
+                            @endforeach
                         @endisset
                     </ul>
                 </div>
@@ -41,15 +53,27 @@
                             <small>Subcategories</small>
                         </li>
                         @foreach ($subcategories as $subcat)
-                        <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
-                            data-position="top" title="{{$subcat->name}}">
-                            <div class="form-check d-flex align-items-center">
-                                <input type="checkbox" class="form-check-input product-check" data-target="subcategories" value="{{$subcat->name}}" id="{{$subcat->name}}Check">
-                                <label class="form-check-label pt-1" for="{{$subcat->name}}Check">
-                                    <small>{{$subcat->name}}</small>
-                                </label>
-                            </div>
-                        </li>
+                            @if (in_array($subcat->name, $subs))
+                                <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
+                                    data-position="top" title="{{$subcat->name}}">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" checked value="{{$subcat->name}}" class="custom-control-input product-check" data-target="subcategories" id="{{$subcat->name}}">
+                                        <label class="custom-control-label" for="{{$subcat->name}}">
+                                            <small>{{$subcat->name}}</small>
+                                        </label>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
+                                    data-position="top" title="{{$subcat->name}}">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" value="{{$subcat->name}}" class="custom-control-input product-check" data-target="subcategories" id="{{$subcat->name}}">
+                                        <label class="custom-control-label" for="{{$subcat->name}}">
+                                            <small>{{$subcat->name}}</small>
+                                        </label>
+                                    </div>
+                                </li>
+                            @endif
                         @endforeach
                         @endisset
                     </ul>
@@ -61,14 +85,14 @@
                         </li>
                         <li class="list-group-item d-flex align-items-center py-1">
                             <small>
-                                <input class="form-control" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
+                                <input class="custom-range" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
                                     value="{{$min_price}}" />
                             </small>
                             <span class="text-dark ml-1">${{$min_price}}</span>
                         </li>
                         <li class="list-group-item d-flex align-items-center py-1">
                                 <small>
-                                    <input class="form-control" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
+                                    <input class="custom-range" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
                                         value="{{$max_price}}" />
                                 </small>
                                 <span class="text-dark ml-1">${{$max_price}}</span>
@@ -92,7 +116,7 @@
                             <div class="text py-3 pb-4 px-3">
                                 <div class="d-flex">
                                     <div class="cat">
-                                        <span>{{$item->category}}</span>
+                                        <span><small>{{$item->category}}</small></span>
                                     </div>
                                     <div class="rating">
                                         <p class="text-right mb-0">
@@ -133,49 +157,12 @@
                                         -->
                     @endforeach
                 </div>
-                <div class="row mt-5">
-                    <div class="col text-center">
-                        <div class="block-27">
-                            <ul>
-                                @php
-                                $prev_page = $page-1;
-                                $next_page = $page+1;
+                @if ($cats)
+                    {{ $products->appends(["categories" => implode(",", $cats)])->links() }}
+                @else
+                    {{ $products->links() }}
+                @endif
 
-                                $last_page = $pagination-1;
-                                @endphp
-                                @if ($page == 1)
-                                <li class="disabled">
-                                    <a href="#" tabindex="-1" aria-disabled="true">&lt;</a>
-                                </li>
-                                @else
-                                <li>
-                                    <a href="{{route('store', $store->id)}}?p={{$prev_page}}" tabindex="-1"
-                                        aria-disabled="true">&lt;</a>
-                                </li>
-                                @endif
-                                @for ($i = 1; $i < $pagination; $i++) @if ($i==$page) <li class="active">
-                                    <a href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
-                                    </li>
-                                    @else
-                                    <li>
-                                        <a href="{{route('store', $store->id)}}?p={{$i}}">{{$i}}</a>
-                                    </li>
-                                    @endif
-                                    @endfor
-                                @if ($page == $last_page)
-                                <li class="disabled">
-                                    <a class="disabled" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
-                                </li>
-                                @else
-                                <li>
-                                    <a href="{{route('store', $store->id)}}?p={{$next_page}}"
-                                        tabindex="-1" aria-disabled="true">&gt;</a>
-                                </li>
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
