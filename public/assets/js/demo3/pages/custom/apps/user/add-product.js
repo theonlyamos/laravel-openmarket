@@ -132,7 +132,8 @@ var KTAppUserAdd = function () {
                                 </div>
                             </div>
                         </td>`;
-                        product += "</tr>";
+												product += "</tr>";
+												formEl.reset();
                         $("#kt_table_1 tbody").prepend(product);
                         $("#add_product_modal").modal("hide");
                     },
