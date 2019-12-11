@@ -43,8 +43,8 @@ class StoreController extends Controller
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
-        $store = $store[0];
-        return view("store.products", ["products" => $products, "store" => $store,
+
+        return view("store.products", ["products" => $products,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
                                        "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats)]);
