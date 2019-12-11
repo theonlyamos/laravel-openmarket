@@ -36,9 +36,3 @@ function handleFiles(e) {
         }
     }
 }
-
-/* bg.style.backgroundImage = `url(${meal['strMealThumb']})`;
-      bg.style.backgroundPosition = "center";
-      bg.style.backgroundRepeat = "no-repeat";
-      bg.style.backgroundSize = "cover";
-*/

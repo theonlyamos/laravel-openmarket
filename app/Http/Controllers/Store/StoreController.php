@@ -16,7 +16,8 @@ class StoreController extends Controller
     //
 
     public function index(){
-        return view("store.index2");
+        $products = Products::orderBy("created_at", "desc")->limit(8)->get();
+        return view("store.index2", ["products" => $products]);
     }
 
     public function products($id, Request $request){
@@ -70,9 +71,9 @@ class StoreController extends Controller
 
     public function add_product(storeProductsPost $request){
         $new_product = $request->validated();
-        $new_product['thumbnail'] = $request->thumbnail->store("public");
-        $product = Products::create($new_product);
-
+        $new_product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
+        Products::create($new_product);
+        $product = Products::where("thumbnail", $new_product['thumbnail'])->first();
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
 
     }

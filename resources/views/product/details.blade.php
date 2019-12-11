@@ -3,22 +3,19 @@
 @section('content')
 <section class="ftco-section">
     <div class="container">
-        @foreach ($product as $item)
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate fadeInUp ftco-animated">
-                <a href="{{route('productDetails', $item->url)}}" class="image-popup prod-img-bg" style="">
-                    <img data-id="{{$item->id}}" alt="{{$item->name}}"
-                        srcset="https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_500/{{$item->id}}.png 500w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1000/{{$item->id}}.png 1000w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1500/{{$item->id}}.png 1500w"
-                        sizes="(min-width: 0px) and (max-width: 420px) calc(100vw - 60px),(min-width: 420px) and (max-width: 750px) calc((100vw - 90px) / 2),(min-width: 750px) and (max-width: 1200px) calc((100vw - 120px) / 3),(min-width: 1200px) calc((100vw - 150px) / 4)"
-                        class="img-fluid" alt="Colorlib Template"></a>
+                <a href="{{route('productDetails', $product->id)}}" class="image-popup prod-img-bg" style="">
+                    <img data-id="{{$product->id}}" alt="{{$product->name}}"
+                        src="{{ asset('storage/'.$product->thumbnail) }}" alt="" class="w-100"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate fadeInUp ftco-animated">
                 <form action="">
                     @csrf
-                    <input type="hidden" name="id" value="{{$item->id}}">
-                    <input type="hidden" name="name" value="{{$item->name}}">
-                    <input type="hidden" name="price" value="{{$item->price}}">
-                    <h3>{{$item->name}}</h3>
+                    <input type="hidden" name="id" value="{{$product->id}}">
+                    <input type="hidden" name="name" value="{{$product->name}}">
+                    <input type="hidden" name="price" value="{{$product->price}}">
+                    <h3>{{$product->name}}</h3>
                     <div class="rating d-flex">
                         <p class="text-left mr-4">
                             <a href="#" class="mr-2">5.0</a>
@@ -36,10 +33,20 @@
                             <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
                         </p>
                     </div>
-                    <p class="price"><span>&dollar;{{$item->price}}</span></p>
-                    <p>{{$item->description}}</p>
-                    <p>{!! $item->features !!}</p>
-                    <p>{{$item->keywords}}</p>
+                    <p class="price"><span>{{__("default.currency")}}{{$product->price}}</span></p>
+                    <div class="description">
+                        <h5 class="text-dark">Description</h5>
+                        <p style="font-size: .9em; text-align: justify;">{{$product->description}}</p>
+                    </div>
+                    <div class="features">
+                        <h5 class="text-dark">Features</h5>
+                        <p style="font-size: .9em; text-align: justify;">{{$product->features}}</p>
+                    </div>
+                    <p>
+                        @foreach ($keywords as $keyword)
+                        <div class="badge badge-light">{{$keyword}}</div>
+                        @endforeach
+                    </p>
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="form-group d-flex">
@@ -76,7 +83,8 @@
                             <p style="color: #000;">80 piece available</p>
                         </div>
                     </div>
-                    <p><a href="#" class="btn btn-black py-3 px-5 mr-2" id="addToCart">Add to Cart</a><a href="cart.html" class="btn btn-primary py-3 px-5">Buy now</a></p>
+                    <p><a href="#" class="btn btn-black py-3 px-5 mr-2" id="addToCart">Add to Cart</a><a
+                            href="cart.html" class="btn btn-primary py-3 px-5">Buy now</a></p>
                 </form>
             </div>
         </div>
@@ -263,32 +271,30 @@
             </div>
         </div>
     -->
-        @endforeach
     </div>
 </section>
 <!--
 <div class="container">
-    @foreach ($product as $item)
     <div class="row">
         <div class="col-md-6 col-sm-12 my-2">
             <div class="card border-0">
-                <img class="w-100" data-id="{{$item->id}}" alt="{{$item->name}}"
-                    srcset="https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_500/{{$item->id}}.png 500w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1000/{{$item->id}}.png 1000w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1500/{{$item->id}}.png 1500w"
+                <img class="w-100" data-id="{{$product->id}}" alt="{{$product->name}}"
+                    srcset="https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_500/{{$product->id}}.png 500w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1000/{{$product->id}}.png 1000w,https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_1500/{{$product->id}}.png 1500w"
                     sizes="(min-width: 0px) and (max-width: 420px) calc(100vw - 60px),(min-width: 420px) and (max-width: 750px) calc((100vw - 90px) / 2),(min-width: 750px) and (max-width: 1200px) calc((100vw - 120px) / 3),(min-width: 1200px) calc((100vw - 150px) / 4)">
             </div>
         </div>
         <div class="col-md-6 col-sm-12 my-2">
             <form action="">
                 @csrf
-                <input type="hidden" name="id" value="{{$item->id}}">
-                <input type="hidden" name="name" value="{{$item->name}}">
-                <input type="hidden" name="price" value="{{$item->price}}">
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="price" value="{{$product->price}}">
                 <div class="card border-0 text-right air mb-1">
                     <table class="table table-striped m-0 text-left">
                         <tbody>
                             <tr>
                                 <th>Name</th>
-                                <td>{{$item->name}}</td>
+                                <td>{{$product->name}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -298,7 +304,7 @@
                         <tbody>
                             <tr>
                                 <th>Description</th>
-                                <td>{{$item->description}}</td>
+                                <td>{{$product->description}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -308,7 +314,7 @@
                         <tbody>
                             <tr>
                                 <th>Features</th>
-                                <td>{{$item->features}}</td>
+                                <td>{{$product->features}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -332,7 +338,7 @@
                         <tbody>
                             <tr>
                                 <th>Category</th>
-                                <td>{{$item->category}}</td>
+                                <td>{{$product->category}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -342,7 +348,7 @@
                         <tbody>
                             <tr>
                                 <th>Subcategory</th>
-                                <td>{{$item->subcategory}}</td>
+                                <td>{{$product->subcategory}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -352,7 +358,7 @@
                         <tbody>
                             <tr>
                                 <th>Price</th>
-                                <td>&dollar;<span class="price">{{$item->price}}</span></td>
+                                <td>&dollar;<span class="price">{{$product->price}}</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -362,7 +368,7 @@
                         <tbody>
                             <tr>
                                 <th>Quantity</th>
-                                <td class="d-flex align-items-center justify-content-center">
+                                <td class="d-flex align-products-center justify-content-center">
                                     <button type="button" class="btn btn-light btn-sm air rounded-circle btn-quantity"
                                         data-action="decrease"><i class="fa fa-minus"></i></button>
                                     <input type="number" class="form-control" name="quantity" value="1">
@@ -378,7 +384,7 @@
                         <tbody>
                             <tr>
                                 <th>Promocode</th>
-                                <td class="d-flex align-items-center justify-content-center">
+                                <td class="d-flex align-products-center justify-content-center">
                                     <input type="text" name="promocode" class="form-control" readonly>
                                 </td>
                             </tr>
@@ -394,7 +400,6 @@
         </div>
     </div>
 </div>
-@endforeach
 </div>
 -->
 @endsection

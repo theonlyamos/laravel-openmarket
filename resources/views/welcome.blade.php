@@ -43,6 +43,7 @@
         </div>
     </div>
 </div>
+<div class="my-5 d-none d-sm-block"></div>
 <div class="main">
     <div class="container">
         <div class="row justify-content-center">

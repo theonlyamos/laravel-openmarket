@@ -935,9 +935,15 @@
                                 <div class="kt-subheader__main">
                                     <h3 class="kt-subheader__title">{{Str::title($title)}}</h3>
                                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                                    <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10">
-                                        Add New
-                                    </a>
+                                    @if ($title == "products")
+                                        <a href="#add_product_modal" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10" data-toggle="modal" aria-haspopup="true">
+                                            Add New
+                                        </a>
+                                    @else
+                                        <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                            Add New
+                                        </a>
+                                    @endif
                                     <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
                                         <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
                                         <span class="kt-input-icon__icon kt-input-icon__icon--right">

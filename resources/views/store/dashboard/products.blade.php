@@ -335,28 +335,28 @@
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 60.25px;" aria-sort="ascending"
-                                    aria-label="Order ID: activate to sort column descending">ID</th>
+                                    style="width: 60.25px;" aria-sort="descending"
+                                    aria-label="Product ID: activate to sort column descending">ID</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 104.25px;" aria-label="Country: activate to sort column ascending">
+                                    style="width: 104.25px;" aria-label="Name: activate to sort column descending">
                                     Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 121.25px;" aria-label="Ship City: activate to sort column ascending">
+                                    style="width: 121.25px;" aria-label="Product Image: activate to sort column descending">
                                     Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 162.25px;"
-                                    aria-label="Ship Address: activate to sort column ascending">Category</th>
+                                    aria-label="Category: activate to sort column descending">Category</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 126.25px;"
-                                    aria-label="Company Agent: activate to sort column ascending">Description</th>
+                                    aria-label="Description: activate to sort column descending">Description</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 196.25px;"
-                                    aria-label="Company Name: activate to sort column ascending">Features</th>
+                                    aria-label="Features: activate to sort column descending">Features</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 52.25px;" aria-label="Status: activate to sort column ascending">
-                                    Status</th>
+                                    style="width: 52.25px;" aria-label="Price: activate to sort column descending">
+                                    Price</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 36.25px;" aria-label="Type: activate to sort column ascending">Action
+                                    style="width: 36.25px;" aria-label="Type: activate to sort column descending">Action
                                 </th>
                             </tr>
                         </thead>
@@ -365,17 +365,14 @@
                                 <tr>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td><a href="{{asset('storage/app/'.$item->thumbnail)}}" target="_blank"><i class="fa fa-edit"></i></a></td>
-                                    <td>{{$item->category}}</td>
-                                    <td>{{$item->description}}</td>
-                                    <td>{{$item->features}}</td>
-                                    <td>
-                                        @if ($item->status)
-                                            <span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">full</span>
-                                        @else
-                                            <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill">out of stock</span>
-                                        @endif
+                                    <td><a href="{{asset('storage/'.$item->thumbnail)}}" target="_blank">
+                                            <img src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}" style="width: 50px; height: 50px; cursor: zoom-in">
+                                        </a>
                                     </td>
+                                    <td>{{$item->category}}</td>
+                                    <td>{{Str::limit($item->description, 40)}}</td>
+                                    <td>{{Str::limit($item->features, 40)}}</td>
+                                    <td>{{__("default.currency")}}{{$item->price}}</td>
                                     <td>
                                             <div class="kt-portlet__head-toolbar">
                                                     <div class="dropdown dropdown-inline">
@@ -384,40 +381,16 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="kt-nav">
-                                                                <li class="kt-nav__section kt-nav__section--first">
-                                                                    <span class="kt-nav__section-text">Finance</span>
-                                                                </li>
                                                                 <li class="kt-nav__item">
                                                                     <a href="#" class="kt-nav__link">
                                                                         <i class="kt-nav__link-icon flaticon2-graph-1"></i>
-                                                                        <span class="kt-nav__link-text">Statistics</span>
+                                                                        <span class="kt-nav__link-text">View/Edit</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-calendar-4"></i>
-                                                                        <span class="kt-nav__link-text">Events</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-layers-1"></i>
-                                                                        <span class="kt-nav__link-text">Reports</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="kt-nav__section kt-nav__section--first">
-                                                                    <span class="kt-nav__section-text">HR</span>
-                                                                </li>
-                                                                <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-calendar-4"></i>
-                                                                        <span class="kt-nav__link-text">Notifications</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-file-1"></i>
-                                                                        <span class="kt-nav__link-text">Files</span>
+                                                                    <a href="#" class="kt-nav__link text-danger">
+                                                                        <i class="kt-nav__link-icon flaticon-trash"></i>
+                                                                        <span class="kt-nav__link-text">Delete</span>
                                                                     </a>
                                                                 </li>
                                                             </ul>
