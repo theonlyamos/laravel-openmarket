@@ -116,7 +116,7 @@
             </div>
         </div>
         @include('ads_vertical')
-        @component('top_stores')
+        {{--  @component('top_stores') --}}
         @endcomponent
     </div>
 
