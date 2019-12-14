@@ -116,8 +116,8 @@
             </div>
         </div>
         @include('ads_vertical')
-        @component('top_stores')
-        @endcomponent
+        {{--  @component('top_stores')
+        @endcomponent --}}
     </div>
 
     @component('top_items', ["products" => $products])
