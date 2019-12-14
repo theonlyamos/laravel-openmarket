@@ -74,7 +74,7 @@
 
                         @if (Auth::check())
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                            aria-haspopup="true" aria-expanded="false">Hello</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{route('store_dashboard')}}">
                                     <i class="fa fa-database fa-fw"></i><small>{{ __('Dashboard') }}</small>
