@@ -71,7 +71,8 @@
                         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
                             class="fa fa-shopping-cart"></i>[0]</a></li>
                         <li class="nav-item dropdown">
-                        @guest
+
+                        @if (Auth::check())
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -98,8 +99,7 @@
                                 <a class="dropdown-item" href="{{route('store_login')}}">{{__("Login")}}</a>
                                 <a class="dropdown-item" href="{{route('store_register')}}">{{__("Register")}}</a>
                             </div>
-                        @endguest
-
+                        @endif
                     </li>
                 </ul>
             </div>
