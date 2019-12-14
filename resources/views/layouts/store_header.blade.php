@@ -71,6 +71,27 @@
                     <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
                         class="fa fa-shopping-cart"></i>[0]</a></li>
                     <li class="nav-item dropdown">
+                        @guest
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="{{route('store_dashboard')}}">
+                                    <i class="fa fa-database fa-fw"></i><small>{{ __('Dashboard') }}</small>
+                                </a>
+                                <a class="dropdown-item" href="account">
+                                        <i class="fa fa-user fa-fw"></i><small>{{ __('Account') }}</small>
+                                </a>
+                                <a class="dropdown-item text-danger" href="{{ route('store_logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        @endguest
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
