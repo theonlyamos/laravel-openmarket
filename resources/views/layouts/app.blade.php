@@ -150,12 +150,12 @@
             @yield('content')
         </main>
     </div>
-    <footer class="ftco-footer bg-light ftco-section">
+    <footer class="ftco-footer bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2"
+                        <h2 class="ftco-heading-2 text-white"
                             style='font-family: "Lato", Arial, sans-serif;'>
                             {{ config('app.name', 'OpenMarket') }}</h2>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Menu</h2>
+                        <h2 class="ftco-heading-2 text-white">Menu</h2>
                         <ul class="list-unstyled">
                             <li><a href="#" class="py-2 d-block text-secondary">Home</a></li>
                             <li><a href="#" class="py-2 d-block text-secondary">Stores</a></li>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Help</h2>
+                        <h2 class="ftco-heading-2 text-white">Help</h2>
                         <div class="d-flex">
                             <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
                                 <li><a href="#" class="py-2 d-block text-secondary">Terms &amp; Conditions</a></li>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <h2 class="ftco-heading-2 text-white">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
                                 <li class="pb-2"><span class="fa fa-map fa-fw"></span><span class="text">Market Circle, Takoradi</span></li>
