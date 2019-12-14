@@ -74,8 +74,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
-                            <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
+                            <a class="dropdown-item" href="{{route('store_login')}}">{{__("Login")}}</a>
+                            <a class="dropdown-item" href="{{route('store_register')}}">{{__("Register")}}</a>
                         </div>
                     </li>
                 </ul>
