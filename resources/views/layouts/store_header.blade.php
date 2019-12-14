@@ -64,13 +64,13 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
-                        class="fa fa-shopping-cart"></i>[0]</a></li>
-                    <li class="nav-item dropdown">
+                        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
+                            class="fa fa-shopping-cart"></i>[0]</a></li>
+                        <li class="nav-item dropdown">
                         @guest
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
@@ -91,13 +91,15 @@
                                     @csrf
                                 </form>
                             </div>
+                        @else
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Account</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="{{route('store_login')}}">{{__("Login")}}</a>
+                                <a class="dropdown-item" href="{{route('store_register')}}">{{__("Register")}}</a>
+                            </div>
                         @endguest
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Account</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="{{route('store_login')}}">{{__("Login")}}</a>
-                            <a class="dropdown-item" href="{{route('store_register')}}">{{__("Register")}}</a>
-                        </div>
+
                     </li>
                 </ul>
             </div>
