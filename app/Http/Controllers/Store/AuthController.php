@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 
-class AuthContoller extends Controller
+class AuthController extends Controller
 {
     //
 
