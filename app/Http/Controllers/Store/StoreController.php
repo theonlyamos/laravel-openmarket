@@ -50,7 +50,7 @@ class StoreController extends Controller
                                        "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats)]);
     }
 
-    public function dashboard($id, $page = ""){
+    public function dashboard($page = ""){
         $pages = ["dashboard" => ["name" => "dashboard", "icon" => "flaticon2-analytics-2"],
                   "products"  => ["name" => "products",  "icon" => "flaticon-app"],
                   "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
@@ -64,9 +64,9 @@ class StoreController extends Controller
                 case 'products':
                     $list = Products::all();
             }
-            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "id" => $id, "list" => $list]);
+            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "list" => $list]);
         }
-        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages, "id" => $id]);
+        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages]);
     }
 
     public function add_product(storeProductsPost $request){

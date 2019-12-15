@@ -43,9 +43,9 @@ Route::group(['prefix' => 'product'], function () {
 
 Route::group(['prefix' => 'store'], function () {
     Route::get("/", 'Store\StoreController@index');
-    Route::post("/{id}/add_product", 'Store\StoreController@add_product')->name("add_product");
-    Route::get("/{id}/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
-    Route::get("/{id}/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
+    Route::post("/add_product", 'Store\StoreController@add_product')->name("add_product");
+    Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
+    Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
     Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store");
 });
 

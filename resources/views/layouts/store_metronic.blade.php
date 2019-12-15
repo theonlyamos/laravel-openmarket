@@ -93,7 +93,7 @@
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="/store/{{$id}}/dashboard">
+				<a href="/store/dashboard">
 					<img alt="Logo" src="{{asset('assets/media/logos/logo-2-sm.png')}}" />
 				</a>
 			</div>
@@ -115,7 +115,7 @@
 					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item  " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="/store/{{$id}}/dashboard">
+							<a href="/store/dashboard">
 								<img alt="Logo" src="{{asset('assets/media/logos/logo-4.png')}}" />
 							</a>
 						</div>
@@ -130,15 +130,15 @@
 								@foreach ($pages as $page)
                                     @if ($page['name'] == $title)
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="/store/{{$id}}/dashboard" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="/store/dashboard" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="/store/{{$id}}/dashboard/{{$page['name']}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="/store/dashboard/{{$page['name']}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
                                         @endif
                                     @else
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="/store/{{$id}}/dashboard" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="/store/dashboard" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item" aria-haspopup="true"><a href="/store/{{$id}}/dashboard/{{$page['name']}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
+                                            <li class="kt-menu__item" aria-haspopup="true"><a href="/store/dashboard/{{$page['name']}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{$page['name']}}</span></a></li>
                                         @endif
                                     @endif
                                 @endforeach
@@ -160,7 +160,7 @@
 						<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
-									<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="/store/{{$id}}/dashboard" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
+									<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="/store/dashboard" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
 								</ul>
 							</div>
 						</div>

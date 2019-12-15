@@ -85,9 +85,9 @@
 
                                         <!--begin: Form Wizard Form-->
                                         <form class="kt-form pt-0" id="kt_apps_user_add_user_form"
-                                            novalidate="novalidate" method="POST" action="{{route('add_product', $id)}}" enctype="multipart/form-data">
+                                            novalidate="novalidate" method="POST" action="{{route('add_product')}}" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="store_id" value="{{$id}}" required>
+                                            <input type="hidden" name="store_id" value="1" required>
                                             <!--begin: Form Wizard Step 1-->
                                             <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
                                                 data-ktwizard-state="current">
