@@ -39,6 +39,8 @@ function addToCart() {
     let itemName = $("[name='name']").val();
     let itemPrice = $("[name='price']").val();
     let quantity = $("[name='quantity']").val();
+    let thumbnail = $("[name='thumbnail']").val();
+    let description = $("[name='description']").val();
     let success = false;
     if (cart) {
         cart = JSON.parse(cart);
@@ -46,7 +48,9 @@ function addToCart() {
             cart[itemId] = {
                 name: itemName,
                 price: itemPrice,
-                quantity: quantity
+                quantity: quantity,
+                thumbnail: thumbnail,
+                description: description,
             }
             localStorage.setItem("cart", JSON.stringify(cart));
             success = true;
@@ -56,7 +60,9 @@ function addToCart() {
         cart[itemId] = {
             name: itemName,
             price: itemPrice,
-            quantity: quantity
+            quantity: quantity,
+            thumbnail: thumbnail,
+            description: description
         }
         localStorage.setItem("cart", JSON.stringify(cart));
         success = true;
@@ -142,13 +148,13 @@ $(() => {
             let totalQuantity = 0;
             for (var item in cart) {
                 cartItems += '<tr class="text-center">'
-                cartItems += '<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>'
+                cartItems += '<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>'
                 cartItems += '<td class="image-prod">'
-                cartItems += '<div class="img" style="background-image:url(https://res.cloudinary.com/pieshop/f_auto,dpr_auto,q_auto:eco/w_500/'+item+'.png);">'
+                cartItems += '<div class="img" style="background-image:url(storage/'+cart[item].thumbnail+');">'
                 cartItems += '</div></td>'
                 cartItems += '<td class="product-name">'
-                cartItems += '<h3 style="font-weight: 400">' + cart[item].name + '</h3>'
-                cartItems += '<p>' + cart[item].description + '</p></td>'
+                cartItems += '<h3>' + cart[item].name + '</h3>'
+                cartItems += '<p>' + cart[item].description.substring(0, 40) + '...</p></td>'
                 cartItems += '<td class="price">&dollar;' + cart[item].price + '</td>'
                 cartItems += '<td class="quantity">'
                 cartItems += '<div class="input-group mb-3">'

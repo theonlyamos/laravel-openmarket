@@ -384,7 +384,13 @@
                                                                 <li class="kt-nav__item">
                                                                     <a href="#" class="kt-nav__link">
                                                                         <i class="kt-nav__link-icon flaticon2-graph-1"></i>
-                                                                        <span class="kt-nav__link-text">View/Edit</span>
+                                                                        <span class="kt-nav__link-text">Open</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="kt-nav__item">
+                                                                    <a href="#" class="kt-nav__link">
+                                                                        <i class="kt-nav__link-icon flaticon2-graph-1"></i>
+                                                                        <span class="kt-nav__link-text">Edit</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="kt-nav__item">

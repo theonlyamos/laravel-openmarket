@@ -57,7 +57,7 @@
             <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="icon d-flex justify-content-center align-items-center mb-4">
-                        <i class="fa fa-shopping-bag fa-4x"></i>
+                        <span class="flaticon-bag"></span>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Free Shipping</h3>
@@ -69,7 +69,7 @@
             <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="icon d-flex justify-content-center align-items-center mb-4">
-                        <i class="fa fa-phone fa-4x"></i>
+                        <span class="flaticon-customer-service"></span>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Support Customer</h3>
@@ -81,7 +81,7 @@
             <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="icon d-flex justify-content-center align-items-center mb-4">
-                        <span class="fa fa-money"></span>
+                        <span class="flaticon-payment-security"></span>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Secure Payments</h3>
@@ -151,9 +151,8 @@
 <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-lg-4">
-                <div class="choose-wrap divider-one img p-5 d-flex align-items-end"
-                    style="background-image: url({{asset('storage/'.$products[5]->thumbnail)}}); background-size: cover;">
+            <div class="col-lg-4 bg-info">
+                <div class="choose-wrap divider-one img p-5 d-flex align-items-end">
 
                     <div class="text text-center text-white px-2">
                         <span class="subheading">{{$products[5]->category}}</span>
@@ -165,7 +164,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="row no-gutters choose-wrap divider-two align-items-stretch">
-                    <div class="col-md-12">
+                    <div class="col-md-12 bg-primary">
                         <div class="choose-wrap full-wrap img align-self-stretch d-flex align-item-center justify-content-end"
                             style="background-color: #4e4e4e; background: url({{asset('storage/'.$products[0]->thumbnail)}}); background-size: contain; background-repeat: no-repeat;">
                             <div class="col-md-7 d-flex align-items-center">
@@ -181,7 +180,7 @@
                     <div class="col-md-12">
                         <div class="row no-gutters">
                             <div class="col-md-6">
-                                <div class="choose-wrap wrap img align-self-stretch bg-light d-flex align-items-center">
+                                <div class="choose-wrap wrap img align-self-stretch bg-secondary d-flex align-items-center">
                                     <div class="text text-center px-5">
                                         <span class="subheading">Christmas Sale</span>
                                         <h2>Extra 50% Off</h2>
@@ -191,9 +190,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="choose-wrap wrap img align-self-stretch d-flex align-items-center"
-                                    style="background-image: url({{asset('storage/'.$products[4]->thumbnail)}}); background-size: contain">
+                            <div class="col-md-6 bg-warning">
+                                <div class="choose-wrap wrap img align-self-stretch d-flex align-items-center">
                                     <div class="text text-center text-white px-5">
                                         <span class="subheading">{{$products[4]->name}}</span>
                                         <h2>Best Sellers</h2>
@@ -249,7 +247,7 @@
                 <div class="services-flow">
                     <div class="services-2 p-4 d-flex ftco-animate">
                         <div class="icon">
-                            <span class="fa fa-plane"></span>
+                            <span class="flaticon-bag"></span>
                         </div>
                         <div class="text">
                             <h3>Free Shipping</h3>
@@ -258,7 +256,7 @@
                     </div>
                     <div class="services-2 p-4 d-flex ftco-animate">
                         <div class="icon">
-                            <span class="fa fa-gift"></span>
+                            <span class="flaticon-heart-box"></span>
                         </div>
                         <div class="text">
                             <h3>Valuable Gifts</h3>
@@ -267,7 +265,7 @@
                     </div>
                     <div class="services-2 p-4 d-flex ftco-animate">
                         <div class="icon">
-                            <span class="fa fa-phone"></span>
+                            <span class="flaticon-payment-security"></span>
                         </div>
                         <div class="text">
                             <h3>24/7 Support</h3>
@@ -276,7 +274,7 @@
                     </div>
                     <div class="services-2 p-4 d-flex ftco-animate">
                         <div class="icon">
-                            <span class="fa fa-lock"></span>
+                            <span class="flaticon-customer-service"></span>
                         </div>
                         <div class="text">
                             <h3>Completely Secure</h3>

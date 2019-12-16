@@ -84,13 +84,13 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake" id="ftco-navbar">
                 <div class="container">
                     <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
-                    <form class="form-inline my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air">
-                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary" type="search"
-                            placeholder="Search" aria-label="Search" name="search" required>
-                        <button class="btn btn-light my-2 my-sm-0 d-none d-md-block search-btn" type="submit">
+                    <form class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50" style="border: 1px solid #ced4da !important; height: 40px;">
+                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+                            placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: auto !important;">
+                        <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
@@ -102,8 +102,8 @@
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
                                 <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Stores</a></li>
-                                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
-                                    class="fa fa-shopping-cart"></i>[<div class="badge badge-light text-danger cart"><span class="cart-count">0</span></div>]</a></li>
+                                <li class="nav-item cta cta-colored"><a href="{{route("cart")}}" class="nav-link">Cart <i
+                                    class="fa fa-shopping-cart"></i>[<span class="cart cart-count">0</span>]</a></li>
                                 <li class="nav-item dropdown">
                                     @if (Auth::check())
                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
@@ -132,15 +132,22 @@
                             </li>
                         </ul>
                     </div>
+                    <form class="form-inline d-lg-none my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
+                            <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+                                placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: 30px !important;">
+                            <button class="btn btn-light my-sm-0 w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
                 </div>
             </nav>
 
-        <main class="pb-4">
-            <!--            <div class="my-5 d-none d-sm-block"></div> -->
+        <section class="pb-4">
+            <div class="my-4 d-md-none" style="height: 1px;"></div>
             @yield('content')
-        </main>
+        </section>
     </div>
-    <footer class="ftco-footer bg-dark ftco-section">
+    <footer class="ftco-footer bg-black ftco-section">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md">
@@ -209,6 +216,7 @@
         </div>
     </footer>
     <script>
+/*
         var map, infoWindow;
 
         function initMap() {
@@ -249,7 +257,7 @@
                 'Error: Your browser doesn\'t support geolocation.');
             infoWindow.open(map);
         }
-
+*/
     </script>
     <!--    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&callback=initMap">

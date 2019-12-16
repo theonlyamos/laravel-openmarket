@@ -15,6 +15,8 @@
                     <input type="hidden" name="id" value="{{$product->id}}">
                     <input type="hidden" name="name" value="{{$product->name}}">
                     <input type="hidden" name="price" value="{{$product->price}}">
+                    <input type="hidden" name="thumbnail" value="{{$product->thumbnail}}">
+                    <input type="hidden" name="description" value="{{$product->description}}">
                     <h3>{{$product->name}}</h3>
                     <div class="rating d-flex">
                         <p class="text-left mr-4">
