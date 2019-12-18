@@ -7,8 +7,6 @@ use App\Http\Requests\storeProductsPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use function PHPSTORM_META\type;
-
 use App\Products;
 
 class StoreController extends Controller
@@ -16,8 +14,14 @@ class StoreController extends Controller
     //
 
     public function index(){
+        $site_info = DB::select('select * from site_info');
         $products = Products::orderBy("created_at", "desc")->limit(8)->get();
-        return view("store.index2", ["products" => $products]);
+        return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info[0]]);
+    }
+
+    public function contact(){
+        $site_info = DB::select('select * from site_info');
+        return view('contact', ['site' => $site_info[0]]);
     }
 
     public function products($id, Request $request){
@@ -47,7 +51,7 @@ class StoreController extends Controller
         return view("store.products", ["products" => $products, "store" => $store,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
-                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats)]);
+                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products"]);
     }
 
     public function dashboard($page = ""){
@@ -74,7 +78,7 @@ class StoreController extends Controller
         $new_product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         Products::create($new_product);
         $product = Products::where("thumbnail", $new_product['thumbnail'])->first();
-        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
+        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
 
     }
 }
