@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Minishop - Free Bootstrap 4 Template by Colorlib</title>
+    <title>OpenMarket Stores | {{$title ?? ""}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -37,17 +37,17 @@
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="fa fa-phone"></span></div>
-                            <span class="text">+ 1235 2355 98</span>
+                            <span class="text">{{$site->phone_1}}</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="fa fa-paper-plane"></span></div>
-                            <span class="text">youremail@email.com</span>
+                            <span class="text">{{Str::lower($site->email_info)}}</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="fa fa-calendar"></span></div>
-                            <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                            <span class="text">24/7 Support</span>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
                             class="fa fa-shopping-cart"></i>[0]</a></li>
                         <li class="nav-item dropdown">
@@ -101,7 +101,9 @@
         </div>
     </nav>
     <!-- END nav -->
+    <!-- Main Content Start -->
     @yield('content')
+    <!-- Main Content End -->
     <footer class="ftco-footer ftco-section">
         <div class="container">
             <div class="row">
@@ -157,12 +159,10 @@
                         <h2 class="ftco-heading-2">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="fa fa-map-marker fa-fw"></span><span class="text">203 Fake St. Mountain
-                                        View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">+2 392 3929
-                                            210</span></a></li>
+                                <li><span class="fa fa-map-marker fa-fw"></span><span class="text">{{$site->address}}</span></li>
+                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_1}}</span></a></li>
                                 <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
+                                            class="text">{{Str::lower($site->email_support)}}</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -206,9 +206,9 @@
     <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/scrollax.min.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
-    </script>
-    <script src="{{asset('js/google-map.js')}}"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+    </script> -->
+    <!-- <script src="{{asset('js/google-map.js')}}"></script> -->
     <script src="{{asset('js/main.js')}}"></script>
 </body>
 

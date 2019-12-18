@@ -14,7 +14,7 @@ class AuthController extends Controller
     //
 
     public function index(){
-        return view("auth.login");
+        return view("store.auth.login", ["title" => "Login"]);
     }
 
     public function postLogin(Request $request){
@@ -23,23 +23,28 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $credentials = $request->only("email", "password");
+        // $credentials = $request->only("email", "password");
 
-        if (Auth::attempt($credentials)){
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'store'])){
+            if (Auth::user()->role != "store"){
+                $request->session()->flush();
+                Auth::logout();
+            }
             return redirect()->route('store_dashboard');
         }
+        $error = "Invalid login credentials";
 
-        return redirect()->route("store_login");
+        return redirect()->route("store_login", ['error' => $error]);
     }
 
     public function register(){
-        return view("auth.register");
+        return view("store.auth.register", ["title" => "Register"]);
     }
 
     public function postRegistration(Request $request){
         request()->validate([
             "name" => "required",
-            "email" => "required|unique:stores",
+            "email" => "required|unique:users",
             "password" => "required|min:6"
         ]);
 
@@ -52,7 +57,9 @@ class AuthController extends Controller
 
     private function create(array $data){
         return User::create([
-            "username" => $data["email"],
+            "name" => $data["name"],
+            "email" => $data["email"],
+            "role" => "store",
             "password" => Hash::make($data["password"])
         ]);
     }
