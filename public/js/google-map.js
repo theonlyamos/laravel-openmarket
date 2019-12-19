@@ -46,7 +46,7 @@ function init() {
     var addresses = "5.5502,-0.2174"
 
 
-    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+addresses+'&sensor=true', null, function (data) {
+    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+addresses+'&sensor=true', null, function (data) {
         console.log(data)
         var p = data.results[0].geometry.location
         var latlng = new google.maps.LatLng(p.lat, p.lng);
