@@ -45,7 +45,7 @@ function init() {
 
 
     navigator.geolocation.getCurrentPosition((position) => {
-        var address = `${position.coords.latitude},${postion.coords.longitude}`;
+        var address = `${position.coords.latitude},${position.coords.longitude}`;
         $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+address+'&sensor=true&key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM', null, function (data) {
         console.log(data)
         var p = data.results[0].geometry.location
