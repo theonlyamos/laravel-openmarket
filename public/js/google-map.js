@@ -43,10 +43,10 @@ function init() {
     // Create the Google Map using out element and options defined above
     var map = new google.maps.Map(mapElement, mapOptions);
 
-    var addresses = "5.5502,-0.2174"
 
-
-    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+addresses+'&sensor=true&key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM', null, function (data) {
+    navigator.geolocation.getCurrentPosition((position) => {
+        var address = `${position.coords.latitude},${postion.coords.longitude}`;
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+address+'&sensor=true&key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM', null, function (data) {
         console.log(data)
         var p = data.results[0].geometry.location
         var latlng = new google.maps.LatLng(p.lat, p.lng);
@@ -56,6 +56,7 @@ function init() {
         });
 
     });
+    })
 
 }
 google.maps.event.addDomListener(window, 'load', init);
