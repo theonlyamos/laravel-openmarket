@@ -51,8 +51,7 @@ function init() {
         var latlng = new google.maps.LatLng(p.lat, p.lng);
         new google.maps.Marker({
             position: latlng,
-            map: map,
-            icon: 'images/loc.png'
+            map: map
         });
 
     });
