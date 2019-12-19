@@ -43,15 +43,17 @@ function init() {
     // Create the Google Map using out element and options defined above
     var map = new google.maps.Map(mapElement, mapOptions);
 
-    var addresses = ['Accra'];
+    var addresses = "5.5502,-0.2174"
 
-    navigator.geolocation.getCurrentPosition((position) => {
-        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.latitude);
-            new google.maps.Marker({
-                position: latlng,
-                map: map,
-                icon: 'images/loc.png'
-            });
+
+    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+addresses[x]+'&sensor=true', null, function (data) {
+        var p = data.results[0].geometry.location
+        var latlng = new google.maps.LatLng(p.lat, p.lng);
+        new google.maps.Marker({
+            position: latlng,
+            map: map
+        });
+
     });
 
 }
