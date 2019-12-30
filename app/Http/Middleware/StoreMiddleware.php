@@ -24,3 +24,4 @@ class StoreMiddleware
         return redirect()->route("store_login");
     }
 }
+?>

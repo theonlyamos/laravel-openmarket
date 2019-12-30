@@ -11,7 +11,7 @@
     <div class="col-md-6 container  d-flex flex-column justify-content-center align-items-center">
         <div class="card p3-5 my-5 rounded-0" style="width: 350px; max-width: 90%">
             <div class="card-body">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="/register">
                     @csrf
 
                     <div class="form-group">
