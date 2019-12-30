@@ -15,7 +15,7 @@
                 @if (isset($_GET['error']))
                     <div class="alert alert-danger"><strong>Invalid Login Credentials</strong></div>
                 @endif
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="/login">
                     @csrf
 
                     <div class="form-group">
