@@ -28,11 +28,11 @@ Route::domain('store.openmart.ga')->group(function(){
 });
 
 Route::domain('store.openmart.dev')->group(function(){
-    Route::get("/", 'Store\StoreController@index')->name("store");
-    Route::get("/contact", 'Store\StoreController@contact')->name("contact");
-    Route::get("/login", 'Store\AuthController@index')->name("store_login");
-    Route::get("/register", 'Store\AuthController@register')->name("store_register");
-    Route::get("/logout", 'Store\AuthController@logout')->name("store_logout");
+    Route::get("/", 'Store\StoreController@index');
+    Route::get("/contact", 'Store\StoreController@contact');
+    Route::get("/login", 'Store\AuthController@index');
+    Route::get("/register", 'Store\AuthController@register');
+    Route::get("/logout", 'Store\AuthController@logout');
     Route::post("/login", 'Store\AuthController@postLogin');
     Route::post("/register", 'Store\AuthController@postRegistration');
     Route::middleware(['store'])->group(function(){
