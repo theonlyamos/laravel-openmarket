@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\User;
 
 class AuthController extends Controller
@@ -14,7 +15,8 @@ class AuthController extends Controller
     //
 
     public function index(){
-        return view("store.auth.login", ["title" => "Login"]);
+        $site_info = DB::select('select * from site_info');
+        return view("store.auth.login", ["title" => "Login", 'site' => $site_info[0]]);
     }
 
     public function postLogin(Request $request){
@@ -38,7 +40,8 @@ class AuthController extends Controller
     }
 
     public function register(){
-        return view("store.auth.register", ["title" => "Register"]);
+        $site_info = DB::select('select * from site_info');
+        return view("store.auth.register", ["title" => "Register", 'site' => $site_info[0]]);
     }
 
     public function postRegistration(Request $request){

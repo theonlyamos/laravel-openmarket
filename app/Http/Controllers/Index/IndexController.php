@@ -16,4 +16,8 @@ class IndexController extends Controller
 
         return view("welcome", ["stores" => $stores, "products" => $products]);
     }
+
+    public function gitpull(){
+        
+    }
 }
