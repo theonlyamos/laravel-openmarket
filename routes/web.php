@@ -66,4 +66,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/gitwebhook', 'HomeController@gitpull')->name('git_pull');
+Route::get('/gitwebhook', 'HomeController@gitpull');
+Route::post('/gitwebhook', 'HomeController@gitpull');
+
+?>
