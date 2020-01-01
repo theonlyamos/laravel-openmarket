@@ -65,3 +65,5 @@ Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/gitwebhook', 'HomeController@gitpull')->name('git_pull');

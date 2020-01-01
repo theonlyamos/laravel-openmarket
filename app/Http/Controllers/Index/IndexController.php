@@ -18,6 +18,6 @@ class IndexController extends Controller
     }
 
     public function gitpull(){
-        
+        echo shell_exec("sh /home/void/pull_update.sh");
     }
 }
