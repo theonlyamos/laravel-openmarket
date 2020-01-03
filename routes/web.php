@@ -60,7 +60,7 @@ Route::group(['prefix' => 'product'], function () {
     Route::get("/{id}", 'Product\ProductController@store')->where('name', '([A-Za-z]\+)+')->name("store");
 });
 
-Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contact');
+Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contactus');
 
 Auth::routes();
 
