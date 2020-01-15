@@ -220,7 +220,7 @@
         </div>
     </footer>
     <script>
-        var map, infoWindow;
+        var map, infoWindow, geocoder;
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -239,13 +239,10 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.lat},${pos.lng}&key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&sensor=true`)
-                    .then(response => response.json())
-                    .then((data) => {
-                        console.log(data)
-                    })
-                    .catch((error) => {
-                        console.error(erro);
+                    var location = new google.maps.LatLng(pos.lat, pos.lng);
+                    geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({"location": location}, (result, status) => {
+                        alert(result[0].formatted_address);
                     })
                     infoWindow.setPosition(pos);
                     infoWindow.setContent('Location found.');
@@ -269,7 +266,7 @@
         }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap">
     </script>
 </body>
 
