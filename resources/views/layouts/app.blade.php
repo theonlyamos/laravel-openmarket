@@ -265,7 +265,7 @@
             infoWindow.open(map);
         }
 
-        funcion getLocation(){
+        function getLocation(){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -273,16 +273,17 @@
                         lng: position.coords.longitude
                     };
                     var location = new google.maps.LatLng(pos.lat, pos.lng);
+
                     var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({"location": location}, (result, status) => {
                         alert(result[0].formatted_address);
-                    }
+                    })
                 }, function () {
                     alert("Your device does not support geolocation")
                 });
             } else {
                 // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
+                alert("Your device does not support geoloaction")
             }
         }
     </script>
