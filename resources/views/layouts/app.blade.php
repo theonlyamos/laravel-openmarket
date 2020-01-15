@@ -239,7 +239,7 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    fetch(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.lat},${pos.lng}&key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&sensor=true`)
+                    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.lat},${pos.lng}&key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&sensor=true`)
                     .then(response => response.json())
                     .then((data) => {
                         console.log(data)
