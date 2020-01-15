@@ -12,36 +12,37 @@
 */
 
 Route::domain('store.openmart.ga')->group(function(){
-    Route::get("/", 'Store\StoreController@index')->name("store");
-    Route::get("/contact", 'Store\StoreController@contact')->name("contact");
-    Route::get("/login", 'Store\AuthController@index')->name("store_login");
-    Route::get("/register", 'Store\AuthController@register')->name("store_register");
-    Route::get("/logout", 'Store\AuthController@logout')->name("store_logout");
-    Route::post("/login", 'Store\AuthController@postLogin')->name("store_login");
-    Route::post("/register", 'Store\AuthController@postRegistration')->name("store_register");
+    Route::get("/", 'Store\StoreController@index')->name("store.index");
+    Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
+    Route::get("/login", 'Store\AuthController@index')->name("store.login");
+    Route::get("/register", 'Store\AuthController@register')->name("store.register");
+    Route::get("/logout", 'Store\AuthController@logout')->name("logout");
+    Route::post("/login", 'Store\AuthController@postLogin');
+    Route::post("/register", 'Store\AuthController@postRegistration');
     Route::middleware(['store'])->group(function(){
-        Route::post("/add_product", 'Store\StoreController@add_product')->name("add_product");
-        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
-        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
-        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store_products");
+        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
+        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
+        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
+        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products");
     });
 });
 
 Route::domain('store.openmart.dev')->group(function(){
-    Route::get("/", 'Store\StoreController@index');
-    Route::get("/contact", 'Store\StoreController@contact');
-    Route::get("/login", 'Store\AuthController@index');
-    Route::get("/register", 'Store\AuthController@register');
-    Route::get("/logout", 'Store\AuthController@logout');
+    Route::get("/", 'Store\StoreController@index')->name("store.index");
+    Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
+    Route::get("/login", 'Store\AuthController@index')->name("store.login");
+    Route::get("/register", 'Store\AuthController@register')->name("store.register");
+    Route::get("/logout", 'Store\AuthController@logout')->name("logout");
     Route::post("/login", 'Store\AuthController@postLogin');
     Route::post("/register", 'Store\AuthController@postRegistration');
     Route::middleware(['store'])->group(function(){
-        Route::post("/add_product", 'Store\StoreController@add_product')->name("add_product");
-        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store_page");
-        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store_dashboard");
-        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store_products");
+        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
+        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
+        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
+        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products");
     });
 });
+
 
 Route::get('/', 'Index\IndexController@index');
 

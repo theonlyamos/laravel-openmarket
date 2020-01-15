@@ -67,7 +67,7 @@
                         <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
                         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
                             class="fa fa-shopping-cart"></i>[0]</a></li>
                         <li class="nav-item dropdown">
@@ -75,7 +75,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="store/dashboard">{{__("Dashboard")}}</a>
+                                    <a class="dropdown-item" href="{{store.dashboard}}">{{__("Dashboard")}}</a>
                                     <a class="dropdown-item" href="store/account">{{__("Account")}}</a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -91,8 +91,8 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">Account</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
-                                    <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
+                                    <a class="dropdown-item" href="{{route('store.login')}}">{{__("Login")}}</a>
+                                    <a class="dropdown-item" href="{{route('store.register')}}">{{__("Register")}}</a>
                                 </div>
                             @endif
                     </li>

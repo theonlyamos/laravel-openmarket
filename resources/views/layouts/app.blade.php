@@ -101,16 +101,20 @@
 
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Stores</a></li>
-                                <li class="nav-item cta cta-colored"><a href="{{route("cart")}}" class="nav-link">Cart <i
+                                <li class="nav-item"><a href="{{route('store.index')}}" class="nav-link">Stores</a></li>
+                                <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
                                     class="fa fa-shopping-cart"></i>[<span class="cart cart-count">0</span>]</a></li>
                                 <li class="nav-item dropdown">
                                     @if (Auth::check())
                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="store/dashboard">{{__("Dashboard")}}</a>
-                                            <a class="dropdown-item" href="store/account">{{__("Account")}}</a>
+                                            <a class="dropdown-item" href="{{route('store.dashboard')}}">
+                                                <i class="fa fa-graph"></i>
+                                                {{__("Dashboard")}}</a>
+                                            <a class="dropdown-item" href="store/account">
+                                                <i class="fa fa-user"></i>
+                                                {{__("Account")}}</a>
                                             <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                                 <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
@@ -196,8 +200,8 @@
                             <ul>
                                 <li class="pb-2"><span class="fa fa-map fa-fw"></span><span class="text">Market Circle, Takoradi</span></li>
                                 <li><a href="tel:+233 557 821 030" class="text-secondary"><span class="fa fa-phone fa-fw"></span><span class="text">+233 557 821 030</span></a></li>
-                                <li><a href="#" class="text-secondary"><span class="fa fa-envelope fa-fw"></span><span
-                                            class="text">info@openmarket.com</span></a></li>
+                                <li><a href="mailto:info@openmart.ga" class="text-secondary"><span class="fa fa-envelope fa-fw"></span><span
+                                            class="text">info@openmart.ga</span></a></li>
                             </ul>
                         </div>
                     </div>

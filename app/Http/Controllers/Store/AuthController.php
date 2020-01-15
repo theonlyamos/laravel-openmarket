@@ -32,11 +32,11 @@ class AuthController extends Controller
                 $request->session()->flush();
                 Auth::logout();
             }
-            return redirect()->route('store_dashboard');
+            return redirect()->route('store.dashboard');
         }
         $error = "Invalid login credentials";
 
-        return redirect()->route("store_login", ['error' => $error]);
+        return redirect()->route("store.login", ['error' => $error]);
     }
 
     public function register(){
@@ -53,9 +53,9 @@ class AuthController extends Controller
 
         $data = $request->all();
 
-        $check = $this->create($data);
+        $user = $this->create($data);
 
-        return redirect()->route("store_dashboard");
+        return redirect()->route("store.dashboard");
     }
 
     private function create(array $data){
@@ -70,6 +70,6 @@ class AuthController extends Controller
     public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
-        return redirect()->route("store");
+        return redirect()->route("store.index");
     }
 }

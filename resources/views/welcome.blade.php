@@ -52,7 +52,17 @@
  <!--                   <div class="card-header bg-light text-center py-2">
                         <small class="card-text text-muted">Stores</small>
                     </div> -->
-                    <ul class="list-group list-group-flush">
+                    <form action="" method="post">
+                        <input type="text" class="form-control" name="store_search" placeholder="Search stores..." list="stores_list" style="height: 40px; font-size: .8em;">
+                        <datalist id="stores_list">
+                            @isset($stores)
+                                @foreach ($stores as $store)
+                                    <option value="{{$store->name}}"></option>
+                                @endforeach
+                            @endisset
+                        </datalist>
+                    </form>
+                    <ul class="list-group list-group-flush" style="height: 330px; overflow-y: scroll;">
                         @isset($stores)
                         @foreach ($stores as $store)
                         <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top"
@@ -64,6 +74,7 @@
                         @endforeach
                         @endisset
                     </ul>
+                    <button class="btn btn-outline-info btn-block mt-1 rounded-0">Find Nearest Store <i class="fa fa-map"></i></button>
                 </div>
             </div>
             <div class="col-xl-8 col-lg-10 col-md-12 p-0">
@@ -118,6 +129,19 @@
         @include('ads_vertical')
         {{--  @component('top_stores')
         @endcomponent --}}
+        <div class="moble-stores-search d-md-none">
+            <form action="" method="post">
+                <input type="text" class="form-control" name="store_search" placeholder="Search stores..." list="stores_list" style="height: 40px; font-size: .8em;">
+                <datalist id="stores_list">
+                    @isset($stores)
+                        @foreach ($stores as $store)
+                            <option value="{{$store->name}}"></option>
+                        @endforeach
+                    @endisset
+                </datalist>
+            </form>
+            <button class="btn btn-outline-info btn-block py-2 rounded-0 my-1" style="font-size: 1em;">Find Nearest Store <i class="fa fa-shopping-bag"></i></button>
+        </div>
     </div>
 
     @component('top_items', ["products" => $products])
