@@ -74,7 +74,7 @@
                         @endforeach
                         @endisset
                     </ul>
-                    <button class="btn btn-outline-info btn-block mt-1 rounded-0">Find Nearest Store <i class="fa fa-map"></i></button>
+                    <button class="btn btn-outline-info btn-block mt-1 rounded-0" onclick="getLocation()">Find Nearest Store <i class="fa fa-map"></i></button>
                 </div>
             </div>
             <div class="col-xl-8 col-lg-10 col-md-12 p-0">
@@ -145,9 +145,9 @@
                     @endisset
                 </datalist>
             </form>
-            <button class="btn btn-outline-info btn-block py-2 rounded-0 my-1" style="font-size: 1em;">Find Nearest Store <i class="fa fa-shopping-bag"></i></button>
+            <button class="btn btn-outline-info btn-block py-2 rounded-0 my-1" style="font-size: 1em;" onclick="getLocation()">Find Nearest Store <i class="fa fa-shopping-bag"></i></button>
         </div>
- 
+
         @include('ads_vertical')
         {{--  @component('top_stores')
         @endcomponent --}}
