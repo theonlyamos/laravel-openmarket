@@ -6,21 +6,24 @@
                 <p>New Arrivals</p>
             </div>
         </div>
-        <div class="row mx-1 pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
+        <div class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
             @foreach ($products as $item)
-            <div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
+            <div class="col-6 col-lg-3 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
                     <a href="{{route('productDetails', $item->id)}}" class="img-prod">
                         <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3">
-                        <div class="d-flex">
+                        <div class="d-flex flex-wrap">
                             <div class="cat">
                                 <span>{{$item->category}}</span>
                             </div>
-                            <div class="rating">
-                                <p class="text-right mb-0">
+                            <div class="pricing w-50 text-right">
+                                <p class="price text-right"><span>{{__("default.currency")}}{{$item->price}}</span></p>
+                            </div>
+                            <div class="rating w-100">
+                                <p class="mb-0">
                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -30,10 +33,10 @@
                             </div>
                         </div>
                         <h3><a href="{{route('productDetails', $item->id)}}">{{$item->name}}</a></h3>
-                        <div class="pricing">
+                        <!--<div class="pricing d-none d-md-block">
                             <p class="price"><span>{{__("default.currency")}}{{$item->price}}</span></p>
-                        </div>
-                        <p class="bottom-area d-flex px-3 text-center bg-white">
+                        </div> -->
+                        <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
                             <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart
                                     <i class="fa fa-cart-plus ml-1"></i></span></a>
                             <a href="#" class="buy-now text-right ml-auto py-2"><span><i

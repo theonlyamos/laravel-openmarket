@@ -126,12 +126,17 @@
                 </div>
             </div>
         </div>
-        @include('ads_vertical')
-        {{--  @component('top_stores')
-        @endcomponent --}}
-        <div class="moble-stores-search d-md-none">
+        <div class="moble-stores-search d-md-none my-1">
             <form action="" method="post">
-                <input type="text" class="form-control" name="store_search" placeholder="Search stores..." list="stores_list" style="height: 40px; font-size: .8em;">
+                <div class="input-group">
+                     <input type="text" class="form-control" name="store_search" placeholder="Search stores..." list="stores_list" style="height: 40px; font-size: .8em;">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </div>
                 <datalist id="stores_list">
                     @isset($stores)
                         @foreach ($stores as $store)
@@ -142,7 +147,11 @@
             </form>
             <button class="btn btn-outline-info btn-block py-2 rounded-0 my-1" style="font-size: 1em;">Find Nearest Store <i class="fa fa-shopping-bag"></i></button>
         </div>
-    </div>
+ 
+        @include('ads_vertical')
+        {{--  @component('top_stores')
+        @endcomponent --}}
+   </div>
 
     @component('top_items', ["products" => $products])
     @endcomponent

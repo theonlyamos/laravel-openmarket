@@ -220,7 +220,6 @@
         </div>
     </footer>
     <script>
-/*
         var map, infoWindow;
 
         function initMap() {
@@ -240,7 +239,14 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-
+                    fetch(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.lat},${pos.lng}&key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&sensor=true`)
+                    .then(response => response.json())
+                    .then((data) => {
+                        console.log(data)
+                    })
+                    .catch((error) => {
+                        console.error(erro);
+                    })
                     infoWindow.setPosition(pos);
                     infoWindow.setContent('Location found.');
                     infoWindow.open(map);
@@ -261,12 +267,10 @@
                 'Error: Your browser doesn\'t support geolocation.');
             infoWindow.open(map);
         }
-*/
     </script>
-    <!--    <script async defer
+    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXZYpDBJojD5xpDf9B8HERolTGr3NbCP8&callback=initMap">
     </script>
--->
 </body>
 
 </html>
