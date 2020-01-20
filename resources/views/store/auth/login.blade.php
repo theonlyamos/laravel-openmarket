@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="row w-100 mx-0" style="min-height: 100vh">
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://res.cloudinary.com/openmarket/image/upload/v1579552471/backgrounds/user-2160923_nckxku.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-repeat: no-repeat">
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://res.cloudinary.com/openmarket/image/upload/v1579552471/backgrounds/user-2160923_nckxku.png'); background-size: contain; background-repeat: no-repeat; background-attachment: fixed; background-repeat: no-repeat">
         <div>
-            <i class="fa fa-sign-in fa-3x text-danger"></i>
+            <!-- <i class="fa fa-sign-in fa-3x text-danger"></i> -->
         </div>
         <h1 class="text-white">Login</h1>
     </div>

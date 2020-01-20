@@ -3,10 +3,11 @@
 @section('content')
 <div class="row w-100 mx-0" style="min-height: 97vh">
     <div class="col-md-6 py-3 d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://res.cloudinary.com/openmarket/image/upload/v1579552475/backgrounds/register-257986_1920_dqyknt.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
-        <div>
+<!--        <div>
             <i class="fa fa-user-plus fa-3x text-danger"></i>
         </div>
         <h1 class="text-white">Register</h1>
+-->
     </div>
     <div class="col-md-6 container  d-flex flex-column justify-content-center align-items-center">
         <div class="card p3-5 my-5 rounded-0" style="width: 350px; max-width: 90%">
