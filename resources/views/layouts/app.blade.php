@@ -110,7 +110,7 @@
                                             aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                                             <a class="dropdown-item" href="{{route('user.dashboard')}}">
-                                                <i class="fa fa-graph"></i>
+                                                <i class="fa fa-tv"></i>
                                                 {{__("Dashboard")}}</a>
                                             <a class="dropdown-item" href="{{route('user.account')}}">
                                                 <i class="fa fa-user"></i>
