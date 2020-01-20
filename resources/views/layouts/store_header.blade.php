@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    
+    <!-- Scripts -->
+    <script src="{{asset('js/fontawesome.js')}}" defer></script>
+    <script src="{{asset('js/app.js')}}" defer></script>
 </head>
 
 <body>
@@ -54,68 +58,50 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
-                    <form class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50" style="border: 1px solid #ced4da !important; height: 40px;">
-                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
-                            placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: auto !important;">
-                        <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
 
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"><a href="{{route('store.index')}}" class="nav-link">Stores</a></li>
-                                <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
-                                    class="fa fa-shopping-cart"></i>[<span class="cart cart-count">0</span>]</a></li>
-                                <li class="nav-item dropdown">
-                                    @if (Auth::check())
-                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="{{route('user.dashboard')}}">
-                                                <i class="fa fa-tv"></i>
-                                                {{__("Dashboard")}}</a>
-                                            <a class="dropdown-item" href="{{route('user.account')}}">
-                                                <i class="fa fa-user"></i>
-                                                {{__("Account")}}</a>
-                                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
-                                            </a>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
+                        <li class="nav-item dropdown">
+                            @if (Auth::check())
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="{{route('store.dashboard')}}">{{__("Dashboard")}}</a>
+                                    <a class="dropdown-item" href="{{route('store.account')}}">{{__("Account")}}</a>
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
+                                    </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    @else
-                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">Account</a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
-                                            <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
-                                        </div>
-                                    @endif
-                            </li>
-                        </ul>
-                    </div>
-                    <form class="form-inline d-lg-none my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
-                            <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
-                                placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: 30px !important;">
-                            <button class="btn btn-light my-sm-0 w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
-                </div>
-            </nav>
-
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            @else
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Account</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" href="{{route('store.login')}}">{{__("Login")}}</a>
+                                    <a class="dropdown-item" href="{{route('store.register')}}">{{__("Register")}}</a>
+                                </div>
+                            @endif
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- END nav -->
     <!-- Main Content Start -->
     @yield('content')
