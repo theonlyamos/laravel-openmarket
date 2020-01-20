@@ -72,7 +72,7 @@ Route::group(['prefix' => 'product'], function () {
 Route::group(['prefix' => 'store'], function () {
     Route::get("/", 'Product\ProductController@index');
     Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products.store");
-    Route::get("/{store_id}/product/{product_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
+    Route::get("/{store_id}/product/{product_id}", 'Store\StoreController@product_details')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
 
 });
 

@@ -81,4 +81,11 @@ class StoreController extends Controller
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
 
     }
+
+   public function product_details($store_id, $product_id, Request $request){
+        $product = Products::where("id", $product_id)->first();
+        $keys = $product->keywords;
+        $keywords = explode(",", $keys);
+        return view("product.details", ["product" => $product, "keywords" => $keywords]);
+    }
 }

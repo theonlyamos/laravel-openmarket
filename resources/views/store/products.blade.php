@@ -106,7 +106,7 @@
                     @foreach ($products as $item)
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
                         <div class="product d-flex flex-column">
-                            <a href="{{route('productDetails', $item->id)}}" class="img-prod">
+                            <a href="{{route('store.product.details', [$store->id, $item->id])}}" class="img-prod">
                                 <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
                                 <div class="overlay"></div>
                             </a>
