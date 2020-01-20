@@ -23,7 +23,7 @@ Route::domain('store.openmart.ga')->group(function(){
         Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
         Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
         Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
-        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products");
+        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
     });
 });
 
@@ -39,7 +39,7 @@ Route::domain('store.openmart.dev')->group(function(){
         Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
         Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
         Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
-        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products");
+        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
     });
 });
 
@@ -52,6 +52,14 @@ Route::group(['prefix' => 'product'], function () {
 
 });
 
+Route::group(['prefix' => 'user'], function(){
+    Route::get('/{page}', 'User\UserController@page')->name('user.page');
+    Route::get('/', 'User\UserController@index')->name('user.index');
+    Route::get('dashboard', 'User\UserController@dashboard')->name('user.dashboard');
+    Route::get('account', 'User\UserController@account')->name('user.account');
+    Route::get('settings', 'User\UserControlller@settings')->name('user.settings');
+});
+
 Route::prefix("cart")->group(function() {
     Route::get("/", 'Cart\CartController@index')->name("cart");
 });
@@ -59,6 +67,13 @@ Route::prefix("cart")->group(function() {
 Route::group(['prefix' => 'product'], function () {
     Route::get("/", 'Product\ProductController@index');
     Route::get("/{id}", 'Product\ProductController@store')->where('name', '([A-Za-z]\+)+')->name("store");
+});
+
+Route::group(['prefix' => 'store'], function () {
+    Route::get("/", 'Product\ProductController@index');
+    Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products.store");
+    Route::get("/{store_id}/product/{product_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
+
 });
 
 Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contactus');

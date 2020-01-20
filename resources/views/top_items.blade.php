@@ -1,8 +1,8 @@
-<section class="trending-items bg-light py-5">
+<section class="trending-items bg-light py-6">
     <div class="container">
         <div class="row justify-content-center pt-5 mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <h2 class="my-4 text-secondary" style="font-weight: 100; letter-spacing: 1px;">Trending</h2>
+                <h2 class="my-1 text-secondary" style="font-weight: 100; letter-spacing: 1px;">Trending</h2>
                 <p>New Arrivals</p>
             </div>
         </div>

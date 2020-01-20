@@ -38,23 +38,61 @@
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
+    <style>
+      .bg-transparent {
+          background: transparent !important;
+      }
+      
+      .card {
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+          border-radius: 0 !important;
+      }
+
+      article {
+          height: 100vh;
+          overflow-y: auto;
+          padding-left: 250px;
+          z-index: 0;
+      }
+
+      aside {
+          width: 250px;
+          z-index: 10;
+      }
+
+      .list-group-item.active {
+          border: 0;
+          background: #000 !important;
+      }
+      
+      .list-group-item.active a {
+          color: white !important;
+      }
+
+
+      @media screen and (max-width: 640px){
+          aside {
+              width: 50px;
+          }
+          
+          article {
+              padding-left: 50px;
+          }
+
+          .link-name {
+              display: none;
+          }
+
+          .list-group-item {
+              padding-left: 17px;
+          }
+      }
+    </style>
 </head>
 
-<body>
+<body style="overflow: hidden">
     <div id="app">
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000">
-            <div class="toast-header">
-                <strong class="mr-auto text-dark toast-title"></strong>
-                <small class="text-muted">just now</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body d-flex align-items-center">
-
-            </div>
-        </div>
-        <!--
+                <!--
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2" id="ftco-navbar">
             <div class="container">
               <a class="navbar-brand" href="index.html">Modist</a>
@@ -84,16 +122,21 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
-                    <form class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50" style="border: 1px solid #ced4da !important; height: 40px;">
-                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+        <nav class="container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light py-0 pl-0 scrolled awake" id="ftco-navbar">
+                <a class="navbar-brand text-white text-center mr-0 py-2 d-none d-sm-block" href="/" style="background: #20a8d8; font-weight: 700; width: 250px; border-bottom: 1px solid #20a8d8">{{config("app.name", "OpenMarket")}}</a>
+                 <a class="navbar-brand text-white text-center mr-0 py-2 d-block d-sm-none" href="/" style="background: #20a8d8; font-weight: 700; width: 50px; border-bottom: 1px solid #20a8d8">O</a>
+                <a href="#" class="navbar-brand bg-white text-center d-flex align-items-center justify-content-center" style="border-right: 1px solid #e1e6ef; border-bottom: 1px solid ##e1e6ef; width: 50px; color: #e1e6ef">
+                    <i class="fa fa-align-left"></i>
+                </a>
+<!--
+                    <form class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-25" style="height: 40px;">
+                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-50 border-0" type="search"
                             placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: auto !important;">
                         <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
+-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="oi oi-menu"></span> Menu
@@ -101,7 +144,6 @@
 
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"><a href="{{route('store.index')}}" class="nav-link">Stores</a></li>
                                 <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
                                     class="fa fa-shopping-cart"></i>[<span class="cart cart-count">0</span>]</a></li>
                                 <li class="nav-item dropdown">
@@ -109,12 +151,19 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="{{route('user.dashboard')}}">
-                                                <i class="fa fa-graph"></i>
+                                            <a class="dropdown-item" href="{{route('user.page', 'dashboard')}}">
+                                                <i class="fa fa-tv"></i>
                                                 {{__("Dashboard")}}</a>
-                                            <a class="dropdown-item" href="{{route('user.account')}}">
+                                            <a class="dropdown-item" href="{{route('user.page', 'orders')}}">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                {{__("Orders")}}</a>
+                                            <a class="dropdown-item" href="{{route('user.page', 'profile')}}">
                                                 <i class="fa fa-user"></i>
-                                                {{__("Account")}}</a>
+                                                {{__("Profile")}}</a>
+
+                                            <a class="dropdown-item" href="{{route('user.page', 'settings')}}">
+                                                <i class="fa fa-gear"></i>
+                                                {{__("Settings")}}</a>
                                             <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                                 <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
@@ -136,6 +185,7 @@
                             </li>
                         </ul>
                     </div>
+<!--
                     <form class="form-inline d-lg-none my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
                             <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
                                 placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: 30px !important;">
@@ -143,14 +193,28 @@
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>
-                </div>
+-->
             </nav>
+  <main class="container p-0" style="overflow: hidden; margin-top: 50px;">
+    <aside class="bg-dark card rounded-0 border-0" style="height: 100vh; top: 50px; position: fixed;">
+        <div class="list-group list-group-flush bg-dark rounded-0">
+                <a href="#" class="list-group-item list-group-item-secondary disabled bg-secondary text-center align-items-center justify-content-center d-none d-md-flex flex-column rounded-0">
+                    <div class="border" style="width: 50px; height: 50px; border-radius: 50%;"></div>
+                    <div class="pl-2 link-name text-dark">{{Auth::user()->name}}</div></a>
+                @foreach($pages as $page)
+                    @if ($page['name'] == $curpage)
+                        <a href="#" class="list-group-item list-group-item-action active bg-transparent text-white"><i class="fa {{$page['icon']}}"></i><span class="pl-2 link-name">{{ucfirst($page['name'])}}</span></a>
 
-        <section class="pb-4">
-            <div class="my-4 d-md-none" style="height: 1px;"></div>
-            @yield('content')
-        </section>
-    </div>
+                    @else
+                        <a href="{{route('user.page', $page['name'])}}" class="list-group-item list-group-item-action bg-transparent text-primary"><i class="fa {{$page['icon']}}"></i><span class="pl-2 link-name">{{ucfirst($page['name'])}}</span></a>
+                    @endif
+                @endforeach
+
+        </div>
+    </aside>
+    @yield('content')
+  </main>
+ </div>
     <footer class="ftco-footer bg-black ftco-section">
         <div class="container">
             <div class="row mb-5">
