@@ -61,7 +61,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Free Shipping</h3>
-                        <p>Get your products delivered to your customers free of charge</p>
+                        <p>Get your products delivered to your customers free of charge.</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Support Customer</h3>
-                        <p>We are always there to answer all your issues. Reach our customer care 24/7</p>
+                        <p>We are always there to answer all your issues. Reach our customer care 24/7.</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Secure Payments</h3>
-                        <p>Receive payments securely from your customers Credid Card, Paypal and mobile wallet</p>
+                        <p>Receive payments securely from your customers through Credid Card, Paypal and mobile wallet.</p>
                     </div>
                 </div>
             </div>
