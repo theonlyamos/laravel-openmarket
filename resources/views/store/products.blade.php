@@ -129,7 +129,7 @@
                                 <div class="pricing">
                                     <p class="price"><span>&dollar;{{$item->price}}</span></p>
                                 </div>
-                                <p class="bottom-area d-flex px-3 text-center bg-white">
+                                <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
                                     <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart
                                             <i class="fa fa-cart-plus ml-1"></i></span></a>
                                     <a href="#" class="buy-now text-right ml-auto py-2"><span><i
