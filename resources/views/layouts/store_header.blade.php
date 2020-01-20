@@ -70,7 +70,7 @@
                         <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
                         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">Cart <i
                             class="fa fa-shopping-cart"></i>[0]</a></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown-toggle">
                             @if (Auth::check())
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>

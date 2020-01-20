@@ -25,10 +25,14 @@ class storePost extends FormRequest
     {
         return [
             'name' => ['required', 'unique:stores'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:8'],
+            'rpassword' => 'required',
             'address' => 'required',
             'location' => 'required',
             'region' => 'required',
             'city' => 'required',
+            'postal' => 'required',
             'categories' => 'required'
             //
         ];
