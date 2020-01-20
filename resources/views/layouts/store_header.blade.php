@@ -68,13 +68,17 @@
                         <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
-                        <li class="nav-item dropdown">
+			<li class="nav-item dropdown">
                             @if (Auth::check())
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="{{route('store.dashboard')}}">{{__("Dashboard")}}</a>
-                                    <a class="dropdown-item" href="{{route('store.account')}}">{{__("Account")}}</a>
+                                    <a class="dropdown-item" href="{{route('user.dashboard')}}">
+                                        <i class="fa fa-tv"></i>
+                                        {{__("Dashboard")}}</a>
+                                    <a class="dropdown-item" href="{{route('user.account')}}">
+                                        <i class="fa fa-user"></i>
+                                        {{__("Account")}}</a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
@@ -89,11 +93,11 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">Account</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a class="dropdown-item" href="{{route('store.login')}}">{{__("Login")}}</a>
-                                    <a class="dropdown-item" href="{{route('store.register')}}">{{__("Register")}}</a>
+                                    <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
+                                    <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
                                 </div>
-                            @endif
-                    </li>
+                                @endif
+                       </li>
                 </ul>
             </div>
         </div>
