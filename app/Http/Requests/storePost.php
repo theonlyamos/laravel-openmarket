@@ -24,15 +24,14 @@ class storePost extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:stores'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8'],
-            'rpassword' => 'required',
-            'address' => 'required',
-            'location' => 'required',
-            'region' => 'required',
-            'city' => 'required',
-            'postal' => 'required',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:stores'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'postal' => ['required', 'string', 'max:255']
             //
         ];
     }
