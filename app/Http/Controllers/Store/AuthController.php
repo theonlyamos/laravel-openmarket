@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Store;
-use App\Http\Requests\StorePost;
+use App\Http\Requests\storePost;
 
 class AuthController extends Controller
 {
@@ -45,7 +45,7 @@ class AuthController extends Controller
         return view("store.auth.register", ["title" => "Register", 'site' => $site_info[0]]);
     }
 
-    public function postRegistration(StorePost $request){
+    public function postRegistration(storePost $request){
         $data = request()->validate();
 
         $store = $this->create($data);
