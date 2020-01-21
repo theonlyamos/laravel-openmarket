@@ -45,7 +45,7 @@ class StoreController extends Controller
         }
         $prod = $products[0];
         // $products = DB::select('select * from products limit 20 offset ?', [$from]);
-        $store = DB::select('select id, name from stores where id = ?', [$id]);
+        $store = DB::select('select id, name from stores where id = ?', [$store_id]);
         $categories = DB::select('select id, name from categories');
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
