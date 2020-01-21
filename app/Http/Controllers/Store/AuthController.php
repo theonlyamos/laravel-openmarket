@@ -46,8 +46,7 @@ class AuthController extends Controller
     }
 
     public function postRegistration(storePost $request){
-        var_dump($request->all());
-        $data = request()->validate();
+        $data = $request->validated();
 
         $store = $this->create($data);
         return redirect()->route("store.dashboard");
