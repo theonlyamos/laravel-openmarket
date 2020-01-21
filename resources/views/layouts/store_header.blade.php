@@ -78,7 +78,7 @@
                                     aria-haspopup="true" aria-expanded="false">{{Auth::guard('store')->user()->name}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                                     <a class="dropdown-item" href="{{route('store.dashboard')}}">{{__("Dashboard")}}</a>
-                                    <a class="dropdown-item" href="{{route('store.account')}}">{{__("Account")}}</a>
+                                    <a class="dropdown-item" href="{{route('store.page', 'account')}}">{{__("Account")}}</a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
