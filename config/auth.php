@@ -47,12 +47,12 @@ return [
             'hash' => false,
         ],
 
-        'stores' => [
+        'store' => [
             'driver' => 'session',
             'provider' => 'stores',
         ],
 
-       'admins' => [
+       'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ]

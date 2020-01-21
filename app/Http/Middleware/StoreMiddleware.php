@@ -21,7 +21,7 @@ class StoreMiddleware
                 return $next($request);
             }
         }
-        return redirect()->route("store_login");
+        return redirect()->route("store.login");
     }
 }
 ?>

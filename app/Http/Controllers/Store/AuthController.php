@@ -27,13 +27,13 @@ class AuthController extends Controller
         ]);
 
         // $credentials = $request->only("email", "password");
-
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 'store'])){
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('store')->attempt($credentials)){
             if (Auth::user()->role != "store"){
                 $request->session()->flush();
                 Auth::logout();
             }
-            return redirect()->route('store.dashboard');
+            return redirect()->intended('store.dashboard');
         }
         $error = "Invalid login credentials";
 
@@ -49,7 +49,15 @@ class AuthController extends Controller
         $data = $request->validated();
 
         $store = $this->create($data);
-        return redirect()->route("store.dashboard");
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('store')->attempt($credentials)){
+            if (Auth::user()->role != "store"){
+                $request->session()->flush();
+                Auth::logout();
+            }
+            return redirect()->intended('store.dashboard');
+        }
+        return redirect()->route("store.register");
     }
 
     private function create(array $data){
