@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\storeProductsPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\Products;
 
@@ -66,7 +67,9 @@ class StoreController extends Controller
             $list = '';
             switch ($page) {
                 case 'products':
-                    $list = Products::all();
+                    $list = Products::where("store_id", Auth::guard('store')->user()->id)
+                                    ->orderBy("id", "asc")
+                                    ->get();
             }
             return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "list" => $list]);
         }
