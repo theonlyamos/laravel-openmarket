@@ -16,10 +16,8 @@ class StoreMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()){
-            if (Auth::guard('store')->user()->role == 'store'){
-                return $next($request);
-            }
+        if (Auth::guard('store')->check()){
+            return $next($request);
         }
         return redirect()->route("store.login");
     }
