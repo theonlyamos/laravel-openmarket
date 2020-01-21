@@ -75,7 +75,7 @@
                         <li class="nav-item dropdown">
                             @if (Auth::guard('store')->check())
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                                    aria-haspopup="true" aria-expanded="false">{{Auth::guard('store')->user()->name}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                                     <a class="dropdown-item" href="{{route('store.dashboard')}}">{{__("Dashboard")}}</a>
                                     <a class="dropdown-item" href="{{route('store.account')}}">{{__("Account")}}</a>
