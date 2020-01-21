@@ -8,7 +8,7 @@
             <div class="container-fluid p-0">
                 <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end"
                     data-scrollax-parent="true">
-                    <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/c_scale,w_507/v1579570621/backgrounds/earphones-4766270_dpa8dk.png" alt="Hero Image">
+                    <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/c_scale,w_274/v1579570621/backgrounds/earphones-4766270_dpa8dk.png" alt="Hero Image">
                     <div class="one-forth d-flex align-items-center ftco-animate"
                         data-scrollax=" properties: { translateY: '70%' }">
                         <div class="text">
@@ -31,7 +31,7 @@
             <div class="container-fluid p-0">
                 <div class="row d-flex no-gutters slider-text align-items-center justify-content-end"
                     data-scrollax-parent="true">
-                    <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/v1579551601/samples/ecommerce/shoes.png" alt="Hero Image2">
+                    <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/c_scale,w_274/v1579551601/samples/ecommerce/shoes.png" alt="Hero Image2">
                     <div class="one-forth d-flex align-items-center ftco-animate"
                         data-scrollax=" properties: { translateY: '70%' }">
                         <div class="text">
