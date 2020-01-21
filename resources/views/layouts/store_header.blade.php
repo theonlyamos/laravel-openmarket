@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    
+
     <!-- Scripts -->
     <script src="{{asset('js/fontawesome.js')}}" defer></script>
     <script src="{{asset('js/app.js')}}" defer></script>
@@ -208,9 +208,12 @@
     <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/scrollax.min.js')}}"></script>
+<!--
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM">
     </script>
     <script src="{{asset('js/google-map.js')}}"></script>
+-->
+    @yield('scripts')
     <script src="{{asset('js/main.js')}}"></script>
 </body>
 
