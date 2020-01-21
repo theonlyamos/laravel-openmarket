@@ -10,7 +10,7 @@
                     data-scrollax-parent="true">
                     <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/c_scale,w_274/v1579570621/backgrounds/earphones-4766270_dpa8dk.png" alt="Hero Image">
                     <div class="one-forth d-flex align-items-center ftco-animate"
-                        data-scrollax=" properties: { translateY: '70%' }">
+                        data-scrollax=" properties: { translateY: '10%' }">
                         <div class="text">
                             <span class="subheading">#New Arrival</span>
                             <div class="horizontal">
@@ -33,7 +33,7 @@
                     data-scrollax-parent="true">
                     <img class="one-third order-md-last img-fluid" src="https://res.cloudinary.com/openmarket/image/upload/c_scale,w_274/v1579551601/samples/ecommerce/shoes.png" alt="Hero Image2">
                     <div class="one-forth d-flex align-items-center ftco-animate"
-                        data-scrollax=" properties: { translateY: '70%' }">
+                        data-scrollax=" properties: { translateY: '10%' }">
                         <div class="text">
                             <span class="subheading">#New Arrival</span>
                             <div class="horizontal">
