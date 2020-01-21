@@ -25,7 +25,7 @@ class StoreController extends Controller
         return view('contact', ['site' => $site_info[0]]);
     }
 
-    public function products($id, Request $request){
+    public function products($store_id, Request $request){
         $cats = Array();
         $subs = Array();
         if ($request->has('categories')){
@@ -39,7 +39,9 @@ class StoreController extends Controller
             $products = Products::whereIn('category', $cats)->paginate(20);
         }
         else {
-            $products = Products::paginate(20);
+            $products = Products::where("store_id", $store_id)
+            ->orderBy("id", "desc")
+            ->paginate(20);
         }
         $prod = $products[0];
         // $products = DB::select('select * from products limit 20 offset ?', [$from]);

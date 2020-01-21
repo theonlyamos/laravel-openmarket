@@ -23,7 +23,7 @@ Route::domain('store.openmart.ga')->group(function(){
         Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
         Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
         Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
-        Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
+        Route::get("/{store_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
     });
 });
 
