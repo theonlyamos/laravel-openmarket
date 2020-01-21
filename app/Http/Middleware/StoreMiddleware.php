@@ -17,7 +17,7 @@ class StoreMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            if (Auth()->user()->role == 'store'){
+            if (Auth::guard('store')->user()->role == 'store'){
                 return $next($request);
             }
         }

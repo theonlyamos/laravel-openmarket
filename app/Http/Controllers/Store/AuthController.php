@@ -29,11 +29,11 @@ class AuthController extends Controller
         // $credentials = $request->only("email", "password");
         $credentials = $request->only('email', 'password');
         if (Auth::guard('store')->attempt($credentials)){
-            if (Auth::user()->role != "store"){
+            if (Auth::guard('store')->user()->role != "store"){
                 $request->session()->flush();
                 Auth::logout();
             }
-            return redirect()->intended('store.dashboard');
+            return redirect()->intended('store/dashboard');
         }
         $error = "Invalid login credentials";
 
