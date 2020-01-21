@@ -73,7 +73,7 @@
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
                         <li class="nav-item dropdown">
-                            @if (Auth::check())
+                            @if (Auth::guard('store')->check())
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown04">
