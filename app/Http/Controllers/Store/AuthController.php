@@ -49,7 +49,7 @@ class AuthController extends Controller
         $data = request()->validate();
 
         $store = $this->create($data);
-
+        var_dump($store);
         return redirect()->route("store.dashboard");
     }
 
