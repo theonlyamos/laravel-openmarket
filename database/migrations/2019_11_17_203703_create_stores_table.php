@@ -25,7 +25,7 @@ class CreateStoresTable extends Migration
             $table->string('postal')->nullable();
             $table->string('logo')->nullable();
             $table->enum('role', ['customer', 'store', 'admin'])->default("store");
-            $table->json('products')->nullable();
+            $table->text('products')->nullable();
             $table->timestamps();
             $table->softDeletes(0);
         });
