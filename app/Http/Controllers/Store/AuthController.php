@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use App\User;
+use App\Store;
+use App\Http\Requests\StorePost;
 
 class AuthController extends Controller
 {
@@ -44,25 +45,23 @@ class AuthController extends Controller
         return view("store.auth.register", ["title" => "Register", 'site' => $site_info[0]]);
     }
 
-    public function postRegistration(Request $request){
-        request()->validate([
-            "name" => "required",
-            "email" => "required|unique:users",
-            "password" => "required|min:6"
-        ]);
+    public function postRegistration(StorePost $request){
+        $data = request()->validate();
 
-        $data = $request->all();
-
-        $user = $this->create($data);
+        $store = $this->create($data);
 
         return redirect()->route("store.dashboard");
     }
 
     private function create(array $data){
-        return User::create([
+        return Store::create([
             "name" => $data["name"],
             "email" => $data["email"],
-            "role" => "store",
+            "address" => $data['address'],
+            "location" => $data['location'],
+            "region" => $data['region'],
+            "city" => $data['city'],
+            "postal" => $data['postal'],
             "password" => Hash::make($data["password"])
         ]);
     }

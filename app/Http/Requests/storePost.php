@@ -33,7 +33,6 @@ class storePost extends FormRequest
             'region' => 'required',
             'city' => 'required',
             'postal' => 'required',
-            'categories' => 'required'
             //
         ];
     }

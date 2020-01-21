@@ -12,5 +12,4 @@ class Products extends Model
 
     protected $guarded = [];
 
-    public $incrementing = false;
 }

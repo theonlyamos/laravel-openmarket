@@ -43,6 +43,77 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="address"
+                            class="text-md-right">{{ __('Address') }}</label>
+
+                            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                                name="address" value="{{ old('address') }}" required autocomplete placeholder="Street name">
+
+                            @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location"
+                            class="text-md-right">{{ __('Location') }}</label>
+
+                            <input id="location" type="text" class="form-control @error('location') is-invalid @enderror"
+                                name="location" value="{{ old('location') }}" required autocomplete placeholder="longitude, latitude">
+
+                            @error('location')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="region"
+                            class="text-md-right">{{ __('Region') }}</label>
+                            
+                            <input id="region" type="text" class="form-control @error('region') is-invalid @enderror"
+                                name="region" value="{{ old('region') }}" required autocomplete placeholder="Eg. Western Region">
+
+                            @error('region')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city"
+                            class="text-md-right">{{ __('City') }}</label>
+
+                            <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
+                                name="city" value="{{ old('city') }}" required autocomplete placeholder="Eg. Sekondi-Takoradi">
+
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postal"
+                            class="text-md-right">{{ __('Postal Code') }}</label>
+
+                            <input id="postal" type="text" class="form-control @error('postal') is-invalid @enderror"
+                                name="postal" value="{{ old('postal') }}" required autocomplete placeholder="Eg. WS0034423">
+
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="password" class="text-md-right">{{ __('Password') }}</label>
 
                             <input id="password" type="password"

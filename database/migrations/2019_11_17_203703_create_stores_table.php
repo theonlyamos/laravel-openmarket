@@ -15,7 +15,19 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+            $table->string('address')->nullable();
+            $table->string('location')->nullable();
+            $table->string('region')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal')->nullable();
+            $table->string('logo')->nullable();
+            $table->enum('role', ['customer', 'store', 'admin'])->default("store");
+            $table->json('products')->nullable();
             $table->timestamps();
+            $table->softDeletes(0);
         });
     }
 
