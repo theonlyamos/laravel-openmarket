@@ -47,10 +47,6 @@ class AuthController extends Controller
         $store = $this->create($data);
         $credentials = $request->only('email', 'password');
         if (Auth::guard('store')->attempt($credentials)){
-            if (Auth::user()->role != "store"){
-                $request->session()->flush();
-                Auth::logout();
-            }
             return redirect()->intended('store.dashboard');
         }
         return redirect()->route("store.register");

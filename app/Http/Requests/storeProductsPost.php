@@ -24,7 +24,6 @@ class storeProductsPost extends FormRequest
     public function rules()
     {
         return [
-            'store_id' => 'required',
             'name'      => ['required', 'unique:products'],
             'category' => 'required',
             'price' => 'required',

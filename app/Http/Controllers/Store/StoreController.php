@@ -81,6 +81,7 @@ class StoreController extends Controller
     public function add_product(storeProductsPost $request){
         $new_product = $request->validated();
         $new_product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
+        $new_product['store_id'] = Auth::guard('store')->user()->id;
         Products::create($new_product);
         $product = Products::where("thumbnail", $new_product['thumbnail'])->first();
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
