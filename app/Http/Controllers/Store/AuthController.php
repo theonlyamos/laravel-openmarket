@@ -71,7 +71,7 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         $request->session()->flush();
-        Auth::logout();
+        Auth::guard('store')->logout();
         return redirect()->route("store.index");
     }
 }

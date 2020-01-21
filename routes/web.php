@@ -16,7 +16,7 @@ Route::domain('store.openmart.ga')->group(function(){
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/login", 'Store\AuthController@index')->name("store.login");
     Route::get("/register", 'Store\AuthController@register')->name("store.register");
-    Route::get("/logout", 'Store\AuthController@logout')->name("logout");
+    Route::get("/logout", 'Store\AuthController@logout')->name("store.logout");
     Route::post("/login", 'Store\AuthController@postLogin')->name('store.login.post');
     Route::post("/register", 'Store\AuthController@postRegistration')->name('store.register.post');
     Route::middleware(['store'])->group(function(){
