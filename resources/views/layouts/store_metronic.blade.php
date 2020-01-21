@@ -130,15 +130,15 @@
 								@foreach ($pages as $page)
                                     @if ($page['name'] == $title)
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store_dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store_page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @endif
                                     @else
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('store_dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('store_page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @endif
                                     @endif
                                 @endforeach
@@ -160,7 +160,7 @@
 						<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
-									<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="{{route('store_dashboard')}}" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
+									<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
 								</ul>
 							</div>
 						</div>
