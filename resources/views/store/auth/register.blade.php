@@ -9,7 +9,7 @@
         <h1 class="text-white">Register</h1>
     </div>
     <div class="col-md-6 container  d-flex flex-column justify-content-center align-items-center">
-        <div class="card p3-5 my-5 rounded-0" style="max-width: 98%">
+        <div class="card p3-5 my-5 rounded-0">
             <div class="card-body">
                 <form method="POST" action="{{route('store.register.post')}}">
                     @csrf
@@ -143,7 +143,7 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-outline-info btn-lg">
+                            <button type="submit" class="btn btn-outline-info btn-lg rounded-0 py-2 px-5">
                                 {{ __('Register') }}
                             </button>
                         </div>
