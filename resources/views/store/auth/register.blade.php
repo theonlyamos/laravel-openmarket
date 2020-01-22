@@ -3,13 +3,13 @@
 @section('content')
 <div class="row w-100 mx-0" style="min-height: 97vh">
     <div class="col-md-6 py-3 d-flex flex-column justify-content-center align-items-center" style="background-image: url('https://res.cloudinary.com/openmarket/image/upload/v1579552475/backgrounds/register-257986_1920_dqyknt.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
-        <div class="d-sm-bloc d-md-none">
+        <div class="d-none d-sm-block d-md-none">
             <!--<i class="fa fa-user-plus fa-3x text-danger"></i> -->
         </div>
         <h1 class="text-white">Register</h1>
     </div>
     <div class="col-md-6 container  d-flex flex-column justify-content-center align-items-center">
-        <div class="card p3-5 my-5 rounded-0" style="width: 350px; max-width: 90%">
+        <div class="card p3-5 my-5 rounded-0" style="max-width: 98%">
             <div class="card-body">
                 <form method="POST" action="{{route('store.register.post')}}">
                     @csrf
@@ -28,7 +28,7 @@
                     </div>
                     </div>
                     <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-sm-6">
                         <label for="email"
                             class="text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -42,7 +42,7 @@
                             @enderror
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-sm-6">
                         <label for="address"
                             class="text-md-right">{{ __('Address') }}</label>
 
@@ -56,7 +56,9 @@
                             @enderror
                     </div>
                     </div>
-                    <div class="form-group">
+
+                    <div class="row">
+                    <div class="form-group col-sm-6">
                         <label for="location"
                             class="text-md-right">{{ __('Location') }}</label>
 
@@ -70,7 +72,7 @@
                             @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-sm-6">
                         <label for="region"
                             class="text-md-right">{{ __('Region') }}</label>
 
@@ -83,8 +85,10 @@
                             </span>
                             @enderror
                     </div>
+                    </div>
 
-                    <div class="form-group">
+                    <div class="row">
+                    <div class="form-group col-sm-6">
                         <label for="city"
                             class="text-md-right">{{ __('City') }}</label>
 
@@ -98,7 +102,7 @@
                             @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-sm-6">
                         <label for="postal"
                             class="text-md-right">{{ __('Postal Code') }}</label>
 
@@ -111,9 +115,10 @@
                             </span>
                             @enderror
                     </div>
+                    </div>
 
-
-                    <div class="form-group">
+                    <div class="row">
+                    <div class="form-group col-sm-6">
                         <label for="password" class="text-md-right">{{ __('Password') }}</label>
 
                             <input id="password" type="password"
@@ -127,12 +132,13 @@
                             @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-sm-6">
                         <label for="password-confirm"
                             class="text-md-right">{{ __('Confirm Password') }}</label>
 
                             <input id="password-confirm" type="password" class="form-control"
                                 name="password_confirmation" required autocomplete="new-password">
+                    </div>
                     </div>
 
                     <div class="form-group row mb-0">
