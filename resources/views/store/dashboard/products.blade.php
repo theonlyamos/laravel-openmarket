@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="kt-portlet">
+<div class="kt-portlet" id="add_product_portlet">
     <div class="kt-portlet__head kt-portlet__head--lg">
         <div class="kt-portlet__head-label">
             <span class="kt-portlet__head-icon">
@@ -17,7 +17,7 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <a href="#" class="btn btn-clean btn-icon-sm">
+                <a href="#" onclick="event.preventDefault(); $('#add_product_portlet').hide(500);" class="btn btn-clean btn-icon-sm">
                     <i class="la la-long-arrow-left"></i>
                     Back
                 </a>
@@ -93,7 +93,7 @@
 
             <!--end: Form Wizard Nav -->
             <div class="kt-portlet">
-                <div class="kt-scroll ps ps--active-y" data-scroll="true" data-height="450"
+                <div class="kt-scroll ps ps--active-y" data-scroll="true" data-height="600"
                     style="height: 100vh; overflow: hidden;">
                     <div class="kt-portlet__body kt-portlet__body--fit">
                         <div class="kt-grid">
