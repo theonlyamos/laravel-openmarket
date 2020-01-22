@@ -13,8 +13,8 @@
             <div class="card-body">
                 <form method="POST" action="{{route('store.register.post')}}">
                     @csrf
-
-                    <div class="form-group">
+                    <div class="row">
+                    <div class="form-group col-12">
                         <label for="name" class="text-md-right">{{ __('Name') }}</label>
 
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -26,8 +26,9 @@
                             </span>
                             @enderror
                     </div>
-
-                    <div class="form-group">
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-6">
                         <label for="email"
                             class="text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -41,7 +42,7 @@
                             @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="address"
                             class="text-md-right">{{ __('Address') }}</label>
 
@@ -54,7 +55,7 @@
                             </span>
                             @enderror
                     </div>
-
+                    </div>
                     <div class="form-group">
                         <label for="location"
                             class="text-md-right">{{ __('Location') }}</label>
