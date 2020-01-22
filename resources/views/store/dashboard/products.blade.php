@@ -100,7 +100,7 @@
                             <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v4__wrapper">
 
                                 <!--begin: Form Wizard Form-->
-                                <form class="kt-form pt-0" id="kt_apps_product_add_user_form"
+                                <form class="kt-form pt-0 px-5 w-100" id="kt_apps_product_add_user_form"
                                     novalidate="novalidate" method="POST" action="{{route('store.add_product')}}" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="store_id" value="1" required>
