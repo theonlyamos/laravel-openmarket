@@ -404,7 +404,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link" class="edit_product" data-product="{{$item->id}}">
+                                                                    <a href="#" class="kt-nav__link edit" data-product="{{$item->id}}">
                                                                         <i class="kt-nav__link-icon flaticon2-edit"></i>
                                                                         <span class="kt-nav__link-text">Edit</span>
                                                                     </a>

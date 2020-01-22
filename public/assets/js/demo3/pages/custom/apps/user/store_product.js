@@ -232,7 +232,7 @@ var KTAppUserAdd = function () {
     }
 
     var getProduct = function(){
-        $(".edit_product").on("click", (e) => {
+        $(".edit").on("click", (e) => {
             e.preventDefault();
 
             var target = $(e.currentTarget).data('product');
