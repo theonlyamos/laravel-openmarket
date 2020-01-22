@@ -235,7 +235,7 @@ var KTAppUserAdd = function () {
         $(".edit").on("click", (e) => {
             e.preventDefault();
 
-            var target = $(e.currentTarget).data('product');
+            var product_id = $(e.currentTarget).data('product');
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 console.log(result);
             })
