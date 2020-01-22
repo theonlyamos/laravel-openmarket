@@ -247,7 +247,7 @@ var KTAppUserAdd = function () {
 		// public functions
 		init: function() {
             formEl = $('#kt_apps_user_add_user_form');
-            editForm = $('#edit_product_form');
+            //editForm = $('#edit_product_form');
 
 			initWizard();
 			initValidation();
