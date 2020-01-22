@@ -88,14 +88,14 @@
                                 <input class="custom-range" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
                                     value="{{$min_price}}" />
                             </small>
-                            <span class="text-dark ml-1">${{$min_price}}</span>
+                            <span class="text-dark ml-1">{{__('default.currency')}}{{$min_price}}</span>
                         </li>
                         <li class="list-group-item d-flex align-items-center py-1">
                                 <small>
                                     <input class="custom-range" type="range" min="{{$min_price}}" max="{{$max_price}}" step="0.1"
                                         value="{{$max_price}}" />
                                 </small>
-                                <span class="text-dark ml-1">${{$max_price}}</span>
+                                <span class="text-dark ml-1">{{__('default.currency')}}{{$max_price}}</span>
                             </li>
                     </ul>
                 </div>
@@ -127,7 +127,7 @@
                                 </div>
                                 <h3><a href="{{route('productDetails', $item->id)}}">{{$item->name}}</a></h3>
                                 <div class="pricing">
-                                    <p class="price"><span>&dollar;{{$item->price}}</span></p>
+                                    <p class="price"><span>{{__('default.currency')}}{{$item->price}}</span></p>
                                 </div>
                                 <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
                                     <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart

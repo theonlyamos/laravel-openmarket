@@ -88,10 +88,22 @@ class StoreController extends Controller
 
     }
 
-   public function product_details($store_id, $product_id, Request $request){
-        $product = Products::where("id", $product_id)->first();
+    public function product_details($store_id, $product_id, Request $request){
+        $product = Products::find($product_id);
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
         return view("product.details", ["product" => $product, "keywords" => $keywords]);
+    }
+
+    public function get_product($product_id, Request $request){
+        $product = Products::find($product_id);
+        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
+    }
+
+    public function edit_product($product_id, storeProductsPost $request){
+        $product_update = $request->validated();
+        $product = Products::find($product_id);
+        $product->fill($product_update);
+        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
     }
 }

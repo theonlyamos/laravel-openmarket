@@ -299,6 +299,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="edit_product_modal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel"
+    style="display: none; padding-right: 15px;" aria-modal="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content bg-light">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Product Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="kt-portlet">
     <div class="kt-portlet__head kt-portlet__head--lg">
         <div class="kt-portlet__head-label">
@@ -383,19 +399,19 @@
                                                             <ul class="kt-nav">
                                                                 <li class="kt-nav__item">
                                                                     <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-graph-1"></i>
+                                                                        <i class="kt-nav__link-icon flaticon-eye"></i>
                                                                         <span class="kt-nav__link-text">Open</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
-                                                                        <i class="kt-nav__link-icon flaticon2-graph-1"></i>
+                                                                    <a href="#" class="kt-nav__link" class="edit_product" data-product="{{$item->id}}">
+                                                                        <i class="kt-nav__link-icon flaticon2-edit"></i>
                                                                         <span class="kt-nav__link-text">Edit</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="kt-nav__item">
                                                                     <a href="#" class="kt-nav__link text-danger">
-                                                                        <i class="kt-nav__link-icon flaticon-trash"></i>
+                                                                        <i class="kt-nav__link-icon flaticon-delete"></i>
                                                                         <span class="kt-nav__link-text">Delete</span>
                                                                     </a>
                                                                 </li>
@@ -437,7 +453,7 @@
 
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/demo3/pages/custom/apps/user/add-product.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo3/pages/custom/apps/user/store_product.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/image_preview.js')}}" type="text/javascript"></script>
 <!--end::Page Scripts -->
 
