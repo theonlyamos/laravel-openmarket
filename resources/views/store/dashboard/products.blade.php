@@ -398,7 +398,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="kt-nav">
                                                                 <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link">
+                                                                    <a href="{{route('store.product.details', [Auth::guard('store')->user()->id, $item->id])}}" class="kt-nav__link" target="_blank">
                                                                         <i class="kt-nav__link-icon flaticon-eye"></i>
                                                                         <span class="kt-nav__link-text">Open</span>
                                                                     </a>
