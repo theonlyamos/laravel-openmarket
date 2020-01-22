@@ -237,7 +237,7 @@ var KTAppUserAdd = function () {
 
             var product_id = $(e.currentTarget).data('product');
             $.getJSON(`/get_product/${product_id}`, (result) => {
-                console.log(result);
+                console.log(result.product);
             })
         })
     }
