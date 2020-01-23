@@ -102,18 +102,13 @@ class StoreController extends Controller
         return response()->json(["success" => true, "message" => "Product retrieved successfully", "product" => $product]);
     }
 
-    public function edit_product($product_id, storeProductsPost $request){
+    public function edit_product($product_id, storeProductUpdate $request){
         $product_update = $request->validated();
         $product = Products::find($product_id);
-        $product->name = $product_update["price"];
-        $product->name = $product_update["category"];
-        $product->name = $product_update["description"];
-        $product->name = $product_update["features"];
-        $product->name = $product_update["keywords"];
-
         if (!empty($request->thumbnail)){
-            $product->thumbnail = explode("/", $request->thumbnail->store("public"))[1]; 
+            $product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1]; 
         }
+        $product->fill($product_update);
         $product->save();
         return response()->json(["success" => true, "message" => "Product updated successfully", "product" => $product]);
     }
