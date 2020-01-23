@@ -72,7 +72,7 @@
                 <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v4__wrapper">
 
                     <!--begin: Form Wizard Form-->
-                    <form class="kt-form pt-0 w-100" id="kt_apps_product_add_user_form" novalidate="novalidate"
+                    <form class="kt-form pt-0" id="kt_apps_product_add_user_form" novalidate="novalidate"
                         method="POST" action="{{route('store.add_product')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="store_id" value="{{Auth::guard('store')->user()->id}}" required>
