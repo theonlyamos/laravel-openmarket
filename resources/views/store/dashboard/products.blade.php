@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
