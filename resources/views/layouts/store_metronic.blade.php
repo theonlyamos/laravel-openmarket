@@ -936,11 +936,11 @@
                                     <h3 class="kt-subheader__title">{{Str::title($title)}}</h3>
                                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                                     @if ($title == "products")
-                                        <a href="#add_product_modal" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10" data-toggle="modal" aria-haspopup="true">
+                                        <button class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10 show_product_form" aria-haspopup="true">
                                             Add New
-                                        </a>
+                                        </button>
                                     @else
-                                        <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                                        <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10 disabled" disabed>
                                             Add New
                                         </a>
                                     @endif
