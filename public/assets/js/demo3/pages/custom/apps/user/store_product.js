@@ -242,6 +242,16 @@ var KTAppUserAdd = function () {
         })
     }
 
+    var hideProductForm = () => {
+        $('#add_product_portlet').hide(300);
+        $('#products_view_portlet').show(300);
+    }
+
+    var showProductForm = () => {
+        $('#products_view_portlet').hide(300);
+        $('#add_product_portlet').show(300);
+    }
+
 	return {
 		// public functions
 		init: function() {

@@ -17,14 +17,9 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <a href="#" onclick="event.preventDefault(); $('#add_product_portlet').hide(100); $('#products_view_portlet').show(100);" class="btn btn-clean btn-icon-sm">
+                <button onclick="hideProductForm()" class="btn btn-clean btn-icon-sm">
                     <i class="la la-long-arrow-left"></i>
                     Back
-                </a>
-                &nbsp;
-                <button type="button" class="btn btn-brand btn-icon-sm" data-toggle="modal"
-                    data-target="#add_product_modal" aria-haspopup="true" aria-expanded="false">
-                    <i class="flaticon2-plus"></i> Add New
                 </button>
             </div>
         </div>
@@ -326,7 +321,7 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <button type="button" class="btn btn-brand btn-icon-sm" onclick="$('#products_view_portlet').hide(100); $('#add_product_portlet').show(100);" aria-expanded="false">
+                <button type="button" class="btn btn-brand btn-icon-sm" onclick="showProductForm()" aria-expanded="false">
                     <i class="flaticon2-plus"></i> Add New
                 </button>
             </div>
