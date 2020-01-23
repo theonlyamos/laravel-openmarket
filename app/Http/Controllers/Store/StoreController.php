@@ -50,11 +50,12 @@ class StoreController extends Controller
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
+        $site_info = DB::select('select * from site_info');
         $store = $store[0];
         return view("store.products", ["products" => $products, "store" => $store,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
-                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products"]);
+                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0]]);
     }
 
     public function dashboard($page = ""){
