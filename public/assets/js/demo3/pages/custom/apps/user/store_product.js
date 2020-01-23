@@ -243,7 +243,7 @@ var KTAppUserAdd = function () {
                     var product = result.product;
                     formEl.attr("action", window.location.origin + "/edit_product");
                     var btn = formEl.find('[data-ktwizard-type="action-submit"]');
-                    btn.text("SUBMIT");
+                    btn.text("UPDATE");
 
                     $("input[name='name']").val(product.name);
                     $("input[name='price']").val(product.price);
