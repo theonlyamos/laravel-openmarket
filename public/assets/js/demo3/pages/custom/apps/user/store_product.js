@@ -278,7 +278,7 @@ var KTAppUserAdd = function () {
     }
 
     var showProductForm = () => {
-        $('#show_product_form').on('click', ()=> {
+        $('.show_product_form').on('click', ()=> {
             formEl.attr("action", window.location.origin + "/add_product");
             var btn = formEl.find('[data-ktwizard-type="action-submit"]');
             btn.text("SUBMIT");

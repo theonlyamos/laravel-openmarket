@@ -198,10 +198,11 @@
                         <h2 class="ftco-heading-2 text-white">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li class="pb-2"><span class="fa fa-map fa-fw"></span><span class="text">Market Circle, Takoradi</span></li>
-                                <li><a href="tel:+233 557 821 030" class="text-secondary"><span class="fa fa-phone fa-fw"></span><span class="text">+233 557 821 030</span></a></li>
-                                <li><a href="mailto:info@openmart.ga" class="text-secondary"><span class="fa fa-envelope fa-fw"></span><span
-                                            class="text">info@openmart.ga</span></a></li>
+                                <li><span class="fa fa-map-marker fa-fw"></span><span class="text">{{$site->address}}</span></li>
+                                <li><span class="flaticon-mail"></span><span class="text">{{$site->box_office}}</span></li>
+                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_1}}</span></a></li>
+                                <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
+                                            class="text">{{Str::lower($site->email_info)}}</span></a></li>
                             </ul>
                         </div>
                     </div>

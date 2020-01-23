@@ -334,7 +334,7 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <button type="button" class="btn btn-brand btn-icon-sm" id="show_product_form" aria-expanded="false">
+                <button type="button" class="btn btn-brand btn-icon-sm show_product_form" aria-expanded="false">
                     <i class="flaticon2-plus"></i> Add New
                 </button>
             </div>
