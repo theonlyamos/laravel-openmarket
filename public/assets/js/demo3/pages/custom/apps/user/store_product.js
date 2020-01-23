@@ -12,7 +12,7 @@ var KTAppUserAdd = function () {
 	// Private functions
 	var initWizard = function () {
 		// Initialize form wizard
-		wizard = new KTWizard('kt_apps_user_add_user', {
+		wizard = new KTWizard('kt_apps_product_add_product', {
 			startStep: 1,
 		});
 
@@ -154,7 +154,7 @@ var KTAppUserAdd = function () {
 	}
 
 	var initKTAppsUserAdd = function() {
-		avatar = new KTAvatar('kt_apps_user_add_user_avatar');
+		avatar = new KTAvatar('kt_apps_product_add_product_avatar');
     }
 
     var editSubmit = function() {
@@ -243,7 +243,7 @@ var KTAppUserAdd = function () {
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 if (result.success == true){
                     var product = result.product;
-                    formEl.attr("action", window.location.origin + "/edit_product");
+                    formEl.attr("action", window.location.origin + "/edit_product/" + product.id);
                     var btn = formEl.find('[data-ktwizard-type="action-submit"]');
                     btn.text("UPDATE");
 
@@ -266,7 +266,7 @@ var KTAppUserAdd = function () {
                     $("input[name='thumbnail']").removeAttr("required");
 
                     $('#products_view_portlet').hide(300);
-                    $('#add_product_portlet').show(300);
+                    $('#kt_apps_product_add_product').show(300);
                 }
             })
         })
@@ -274,7 +274,7 @@ var KTAppUserAdd = function () {
 
     var hideProductForm = () => {
         $('#hide_product_form').on('click', ()=> {
-            $('#add_product_portlet').hide(300);
+            $('#kt_apps_product_add_product').hide(300);
             $('#products_view_portlet').show(300);
         })
     }
@@ -293,7 +293,7 @@ var KTAppUserAdd = function () {
             $("#thumbnail-preview").css("background-image", `url('/assets/media/files/jpg.svg')`);
 
             $('#products_view_portlet').hide(300);
-            $('#add_product_portlet').show(300);
+            $('#kt_apps_product_add_product').show(300);
         })
     }
 
@@ -310,7 +310,7 @@ var KTAppUserAdd = function () {
 	return {
 		// public functions
 		init: function() {
-            formEl = $('#kt_apps_product_add_user_form');
+            formEl = $('#kt_apps_product_add_product_form');
             //editForm = $('#edit_product_form');
 
 			initWizard();
