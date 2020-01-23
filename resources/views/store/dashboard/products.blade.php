@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_product_add_product" data-ktwizard-state="first" style="display: none;">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
@@ -201,7 +201,7 @@
                                         -->
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                    id="kt_apps_product_add_avatar">
+                                                    id="kt_apps_user_add_avatar">
                                                     <div class="kt-avatar__holder" id="thumbnail"
                                                         style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
                                                     </div>

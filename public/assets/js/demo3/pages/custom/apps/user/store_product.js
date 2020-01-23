@@ -12,7 +12,7 @@ var KTAppUserAdd = function () {
 	// Private functions
 	var initWizard = function () {
 		// Initialize form wizard
-		wizard = new KTWizard('kt_apps_product_add_product', {
+		wizard = new KTWizard('kt_apps_user_add_user', {
 			startStep: 1,
 		});
 
@@ -154,7 +154,7 @@ var KTAppUserAdd = function () {
 	}
 
 	var initKTAppsUserAdd = function() {
-		avatar = new KTAvatar('kt_apps_product_add_product_avatar');
+		avatar = new KTAvatar('kt_apps_user_add_avatar');
     }
 
     var editSubmit = function() {
@@ -266,7 +266,7 @@ var KTAppUserAdd = function () {
                     $("input[name='thumbnail']").removeAttr("required");
 
                     $('#products_view_portlet').hide(300);
-                    $('#kt_apps_product_add_product').show(300);
+                    $('#kt_apps_user_add_user').show(300);
                 }
             })
         })
@@ -274,7 +274,7 @@ var KTAppUserAdd = function () {
 
     var hideProductForm = () => {
         $('#hide_product_form').on('click', ()=> {
-            $('#kt_apps_product_add_product').hide(300);
+            $('#kt_apps_user_add_user').hide(300);
             $('#products_view_portlet').show(300);
         })
     }
@@ -293,7 +293,7 @@ var KTAppUserAdd = function () {
             $("#thumbnail-preview").css("background-image", `url('/assets/media/files/jpg.svg')`);
 
             $('#products_view_portlet').hide(300);
-            $('#kt_apps_product_add_product').show(300);
+            $('#kt_apps_user_add_user').show(300);
         })
     }
 
