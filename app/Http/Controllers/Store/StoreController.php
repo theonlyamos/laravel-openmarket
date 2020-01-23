@@ -93,12 +93,13 @@ class StoreController extends Controller
         $product = Products::find($product_id);
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
-        return view("product.details", ["product" => $product, "keywords" => $keywords]);
+        $site_info = DB::select('select * from site_info');
+        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info[0]]);
     }
 
     public function get_product($product_id, Request $request){
         $product = Products::find($product_id);
-        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
+        return response()->json(["success" => true, "message" => "Product retrieved successfully", "product" => $product]);
     }
 
     public function edit_product($product_id, storeProductsPost $request){
@@ -106,6 +107,6 @@ class StoreController extends Controller
         $product = Products::find($product_id);
         $product->fill($product_update);
         $product->save();
-        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
+        return response()->json(["success" => true, "message" => "Product updated successfully", "product" => $product]);
     }
 }

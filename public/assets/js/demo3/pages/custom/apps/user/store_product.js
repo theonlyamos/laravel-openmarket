@@ -171,11 +171,12 @@ var KTAppUserAdd = function () {
 				// See: http://malsup.com/jquery/form/#ajaxSubmit
 				formEl.ajaxSubmit({
 					success: function(data) {
+                        console.log(data)
 						KTApp.unprogress(btn);
                         //KTApp.unblock(formEl);
 						swal.fire({
 							"title": "Success",
-							"text": "The product has been added successfully",
+							"text": data.message,
 							"type": "success",
 							"confirmButtonClass": "btn btn-secondary"
                         });
@@ -219,6 +220,7 @@ var KTAppUserAdd = function () {
                         $("#kt_table_1 tbody").prepend(product);
                     },
                     error: function(data){
+                        console.log(data);
                         swal.fire({
 							"title": "Failure",
 							"text": data.responseText,
