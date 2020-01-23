@@ -12,7 +12,7 @@
                 <i class="kt-font-brand flaticon2-line-chart"></i>
             </span>
             <h3 class="kt-portlet__head-title">
-                Products
+                Product Form
             </h3>
         </div>
         <div class="kt-portlet__head-toolbar">
@@ -96,9 +96,11 @@
 
                                 <!--begin: Form Wizard Form-->
                                 <form class="kt-form pt-0 px-5 w-100" id="kt_apps_product_add_user_form"
-                                    novalidate="novalidate" method="POST" action="{{route('store.add_product')}}" enctype="multipart/form-data">
+                                    novalidate="novalidate" method="POST" action="{{route('store.add_product')}}"
+                                    enctype="multipart/form-data">
                                     @csrf
-                                    <input type="hidden" name="store_id" value="1" required>
+                                    <input type="hidden" name="store_id" value="{{Auth::guard('store')->user()->id}}"
+                                        required>
                                     <!--begin: Form Wizard Step 1-->
                                     <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
                                         data-ktwizard-state="current">
@@ -107,45 +109,39 @@
                                                 <div class="row">
                                                     <div class="col-xl-12">
                                                         <div class="kt-section__body">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Product
-                                                                    Name</label>
-                                                                <div class="col-lg-9 col-xl-9">
-                                                                    <input class="form-control" type="text"
-                                                                        name="name" value="" required>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-9">
+                                                                    <label>Product Name</label>
+                                                                    <input class="form-control" type="text" name="name"
+                                                                        value="" required>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Product
-                                                                    Price</label>
-                                                                <div class="col-lg-9 col-xl-9">
+                                                                <div class="form-group col-md-3">
+                                                                    <label>Product Price</label>
                                                                     <div class="input-group">
                                                                         <div class="input-group-prepend"><span
-                                                                                class="input-group-text">&dollar;</span>
+                                                                                class="input-group-text">{{__('default.currency')}}</span>
                                                                         </div>
                                                                         <input type="number" class="form-control"
-                                                                             name="price" value=""  required>
+                                                                            name="price" value="" required>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Product
-                                                                    Category</label>
-                                                                <div class="col-lg-9 col-xl-9">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label>Product Category</label>
+
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Category" name="category" value="" required>
+                                                                        placeholder="Category" name="category" value=""
+                                                                        required>
+
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Product
-                                                                    Description</label>
-                                                                <div class="col-lg-9 col-xl-9">
+                                                                <div class="form-group col-md-6">
+                                                                    <label>Product Description</label>
+
                                                                     <textarea class="form-control" rows="4"
-                                                                        name="description"  required></textarea>
+                                                                        name="description" required></textarea>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -164,21 +160,25 @@
                                                 <div class="row">
                                                     <div class="col-xl-12">
                                                         <div class="kt-section__body">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Features</label>
-                                                                <div class="col-lg-9 col-xl-9">
+                                                            <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Features</label>
+
                                                                     <textarea class="form-control" rows="5"
-                                                                        name="features" placeholder="Example: color: white, size: 3, etc..." required></textarea>
-                                                                </div>
+                                                                        name="features"
+                                                                        placeholder="Example: color: white, size: 3, etc..."
+                                                                        required></textarea>
+
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="col-xl-3 col-lg-3 col-form-label">Keywords</label>
-                                                                <div class="col-lg-9 col-xl-9">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Keywords</label>
+
                                                                     <textarea class="form-control" rows="5"
-                                                                        name="keywords" placeholder="Example: electronics, phone, infinix, hot 8, etc..." required></textarea>
-                                                                </div>
+                                                                        name="keywords"
+                                                                        placeholder="Example: electronics, phone, infinix, hot 8, etc..."
+                                                                        required></textarea>
+
+                                                            </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -193,7 +193,7 @@
                                         <div class="kt-section mb-0">
                                             <div class="kt-wizard-v4__form">
                                                 <div class="form-group row mb-0 justify-content-center">
-                                                <!--
+                                                    <!--
                                                     <div class="col-xl-3 col-lg-3 col-form-label">
                                                         <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                              id="productImages">
@@ -217,16 +217,15 @@
                                                             <div class="kt-avatar__holder" id="thumbnail"
                                                                 style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
                                                             </div>
-                                                            <label class="kt-avatar__upload"
-                                                                data-toggle="kt-tooltip" title=""
-                                                                data-original-title="Select Product Images">
+                                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip"
+                                                                title="" data-original-title="Select Product Images">
                                                                 <i class="fa fa-pen"></i>
                                                                 <input type="file" name="thumbnail" id="thumbnailSelect"
-                                                                    accept="image/*" required  onchange="handleFiles(this)">
+                                                                    accept="image/*" required
+                                                                    onchange="handleFiles(this)">
                                                             </label>
-                                                            <span class="kt-avatar__cancel"
-                                                                data-toggle="kt-tooltip" title=""
-                                                                data-original-title="Cancel avatar">
+                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
+                                                                title="" data-original-title="Cancel avatar">
                                                                 <i class="fa fa-times"></i>
                                                             </span>
                                                         </div>
@@ -239,6 +238,7 @@
                                     <!--end: Form Wizard Step 3-->
 
                                     <!--begin: Form Wizard Step 4-->
+
                                     <div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
                                         <div class="kt-heading kt-heading--md">Review your Details and Submit
                                         </div>
@@ -345,17 +345,18 @@
                                     style="width: 104.25px;" aria-label="Name: activate to sort column descending">
                                     Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 121.25px;" aria-label="Product Image: activate to sort column descending">
+                                    style="width: 121.25px;"
+                                    aria-label="Product Image: activate to sort column descending">
                                     Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 162.25px;"
-                                    aria-label="Category: activate to sort column descending">Category</th>
+                                    style="width: 162.25px;" aria-label="Category: activate to sort column descending">
+                                    Category</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 126.25px;"
                                     aria-label="Description: activate to sort column descending">Description</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 196.25px;"
-                                    aria-label="Features: activate to sort column descending">Features</th>
+                                    style="width: 196.25px;" aria-label="Features: activate to sort column descending">
+                                    Features</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 52.25px;" aria-label="Price: activate to sort column descending">
                                     Price</th>
@@ -366,49 +367,53 @@
                         </thead>
                         <tbody>
                             @foreach ($list as $item)
-                                <tr>
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td><a href="{{asset('storage/'.$item->thumbnail)}}" target="_blank">
-                                            <img src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}" style="width: 50px; height: 50px; cursor: zoom-in">
-                                        </a>
-                                    </td>
-                                    <td>{{$item->category}}</td>
-                                    <td>{{Str::limit($item->description, 40)}}</td>
-                                    <td>{{Str::limit($item->features, 40)}}</td>
-                                    <td>{{__("default.currency")}}{{$item->price}}</td>
-                                    <td>
-                                            <div class="kt-portlet__head-toolbar">
-                                                    <div class="dropdown dropdown-inline">
-                                                        <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="flaticon-more-1"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="kt-nav">
-                                                                <li class="kt-nav__item">
-                                                                    <a href="{{route('store.product.details', [Auth::guard('store')->user()->id, $item->id])}}" class="kt-nav__link" target="_blank">
-                                                                        <i class="kt-nav__link-icon flaticon-eye"></i>
-                                                                        <span class="kt-nav__link-text">Open</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link edit" data-product="{{$item->id}}">
-                                                                        <i class="kt-nav__link-icon flaticon2-edit"></i>
-                                                                        <span class="kt-nav__link-text">Edit</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="kt-nav__item">
-                                                                    <a href="#" class="kt-nav__link text-danger">
-                                                                        <i class="kt-nav__link-icon flaticon-delete"></i>
-                                                                        <span class="kt-nav__link-text">Delete</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->name}}</td>
+                                <td><a href="{{asset('storage/'.$item->thumbnail)}}" target="_blank">
+                                        <img src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"
+                                            style="width: 50px; height: 50px; cursor: zoom-in">
+                                    </a>
+                                </td>
+                                <td>{{$item->category}}</td>
+                                <td>{{Str::limit($item->description, 40)}}</td>
+                                <td>{{Str::limit($item->features, 40)}}</td>
+                                <td>{{__("default.currency")}}{{$item->price}}</td>
+                                <td>
+                                    <div class="kt-portlet__head-toolbar">
+                                        <div class="dropdown dropdown-inline">
+                                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-lg"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="flaticon-more-1"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="kt-nav">
+                                                    <li class="kt-nav__item">
+                                                        <a href="{{route('store.product.details', [Auth::guard('store')->user()->id, $item->id])}}"
+                                                            class="kt-nav__link" target="_blank">
+                                                            <i class="kt-nav__link-icon flaticon-eye"></i>
+                                                            <span class="kt-nav__link-text">Open</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link edit"
+                                                            data-product="{{$item->id}}">
+                                                            <i class="kt-nav__link-icon flaticon2-edit"></i>
+                                                            <span class="kt-nav__link-text">Edit</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link text-danger">
+                                                            <i class="kt-nav__link-icon flaticon-delete"></i>
+                                                            <span class="kt-nav__link-text">Delete</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
