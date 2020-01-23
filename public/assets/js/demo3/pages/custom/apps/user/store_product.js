@@ -239,13 +239,14 @@ var KTAppUserAdd = function () {
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 if (result.success == true){
                     var product = result.product;
+                    console.log(product.thumbnail);
                     $("input[name='name']").val(product.name);
                     $("input[name='price']").val(product.price);
                     $("input[name='category']").val(product.category);
                     $("textarea[name='description']").val(product.description);
                     $("textarea[name='features']").val(product.features);
                     $("textarea[name='keywords']").val(product.keywords);
-                    $("#thumbnail").css("background-image", `/storage/${product.thumbnail}`);
+                    $("#thumbnail").css("background-image", `url('/storage/${product.thumbnail}')`);
                     $('#products_view_portlet').hide(300);
                     $('#add_product_portlet').show(300);
                 }
