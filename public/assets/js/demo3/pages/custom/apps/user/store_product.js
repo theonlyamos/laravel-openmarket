@@ -263,6 +263,8 @@ var KTAppUserAdd = function () {
 			initSubmit();
             initKTAppsUserAdd();
             getProduct();
+            hideProductForm();
+            showProductForm();
 		}
 	};
 }();
