@@ -6,7 +6,7 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white">
-                    <li class="breadcrumb-item"><a class="text-secondary" href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-secondary" href="{{config('app.url')}}">Home</a></li>
                     <li class="breadcrumb-item active"><a class="text-secondary" href="{{route('store', $store->id)}}">{{$store->name}}</a>
                     </li>
                 </ol>
