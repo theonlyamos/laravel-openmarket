@@ -271,7 +271,7 @@
                                                     <div class="kt-wizard-v4__review-content">
                                                         Description: <span id="description-preview"></span>
                                                         <br> Features: <span id="features-preview"></span>
-                                                        <br> Keywords: <span id="name-preview"></span>
+                                                        <br> Keywords: <span id="keywords-preview"></span>
                                                     </div>
                                                 </div>
                                                 <div class="kt-wizard-v4__review-item">

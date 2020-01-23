@@ -246,8 +246,17 @@ var KTAppUserAdd = function () {
                     $("textarea[name='features']").val(product.features);
                     $("textarea[name='keywords']").val(product.keywords);
                     $("#thumbnail").css("background-image", `url('/storage/${product.thumbnail}')`);
+
+                    $("#name-preview").text(product.name);
+                    $("#price-preview").text(product.price);
+                    $("#category-preview").text(product.category);
+                    $("#description-preview").text(product.description);
+                    $("#features-preview").text(product.features);
+                    $("#keywords-preview").text(product.keywords);
                     $("#thumbnail-preview").css("background-image", `url('/storage/${product.thumbnail}')`);
+
                     $("input[name='thumbnail']").removeAttr("required");
+
                     $('#products_view_portlet').hide(300);
                     $('#add_product_portlet').show(300);
                 }
@@ -267,6 +276,7 @@ var KTAppUserAdd = function () {
             $("input[name='thumbnail']").attr("required", "required")
             $('#products_view_portlet').hide(300);
             $('#add_product_portlet').show(300);
+            $('#kt_apps_product_add_user_form').reset();
         })
     }
 
