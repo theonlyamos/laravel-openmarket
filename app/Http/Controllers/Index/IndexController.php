@@ -14,7 +14,7 @@ class IndexController extends Controller
         $stores = DB::select('select * from stores');
         $site_info = DB::select('select * from site_info');
         $products = DB::select('select * from products LIMIT 12');
-        var_dump($site_info);
+
         return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0]]);
     }
 }
