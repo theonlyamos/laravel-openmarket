@@ -287,13 +287,11 @@ var KTAppUserAdd = function () {
 
     var previewProductForm = () => {
         $("input").on("keypress", (e) => {
-            console.log(`preview-${$(e.currentTarget).data('name')}`);
-            $(`preview-${$(e.currentTarget).data('name')}`).text = e.currentTarget.value;
+            $(`#preview-${$(e.currentTarget).data('name')}`).text = e.currentTarget.value + e.key;
         })
 
         $("textarea").on("keypress", (e) => {
-            console.log(`preview-${$(e.currentTarget).data('name')}`);
-            $(`preview-${$(e.currentTarget).data('name')}`).text = e.currentTarget.value;
+            $(`#preview-${$(e.currentTarget).data('name')}`).text = e.currentTarget.value + e.key;
         })
     }
 
