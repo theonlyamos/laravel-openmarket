@@ -105,7 +105,6 @@ class StoreController extends Controller
     public function edit_product($product_id, storeProductsPost $request){
         $product_update = $request->validated();
         $product = Products::find($product_id);
-        $product->name = $product_update["name"];
         $product->name = $product_update["price"];
         $product->name = $product_update["category"];
         $product->name = $product_update["description"];
