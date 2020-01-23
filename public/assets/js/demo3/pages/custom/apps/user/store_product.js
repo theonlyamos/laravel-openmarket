@@ -37,22 +37,24 @@ var KTAppUserAdd = function () {
 			// Validation rules
 			rules: {
 				// Step 1
-				profile_avatar: {
-					//required: true
-				},
-				profile_first_name: {
+				name: {
 					required: true
 				},
-				profile_last_name: {
+				price: {
 					required: true
 				},
-				profile_phone: {
+				category: {
 					required: true
 				},
-				profile_email: {
-					required: true,
-					email: true
-				}
+				description: {
+					required: true
+				},
+				features: {
+					required: true
+                },
+                keywords: {
+                    required: true
+                }
 			},
 
 			// Display error
@@ -239,7 +241,7 @@ var KTAppUserAdd = function () {
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 if (result.success == true){
                     var product = result.product;
-                    formEl.attr("action", "/add_product");
+                    formEl.attr("action", "/edit_product");
                     var btn = formEl.find('[data-ktwizard-type="action-submit"]');
                     btn.text("SUBMIT");
 
