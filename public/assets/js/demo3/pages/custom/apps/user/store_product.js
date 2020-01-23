@@ -215,7 +215,6 @@ var KTAppUserAdd = function () {
 												product += "</tr>";
 												formEl[0].reset();
                         $("#kt_table_1 tbody").prepend(product);
-                        $("#add_product_modal").modal("hide");
                     },
                     error: function(data){
                         swal.fire({
@@ -225,6 +224,7 @@ var KTAppUserAdd = function () {
 							"confirmButtonClass": "btn btn-secondary"
                         });
                         btn.text("Submit");
+                        KTApp.unprogress(btn);
                     }
 				});
 			}
@@ -273,10 +273,27 @@ var KTAppUserAdd = function () {
 
     var showProductForm = () => {
         $('#show_product_form').on('click', ()=> {
-            $("input[name='thumbnail']").attr("required", "required")
+            $("input[name='thumbnail']").attr("required", "required");
+            $('#kt_apps_product_add_user_form')[0].reset();
+
+            $(".preview").text("");
+            $("#thumbnail").css("background-image", `url('/assets/media/files/jpg.svg')`);
+            $("#thumbnail-preview").css("background-image", `url('/assets/media/files/jpg.svg')`);
+
             $('#products_view_portlet').hide(300);
             $('#add_product_portlet').show(300);
-            $('#kt_apps_product_add_user_form').reset();
+        })
+    }
+
+    var previewProductForm = () => {
+        $("input").on("keypress", (e) => {
+            console.log(e.currentTarget.value);
+            $(`preview-${$(e.currentTarget).data('name')}`).text = $(e.currentTarget).val();
+        })
+
+        $("textarea").on("keypress", (e) => {
+            console.log(e.currentTarget.value);
+            $(`preview-${$(e.currentTarget).data('name')}`).text = $(e.currentTarget).val();
         })
     }
 
@@ -293,6 +310,7 @@ var KTAppUserAdd = function () {
             getProduct();
             hideProductForm();
             showProductForm();
+            previewProductForm();
 		}
 	};
 }();

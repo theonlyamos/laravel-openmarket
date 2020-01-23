@@ -113,7 +113,7 @@
                                                                 <div class="form-group col-md-9">
                                                                     <label>Product Name</label>
                                                                     <input class="form-control" type="text" name="name"
-                                                                        value="" required>
+                                                                        value="" data-name="name" required>
                                                                 </div>
                                                                 <div class="form-group col-md-3">
                                                                     <label>Product Price</label>
@@ -122,7 +122,7 @@
                                                                                 class="input-group-text">{{__('default.currency')}}</span>
                                                                         </div>
                                                                         <input type="number" class="form-control"
-                                                                            name="price" value="" required>
+                                                                            name="price" data-name="price" value="" required>
                                                                     </div>
 
                                                                 </div>
@@ -132,7 +132,7 @@
                                                                     <label>Product Category</label>
 
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Category" name="category" value=""
+                                                                        placeholder="Category" name="category" data-name="category" value=""
                                                                         required>
 
                                                                 </div>
@@ -140,7 +140,7 @@
                                                                     <label>Product Brand</label>
 
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Brand" name="brand">
+                                                                        placeholder="Brand" data-name="brand" name="brand">
 
                                                                 </div>
                                                             </div>
@@ -149,7 +149,7 @@
                                                                     <label>Product Description</label>
 
                                                                     <textarea class="form-control" rows="4"
-                                                                        name="description" required minlength="30"></textarea>
+                                                                        name="description" data-name="description" required minlength="30"></textarea>
 
                                                                 </div>
                                                             </div>
@@ -174,7 +174,7 @@
                                                                 <label>Features</label>
 
                                                                     <textarea class="form-control" rows="5"
-                                                                        name="features"
+                                                                        name="features" data-name="geatures"
                                                                         placeholder="Example: color: white, size: 3, etc..."
                                                                         required></textarea>
 
@@ -183,7 +183,7 @@
                                                                 <label>Keywords</label>
 
                                                                     <textarea class="form-control" rows="5"
-                                                                        name="keywords"
+                                                                        name="keywords" data-name="keywords"
                                                                         placeholder="Example: electronics, phone, infinix, hot 8, etc..."
                                                                         required></textarea>
 
@@ -259,9 +259,9 @@
                                                     </div>
                                                     <div class="kt-wizard-v4__review-content">
                                                         Name: <span id="name-preview"></span>
-                                                        <br> Price: {{__('default.currency')}}<span id="price-preview"></span>
-                                                        <br> Category: <span id="category-preview"></span>
-                                                        <br> Brand: <span id="brand-preview"></span>
+                                                        <br> Price: {{__('default.currency')}}<span class="preview" id="price-preview"></span>
+                                                        <br> Category: <span class="preview" id="category-preview"></span>
+                                                        <br> Brand: <span class="preview" id="brand-preview"></span>
                                                     </div>
                                                 </div>
                                                 <div class="kt-wizard-v4__review-item">
@@ -269,9 +269,9 @@
                                                         Product Description, Features and Keywords
                                                     </div>
                                                     <div class="kt-wizard-v4__review-content">
-                                                        Description: <span id="description-preview"></span>
-                                                        <br> Features: <span id="features-preview"></span>
-                                                        <br> Keywords: <span id="keywords-preview"></span>
+                                                        Description: <span class="preview" id="description-preview"></span>
+                                                        <br> Features: <span class="preview" id="features-preview"></span>
+                                                        <br> Keywords: <span class="preview" id="keywords-preview"></span>
                                                     </div>
                                                 </div>
                                                 <div class="kt-wizard-v4__review-item">
