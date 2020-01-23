@@ -239,7 +239,6 @@ var KTAppUserAdd = function () {
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 if (result.success == true){
                     var product = result.product;
-                    console.log(product.thumbnail);
                     $("input[name='name']").val(product.name);
                     $("input[name='price']").val(product.price);
                     $("input[name='category']").val(product.category);
@@ -247,6 +246,8 @@ var KTAppUserAdd = function () {
                     $("textarea[name='features']").val(product.features);
                     $("textarea[name='keywords']").val(product.keywords);
                     $("#thumbnail").css("background-image", `url('/storage/${product.thumbnail}')`);
+                    $("#thumbnail-preview").css("background-image", `url('/storage/${product.thumbnail}')`);
+                    $("input[name='thumbnail']").removeAttr("required");
                     $('#products_view_portlet').hide(300);
                     $('#add_product_portlet').show(300);
                 }
@@ -263,6 +264,7 @@ var KTAppUserAdd = function () {
 
     var showProductForm = () => {
         $('#show_product_form').on('click', ()=> {
+            $("input[name='thumbnail']").attr("required", "required")
             $('#products_view_portlet').hide(300);
             $('#add_product_portlet').show(300);
         })

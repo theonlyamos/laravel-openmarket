@@ -25,13 +25,15 @@ function handleFiles(e) {
         }
         else {
             const thumnail = document.getElementById("thumbnail");
+            const thumbnailPreview = document.getElementById("thumbnail-preview");
 
             const reader = new FileReader();
-            reader.onload = (function (athumbnail) {
+            reader.onload = (function (athumbnail, athumbnailPreview) {
                 return function (e) {
                     athumbnail.style.backgroundImage = `url(${e.target.result})`;
+                    athumbnailPreview.style.backgroundImage = `url(${e.target.result})`;
                 };
-            })(thumbnail);
+            })(thumbnail, thumbnailPreview);
             reader.readAsDataURL(file);
         }
     }

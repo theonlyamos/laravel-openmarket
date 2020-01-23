@@ -255,32 +255,36 @@
                                             <div class="kt-wizard-v4__review">
                                                 <div class="kt-wizard-v4__review-item">
                                                     <div class="kt-wizard-v4__review-title">
-                                                        Your Account Details
+                                                        Product Details
                                                     </div>
                                                     <div class="kt-wizard-v4__review-content">
-                                                        John Wick
-                                                        <br> Phone: +61412345678
-                                                        <br> Email: johnwick@reeves.com
+                                                        Name: <span id="name-preview"></span>
+                                                        <br> Price: {{__('default.currency')}}<span id="price-preview"></span>
+                                                        <br> Category: <span id="category-preview"></span>
+                                                        <br> Brand: <span id="brand-preview"></span>
                                                     </div>
                                                 </div>
                                                 <div class="kt-wizard-v4__review-item">
                                                     <div class="kt-wizard-v4__review-title">
-                                                        Your Address Details
+                                                        Product Description, Features and Keywords
                                                     </div>
                                                     <div class="kt-wizard-v4__review-content">
-                                                        Address Line 1
-                                                        <br> Address Line 2
-                                                        <br> Melbourne 3000, VIC, Australia
+                                                        Description: <span id="description-preview"></span>
+                                                        <br> Features: <span id="features-preview"></span>
+                                                        <br> Keywords: <span id="name-preview"></span>
                                                     </div>
                                                 </div>
                                                 <div class="kt-wizard-v4__review-item">
                                                     <div class="kt-wizard-v4__review-title">
-                                                        Payment Details
+                                                        Product Images
                                                     </div>
                                                     <div class="kt-wizard-v4__review-content">
-                                                        Card Number: xxxx xxxx xxxx 1111
-                                                        <br> Card Name: John Wick
-                                                        <br> Card Expiry: 01/21
+                                                        <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
+                                                            id="kt_apps_user_add_avatar">
+                                                            <div class="kt-avatar__holder" id="thumbnail-preview"
+                                                                style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
