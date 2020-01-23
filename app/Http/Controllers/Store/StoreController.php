@@ -105,6 +105,7 @@ class StoreController extends Controller
         $product_update = $request->validated();
         $product = Products::find($product_id);
         $product->fill($product_update);
+        $product->save();
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product]);
     }
 }
