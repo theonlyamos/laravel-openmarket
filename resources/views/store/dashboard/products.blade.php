@@ -137,10 +137,19 @@
 
                                                                 </div>
                                                                 <div class="form-group col-md-6">
+                                                                    <label>Product Brand</label>
+
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Brand" name="brand">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
                                                                     <label>Product Description</label>
 
                                                                     <textarea class="form-control" rows="4"
-                                                                        name="description" required></textarea>
+                                                                        name="description" required minlength="30"></textarea>
 
                                                                 </div>
                                                             </div>
