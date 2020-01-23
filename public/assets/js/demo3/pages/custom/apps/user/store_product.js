@@ -239,6 +239,10 @@ var KTAppUserAdd = function () {
             $.getJSON(`/get_product/${product_id}`, (result) => {
                 if (result.success == true){
                     var product = result.product;
+                    formEl.attr("action", "/add_product");
+                    var btn = formEl.find('[data-ktwizard-type="action-submit"]');
+                    btn.text("SUBMIT");
+
                     $("input[name='name']").val(product.name);
                     $("input[name='price']").val(product.price);
                     $("input[name='category']").val(product.category);
@@ -273,6 +277,10 @@ var KTAppUserAdd = function () {
 
     var showProductForm = () => {
         $('#show_product_form').on('click', ()=> {
+            formEl.attr("action", "/edit_product");
+            var btn = formEl.find('[data-ktwizard-type="action-submit"]');
+            btn.text("SUBMIT");
+
             $("input[name='thumbnail']").attr("required", "required");
             $('#kt_apps_product_add_user_form')[0].reset();
 
