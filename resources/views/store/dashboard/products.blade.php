@@ -17,7 +17,7 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <button onclick="hideProductForm()" class="btn btn-clean btn-icon-sm">
+                <button id="hide_product_form" class="btn btn-clean btn-icon-sm">
                     <i class="la la-long-arrow-left"></i>
                     Back
                 </button>
@@ -321,7 +321,7 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
-                <button type="button" class="btn btn-brand btn-icon-sm" onclick="showProductForm()" aria-expanded="false">
+                <button type="button" class="btn btn-brand btn-icon-sm" id="show_product_form" aria-expanded="false">
                     <i class="flaticon2-plus"></i> Add New
                 </button>
             </div>

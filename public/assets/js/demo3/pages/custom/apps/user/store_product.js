@@ -243,13 +243,17 @@ var KTAppUserAdd = function () {
     }
 
     var hideProductForm = () => {
-        $('#add_product_portlet').hide(300);
-        $('#products_view_portlet').show(300);
+        $('#hide_product_form').on('click', ()=> {
+            $('#add_product_portlet').hide(300);
+            $('#products_view_portlet').show(300);
+        })
     }
 
     var showProductForm = () => {
-        $('#products_view_portlet').hide(300);
-        $('#add_product_portlet').show(300);
+        $('#show_product_form').on('click', ()=> {
+            $('#products_view_portlet').hide(300);
+            $('#add_product_portlet').show(300);
+        })
     }
 
 	return {
