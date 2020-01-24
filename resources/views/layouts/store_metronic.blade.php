@@ -939,6 +939,10 @@
                                         <button class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10 show_product_form" aria-haspopup="true">
                                             Add New
                                         </button>
+                                        <button class="btn btn-clean btn-icon-sm" id="hide_product_form" style="display: none;">
+                                            <i class="la la-long-arrow-left"></i>
+                                            Back
+                                        </button>
                                     @else
                                         <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10 disabled" disabed>
                                             Add New

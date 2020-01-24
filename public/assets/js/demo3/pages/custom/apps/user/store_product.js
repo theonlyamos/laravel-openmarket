@@ -171,7 +171,6 @@ var KTAppUserAdd = function () {
 				// See: http://malsup.com/jquery/form/#ajaxSubmit
 				formEl.ajaxSubmit({
 					success: function(data) {
-                        console.log(data)
 						KTApp.unprogress(btn);
                         //KTApp.unblock(formEl);
 						swal.fire({
@@ -217,7 +216,9 @@ var KTAppUserAdd = function () {
                         </td>`;
 												product += "</tr>";
 												formEl[0].reset();
-                        $("#kt_table_1 tbody").prepend(product);
+                        //$("#kt_table_1 tbody").prepend(product);
+                        $('#kt_apps_user_add_user').css("display", "none");
+                        $('#products_view_portlet').show(300);
                     },
                     error: function(data){
                         console.log(data);
@@ -265,6 +266,8 @@ var KTAppUserAdd = function () {
 
                     $("input[name='thumbnail']").removeAttr("required");
 
+                    $("#hide_product_form").hide();
+                    $(".show_product_form").show();
                     $('#products_view_portlet').hide(300);
                     $('#kt_apps_user_add_user').css("display", "flex");
                 }
@@ -274,13 +277,17 @@ var KTAppUserAdd = function () {
 
     var hideProductForm = () => {
         $('#hide_product_form').on('click', ()=> {
-            $('#kt_apps_user_add_user').css("display", "flex");
+            $("#hide_product_form").hide();
+            $(".show_product_form").show();
+            $('#kt_apps_user_add_user').css("display", "none");
             $('#products_view_portlet').show(300);
         })
     }
 
     var showProductForm = () => {
         $('.show_product_form').on('click', ()=> {
+            $(".show_product_form").hide();
+            $("#hide_product_form").show();
             formEl.attr("action", window.location.origin + "/add_product");
             var btn = formEl.find('[data-ktwizard-type="action-submit"]');
             btn.text("SUBMIT");
