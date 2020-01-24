@@ -135,7 +135,7 @@
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-                                                    <input type="text" class="form-control" name="phone" value="" placeholder="Phone" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="phone" value="{{Auth::guard('store')->user()->phone ?? ''}}" placeholder="Phone" aria-describedby="basic-addon1">
                                                 </div>
                                                 <span class="form-text text-muted">We'll never share your contact details with anyone else.</span>
                                             </div>
@@ -144,7 +144,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="website" placeholder="website" value="{{route('store', Auth::guard('store')->user()->id)}}">
+                                                    <input type="text" class="form-control" name="website" placeholder="website" value="{{route('products.store', Auth::guard('store')->user()->id)}}">
                                                     <div class="input-group-append"><span class="input-group-text">.com</span></div>
                                                 </div>
                                             </div>
