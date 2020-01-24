@@ -137,7 +137,6 @@ var KTAppUserAdd = function () {
 												product += "</tr>";
 												formEl[0].reset();
                         $("#kt_table_1 tbody").prepend(product);
-                        $("#add_product_modal").modal("hide");
                     },
                     error: function(data){
                         swal.fire({
@@ -147,6 +146,7 @@ var KTAppUserAdd = function () {
 							"confirmButtonClass": "btn btn-secondary"
                         });
                         btn.text("Submit");
+                        KTApp.unprogress(btn);
                     }
 				});
 			}
@@ -274,7 +274,7 @@ var KTAppUserAdd = function () {
 
     var hideProductForm = () => {
         $('#hide_product_form').on('click', ()=> {
-            $('#kt_apps_user_add_user').hide(300);
+            $('#kt_apps_user_add_user').css("display", "flex");
             $('#products_view_portlet').show(300);
         })
     }
@@ -293,7 +293,7 @@ var KTAppUserAdd = function () {
             $("#thumbnail-preview").css("background-image", `url('/assets/media/files/jpg.svg')`);
 
             $('#products_view_portlet').hide(300);
-            $('#kt_apps_user_add_user').show(300);
+            $('#kt_apps_user_add_user').css("display", "flex");
         })
     }
 

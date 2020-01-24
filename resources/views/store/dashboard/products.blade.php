@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
@@ -72,7 +72,7 @@
                 <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v4__wrapper">
 
                     <!--begin: Form Wizard Form-->
-                    <form class="kt-form pt-0" id="kt_apps_product_add_user_form" novalidate="novalidate"
+                    <form class="kt-form pt-0" id="kt_apps_product_add_product_form" novalidate="novalidate"
                         method="POST" action="{{route('store.add_product')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="store_id" value="{{Auth::guard('store')->user()->id}}" required>
