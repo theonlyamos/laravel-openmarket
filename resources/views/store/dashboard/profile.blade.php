@@ -72,10 +72,10 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="kt-avatar kt-avatar--outline kt-avatar--circle-" id="kt_apps_user_add_avatar">
-                                                    <div class="kt-avatar__holder" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
+                                                    <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
                                                     <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
-                                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
+                                                        <input type="file" name="thumbnail" accept=".png, .jpg, .jpeg" onchange="handleFiles(this)">
                                                     </label>
                                                     <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
                                                         <i class="fa fa-times"></i>
@@ -139,7 +139,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="website" placeholder="Username" value="loop">
+                                                    <input type="text" class="form-control" name="website" placeholder="Username" value="">
                                                     <div class="input-group-append"><span class="input-group-text">.com</span></div>
                                                 </div>
                                             </div>
@@ -609,5 +609,7 @@
 @endsection
 
 @section('scripts')
-
+<!--begin::Page Scripts(used by this page) -->
+<script src="{{asset('js/image_preview.js')}}" type="text/javascript"></script>
+<!--end::Page Scripts -->
 @endsection

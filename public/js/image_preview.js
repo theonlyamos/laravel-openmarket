@@ -1,4 +1,4 @@
-function handleFiles(e) {
+var handleFiles = function(e) {
     const target = e.id;
     const files = e.files;
 
@@ -25,15 +25,13 @@ function handleFiles(e) {
         }
         else {
             const thumnail = document.getElementById("thumbnail");
-            const thumbnailPreview = document.getElementById("thumbnail-preview");
 
             const reader = new FileReader();
-            reader.onload = (function (athumbnail, athumbnailPreview) {
+            reader.onload = (function (athumbnail) {
                 return function (e) {
                     athumbnail.style.backgroundImage = `url(${e.target.result})`;
-                    athumbnailPreview.style.backgroundImage = `url(${e.target.result})`;
                 };
-            })(thumbnail, thumbnailPreview);
+            })(thumbnail);
             reader.readAsDataURL(file);
         }
     }
