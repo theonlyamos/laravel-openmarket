@@ -286,7 +286,7 @@ var KTAppUserAdd = function () {
             btn.text("SUBMIT");
 
             $("input[name='thumbnail']").attr("required", "required");
-            $('#kt_apps_product_add_user_form')[0].reset();
+            $('#kt_apps_product_add_product_form')[0].reset();
 
             $(".preview").text("");
             $("#thumbnail").css("background-image", `url('/assets/media/files/jpg.svg')`);
