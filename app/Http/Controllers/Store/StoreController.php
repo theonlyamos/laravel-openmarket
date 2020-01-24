@@ -118,8 +118,8 @@ class StoreController extends Controller
 
     public function update_profile(storeUpdate $request){
         $store_update = $request->validated();
-        $store = Store::find(Auth::guard('store')->user()->name);
-        echo $store_update;
+        $store = Store::find(Auth::guard('store')->user()->id);
+
         if (!empty($request->avatar)){
             $store_update['avatar'] = explode("/", $request->avatar->store("public"))[1];
         }
