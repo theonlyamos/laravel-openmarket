@@ -136,7 +136,9 @@ var KTAppUserAdd = function () {
                         </td>`;
 												product += "</tr>";
 												formEl[0].reset();
-                        $("#kt_table_1 tbody").prepend(product);
+                        //$("#kt_table_1 tbody").prepend(product);
+                        $('#kt_apps_user_add_user').css("display", "none");
+                        $('#products_view_portlet').show(300);
                     },
                     error: function(data){
                         swal.fire({
