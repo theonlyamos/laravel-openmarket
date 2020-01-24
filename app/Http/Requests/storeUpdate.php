@@ -32,8 +32,8 @@ class storeUpdate extends FormRequest
             'region' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'postal' => ['required', 'string', 'max:255'],
-            'phone' => ['string', 'max:20'],
-            'website' => ['string', 'max:255']
+            'phone' => ['string', 'min:0', 'max:20'],
+            'website' => ['string', 'min:0', 'max:255']
             //
         ];
     }
