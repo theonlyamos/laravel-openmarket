@@ -80,7 +80,7 @@
                                                     @endif
                                                     <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
-                                                        <input type="file" name="avatar" accept=".png, .jpg, .jpeg" onchange="handleFiles(this)">
+                                                        <input type="file" name="avatar" accept="image/*" onchange="handleFiles(this)">
                                                     </label>
                                                     <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
                                                         <i class="fa fa-times"></i>
