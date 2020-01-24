@@ -99,7 +99,7 @@ var KTAppUserAdd = function () {
 	return {
 		// public functions
 		init: function() {
-            formEl = $('#kt_apps_product_add_product_form');
+            formEl = $('#profile_update_form');
             //editForm = $('#edit_product_form');
 
 			initValidation();

@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="kt-portlet__body">
-            <form action="{{route('store.profile.update')}}" method="POST">
+            <form action="{{route('store.profile.update')}}" method="POST" id="profile_update_form">
                 @csrf
                 <div class="tab-content">
                     <div class="tab-pane active" id="kt_apps_user_edit_tab_1" role="tabpanel">
