@@ -91,42 +91,42 @@
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Store Name</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="name" value="{{Auth::guard('store')->user()->name}}">
+                                                <input class="form-control" type="text" name="name" value="{{Auth::guard('store')->user()->name}}" required>
                                                 <span class="form-text text-muted">Name of the store.</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Location</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="location" value="{{Auth::guard('store')->user()->location}}">
+                                                <input class="form-control" type="text" name="location" value="{{Auth::guard('store')->user()->location}}" required>
                                                 <span class="form-text text-muted">GPS coordinates (longitude, latitude)</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="address" value="{{Auth::guard('store')->user()->address}}">
+                                                <input class="form-control" type="text" name="address" value="{{Auth::guard('store')->user()->address}}" required>
                                                 <span class="form-text text-muted">Address of where the store is located. (Street Name, postal code, district)</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Region</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="region" value="{{Auth::guard('store')->user()->region}}">
+                                                <input class="form-control" type="text" name="region" value="{{Auth::guard('store')->user()->region}}" required>
                                                 <span class="form-text text-muted"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">City</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="city" value="{{Auth::guard('store')->user()->city}}">
+                                                <input class="form-control" type="text" name="city" value="{{Auth::guard('store')->user()->city}}" required>
                                                 <span class="form-text text-muted"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Postal Code</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" name="postal" value="{{Auth::guard('store')->user()->postal}}">
+                                                <input class="form-control" type="text" name="postal" value="{{Auth::guard('store')->user()->postal}}" required>
                                                 <span class="form-text text-muted">Can be gotten with GhanaPost(Mobile App)</span>
                                             </div>
                                         </div>
@@ -170,7 +170,7 @@
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-                                                    <input type="text" class="form-control" value="{{Auth::guard('store')->user()->email}}" placeholder="Email" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="email" value="{{Auth::guard('store')->user()->email}}" placeholder="Email" required aria-describedby="basic-addon1">
                                                 </div>
                                                 <span class="form-text text-muted">Email will not be publicly displayed. <a href="#" class="kt-link">Learn more</a>.</span>
                                             </div>
