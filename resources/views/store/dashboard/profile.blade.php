@@ -135,7 +135,7 @@
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-                                                    <input type="text" class="form-control" name="phone" value="{{Auth::guard('store')->user()->phone ?? ''}}" placeholder="Phone" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="phone" value="{{Auth::guard('store')->user()->phone ?? ''}}" placeholder="Phone" required aria-describedby="basic-addon1">
                                                 </div>
                                                 <span class="form-text text-muted">We'll never share your contact details with anyone else.</span>
                                             </div>
