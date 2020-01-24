@@ -144,7 +144,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="website" placeholder="website" value="{{route('products.store', Auth::guard('store')->user()->id)}}">
+                                                    <input type="text" class="form-control" name="website" placeholder="website" value="{{route('products.store', Auth::guard('store')->user()->id)}}" required>
                                                     <div class="input-group-append"><span class="input-group-text">.com</span></div>
                                                 </div>
                                             </div>
