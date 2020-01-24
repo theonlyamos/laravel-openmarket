@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Store;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeProductsPost;
 use App\Http\Requests\storeProductUpdate;
+use App\Http\Requests\storeUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Products;
+use App\Store;
 
 class StoreController extends Controller
 {
@@ -107,10 +109,24 @@ class StoreController extends Controller
         $product_update = $request->validated();
         $product = Products::find($product_id);
         if (!empty($request->thumbnail)){
-            $product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1]; 
+            $product_update['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }
         $product->fill($product_update);
         $product->save();
         return response()->json(["success" => true, "message" => "Product updated successfully", "product" => $product]);
+    }
+
+    public function update_profile(storeUpdate $request){
+        $store_update = $request->validated();
+        $store = Store::find(Auth::guard('store')->user()->name);
+
+        if (!empty($request->avatar)){
+            $store_update['avatar'] = explode("/", $request->avatar->store("public"))[1];
+        }
+
+        $store->fill($store_update);
+        $store->save();
+
+        return response()->json(["success" => true, "message" => "Profile updated successfully", "store" => $store]);
     }
 }

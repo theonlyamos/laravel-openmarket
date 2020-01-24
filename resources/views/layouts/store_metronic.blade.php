@@ -962,7 +962,7 @@
                                 <div class="kt-subheader__toolbar">
                                     @if ($title == "profile")
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-brand btn-bold">
+                                            <button type="button" class="btn btn-brand btn-bold" data-action="submit">
                                                 Save Changes </button>
                                             <button type="button" class="btn btn-brand btn-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             </button>

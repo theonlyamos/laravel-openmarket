@@ -55,7 +55,8 @@
             </div>
         </div>
         <div class="kt-portlet__body">
-            <form action="" method="">
+            <form action="{{route('store.profile.update')}}" method="POST">
+                @csrf
                 <div class="tab-content">
                     <div class="tab-pane active" id="kt_apps_user_edit_tab_1" role="tabpanel">
                         <div class="kt-form kt-form--label-right">
@@ -75,7 +76,7 @@
                                                     <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
                                                     <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
-                                                        <input type="file" name="thumbnail" accept=".png, .jpg, .jpeg" onchange="handleFiles(this)">
+                                                        <input type="file" name="avatar" accept=".png, .jpg, .jpeg" onchange="handleFiles(this)">
                                                     </label>
                                                     <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
                                                         <i class="fa fa-times"></i>
@@ -139,7 +140,7 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="website" placeholder="Username" value="">
+                                                    <input type="text" class="form-control" name="website" placeholder="website" value="">
                                                     <div class="input-group-append"><span class="input-group-text">.com</span></div>
                                                 </div>
                                             </div>
@@ -610,6 +611,7 @@
 
 @section('scripts')
 <!--begin::Page Scripts(used by this page) -->
+<script src="{{asset('assets/js/demo3/pages/custom/apps/user/store_profile.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/image_preview.js')}}" type="text/javascript"></script>
 <!--end::Page Scripts -->
 @endsection
