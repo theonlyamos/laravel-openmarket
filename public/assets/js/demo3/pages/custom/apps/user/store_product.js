@@ -239,6 +239,8 @@ var KTAppUserAdd = function () {
     var getProduct = function(){
         $(".edit").on("click", (e) => {
             e.preventDefault();
+            $(".show_product_form").hide();
+            $("#hide_product_form").show();
 
             var product_id = $(e.currentTarget).data('product');
             $.getJSON(`/get_product/${product_id}`, (result) => {
@@ -266,8 +268,8 @@ var KTAppUserAdd = function () {
 
                     $("input[name='thumbnail']").removeAttr("required");
 
-                    $(".show_product_form").hide();
-                    $("#hide_product_form").show();
+                    $("#hide_product_form").hide();
+                    $(".show_product_form").show();
                     $('#products_view_portlet').hide(300);
                     $('#kt_apps_user_add_user').css("display", "flex");
                 }
