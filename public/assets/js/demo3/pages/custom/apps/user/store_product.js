@@ -266,8 +266,8 @@ var KTAppUserAdd = function () {
 
                     $("input[name='thumbnail']").removeAttr("required");
 
-                    $("#hide_product_form").hide();
-                    $(".show_product_form").show();
+                    $(".show_product_form").hide();
+                    $("#hide_product_form").show();
                     $('#products_view_portlet').hide(300);
                     $('#kt_apps_user_add_user').css("display", "flex");
                 }
