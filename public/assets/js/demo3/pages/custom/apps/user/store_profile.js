@@ -79,7 +79,7 @@ var KTAppUserAdd = function () {
 							"type": "success",
 							"confirmButtonClass": "btn btn-secondary"
                         });
-
+                        window.location.reload();
                     },
                     error: function(data){
                         swal.fire({
