@@ -73,7 +73,11 @@
                                             <label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="kt-avatar kt-avatar--outline kt-avatar--circle-" id="kt_apps_user_add_avatar">
-                                                    <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
+                                                    @if (Auth::guard('store')->user()->avatar)
+                                                        <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/storage/${{Auth::guard('store')->user()->avatar}}&quot;);"></div>
+                                                    @else
+                                                        <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
+                                                    @endif
                                                     <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
                                                         <input type="file" name="avatar" accept=".png, .jpg, .jpeg" onchange="handleFiles(this)">
