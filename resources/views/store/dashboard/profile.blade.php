@@ -84,22 +84,45 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">First Name</label>
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Store Name</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" value="Nick">
+                                                <input class="form-control" type="text" name="name" value="{{Auth::guard('store')->user()->name}}">
+                                                <span class="form-text text-muted">Name of the store.</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Last Name</label>
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Location</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" value="Bold">
+                                                <input class="form-control" type="text" name="location" value="{{Auth::guard('store')->user()->location}}">
+                                                <span class="form-text text-muted">GPS coordinates (longitude, latitude)</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Company Name</label>
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Address</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control" type="text" value="Loop Inc.">
-                                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                                                <input class="form-control" type="text" name="address" value="{{Auth::guard('store')->user()->address}}">
+                                                <span class="form-text text-muted">Address of where the store is located. (Street Name, postal code, district)</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Region</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <input class="form-control" type="text" name="region" value="{{Auth::guard('store')->user()->region}}">
+                                                <span class="form-text text-muted"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">City</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <input class="form-control" type="text" name="city" value="{{Auth::guard('store')->user()->city}}">
+                                                <span class="form-text text-muted"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Postal Code</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <input class="form-control" type="text" name="postal" value="{{Auth::guard('store')->user()->postal}}">
+                                                <span class="form-text text-muted">Can be gotten with GhanaPost(Mobile App)</span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -107,25 +130,16 @@
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-                                                    <input type="text" class="form-control" value="+35278953712" placeholder="Phone" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="phone" value="" placeholder="Phone" aria-describedby="basic-addon1">
                                                 </div>
-                                                <span class="form-text text-muted">We'll never share your email with anyone else.</span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Email Address</label>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-                                                    <input type="text" class="form-control" value="nick.bold@loop.com" placeholder="Email" aria-describedby="basic-addon1">
-                                                </div>
+                                                <span class="form-text text-muted">We'll never share your contact details with anyone else.</span>
                                             </div>
                                         </div>
                                         <div class="form-group form-group-last row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Company Site</label>
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Username" value="loop">
+                                                    <input type="text" class="form-control" name="website" placeholder="Username" value="loop">
                                                     <div class="input-group-append"><span class="input-group-text">.com</span></div>
                                                 </div>
                                             </div>
@@ -147,19 +161,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">Username</label>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <div class="kt-spinner kt-spinner--sm kt-spinner--success kt-spinner--right kt-spinner--input">
-                                                    <input class="form-control" type="text" value="nick84">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Email Address</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-                                                    <input type="text" class="form-control" value="nick.watson@loop.com" placeholder="Email" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" value="{{Auth::guard('store')->user()->email}}" placeholder="Email" aria-describedby="basic-addon1">
                                                 </div>
                                                 <span class="form-text text-muted">Email will not be publicly displayed. <a href="#" class="kt-link">Learn more</a>.</span>
                                             </div>
@@ -258,7 +264,7 @@
                                                     <option data-offset="-3600" value="Cape Verde Is.">(GMT-01:00) Cape Verde Is.</option>
                                                     <option data-offset="0" value="Azores">(GMT) Azores</option>
                                                     <option data-offset="0" value="Monrovia">(GMT) Monrovia</option>
-                                                    <option data-offset="0" value="UTC">(GMT) UTC</option>
+                                                    <option data-offset="0" value="UTC" selected>(GMT) UTC</option>
                                                     <option data-offset="3600" value="Dublin">(GMT+01:00) Dublin</option>
                                                     <option data-offset="3600" value="Edinburgh">(GMT+01:00) Edinburgh</option>
                                                     <option data-offset="3600" value="Lisbon">(GMT+01:00) Lisbon</option>
@@ -546,26 +552,7 @@
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox" checked="checked"> Someone adds you as a connection
-                                                        <span></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-last row">
-                                            <label class="col-xl-3 col-lg-3 col-form-label">When To Escalate Emails</label>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <div class="kt-checkbox-list">
-                                                    <label class="kt-checkbox kt-checkbox--brand">
-                                                        <input type="checkbox"> Upon new order.
-                                                        <span></span>
-                                                    </label>
-                                                    <label class="kt-checkbox kt-checkbox--brand">
-                                                        <input type="checkbox"> New membership approval
-                                                        <span></span>
-                                                    </label>
-                                                    <label class="kt-checkbox kt-checkbox--brand">
-                                                        <input type="checkbox" checked="checked"> Member registration
+                                                        <input type="checkbox" checked="checked"> Upon new order
                                                         <span></span>
                                                     </label>
                                                 </div>
@@ -579,7 +566,7 @@
                                         <div class="row">
                                             <label class="col-xl-3"></label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <h3 class="kt-section__title kt-section__title-sm">Updates From Keenthemes:</h3>
+                                                <h3 class="kt-section__title kt-section__title-sm">Updates From OpenMarket:</h3>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -587,23 +574,23 @@
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="kt-checkbox-list">
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox"> News about Metronic product and feature updates
+                                                        <input type="checkbox"> News about OpenMarket product and feature updates
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox"> Tips on getting more out of Keen
+                                                        <input type="checkbox"> Tips on getting more out of OpenMarket
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox" checked="checked"> Things you missed since you last logged into Keen
+                                                        <input type="checkbox" checked="checked"> Things you missed since you last logged into OpenMarket
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox" checked="checked"> News about Metronic on partner products and other services
+                                                        <input type="checkbox" checked="checked"> News about OopenMarket on partner products and other services
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-checkbox">
-                                                        <input type="checkbox" checked="checked"> Tips on Metronic business products
+                                                        <input type="checkbox" checked="checked"> Tips on Openmarket business products
                                                         <span></span>
                                                     </label>
                                                 </div>
