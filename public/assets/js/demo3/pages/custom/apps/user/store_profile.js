@@ -58,7 +58,7 @@ var KTAppUserAdd = function () {
 	}
 
 	var initSubmit = function() {
-		var btn = formEl.find('[data-action="submit"]');
+		var btn = $('[data-action="submit"]');
 
 		btn.on('click', function(e) {
 			e.preventDefault();
