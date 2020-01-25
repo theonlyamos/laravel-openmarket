@@ -108,7 +108,7 @@ class StoreController extends Controller
     public function edit_product($product_id, storeProductUpdate $request){
         $product_update = $request->validated();
         $product = Products::find($product_id);
-        if ($request->hasFile('thumbnail'))){
+        if ($request->hasFile('thumbnail')){
             $product_update['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }
         $product->fill($product_update);
