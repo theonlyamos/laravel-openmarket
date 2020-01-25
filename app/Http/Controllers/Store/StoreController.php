@@ -108,7 +108,7 @@ class StoreController extends Controller
     public function edit_product($product_id, storeProductUpdate $request){
         $product_update = $request->validated();
         $product = Products::find($product_id);
-        if (!empty($request->thumbnail)){
+        if ($request->hasFile('thumbnail'))){
             $product_update['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }
         $product->fill($product_update);
@@ -120,7 +120,7 @@ class StoreController extends Controller
         $store_update = $request->validated();
         $store = Store::find(Auth::guard('store')->user()->id);
 
-        if (!empty($request->avatar)){
+        if ($request->hasFile('avatar')){
             $store_update['avatar'] = explode("/", $request->avatar->store("public"))[1];
         }
 
