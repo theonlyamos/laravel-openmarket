@@ -114,7 +114,7 @@
                         <h2>Our Vision</h2>
                     </div>
                     <div class="media-body text-cener">
-                        <p class="text-center text-dark" style="font-size: 1.2em;">Revolutionalizing the world with Passion.</p>
+                        <p class="text-center text-dark" style="font-size: 1.2em;">Revolutionalizing Trade with Passion.</p>
                     </div>
                 </div>
             </div>
