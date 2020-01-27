@@ -47,9 +47,9 @@ class AuthController extends Controller
         $store = $this->create($data);
         $credentials = $request->only('email', 'password');
         if (Auth::guard('store')->attempt($credentials)){
-            return redirect()->intended('store.dashboard');
+            return redirect()->intended('dashboard');
         }
-        return redirect()->route("store.register");
+        return redirect()->route("store.register")->withInput();
     }
 
     private function create(array $data){

@@ -66,21 +66,21 @@
                                         <div class="row">
                                             <label class="col-xl-3"></label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <h3 class="kt-section__title kt-section__title-sm">Customer Info:</h3>
+                                                <h3 class="kt-section__title kt-section__title-sm">Store Info:</h3>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="kt-avatar kt-avatar--outline kt-avatar--circle-" id="kt_apps_user_add_avatar">
-                                                    @if (Auth::guard('store')->user()->avatar)
-                                                        <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/storage/${{Auth::guard('store')->user()->avatar}}&quot;);"></div>
+                                                    @if (Auth::guard('store')->user()->logo)
+                                                        <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;{{asset("storage/$store->logo")}}&quot;);"></div>
                                                     @else
                                                         <div class="kt-avatar__holder" id="thumbnail" style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;);"></div>
                                                     @endif
                                                     <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
-                                                        <input type="file" name="avatar" accept="image/*" onchange="handleFiles(this)">
+                                                        <input type="file" name="logo" accept="image/*" onchange="handleFiles(this)">
                                                     </label>
                                                     <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
                                                         <i class="fa fa-times"></i>

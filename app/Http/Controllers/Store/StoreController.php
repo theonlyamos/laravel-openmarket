@@ -28,6 +28,11 @@ class StoreController extends Controller
         return view('contact', ['site' => $site_info[0]]);
     }
 
+    public function about(){
+        $site_info = DB::select('select * from site_info');
+        return view('about', ['site' => $site_info[0]]);
+    }
+
     public function products($store_id, Request $request){
         $cats = Array();
         $subs = Array();
@@ -48,13 +53,12 @@ class StoreController extends Controller
         }
         $prod = $products[0];
         // $products = DB::select('select * from products limit 20 offset ?', [$from]);
-        $store = DB::select('select id, name from stores where id = ?', [$store_id]);
+        $store = Store::find($store_id);
         $categories = DB::select('select id, name from categories');
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
         $site_info = DB::select('select * from site_info');
-        $store = $store[0];
         return view("store.products", ["products" => $products, "store" => $store,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
@@ -69,6 +73,7 @@ class StoreController extends Controller
                   "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
                   "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
                   "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
+        $store = Auth::guard('store')->user();
         if (!empty($page)){
             $list = '';
             switch ($page) {
@@ -77,9 +82,9 @@ class StoreController extends Controller
                                     ->orderBy("id", "asc")
                                     ->get();
             }
-            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "list" => $list]);
+            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "list" => $list, "store" => $store]);
         }
-        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages]);
+        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages, "store" => $store]);
     }
 
     public function add_product(storeProductsPost $request){
@@ -109,7 +114,7 @@ class StoreController extends Controller
         $product_update = $request->validated();
         $product = Products::find($product_id);
         if ($request->hasFile('thumbnail')){
-            $product_update['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
+            $product->thumbnail['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }
         $product->fill($product_update);
         $product->save();
@@ -120,13 +125,15 @@ class StoreController extends Controller
         $store_update = $request->validated();
         $store = Store::find(Auth::guard('store')->user()->id);
 
-        if ($request->hasFile('avatar')){
-            $store_update['avatar'] = explode("/", $request->avatar->store("public"))[1];
+        if ($request->hasFile('logo')){
+            $store->logo = explode("/", $request->logo->store("public"))[1];
         }
 
+        $store->website = $store_update['website'];
+        $store->phone = $store_update['phone'];
         $store->fill($store_update);
         $store->save();
 
-        return response()->json(["success" => true, "message" => "Profile updated successfully", "store" => $store]);
+        return response()->json(["success" => true, "message" => "Profile updated successfully"]);
     }
 }

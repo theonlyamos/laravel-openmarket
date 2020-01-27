@@ -70,7 +70,7 @@
                 <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="{{config('app.url', 'https://openmart.ga')}}" class="nav-link">Shop</a></li>
-                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="{{route('store.about')}}" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="{{route('store.contact')}}" class="nav-link">Contact</a></li>
                         <li class="nav-item dropdown">
                             @if (Auth::guard('store')->check())

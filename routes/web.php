@@ -11,9 +11,10 @@
 |
 */
 
-Route::domain('store.openmart.test')->group(function(){
+Route::domain('store.openmart.ga')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
+    Route::get("/about", 'Store\StoreController@about')->name("store.about");
     Route::get("/login", 'Store\AuthController@index')->name("store.login");
     Route::get("/register", 'Store\AuthController@register')->name("store.register");
     Route::get("/logout", 'Store\AuthController@logout')->name("store.logout");
@@ -31,9 +32,10 @@ Route::domain('store.openmart.test')->group(function(){
     });
 });
 
-Route::domain('store.openmart.ga')->group(function(){
+Route::domain('store.openmart.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
+    Route::get("/about", 'Store\StoreController@about')->name("store.about");
     Route::get("/login", 'Store\AuthController@index')->name("store.login");
     Route::get("/register", 'Store\AuthController@register')->name("store.register");
     Route::get("/logout", 'Store\AuthController@logout')->name("store.logout");

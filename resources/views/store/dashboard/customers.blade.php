@@ -5,10 +5,10 @@
     <div class="kt-portlet__head kt-portlet__head--lg">
         <div class="kt-portlet__head-label">
             <span class="kt-portlet__head-icon">
-                <i class="kt-font-brand flaticon2-line-chart"></i>
+                <i class="kt-font-brand {{$pages[$title]['icon']}}"></i>
             </span>
             <h3 class="kt-portlet__head-title">
-                Customers
+                {{Str::title($pages[$title]["name"])}}
             </h3>
         </div>
         <div class="kt-portlet__head-toolbar">

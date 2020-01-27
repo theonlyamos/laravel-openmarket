@@ -160,7 +160,21 @@
 						<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
-									<li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a></li>
+									@foreach ($pages as $page)
+                                        @if ($page['name'] == $title)
+                                            @if ($page['name'] == "dashboard")
+                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            @else
+                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            @endif
+                                        @else
+                                            @if ($page['name'] == "dashboard")
+                                                <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            @else
+                                                <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            @endif
+                                        @endif
+                                    @endforeach
 								</ul>
 							</div>
 						</div>
@@ -817,11 +831,12 @@
 								<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 									<div class="kt-header__topbar-user">
 										<span class="kt-hidden kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-										<span class="kt-hidden kt-header__topbar-username kt-hidden-mobile">Sean</span>
-										<img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}" />
-
-										<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-										<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bolder">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+                                        <span class="kt-hidden kt-header__topbar-username kt-hidden-mobile">Sean</span>
+                                        @if ($store->logo)
+                                            <img class="" alt="Pic" src='{{asset("storage/$store->logo")}}'' />
+                                        @else
+                                            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bolder">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+                                        @endif
 									</div>
 								</div>
 								<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
@@ -829,10 +844,11 @@
 									<!--begin: Head -->
 									<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url({{asset('assets/media/misc/bg-1.jpg')}})">
 										<div class="kt-user-card__avatar">
-											<img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}" />
-
-											<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-											<span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+											@if ($store->logo)
+                                                <img class="" alt="Pic" src='{{asset("storage/$store->logo")}}'' />
+                                            @else
+                                            <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+                                            @endif
 										</div>
 										<div class="kt-user-card__name">
 											{{Auth::guard('store')->user()->name}}

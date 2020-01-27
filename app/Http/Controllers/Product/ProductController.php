@@ -19,6 +19,7 @@ class ProductController extends Controller
         $product = Products::where("id", $id)->first();
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
-        return view("product.details", ["product" => $product, "keywords" => $keywords]);
+        $site = DB::select('select * from site_info');
+        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site[0]]);
     }
 }

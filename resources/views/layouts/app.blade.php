@@ -199,7 +199,7 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="fa fa-map-marker fa-fw"></span><span class="text">{{$site->address}}</span></li>
-                                <li><span class="fa-plane"></span><span class="text">{{$site->box_office}}</span></li>
+                                <li><span class="fa fa-plane fa-fw"></span><span class="text">{{$site->box_office}}</span></li>
                                 <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_1}}</span></a></li>
                                 <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
                                             class="text">{{Str::lower($site->email_info)}}</span></a></li>

@@ -4,30 +4,59 @@
 <section class="ftco-section contact-section bg-light">
     <div class="container">
         <h1 class="text-center my-5">Contact Us</h1>
-        <div class="row d-flex mb-5 contact-info">
-            <div class="w-100"></div>
-            <div class="col-md-3 d-flex">
-                <div class="info bg-white p-4 text-center">
+        <div class="row d-flex mb-1 contact-info">
+            <div class="col-md-4 d-flex py-2 my-1 row bg-secondary text-white">
+                <div class="col-3">
                     <i class="fa fa-map-marker fa-3x"></i>
-                    <p><span>Address:</span> <span class="text-dark">{{$site->address}}</span></p>
+                </div>
+                <div class="col-8">
+                    <span class="text-white">{{$site->address}}</span>
                 </div>
             </div>
-            <div class="col-md-3 d-flex">
-                <div class="info bg-white p-4 text-center">
-                    <i class="fa fa-phone fa-3x"></i>
-                    <p><span>Phone:</span> <a href="tel://{{$site->phone_1}}">{{$site->phone_1}}</a></p>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex">
-                <div class="info bg-white p-4 text-center">
+            <div class="col-md-4 d-flex py-2 my-1 row bg-dark text-white">
+                <div class="col-3">
                     <i class="fa fa-envelope fa-3x"></i>
-                    <p><span>Email:</span> <a href="mailto:{{$site->email_info}}">{{$site->email_info}}</a></p>
+                </div>
+                <div class="col-8">
+                    <a class="nav-link text-white" href="mailto:{{$site->email_info}}">{{$site->email_info}}</a>
                 </div>
             </div>
-            <div class="col-md-3 d-flex">
-                <div class="info bg-white p-4 text-center">
+            <div class="col-md-4 d-flex py-2 my-1 row bg-black text-white">
+                <div class="col-3">
                     <i class="fa fa-globe fa-3x"></i>
-                    <p><span>Website:</span> <a href="{{$site->website_home}}">{{$site->website_home}}</a></p>
+                </div>
+                <div class="col-8">
+                    <a class="nav-link text-white" href="https://{{$site->website_home}}">{{$site->website_home}}</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-4 d-flex py-2 my-1 row bg-black text-white align-items-center">
+                <div class="col-3 border-right">
+                    <i class="fa fa-phone fa-3x"></i>
+                </div>
+                <div class="col-8">
+                    <span>Amos Amissah</span>
+                    <br><a class="text-white" href="tel:{{$site->phone_1}}">{{$site->phone_1}}</a>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex py-2 my-1 row bg-dark text-white align-items-center">
+                <div class="col-3 border-right">
+                    <i class="fa fa-phone fa-3x"></i>
+                </div>
+                <div class="col-8">
+                    <span>Felix Amihere</span>
+                    <br><a class="text-white" href="tel:+233 249 577 827">+233 249 577 827</a>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex py-2 my-1 row bg-secondary text-white align-items-center">
+                <div class="col-3 border-right">
+                    <i class="fa fa-phone fa-3x"></i>
+                </div>
+                <div class="col-8">
+                    <span>Nhyiraba Paa Kwesi</span>
+                    <br><a class="text-white" href="tel:+233 24 473 4418">+233 24 473 4418</a>
                 </div>
             </div>
         </div>
@@ -68,38 +97,40 @@
 
     function initMap() {
 
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: -34.397,
-                    lng: 150.644
-                },
-                zoom: 6
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: -34.397,
+                lng: 150.644
+            },
+            zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var location = new google.maps.LatLng(pos.lat, pos.lng);
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    "location": location
+                }, (result, status) => {
+
+                })
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                infoWindow.open(map);
+                map.setCenter(pos);
+            }, function () {
+                handleLocationError(true, infoWindow, map.getCenter());
             });
-            infoWindow = new google.maps.InfoWindow;
-
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var location = new google.maps.LatLng(pos.lat, pos.lng);
-                    geocoder = new google.maps.Geocoder();
-                    geocoder.geocode({"location": location}, (result, status) => {
-
-                    })
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('Location found.');
-                    infoWindow.open(map);
-                    map.setCenter(pos);
-                }, function () {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
 
     }
 

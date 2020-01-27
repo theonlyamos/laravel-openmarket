@@ -58,7 +58,7 @@
                         <span>$17.60</span>
                     </p>
                 </div>
-                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
+                <p class="text-center"><a href="#" id="buy" class="btn btn-info btn-block py-3 px-4">Proceed to Checkout</a>
                 </p>
             </div>
         </div>
@@ -143,4 +143,10 @@
     </div>
 </div>
 -->
+@endsection
+
+@section('scripts')
+<!--begin::Page Scripts(used by this page) -->
+<script src="{{asset('assets/js/demo3/pages/custom/apps/user/cart.js')}}" type="text/javascript"></script>
+<!--end::Page Scripts -->
 @endsection
