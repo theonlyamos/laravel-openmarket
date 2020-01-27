@@ -108,6 +108,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 text-justify d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services p-4 py-md-5">
+                    <div class="icon d-flex justify-content-center align-items-center mb-4">
+                        <h2>Our Vision</h2>
+                    </div>
+                    <div class="media-body text-cener">
+                        <p class="text-center text-dark" style="font-size: 1.2em;">Revolutionalizing the world with Passion.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
