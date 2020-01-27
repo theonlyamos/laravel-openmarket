@@ -55,7 +55,7 @@
                     <i class="fa fa-phone fa-3x"></i>
                 </div>
                 <div class="col-8">
-                    <span>Nhyiraba Paa Kwesi</span>
+                    <span>Nhyiraba Paa Kwesi Simpson</span>
                     <br><a class="text-white" href="tel:+233 24 473 4418">+233 24 473 4418</a>
                 </div>
             </div>
