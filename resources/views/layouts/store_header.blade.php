@@ -133,9 +133,9 @@
                         <ul class="list-unstyled">
                             <li><a href="{{config('app.url', 'https://openmart.ga')}}" class="py-2 d-block">Shop</a>
                             </li>
-                            <li><a href="#" class="py-2 d-block">About</a></li>
-                            <li><a href="#" class="py-2 d-block">Journal</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="{{route('aboutus')}}" class="py-2 d-block">About</a></li>
+                            <li><a href="{{route('contactus')}}" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="{{route('store.index')}}" class="py-2 d-block">Stores</a></li>
                         </ul>
                     </div>
                 </div>
