@@ -41,15 +41,6 @@
                     <br><a class="text-white" href="tel:{{$site->phone_1}}">{{$site->phone_1}}</a>
                 </div>
             </div>
-            <div class="col-md-4 d-flex py-2 my-1 row bg-dark text-white align-items-center">
-                <div class="col-3 border-right">
-                    <i class="fa fa-phone fa-3x"></i>
-                </div>
-                <div class="col-8">
-                    <span>Felix Amihere</span>
-                    <br><a class="text-white" href="tel:+233 249 577 827">+233 249 577 827</a>
-                </div>
-            </div>
             <div class="col-md-4 d-flex py-2 my-1 row bg-secondary text-white align-items-center">
                 <div class="col-3 border-right">
                     <i class="fa fa-phone fa-3x"></i>
@@ -59,6 +50,16 @@
                     <br><a class="text-white" href="tel:+233 24 473 4418">+233 24 473 4418</a>
                 </div>
             </div>
+            <div class="col-md-4 d-flex py-2 my-1 row bg-dark text-white align-items-center">
+                <div class="col-3 border-right">
+                    <i class="fa fa-phone fa-3x"></i>
+                </div>
+                <div class="col-8">
+                    <span>Felix Amihere</span>
+                    <br><a class="text-white" href="tel:+233 249 577 827">+233 249 577 827</a>
+                </div>
+            </div>
+
         </div>
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
