@@ -173,10 +173,11 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2 text-white">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block text-secondary">Home</a></li>
-                            <li><a href="#" class="py-2 d-block text-secondary">Stores</a></li>
-                            <li><a href="#" class="py-2 d-block text-secondary">Cart</a></li>
+                            <li><a href="{{config('app.url', 'https://openmart.ga')}}" class="py-2 d-block text-secondary">Home</a></li>
+                            <li><a href="{{route('store.index')}}" class="py-2 d-block text-secondary">Stores</a></li>
+                            <li><a href="{{route('cart')}}" class="py-2 d-block text-secondary">Cart</a></li>
                             <li><a href="{{route('contactus')}}" class="py-2 d-block text-secondary">Contact Us</a></li>
+                            <li><a href="{{route('aboutus')}}" class="py-2 d-block text-secondary">About Us</a></li>
                         </ul>
                     </div>
                 </div>

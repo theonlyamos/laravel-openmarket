@@ -27,7 +27,7 @@
                             (service providers).
                         </p>
                         <p>
-                            A Platform specially designed to reduce congestion and road traffic accidents on our roads.
+                            A Platform specially designed to reduce congestion and traffic accidents on our roads.
                             This as a means of avoiding excessive vehicle maneuvering and vehicle emission or producing
                             pollution unto the atmosphere, thus causing lung cancer, cardiovascular effects, nervous
                             system effects, and other respiratory problem around the Market Circle to human health.
@@ -35,14 +35,14 @@
                         <p>
                             Open Market online platform serves as an intermediate to refuge the stressful shopping times
                             in the morning and afternoon rush hours, especially during weekends between the seller and
-                            the buyer simultaneously for a smooth turnaround of commercial and private vehicles. On the
-                            other hand, e-commerce and e-business have increasingly become a necessary component of
+                            the buyer simultaneously for a smooth turnaround of commercial and private vehicles.
+                            <br>On the other hand, e-commerce and e-business have increasingly become a necessary component of
                             business strategy and an active catalyst for economic development in Ghana.
                         </p>
                         <p>
                             The integration of Information and Communications Technology (ICT) in business has
                             revolutionized relationships within organizations and those between and among organizations
-                            and individuals. For example, the introduction of Port paperless clearance, GPS, online
+                            and individuals. For example, the introduction of Port paperless clearance, Ghana Post GPS, online
                             forms for Passport, Business registration form, Gcnet Emda Portal or National Single Window,
                             Voters ID, National Health Insurance ID, and Ghana card has enhanced business productivity,
                             encourage greater customer participation, and enable mass customization, besides reducing
@@ -62,7 +62,7 @@
                         <span class="flaticon-customer-service"></span>
                     </div>
                     <div class="media-body">
-                        <h3 class="heading" style="text-transform: capitalize">Benefits of OpenMarket</h3>
+                        <h3 class="heading" style="text-transform: capitalize"> Other Benefits of OpenMarket</h3>
                         <ul>
                             <li>
                                 <strong>Convenience is the biggest perk</strong>

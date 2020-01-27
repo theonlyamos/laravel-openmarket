@@ -88,6 +88,7 @@ Route::group(['prefix' => 'store'], function () {
 });
 
 Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contactus');
+Route::get('/about', 'ContactUs\ContactUsController@about')->name('aboutus');
 
 Auth::routes();
 
