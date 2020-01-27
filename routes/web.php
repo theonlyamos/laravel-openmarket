@@ -32,6 +32,7 @@ Route::domain('store.openmart.ga')->group(function(){
     });
 });
 
+/*
 Route::domain('store.openmart.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
@@ -52,6 +53,7 @@ Route::domain('store.openmart.test')->group(function(){
 
     });
 });
+*/
 
 Route::get('/', 'Index\IndexController@index');
 
