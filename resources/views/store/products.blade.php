@@ -3,7 +3,7 @@
 @section('content')
 <section class="store store-products">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item"><a class="text-secondary" href="{{config('app.url')}}">Home</a></li>
@@ -46,6 +46,7 @@
                         @endisset
                     </ul>
                 </div>
+                <!-- Subcategories
                 <div class="card border-0 my-1">
                     <ul class="list-group list-group-flush">
                         @isset($subcategories)
@@ -78,6 +79,9 @@
                         @endisset
                     </ul>
                 </div>
+
+                <!--
+                Price Range
                 <div class="card border-0 mb-1">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item bg-light text-center text-dark py-1">
@@ -99,6 +103,7 @@
                             </li>
                     </ul>
                 </div>
+            -->
             </div>
             <div class="col-sm-12 col-md-9 col-lg-10">
                 <div
