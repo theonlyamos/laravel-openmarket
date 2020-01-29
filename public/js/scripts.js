@@ -46,6 +46,11 @@ const addToCart = (id, quantity=1)=>{
     })
 }
 
+//mobile searchbar toggle
+const toggleSearchBar = () => {
+    $(".searchbar.mobile").toggleClass("d-none");
+}
+
 const getCart = async function () {
     let cart = await localStorage.getItem("cart");
     if (cart) {
@@ -214,11 +219,6 @@ $(() => {
                 addToCart(target);
                 break
         }
-    })
-
-    //mobile searchbar toggle
-    $(".mobile-searchbar-toggler").on('click', ()=> {
-        $(".searchbar.mobile").toggleClass("d-none");
     })
 
     // Store Products Page Scripts
