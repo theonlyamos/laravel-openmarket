@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="store store-products">
+<section class="store store-products" style="min-height: 90vh;">
     <div class="container">
         <div class="row mt-5">
             <nav aria-label="breadcrumb">
@@ -21,27 +21,17 @@
                                 <small>Categories</small>
                             </li>
                             @foreach ($categories as $cat)
-                                @if (in_array($cat->name, $cats))
+
                                     <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
-                                        data-position="top" title="{{$cat->name}}">
+                                        data-position="top" title="{{$cat}}">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" checked value="{{$cat->name}}" class="custom-control-input product-check" data-target="categories" id="{{$cat->name}}">
-                                            <label class="custom-control-label" for="{{$cat->name}}">
-                                                <small>{{$cat->name}}</small>
+                                            <input type="checkbox" value="{{$cat}}" class="custom-control-input product-check" data-target="categories" id="{{$cat}}">
+                                            <label class="custom-control-label" for="{{$cat}}">
+                                                <small>{{Str::title($cat)}}</small>
                                             </label>
                                         </div>
                                     </li>
-                                @else
-                                    <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
-                                        data-position="top" title="{{$cat->name}}">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" value="{{$cat->name}}" class="custom-control-input product-check" data-target="categories" id="{{$cat->name}}">
-                                            <label class="custom-control-label" for="{{$cat->name}}">
-                                                <small>{{$cat->name}}</small>
-                                            </label>
-                                        </div>
-                                    </li>
-                                @endif
+
                             @endforeach
                         @endisset
                     </ul>
