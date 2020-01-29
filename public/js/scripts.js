@@ -197,6 +197,10 @@ $(() => {
         var btn = $(e.currentTarget);
         var target = btn.data("target");
         var action = btn.data("action");
+        var quantity = 1;
+        if ($("input[name='quantity']")){
+            quantity = $("input[name='quantity']").val();
+        }
 
         switch(action){
             case 'delete':
@@ -217,10 +221,10 @@ $(() => {
                 break;
 
             case 'addToCart':
-                addToCart(target);
+                addToCart(target, quantity);
                 break
             case 'buy':
-                addToCart(target, 1, true);
+                addToCart(target, quantity, true);
                 break
         }
     })

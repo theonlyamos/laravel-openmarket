@@ -82,11 +82,11 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-12">
-                            <p style="color: #000;">80 piece available</p>
+                           <!-- <p style="color: #000;">80 piece available</p> -->
                         </div>
                     </div>
-                    <p><a href="#" class="btn btn-black py-3 px-5 mr-2" id="addToCart">Add to Cart</a><a
-                            href="cart.html" class="btn btn-primary py-3 px-5">Buy now</a></p>
+                    <p><a href="#" class="btn btn-black btn-action py-3 px-5 mr-2" data-action="addToCart" data-target="{{$product->id}}">Add to Cart</a>
+                        <a href="#" class="btn btn-primary btn-action py-3 px-5" data-action="buy" data-target="{{$product->id}}">Buy now</a></p>
                 </form>
             </div>
         </div>
