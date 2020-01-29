@@ -38,7 +38,7 @@ class CartController extends Controller
         if ($request->session()->has('cart'))
             $request->session()->push('cart.items', ['id' => $request->id, 'quantity' => $request->quantity]);
         else
-            $request->session()->put('cart', [['id' => $request->id, 'quantity' => $request->quantity]]);
+            $request->session()->put('cart', ['items' => [['id' => $request->id, 'quantity' => $request->quantity]]]);
         $buy = $request->buy;
         return response()->json(["success" => true, 'cart' => count($request->session()->get('cart.items', [])), "buy" => $buy]);
     }

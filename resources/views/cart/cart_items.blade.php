@@ -43,7 +43,6 @@
                                         </td>
                                         <td class="product-name py-1">
                                             <h3>{{$item->name}}</h3>
-                                            <p>{{Str::limit($item->description, 40, '...')}}</p>
                                         </td>
                                         <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
                                         <td class="quantity py-1">
