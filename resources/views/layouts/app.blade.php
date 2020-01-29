@@ -42,7 +42,8 @@
 
 <body>
     <div id="app">
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000" style="opacity: 0.8; position: fixed; bottom: 0; right: 0;">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
+            style="opacity: 0.8; position: fixed; bottom: 0; right: 0;">
             <div class="toast-header">
                 <strong class="mr-auto text-dark toast-title"></strong>
                 <small class="text-muted">just now</small>
@@ -84,70 +85,96 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
-                    <form class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50" style="border: 1px solid #ced4da !important; height: 40px;">
-                        <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
-                            placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: auto !important;">
-                        <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
-                            <i class="fa fa-search"></i>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake"
+            id="ftco-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
+                <form
+                    class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"
+                    style="border: 1px solid #ced4da !important; height: 40px;">
+                    <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+                        placeholder="Search" aria-label="Search" name="search" required
+                        style="font-size: 14px; color: #ced4da; height: auto !important;">
+                    <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4"
+                        type="submit"
+                        style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <div>
+                    <button class="btn btn-clear d-md-none mobile-searchbar-toggler"><i
+                            class="fa fa-search"></i></button>
+                    <div class="btn-group d-md-none">
+                        <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Stores
                         </button>
-                    </form>
-                    <div>
-                        <button class="btn btn-clear d-md-none border mobile-searchbar-toggler"><i class="fa fa-search"></i></button>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="oi oi-menu"></span> Menu
-                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @isset($stores)
+                            @foreach ($stores as $store)
+                            <a href="{{route('products.store', $store->id)}}" class="dropdown-item">
+                                <small>{{$store->name}}</small>
+                            </a>
+                            @endforeach
+                            @endisset
+                        </div>
                     </div>
-
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"><a href="{{route('store.index')}}" class="nav-link">Stores</a></li>
-                                <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
-                                    class="fa fa-shopping-cart"></i>[<span class="cart cart-count">{{$cart ?? 0}}</span>]</a></li>
-                                <li class="nav-item dropdown">
-                                    @if (Auth::check())
-                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="{{route('user.dashboard')}}">
-                                                <i class="fa fa-tv"></i>
-                                                {{__("Dashboard")}}</a>
-                                            <a class="dropdown-item" href="{{route('user.account')}}">
-                                                <i class="fa fa-user"></i>
-                                                {{__("Account")}}</a>
-                                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    @else
-                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">Account</a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                            <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
-                                            <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
-                                        </div>
-                                    @endif
-                            </li>
-                        </ul>
-                    </div>
-                    <form class="form-inline d-lg-none d-none my-2 my-lg-0 bg-white searchbar mobile p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
-                            <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
-                                placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: 30px !important;">
-                            <button class="btn btn-light my-sm-0 w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="oi oi-menu"></span>
+                    </button>
                 </div>
-            </nav>
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
+                                    class="fa fa-shopping-cart"></i>[<span
+                                    class="cart cart-count">{{$cart ?? 0}}</span>]</a></li>
+                        <li class="nav-item dropdown">
+                            @if (Auth::check())
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="{{route('user.dashboard')}}">
+                                    <i class="fa fa-tv"></i>
+                                    {{__("Dashboard")}}</a>
+                                <a class="dropdown-item" href="{{route('user.account')}}">
+                                    <i class="fa fa-user"></i>
+                                    {{__("Account")}}</a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                            @else
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Account</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
+                                <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
+                            </div>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
+                <form
+                    class="form-inline d-lg-none d-none my-2 my-lg-0 bg-white searchbar mobile p-0 justify-content-between air w-100"
+                    style="border: 1px solid #ced4da !important; height: 40px;">
+                    <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+                        placeholder="Search" aria-label="Search" name="search" required
+                        style="font-size: 14px; color: #ced4da; height: 30px !important;">
+                    <button class="btn btn-light my-sm-0 w-5 rounded-0 border-0 px-4" type="submit"
+                        style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </nav>
 
         <section class="pb-4">
             <div class="my-4 d-md-none" style="height: 1px;"></div>
@@ -159,8 +186,7 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2 text-white"
-                            style='font-family: "Lato", Arial, sans-serif;'>
+                        <h2 class="ftco-heading-2 text-white" style='font-family: "Lato", Arial, sans-serif;'>
                             {{ config('app.name', 'OpenMarket') }}</h2>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
@@ -176,7 +202,8 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2 text-white">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="{{config('app.url', 'https://openmart.ga')}}" class="py-2 d-block text-secondary">Home</a></li>
+                            <li><a href="{{config('app.url', 'https://openmart.ga')}}"
+                                    class="py-2 d-block text-secondary">Home</a></li>
                             <li><a href="{{route('store.index')}}" class="py-2 d-block text-secondary">Stores</a></li>
                             <li><a href="{{route('cart')}}" class="py-2 d-block text-secondary">Cart</a></li>
                             <li><a href="{{route('contactus')}}" class="py-2 d-block text-secondary">Contact Us</a></li>
@@ -202,9 +229,12 @@
                         <h2 class="ftco-heading-2 text-white">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="fa fa-map-marker fa-fw"></span><span class="text">{{$site->address}}</span></li>
-                                <li><span class="fa fa-plane fa-fw"></span><span class="text">{{$site->box_office}}</span></li>
-                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_1}}</span></a></li>
+                                <li><span class="fa fa-map-marker fa-fw"></span><span
+                                        class="text">{{$site->address}}</span></li>
+                                <li><span class="fa fa-plane fa-fw"></span><span
+                                        class="text">{{$site->box_office}}</span></li>
+                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
+                                            class="text">{{$site->phone_1}}</span></a></li>
                                 <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
                                             class="text">{{Str::lower($site->email_info)}}</span></a></li>
                             </ul>
@@ -218,6 +248,7 @@
                     <p>
                         Copyright &copy; <script>
                             document.write(new Date().getFullYear());
+
                         </script> OpenMarket.
                     </p>
                 </div>

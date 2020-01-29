@@ -64,14 +64,14 @@
                     </form>
                     <ul class="list-group list-group-flush" style="height: 330px; overflow-y: scroll;">
                         @isset($stores)
-                        @foreach ($stores as $store)
-                        <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top"
-                            title="{{$store->name}}">
-                            <a href="{{route('products.store', $store->id)}}" class="nav-link text-secondary p-0">
-                                <small>{{$store->name}}</small>
-                            </a>
-                        </li>
-                        @endforeach
+                            @foreach ($stores as $store)
+                            <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top"
+                                title="{{$store->name}}">
+                                <a href="{{route('products.store', $store->id)}}" class="nav-link text-secondary p-0">
+                                    <small>{{$store->name}}</small>
+                                </a>
+                            </li>
+                            @endforeach
                         @endisset
                     </ul>
                     <button class="btn btn-outline-info btn-block mt-1 rounded-0" onclick="getLocation()">Find Nearest Store <i class="fa fa-map"></i></button>
