@@ -125,9 +125,9 @@
                                     <p class="price"><span>{{__('default.currency')}}{{$item->price}}</span></p>
                                 </div>
                                 <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
-                                    <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span>Add to cart
+                                    <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span><small>Add to cart</small>
                                             <i class="fa fa-cart-plus ml-1"></i></span></a>
-                                    <a href="#" class="buy-now btn-action text-right ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span>Buy Now<i
+                                    <a href="#" class="buy-now btn-action text-center ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span><small>Buy Now</small><i
                                                 class="fa fa-shopping-bag ml-1"></i></span></a>
                                 </p>
                             </div>
