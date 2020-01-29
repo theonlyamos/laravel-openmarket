@@ -163,7 +163,7 @@
                     </ul>
                 </div>
                 <form
-                    class="form-inline d-lg-none d-none my-2 my-lg-0 bg-white searchbar mobile p-0 justify-content-between air w-100"
+                    class="form-inline d-lg-none my-2 my-lg-0 bg-white searchbar mobile p-0 justify-content-between air w-100"
                     style="border: 1px solid #ced4da !important; height: 40px;">
                     <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
                         placeholder="Search" aria-label="Search" name="search" required
