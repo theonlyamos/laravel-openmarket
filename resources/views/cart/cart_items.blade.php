@@ -21,13 +21,13 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr class="text-center">
-                                <th>&nbsp;</th>
                                 <th>
-                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3">
-                                        <i class="fa fa-trash fa-fw"></i> Empty Cart
+                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3" title="Empty Cart">
+                                        <i class="fa fa-trash fa-fw"></i>
                                     </a>
                                 </th>
-                                <th>Product</th>
+                                <th>Image</th>
+                                <th>Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
