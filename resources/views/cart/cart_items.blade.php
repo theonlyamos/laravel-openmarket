@@ -42,7 +42,7 @@
                                             <div class="img" style="background-image:url(storage/{{$item->thumbnail}}); width: 80px; height: 100px; background-size: contain;"></div>
                                         </td>
                                         <td class="product-name py-1">
-                                            <h3>{{$item->name}}</h3>
+                                            <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}">{{$item->name}}</a></h3>
                                         </td>
                                         <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
                                         <td class="quantity py-1">

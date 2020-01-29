@@ -10,7 +10,7 @@
             @foreach ($products as $item)
             <div class="col-6 col-sm-6 col-xs-6 col-lg-3 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
-                    <a href="{{route('productDetails', $item->id)}}" class="img-prod">
+                    <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod">
                         <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
                         <div class="overlay"></div>
                     </a>
@@ -32,15 +32,15 @@
                                 </p>
                             </div>
                         </div>
-                        <h3><a href="{{route('productDetails', $item->id)}}">{{$item->name}}</a></h3>
+                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}">{{$item->name}}</a></h3>
                         <!--<div class="pricing d-none d-md-block">
                             <p class="price"><span>{{__("default.currency")}}{{$item->price}}</span></p>
                         </div> -->
                         <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
-                            <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span>Add to cart
+                            <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span><small>Add to cart</small>
                                     <i class="fa fa-cart-plus ml-1"></i></span></a>
-                            <a href="#" class="buy-now btn-action text-right ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span>Buy Now<i
-                                        class="fa fa-shopping-cart ml-1"></i></span></a>
+                            <a href="#" class="buy-now btn-action text-center ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span><small>Buy Now</small><i
+                                        class="fa fa-shopping-bag ml-1"></i></span></a>
                         </p>
                     </div>
                 </div>

@@ -106,7 +106,7 @@
                     @foreach ($products as $item)
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
                         <div class="product d-flex flex-column">
-                            <a href="{{route('store.product.details', [$store->id, $item->id])}}" class="img-prod">
+                            <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod">
                                 <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
                                 <div class="overlay"></div>
                             </a>
@@ -125,7 +125,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('productDetails', $item->id)}}">{{$item->name}}</a></h3>
+                                <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}">{{$item->name}}</a></h3>
                                 <div class="pricing">
                                     <p class="price"><span>{{__('default.currency')}}{{$item->price}}</span></p>
                                 </div>
@@ -133,7 +133,7 @@
                                     <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span>Add to cart
                                             <i class="fa fa-cart-plus ml-1"></i></span></a>
                                     <a href="#" class="buy-now btn-action text-right ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span>Buy Now<i
-                                                class="fa fa-shopping-cart ml-1"></i></span></a>
+                                                class="fa fa-shopping-bag ml-1"></i></span></a>
                                 </p>
                             </div>
                         </div>
