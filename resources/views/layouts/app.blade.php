@@ -102,7 +102,7 @@
                     </button>
                 </form>
                 <div>
-                    <button class="btn btn-clear d-md-none mobile-searchbar-toggler"><i
+                    <button class="btn btn-clear d-md-none mobile-searchbar-toggler" onclick="alert('hello');"><i
                             class="fa fa-search"></i></button>
                     <div class="btn-group d-md-none">
                         <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"

@@ -218,7 +218,6 @@ $(() => {
 
     //mobile searchbar toggle
     $(".mobile-searchbar-toggler").on('click', ()=> {
-        alert('hello');
         $(".searchbar.mobile").toggleClass("d-none");
     })
 

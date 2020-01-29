@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="moble-stores-search d-md-none my-1">
+        <div class="mobile-stores-search d-md-none my-1">
             <form action="" method="post">
                 <div class="input-group">
                      <input type="text" class="form-control" name="store_search" placeholder="Search stores..." list="stores_list" style="height: 40px; font-size: .8em;">
