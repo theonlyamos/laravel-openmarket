@@ -48,7 +48,7 @@ const addToCart = (id, quantity=1)=>{
 
 //mobile searchbar toggle
 const toggleSearchBar = () => {
-    alert('hi');
+    $(".searchbar-mobile").toggleClass("d-none");
 }
 
 const getCart = async function () {
