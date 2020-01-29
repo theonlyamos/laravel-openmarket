@@ -39,7 +39,7 @@
                         <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
                             <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span>Add to cart
                                     <i class="fa fa-cart-plus ml-1"></i></span></a>
-                            <a href="#" class="buy-now text-right ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span>Buy Now<i
+                            <a href="#" class="buy-now btn-action text-right ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span>Buy Now<i
                                         class="fa fa-shopping-cart ml-1"></i></span></a>
                         </p>
                     </div>

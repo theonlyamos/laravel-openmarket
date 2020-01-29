@@ -22,7 +22,11 @@
                         <thead class="thead-light">
                             <tr class="text-center">
                                 <th>&nbsp;</th>
-                                <th>&nbsp;</th>
+                                <th>
+                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3">
+                                        <i class="fa fa-trash fa-fw"></i> Empty Cart
+                                    </a>
+                                </th>
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Quantity</th>

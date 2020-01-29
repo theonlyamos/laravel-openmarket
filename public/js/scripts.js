@@ -33,7 +33,7 @@ function makeToast(message, level = 'success', title = '<i class="fa fa-check"><
     $('#notifyToast').toast('show');
 }
 
-const addToCart = (id, quantity=1)=>{
+const addToCart = (id, quantity=1, buy=false)=>{
 
     $.post('/cart', {id: id, quantity: quantity},
     (result) => {
@@ -41,6 +41,8 @@ const addToCart = (id, quantity=1)=>{
         if (result.success) {
             let cartLength = parseInt($(".cart").text());
             $(".cart").text(result.cart)
+            if (buy)
+                window.location = '/cart';
             makeToast("Item added to cart");
         } else makeToast("Item already in cart", "info");
     })
@@ -217,6 +219,9 @@ $(() => {
 
             case 'addToCart':
                 addToCart(target);
+                break
+            case 'buy':
+                addToCart(target, 1, true);
                 break
         }
     })

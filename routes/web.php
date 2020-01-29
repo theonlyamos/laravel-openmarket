@@ -73,6 +73,7 @@ Route::group(['prefix' => 'user'], function(){
 
 Route::prefix("cart")->group(function() {
     Route::get("/", 'Cart\CartController@index')->name("cart");
+    Route::get("/empty", 'Cart\CartController@empty')->name("cart.empty");
     Route::get("/remove/{index}", 'Cart\CartController@remove_item')->name("cart.remove");
     Route::post("/", 'Cart\CartController@add_item')->name("cart.add");
     Route::get("/checkout", 'Cart\CartController@checkout')->name("checkout");

@@ -39,7 +39,8 @@ class CartController extends Controller
             $request->session()->push('cart.items', ['id' => $request->id, 'quantity' => $request->quantity]);
         else
             $request->session()->put('cart', [['id' => $request->id, 'quantity' => $request->quantity]]);
-        return response()->json(["success" => true, 'cart' => count($request->session()->get('cart.items', []))]);
+        $buy = $request->buy;
+        return response()->json(["success" => true, 'cart' => count($request->session()->get('cart.items', [])), "buy" => $buy]);
     }
 
     public function remove_item($index, Request $request){
@@ -47,6 +48,11 @@ class CartController extends Controller
         array_splice($cart, $index, 1);
         $request->session()->put('cart.items', $cart);
         return redirect("/cart");
+    }
+
+    public function empty(Request $request){
+        $request->session()->forget('cart');
+        return redirect('/');
     }
 
     public function checkout(){
