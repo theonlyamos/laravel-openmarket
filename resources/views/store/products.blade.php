@@ -95,11 +95,11 @@
                 </div>
             -->
             </div>
-            <div class="col-sm-12 col-md-9 col-lg-10">
+            <div class="col-sm-12 col-md-9 col-lg-10 px-0">
                 <div
-                    class="row mx-1 pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
+                    class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
                     @foreach ($products as $item)
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
+                    <div class="col-6 col-sm-6 col-xs-6 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
                         <div class="product d-flex flex-column">
                             <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod">
                                 <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
