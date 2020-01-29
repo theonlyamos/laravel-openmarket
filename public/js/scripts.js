@@ -33,46 +33,17 @@ function makeToast(message, level = 'success', title = '<i class="fa fa-check"><
     $('#notifyToast').toast('show');
 }
 
-function addToCart() {
-    let cart = localStorage.getItem("cart")
-    let itemId = $("[name='id']").val();
-    let itemName = $("[name='name']").val();
-    let itemPrice = $("[name='price']").val();
-    let quantity = $("[name='quantity']").val();
-    let thumbnail = $("[name='thumbnail']").val();
-    let description = $("[name='description']").val();
-    let success = false;
-    if (cart) {
-        cart = JSON.parse(cart);
-        if (!cart.hasOwnProperty(itemId)) {
-            cart[itemId] = {
-                name: itemName,
-                price: itemPrice,
-                quantity: quantity,
-                thumbnail: thumbnail,
-                description: description,
-            }
-            localStorage.setItem("cart", JSON.stringify(cart));
-            success = true;
-        }
-    } else {
-        cart = {}
-        cart[itemId] = {
-            name: itemName,
-            price: itemPrice,
-            quantity: quantity,
-            thumbnail: thumbnail,
-            description: description
-        }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        success = true;
-    }
+const addToCart = (id, quantity=1)=>{
 
-    if (success) {
-        let cartLength = parseInt($(".cart").text());
-        $(".cart").text(++cartLength)
-        makeToast("Item added to cart");
-    } else makeToast("Item already in cart", "info")
+    $.post('/cart', {id: id, quantity: quantity},
+    (result) => {
+        console.log(result);
+        if (result.success) {
+            let cartLength = parseInt($(".cart").text());
+            $(".cart").text(result.cart)
+            makeToast("Item added to cart");
+        } else makeToast("Item already in cart", "info");
+    })
 }
 
 const getCart = async function () {
@@ -84,6 +55,11 @@ const getCart = async function () {
 }
 
 $(() => {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     getCart();
 
     var count = -1;
@@ -211,9 +187,10 @@ $(() => {
     })
 
     $(document).on('click', ".btn-action", (e) => {
-        var target = $(e.currentTarget);
-        var key = target.data("target");
-        var action = target.data("action");
+        e.preventDefault();
+        var btn = $(e.currentTarget);
+        var target = btn.data("target");
+        var action = btn.data("action");
 
         switch(action){
             case 'delete':
@@ -232,7 +209,16 @@ $(() => {
                 $("#totalQuantity").text(totalQuantity);
                 makeToast("Item removed from cart", "success");
                 break;
+
+            case 'addToCart':
+                addToCart(target);
+                break
         }
+    })
+
+    //mobile searchbar toggle
+    $(".mobile-searchbar-toggler").on('click', ()=> {
+        $(".searchbar.mobile").toggleClass("d-none");
     })
 
     // Store Products Page Scripts

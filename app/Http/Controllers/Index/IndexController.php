@@ -10,11 +10,10 @@ class IndexController extends Controller
 {
     //
 
-    public function index(){
+    public function index(Request $request){
         $stores = DB::select('select * from stores');
         $site_info = DB::select('select * from site_info');
         $products = DB::select('select * from products LIMIT 12');
-
-        return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0]]);
+        return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => count($request->session()->get('cart.items', []))]);
     }
 }

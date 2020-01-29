@@ -42,7 +42,7 @@
 
 <body>
     <div id="app">
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000" style="opacity: 0.8; position: fixed; bottom: 0; right: 0;">
             <div class="toast-header">
                 <strong class="mr-auto text-dark toast-title"></strong>
                 <small class="text-muted">just now</small>
@@ -94,16 +94,19 @@
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
+                    <div>
+                        <button class="btn btn-clear d-md-none border mobile-searchbar-toggler"><i class="fa fa-search"></i></button>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="oi oi-menu"></span> Menu
+                        </button>
+                    </div>
 
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
                                 <li class="nav-item"><a href="{{route('store.index')}}" class="nav-link">Stores</a></li>
                                 <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link">Cart <i
-                                    class="fa fa-shopping-cart"></i>[<span class="cart cart-count">0</span>]</a></li>
+                                    class="fa fa-shopping-cart"></i>[<span class="cart cart-count">{{$cart ?? 0}}</span>]</a></li>
                                 <li class="nav-item dropdown">
                                     @if (Auth::check())
                                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
@@ -136,7 +139,7 @@
                             </li>
                         </ul>
                     </div>
-                    <form class="form-inline d-lg-none my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
+                    <form class="form-inline d-lg-none d-none my-2 my-lg-0 bg-white searchbar mobile p-0 justify-content-between air w-100" style="border: 1px solid #ced4da !important; height: 40px;">
                             <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
                                 placeholder="Search" aria-label="Search" name="search" required style="font-size: 14px; color: #ced4da; height: 30px !important;">
                             <button class="btn btn-light my-sm-0 w-5 rounded-0 border-0 px-4" type="submit" style="height: 40px; background: transparent; border-left: 1px solid #ced4da !important;">

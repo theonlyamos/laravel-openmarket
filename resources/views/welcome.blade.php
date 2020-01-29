@@ -222,14 +222,14 @@
                 geocoder.geocode({
                     "location": location
                 }, (result, status) => {
-                    alert(`${result[0].formatted_address} /n ${pos.lat}, ${pos.lng} /n ${result[0].geometry.location.lat()}, ${result[0].geometry.location.lng()}`);
+                    console.log(`${result[0].formatted_address} /n ${pos.lat}, ${pos.lng} /n ${result[0].geometry.location.lat()}, ${result[0].geometry.location.lng()}`);
                 })
             }, function () {
-                alert("Your device does not support geolocation")
+                console.log("Your device does not support geolocation")
             });
         } else {
             // Browser doesn't support Geolocation
-            alert("Your device does not support geoloaction")
+            console.log("Your device does not support geoloaction")
         }
     }
 

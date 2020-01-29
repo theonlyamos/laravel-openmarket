@@ -62,7 +62,8 @@ class StoreController extends Controller
         return view("store.products", ["products" => $products, "store" => $store,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
-                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0]]);
+                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0],
+                                       "cart" => count($request->session()->get('cart.items', []))]);
     }
 
     public function dashboard($page = ""){
@@ -102,7 +103,7 @@ class StoreController extends Controller
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
         $site_info = DB::select('select * from site_info');
-        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info[0]]);
+        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info[0], 'cart' => count($request->session()->get('cart.items', []))]);
     }
 
     public function get_product($product_id, Request $request){
