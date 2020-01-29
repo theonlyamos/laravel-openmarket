@@ -111,7 +111,7 @@
                                     <label class="custom-control-label" for="customSwitch1">I have read and accept the terms & conditions.</label>
                                   </div>
                             </div>
-                            <p><a href="#" class="btn btn-info btn-block py-3 px-4" style="font-size: 1em;">Place order</a></p>
+                            <p><a href="#" class="btn btn-info btn-block py-3 px-4" style="font-size: 1em;">Proceed to checkout</a></p>
                         </div>
                     </div>
                 </div>
