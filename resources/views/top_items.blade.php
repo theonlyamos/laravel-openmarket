@@ -8,7 +8,7 @@
         </div>
         <div class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
             @foreach ($products as $item)
-            <div class="col-6 col-lg-3 px-1 ftco-animate d-flex fadeInUp ftco-animated">
+            <div class="col-6 col-sm-6 col-xs-6 col-lg-3 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
                     <a href="{{route('productDetails', $item->id)}}" class="img-prod">
                         <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
