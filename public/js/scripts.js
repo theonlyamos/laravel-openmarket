@@ -1,9 +1,9 @@
 function makeToast(message, level = 'success', title = '<i class="fa fa-check"></i>Success') {
-    $("#notifyToast").removeClass(["bg-success", "bg-warning", "bg-danger", "bg-primary"])
+    $("#notifyToast").removeClass(["bg-info", "bg-warning", "bg-danger", "bg-primary"])
     const levels = {
         "success": {
             icon: '<i class="fa fa-check-circle fa-2x fa-fw"></i>',
-            background: 'bg-success',
+            background: 'bg-info',
             title: "Success",
             textColor: "text-white"
         },
@@ -34,10 +34,9 @@ function makeToast(message, level = 'success', title = '<i class="fa fa-check"><
 }
 
 const addToCart = (id, quantity=1, buy=false)=>{
-
-    $.post('/cart', {id: id, quantity: quantity},
-    (result) => {
-        console.log(result);
+    $.post('/cart',
+        {id: id, quantity: quantity},
+        (result) => {
         if (result.success) {
             let cartLength = parseInt($(".cart").text());
             $(".cart").text(result.cart)

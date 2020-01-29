@@ -43,7 +43,7 @@
 <body>
     <div id="app">
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
-            style="opacity: 0.8; position: fixed; bottom: 0; right: 0;">
+            style="position: fixed; bottom: 0; right: 0; z-index: 9999;">
             <div class="toast-header">
                 <strong class="mr-auto text-dark toast-title"></strong>
                 <small class="text-muted">just now</small>
