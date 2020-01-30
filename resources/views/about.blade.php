@@ -15,6 +15,7 @@
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
         <div class="row no-gutters ftco-services">
+            <!--
             <div class="col-12 text-justify d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="media-body">
@@ -56,6 +57,7 @@
                     </div>
                 </div>
             </div>
+        -->
             <div class="col-12 text-justify d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="icon d-flex justify-content-center align-items-center mb-4">
@@ -114,7 +116,7 @@
                         <h2>Our Vision</h2>
                     </div>
                     <div class="media-body text-cener">
-                        <p class="text-center text-dark" style="font-size: 1.2em;">Revolutionalizing Trade with Passion.</p>
+                        <p class="text-center text-dark" style="font-size: 1.2em;">Revolutionizing Trade with Passion.</p>
                     </div>
                 </div>
             </div>
