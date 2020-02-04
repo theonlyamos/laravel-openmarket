@@ -8849,7 +8849,9 @@ h1, h2, h3, h4, h5,
     -moz-box-shadow: inset 0px 0px 101px 21px rgba(0, 0, 0, 0.09);
     box-shadow: inset 0px 0px 101px 21px rgba(0, 0, 0, 0.09);
     background: #fff;
-    z-index: 1; }
+    z-index: 1;
+    max-height: 230px;
+ }
     .product .img-prod .overlay {
       position: absolute;
       top: 50%;

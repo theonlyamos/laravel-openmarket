@@ -92,7 +92,7 @@
             id="ftco-navbar">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img style="max-width: 100px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                    <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                 </a>
                 <form
                     class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"

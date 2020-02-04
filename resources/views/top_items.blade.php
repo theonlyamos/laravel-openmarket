@@ -10,7 +10,7 @@
             @foreach ($products as $item)
             <div class="col-6 col-sm-6 col-xs-6 col-lg-3 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
-                    <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod">
+                    <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod"  title="{{$item->name}}">
                         <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
                         <div class="overlay"></div>
                     </a>
@@ -32,7 +32,7 @@
                                 </p>
                             </div>
                         </div>
-                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}">{{$item->name}}</a></h3>
+                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 20, "...")}}</a></h3>
                         <!--<div class="pricing d-none d-md-block">
                             <p class="price"><span>{{__("default.currency")}}{{$item->price}}</span></p>
                         </div> -->
