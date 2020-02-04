@@ -28,6 +28,9 @@
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 </head>
 
 <body>
@@ -46,7 +49,9 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light ftco-navbar-light-2" id="ftco-navbar">
             <div class="container">
-              <a class="navbar-brand" href="index.html">Modist</a>
+              <a class="navbar-brand" href="index.html">
+                  <img src="{{asset('images/logo.png')}}" alt="Open Market">
+              </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
               </button>

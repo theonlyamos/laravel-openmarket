@@ -30,10 +30,13 @@
     <!-- Scripts -->
     <script src="{{asset('js/fontawesome.js')}}" defer></script>
     <script src="{{asset('js/app.js')}}" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 </head>
 
 <body>
-    <div class="py-1 bg-black">
+    <div class="py-1 bg-black d-none d-md-block">
         <div class="container">
             <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
                 <div class="col-lg-12 d-block">
@@ -58,9 +61,12 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light"  id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
+            <a class="navbar-brand" href="/">
+                <img class="d-none d-md-inline" style="max-width: 100px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                <img class="d-md-none" style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu

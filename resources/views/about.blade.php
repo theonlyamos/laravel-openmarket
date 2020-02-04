@@ -15,11 +15,11 @@
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
         <div class="row no-gutters ftco-services">
-            <!--
+
             <div class="col-12 text-justify d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="media-body">
-                        <h3 class="heading" style="text-transform: capitalize">Introduction</h3>
+                        <!-- <h3 class="heading" style="text-transform: capitalize">Introduction</h3> -->
                         <p>
                             <strong>Job 8:7 <em>'Think BIG, Start small'.</em> This is the Wisdom Key on
                                 Entrepreneurship'.</strong>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-        -->
+
             <div class="col-12 text-justify d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services p-4 py-md-5">
                     <div class="icon d-flex justify-content-center align-items-center mb-4">

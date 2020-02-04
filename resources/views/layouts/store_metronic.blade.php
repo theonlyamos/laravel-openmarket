@@ -80,7 +80,7 @@
 		<!--begin::Layout Skins(used by all pages) -->
 
 		<!--end::Layout Skins -->
-		<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 	</head>
 
 	<!-- end::Head -->
@@ -94,8 +94,8 @@
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="dashboard">
-					<img alt="Logo" src="{{asset('assets/media/logos/logo-2-sm.png')}}" />
-				</a>
+                    <img style="max-width: 80px; height: auto; filter:invert(100%)" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                </a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
 
@@ -116,7 +116,7 @@
 					<div class="kt-aside__brand kt-grid__item  " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
 							<a href="/">
-								<img alt="Logo" src="{{asset('assets/media/logos/logo-4.png')}}" />
+                                <img style="max-width: 60px; height: auto; filter:invert(50%)" src="{{asset('images/logo_square_big.png')}}" alt="Open Market">
 							</a>
 						</div>
 					</div>

@@ -38,6 +38,9 @@
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
 </head>
 
 <body>
@@ -85,10 +88,12 @@
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light pt-0 scrolled awake"
+        <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light pt-0 scrolled awake"
             id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="/">{{config("app.name", "OpenMarket")}}</a>
+                <a class="navbar-brand" href="/">
+                    <img style="max-width: 100px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                </a>
                 <form
                     class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"
                     style="border: 1px solid #ced4da !important; height: 40px;">
@@ -229,14 +234,25 @@
                         <h2 class="ftco-heading-2 text-white">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="fa fa-map-marker fa-fw"></span><span
+                                @if (isset($site))
+                                    <li><span class="fa fa-map-marker fa-fw"></span><span
                                         class="text">{{$site->address}}</span></li>
-                                <li><span class="fa fa-plane fa-fw"></span><span
-                                        class="text">{{$site->box_office}}</span></li>
-                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
-                                            class="text">{{$site->phone_1}}</span></a></li>
-                                <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
-                                            class="text">{{Str::lower($site->email_info)}}</span></a></li>
+                                    <li><span class="fa fa-plane fa-fw"></span><span
+                                            class="text">{{$site->box_office}}</span></li>
+                                    <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
+                                                class="text">{{$site->phone_1}}</span></a></li>
+                                    <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
+                                                class="text">{{Str::lower($site->email_info)}}</span></a></li>
+                                @else
+                                    <li><span class="fa fa-map-marker fa-fw"></span><span
+                                        class="text">{{__("Market Circle, Takoradi, WS0034423, Ghana")}}</span></li>
+                                    <li><span class="fa fa-plane fa-fw"></span><span
+                                            class="text">{{__("P. O. Box MC 2185, Takoradi")}}</span></li>
+                                    <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
+                                                class="text">{{__("+233 557 821 030")}}</span></a></li>
+                                    <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
+                                                class="text">{{__("info@mail.openmart.ga")}}</span></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
