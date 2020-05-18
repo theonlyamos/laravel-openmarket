@@ -182,7 +182,7 @@
         </nav>
 
         <section class="pb-4">
-            <div class="my-y d-none d-md-block" style="height: 1px;"></div>
+            <div class="my-5 d-none d-md-block" style="height: 1px;"></div>
             @yield('content')
         </section>
     </div>
