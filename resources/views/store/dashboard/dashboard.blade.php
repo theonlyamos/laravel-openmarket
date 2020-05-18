@@ -19,11 +19,11 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-brand">
-                            $18M
+                            {{__('default.currency')}}0.00
                         </span>
                     </div>
                     <div class="progress progress--sm">
-                        <div class="progress-bar kt-bg-brand" role="progressbar" style="width: 78%;" aria-valuenow="50"
+                        <div class="progress-bar kt-bg-brand" role="progressbar" style="width: 1%;" aria-valuenow="1"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
@@ -31,7 +31,7 @@
                             Change
                         </span>
                         <span class="kt-widget24__number">
-                            78%
+                            0%
                         </span>
                     </div>
                 </div>
@@ -52,19 +52,19 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-warning">
-                            1349
+                            0
                         </span>
                     </div>
                     <div class="progress progress--sm">
-                        <div class="progress-bar kt-bg-warning" role="progressbar" style="width: 84%;"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar kt-bg-warning" role="progressbar" style="width: 1%;"
+                            aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
                         <span class="kt-widget24__change">
                             Change
                         </span>
                         <span class="kt-widget24__number">
-                            84%
+                            0%
                         </span>
                     </div>
                 </div>
@@ -85,11 +85,11 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-danger">
-                            567
+                            0
                         </span>
                     </div>
                     <div class="progress progress--sm">
-                        <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 69%;" aria-valuenow="50"
+                        <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 1%;" aria-valuenow="0"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
@@ -97,7 +97,7 @@
                             Change
                         </span>
                         <span class="kt-widget24__number">
-                            69%
+                            0%
                         </span>
                     </div>
                 </div>
@@ -111,26 +111,26 @@
                     <div class="kt-widget24__details">
                         <div class="kt-widget24__info">
                             <h4 class="kt-widget24__title">
-                                New Users
+                                New Customers
                             </h4>
                             <span class="kt-widget24__desc">
-                                Joined New User
+                                Joined New Customers
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-success">
-                            276
+                            0
                         </span>
                     </div>
                     <div class="progress progress--sm">
-                        <div class="progress-bar kt-bg-success" role="progressbar" style="width: 90%;"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar kt-bg-success" role="progressbar" style="width: 1%;"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
                         <span class="kt-widget24__change">
                             Change
                         </span>
                         <span class="kt-widget24__number">
-                            90%
+                            0%
                         </span>
                     </div>
                 </div>
