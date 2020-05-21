@@ -41,50 +41,45 @@
                 </style>
                 <div id="map"></div>
                 <script>
+                    var map, infoWindow;
+
                     function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: {
+                                lat: -34.397,
+                                lng: 150.644
+                            },
+                            zoom: 6
+                        });
+                        infoWindow = new google.maps.InfoWindow;
+
+                        // Try HTML5 geolocation.
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function (position) {
                                 var pos = {
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
                                 };
-                                let location = new google.maps.LatLng(pos.lat, pos.lng);
-                                let latitude = pos.lat
-                                let longitude = pos.lng
 
-                                let dlatitude = {{$latitude}}
-                                let dlongitude = {{$longitude}}
-
-                                var directionsService = new google.maps.DirectionsService();
-                                var directionsRenderer = new google.maps.DirectionsRenderer();
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom: 7,
-                                    center: location
-                                });
-                                directionsRenderer.setMap(map);
-
-                                directionsService.route({
-                                    origin: {lat: latitude, lng: longitude},
-                                    destination: {lat: dlatitude, lng: dlongitude},
-                                    travelMode: 'DRIVING'
-                                    },
-                                    function (response, status) {
-                                        if (status === 'OK') {
-                                            directionsRenderer.setDirections(response);
-                                        } else {
-                                            window.alert('Directions request failed due to ' + status);
-                                        }
-                                    }
-                                );
-
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent('Location found.');
+                                infoWindow.open(map);
+                                map.setCenter(pos);
                             }, function () {
-                                console.log("Your device does not support geolocation")
+                                handleLocationError(true, infoWindow, map.getCenter());
                             });
                         } else {
                             // Browser doesn't support Geolocation
-                            console.log("Your device does not support geoloaction")
+                            handleLocationError(false, infoWindow, map.getCenter());
                         }
+                    }
 
+                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+                        infoWindow.open(map);
                     }
 
                 </script>
