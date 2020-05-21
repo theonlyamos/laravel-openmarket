@@ -42,40 +42,40 @@
                 <div id="map"></div>
                 <script>
                     function initMap() {
-                        let longitude;
-                        let latitude;
-                        let location = new google.maps.LatLng(41.85, -87.65)
-
-                        getLocation();
-
-                        var directionsService = new google.maps.DirectionsService();
-                        var directionsRenderer = new google.maps.DirectionsRenderer();
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 7,
-                            center: location
-                        });
-                        directionsRenderer.setMap(map);
-
-                        var onChangeHandler = function () {
-                            calculateAndDisplayRoute(directionsService, directionsRenderer);
-                        };
-                    }
-
-                    function getLocation() {
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function (position) {
                                 var pos = {
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
                                 };
-                                location = new google.maps.LatLng(pos.lat, pos.lng);
-                                latitude = pos.lat
-                                longitude = pos.lon
+                                let location = new google.maps.LatLng(pos.lat, pos.lng);
+                                let latitude = pos.lat
+                                let longitude = pos.lon
 
                                 let dlatitude = {{$latitude}}
                                 let dlongitude = {{$longitude}}
 
-                                calculateAndDisplayRoute()
+                                var directionsService = new google.maps.DirectionsService();
+                                var directionsRenderer = new google.maps.DirectionsRenderer();
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 7,
+                                    center: location
+                                });
+                                directionsRenderer.setMap(map);
+
+                                directionsService.route({
+                                origin: {lat: latidue, lng: longitude},
+                                destination: {lat: dlatidue, lng: dlongitude},
+                                travelMode: 'DRIVING'
+                                    },
+                                    function (response, status) {
+                                        if (status === 'OK') {
+                                            directionsRenderer.setDirections(response);
+                                        } else {
+                                            window.alert('Directions request failed due to ' + status);
+                                        }
+                                    }
+                                );
 
                             }, function () {
                                 console.log("Your device does not support geolocation")
@@ -84,21 +84,7 @@
                             // Browser doesn't support Geolocation
                             console.log("Your device does not support geoloaction")
                         }
-                    }
 
-                    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-                        directionsService.route({
-                                origin: {lat: latidue, lng: longitude},
-                                destination: {lat: dlatidue, lng: dlongitude},
-                                travelMode: 'DRIVING'
-                            },
-                            function (response, status) {
-                                if (status === 'OK') {
-                                    directionsRenderer.setDirections(response);
-                                } else {
-                                    window.alert('Directions request failed due to ' + status);
-                                }
-                            });
                     }
 
                 </script>
