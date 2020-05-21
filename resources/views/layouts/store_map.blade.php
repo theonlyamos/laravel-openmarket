@@ -55,7 +55,7 @@
                                 let dlatitude = {{$latitude}}
                                 let dlongitude = {{$longitude}}
                                 let destination = new google.maps.LatLng(parseFloat(dlatitude), parseFloat(dlongitude))
-                                console.log(location, destination)
+                                console.log(latitude, longitude, dlatitude, dlongitude)
 
                                 var directionsService = new google.maps.DirectionsService();
                                 var directionsRenderer = new google.maps.DirectionsRenderer();
