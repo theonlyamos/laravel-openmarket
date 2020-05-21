@@ -50,12 +50,11 @@
                                 };
                                 let location = new google.maps.LatLng(pos.lat, pos.lng);
                                 let latitude = pos.lat
-                                let longitude = pos.lon
+                                let longitude = pos.lng
 
                                 let dlatitude = {{$latitude}}
                                 let dlongitude = {{$longitude}}
                                 let destination = new google.maps.LatLng(parseFloat(dlatitude), parseFloat(dlongitude))
-                                console.log(latitude, longitude, dlatitude, dlongitude)
 
                                 var directionsService = new google.maps.DirectionsService();
                                 var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -64,7 +63,7 @@
                                     center: location
                                 });
                                 directionsRenderer.setMap(map);
-/*
+
                                 directionsService.route({
                                     origin: location,
                                     destination: destination,
@@ -78,7 +77,7 @@
                                         }
                                     }
                                 );
-*/
+
                             }, function () {
                                 console.log("Your device does not support geolocation")
                             });
