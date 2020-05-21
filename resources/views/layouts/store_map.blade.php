@@ -64,7 +64,7 @@
                                 directionsRenderer.setMap(map);
 
                                 directionsService.route({
-                                origin: {lat: latidue, lng: longitude},
+                                origin: {lat: latitude, lng: longitude},
                                 destination: {lat: dlatidue, lng: dlongitude},
                                 travelMode: 'DRIVING'
                                     },
