@@ -65,7 +65,7 @@
 
                                 directionsService.route({
                                 origin: {lat: latitude, lng: longitude},
-                                destination: {lat: dlatidue, lng: dlongitude},
+                                destination: {lat: dlatitude, lng: dlongitude},
                                 travelMode: 'DRIVING'
                                     },
                                     function (response, status) {
