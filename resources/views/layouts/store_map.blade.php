@@ -64,7 +64,7 @@
                                     center: location
                                 });
                                 directionsRenderer.setMap(map);
-
+/*
                                 directionsService.route({
                                     origin: location,
                                     destination: destination,
@@ -78,7 +78,7 @@
                                         }
                                     }
                                 );
-
+*/
                             }, function () {
                                 console.log("Your device does not support geolocation")
                             });
