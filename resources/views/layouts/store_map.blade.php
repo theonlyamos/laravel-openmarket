@@ -54,7 +54,6 @@
 
                                 let dlatitude = {{$latitude}}
                                 let dlongitude = {{$longitude}}
-                                let destination = new google.maps.LatLng(parseFloat(dlatitude), parseFloat(dlongitude))
 
                                 var directionsService = new google.maps.DirectionsService();
                                 var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -65,8 +64,8 @@
                                 directionsRenderer.setMap(map);
 
                                 directionsService.route({
-                                    origin: location,
-                                    destination: destination,
+                                    origin: {lat: latitude, lng: longitude},
+                                    destination: {lat: dlatitude, lng: dlongitude},
                                     travelMode: 'DRIVING'
                                     },
                                     function (response, status) {
