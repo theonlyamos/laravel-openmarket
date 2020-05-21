@@ -64,9 +64,9 @@
                                 directionsRenderer.setMap(map);
 
                                 directionsService.route({
-                                origin: {lat: latitude, lng: longitude},
-                                destination: {lat: dlatitude, lng: dlongitude},
-                                travelMode: 'DRIVING'
+                                    origin: location,
+                                    destination: {lat: parseFloat(dlatitude), lng: parseFloat(dlongitude)},
+                                    travelMode: 'DRIVING'
                                     },
                                     function (response, status) {
                                         if (status === 'OK') {
