@@ -54,6 +54,7 @@ class StoreController extends Controller
         $prod = $products[0];
         // $products = DB::select('select * from products limit 20 offset ?', [$from]);
         $store = Store::find($store_id);
+        $location = explode(",", $store->location);
         $items = DB::select('select category from products');
         $categories = [];
         foreach ($items as $item){
@@ -68,7 +69,9 @@ class StoreController extends Controller
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
                                        "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0],
-                                       "cart" => count($request->session()->get('cart.items', []))]);
+                                       "cart" => count($request->session()->get('cart.items', [])),
+                                       "latitude" => $location[0],
+                                       "longitude" => $location[1]]);
     }
 
     public function dashboard($page = ""){

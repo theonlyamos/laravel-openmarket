@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('floater')
+    @include('store.floater')
+@endsection
+
+@include('layouts.store_map')
+
 @section('content')
 <section class="store store-products" style="min-height: 90vh;">
     <div class="container">
@@ -7,7 +13,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item"><a class="text-secondary" href="{{config('app.url')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a class="text-secondary" href="{{route('store', $store->id)}}">{{$store->name}}</a>
+                    <li class="breadcrumb-item active"><a class="text-secondary"
+                            href="{{route('store', $store->id)}}">{{$store->name}}</a>
                     </li>
                 </ol>
             </nav>
@@ -17,22 +24,23 @@
                 <div class="card border-0">
                     <ul class="list-group list-group-flush">
                         @isset($categories)
-                            <li class="list-group-item bg-light text-center text-dark py-1">
-                                <small>Categories</small>
-                            </li>
-                            @foreach ($categories as $cat)
+                        <li class="list-group-item bg-light text-center text-dark py-1">
+                            <small>Categories</small>
+                        </li>
+                        @foreach ($categories as $cat)
 
-                                    <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
-                                        data-position="top" title="{{$cat}}">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" value="{{$cat}}" class="custom-control-input product-check" data-target="categories" id="{{$cat}}">
-                                            <label class="custom-control-label" for="{{$cat}}">
-                                                <small>{{Str::title($cat)}}</small>
-                                            </label>
-                                        </div>
-                                    </li>
+                        <li class="list-group-item d-flex align-items-center py-1 px-2" data-toggle="tooltip"
+                            data-position="top" title="{{$cat}}">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" value="{{$cat}}" class="custom-control-input product-check"
+                                    data-target="categories" id="{{$cat}}">
+                                <label class="custom-control-label" for="{{$cat}}">
+                                    <small>{{Str::title($cat)}}</small>
+                                </label>
+                            </div>
+                        </li>
 
-                            @endforeach
+                        @endforeach
                         @endisset
                     </ul>
                 </div>
@@ -95,13 +103,14 @@
             -->
             </div>
             <div class="col-sm-12 col-md-9 col-lg-10 px-0">
-                <div
-                    class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
+                <div class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
                     @foreach ($products as $item)
                     <div class="col-6 col-sm-6 col-xs-6 col-md-4 col-lg-3 ftco-animate d-flex fadeInUp ftco-animated">
                         <div class="product d-flex flex-column">
-                            <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod" title="{{$item->name}}">
-                                <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
+                            <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod"
+                                title="{{$item->name}}">
+                                <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}'
+                                    alt="{{$item->name}}" />
                                 <div class="overlay"></div>
                             </a>
                             <div class="text py-3 pb-4 px-3">
@@ -119,14 +128,18 @@
                                         </p>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 20, "...")}}</a></h3>
+                                <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}"
+                                        title="{{$item->name}}">{{Str::limit($item->name, 20, "...")}}</a></h3>
                                 <div class="pricing">
                                     <p class="price"><span>{{__('default.currency')}}{{$item->price}}</span></p>
                                 </div>
                                 <p class="bottom-area d-none d-md-flex px-3 text-center bg-white">
-                                    <a href="#" class="add-to-cart btn-action text-center py-2 mr-1" data-action="addToCart" data-target="{{$item->id}}"><span><small>Add to cart</small>
+                                    <a href="#" class="add-to-cart btn-action text-center py-2 mr-1"
+                                        data-action="addToCart" data-target="{{$item->id}}"><span><small>Add to
+                                                cart</small>
                                             <i class="fa fa-cart-plus ml-1"></i></span></a>
-                                    <a href="#" class="buy-now btn-action text-center ml-auto py-2" data-action="buy" data-target="{{$item->id}}"><span><small>Buy Now</small><i
+                                    <a href="#" class="buy-now btn-action text-center ml-auto py-2" data-action="buy"
+                                        data-target="{{$item->id}}"><span><small>Buy Now</small><i
                                                 class="fa fa-shopping-bag ml-1"></i></span></a>
                                 </p>
                             </div>
@@ -149,13 +162,19 @@
                     @endforeach
                 </div>
                 @if ($cats)
-                    {{ $products->appends(["categories" => implode(",", $cats)])->links() }}
+                {{ $products->appends(["categories" => implode(",", $cats)])->links() }}
                 @else
-                    {{ $products->links() }}
+                {{ $products->links() }}
                 @endif
 
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+
+@section('scripts')
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap">
+</script>
 @endsection

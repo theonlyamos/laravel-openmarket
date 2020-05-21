@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
@@ -91,7 +92,7 @@
         <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light pt-0 scrolled awake"
             id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="{{url('/')}}">
                     <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                 </a>
                 <form
@@ -186,6 +187,7 @@
             @yield('content')
         </section>
     </div>
+    @yield('floater')
     <footer class="ftco-footer bg-black ftco-section">
         <div class="container">
             <div class="row mb-5">
