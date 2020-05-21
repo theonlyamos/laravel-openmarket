@@ -39,7 +39,7 @@
                     }
 
                 </style>
-                <div id="map"></div>
+
                 <script>
                     var map, infoWindow;
 

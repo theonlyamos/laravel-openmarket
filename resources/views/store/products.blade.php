@@ -102,6 +102,7 @@
                 </div>
             -->
             </div>
+            <div id="map"></div>
             <div class="col-sm-12 col-md-9 col-lg-10 px-0">
                 <div class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
                     @foreach ($products as $item)
