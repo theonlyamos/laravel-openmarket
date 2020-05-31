@@ -4,8 +4,6 @@
     @include('store.floater')
 @endsection
 
-@include('layouts.store_map')
-
 @section('content')
 <section class="store store-products" style="min-height: 90vh;">
     <div class="container">
@@ -102,7 +100,7 @@
                 </div>
             -->
             </div>
-            <div id="map"></div>
+
             <div class="col-sm-12 col-md-9 col-lg-10 px-0">
                 <div class="row pt-3 mb-3 bg-light d-flex justify-content-start align-items-start border-secondary">
                     @foreach ($products as $item)
@@ -174,8 +172,58 @@
 </section>
 @endsection
 
+@include('layouts.store_map')
 
 @section('scripts')
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap">
+<script>
+    function initMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                let location = new google.maps.LatLng(pos.lat, pos.lng);
+                let latitude = pos.lat
+                let longitude = pos.lng
+
+                let dlatitude = {{$latitude}}
+                let dlongitude = {{$longitude}}
+
+                var directionsService = new google.maps.DirectionsService();
+                var directionsRenderer = new google.maps.DirectionsRenderer();
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 7,
+                    center: location
+                });
+                directionsRenderer.setMap(map);
+
+                directionsService.route({
+                    origin: {lat: latitude, lng: longitude},
+                    destination: {lat: dlatitude, lng: dlongitude},
+                    travelMode: 'DRIVING'
+                    },
+                    function (response, status) {
+                        if (status === 'OK') {
+                            directionsRenderer.setDirections(response);
+                        } else {
+                            window.alert('Directions request failed due to ' + status);
+                        }
+                    }
+                );
+
+            }, function () {
+                console.log("Your device does not support geolocation")
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            console.log("Your device does not support geoloaction")
+        }
+
+    }
 </script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap">
+</script>
+
 @endsection
