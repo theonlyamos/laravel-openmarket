@@ -19,10 +19,9 @@ var filesToCache = [
   '/favicon.ico',
   '/manifest.json',
   '/service-worker.js',
-  'assets/css/styles.css',
-  'assets/scripts/app.js',
-  "/js/app.js",
-  "/css/app.css"
+  '/js/app.js',
+  '/js/scripts.js',
+  '/css/styles.css'
 ];
 
 self.addEventListener('install', function(e) {
