@@ -43,6 +43,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
     <link rel="manifest" href="/manifest.json">
+		<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body>
