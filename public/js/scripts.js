@@ -1,13 +1,3 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('./service-worker.js')
-        .then(function () {
-            console.log('Service Worker Registered');
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-}
 
 function makeToast(message, level = 'success', title = '<i class="fa fa-check"></i>Success') {
     $("#notifyToast").removeClass(["bg-info", "bg-warning", "bg-danger", "bg-primary"])
@@ -74,6 +64,17 @@ const getCart = async function () {
 }
 
 $(() => {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('./service-worker.js')
+            .then(function () {
+                console.log('Service Worker Registered');
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
