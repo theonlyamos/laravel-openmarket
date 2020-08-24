@@ -16,33 +16,32 @@
 <section class="ftco-section ftco-cart">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 ftco-animate fadeInUp ftco-animated cart-items">
-                <div class="cart-list">
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated cart-items" style="overflow-x: scroll">
+                <div class="cart-list" style="overflow-x: auto">
                     <table class="table">
                         <thead class="thead-light">
                             <tr class="text-center">
-                                <th>
-                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3" title="Empty Cart">
-                                        <i class="fa fa-trash fa-fw"></i>
-                                    </a>
-                                </th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
+                                <th>
+                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3" title="Empty Cart">
+                                        <i class="fa fa-trash fa-fw"></i>
+                                    </a>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @if ($products)
                                 @foreach ($products as $index => $item)
                                     <tr class="text-center">
-                                        <td class="product-remove py-1"><a href="{{route('cart.remove', $index)}}"><span class="ion-ios-close"></span></a></td>
                                         <td class="image-prod py-1">
                                             <div class="img" style="background-image:url(storage/{{$item->thumbnail}}); width: 80px; height: 100px; background-size: contain;"></div>
                                         </td>
                                         <td class="product-name py-1">
-                                            <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}">{{$item->name}}</a></h3>
+                                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 40, '...')}}</a></h3>
                                         </td>
                                         <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
                                         <td class="quantity py-1">
@@ -51,6 +50,7 @@
                                             </div>
                                         </td>
                                         <td class="total py-1">{{__('default.currency')}}{{number_format($item->price * $item->quantity, 2)}}</td>
+                                        <td class="product-remove py-1"><a href="{{route('cart.remove', $index)}}"><span class="ion-ios-close"></span></a></td>
                                     </tr>
                                 @endforeach
                             @else
@@ -60,9 +60,9 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
-                <div class="row justify-content-between">
-                    <div class="col-12 cart-wrap ftco-animate fadeInUp ftco-animated">
+            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                <div class="row justify-content-end">
+                    <div class="col-md-4 cart-wrap ftco-animate fadeInUp ftco-animated">
                         <div class="cart-total mb-3">
                             <h3>Cart Totals</h3>
                             <p class="d-flex">
@@ -82,36 +82,19 @@
                                 <span>Total</span>
                                 <span>{{__('default.currency')}}{{number_format($total, 2)}}</span>
                             </p>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-3 cart-wrap ftco-animate fadeInUp ftco-animated">
-                        <div class="cart-total p-3 p-md-4">
-                            <h3 class="billing-heading mb-4">Payment Method</h3>
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" checked class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Mobile Money</label>
-                                  </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="customRadio"  class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Credit Card</label>
-                                  </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio3" name="customRadio"  class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio3">E-zwich</label>
-                                  </div>
-                            </div>
                             <div class="form-group">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" required>
-                                    <label class="custom-control-label" for="customSwitch1">I have read and accept the terms & conditions.</label>
+                                    <input type="checkbox" class="custom-control-input" id="termsSwitch" required>
+                                    <label class="custom-control-label" for="termsSwitch">I have read and accept the terms & conditions.</label>
                                   </div>
                             </div>
-                            <p><a href="#" class="btn btn-info btn-block py-3 px-4" style="font-size: 1em;">Proceed to checkout</a></p>
+
+                            <p>
+                                <form>
+                                    <script src="https://checkout.flutterwave.com/v3.js"></script>
+                                    <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
+                                  </form>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -202,7 +185,40 @@
 @endsection
 
 @section('scripts')
-<!--begin::Page Scripts(used by this page)
+<!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/custom/apps/user/cart.js')}}" type="text/javascript"></script>
+<script>
+function makePayment() {
+    FlutterwaveCheckout({
+      public_key: "{{env('FLUTTERWAVE_PUBLIC_KEY')}}",
+      tx_ref: "hooli-tx-1920bbtyt",
+      amount: {{$total}},
+      currency: "GHS",
+      payment_options: "mobilemoneyghana",
+      redirect_url: // specified redirect URL
+        "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+      meta: {
+        consumer_id: 23,
+        consumer_mac: "92a3-912ba-1192a",
+      },
+      customer: {
+        email: "{{Auth::user()->email}}",
+        phone_number: "{{Auth::user()->phonenumber}}",
+        name: "{{Auth::user()->name}}",
+      },
+      callback: function (data) {
+        console.log(data);
+      },
+      onclose: function() {
+        // close modal
+      },
+      customizations: {
+        title: "{{config('app.name')}}",
+        description: "Payment for items in cart",
+        logo: "https://cdn.filestackcontent.com/gpDGnRSHToe2Nfwhp8B7",
+      },
+    });
+  }
+</script>
 <!--end::Page Scripts -->
 @endsection

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'OpenMarket'),
+    'name' => env('APP_NAME', 'OpenMartGH'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://openmart.ga'),
+    'url' => env('APP_URL', 'https://openmartgh.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

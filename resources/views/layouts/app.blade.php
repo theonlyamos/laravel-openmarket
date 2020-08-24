@@ -42,6 +42,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>

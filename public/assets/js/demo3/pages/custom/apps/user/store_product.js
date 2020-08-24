@@ -91,6 +91,7 @@ var KTAppUserAdd = function () {
 				// See: http://malsup.com/jquery/form/#ajaxSubmit
 				formEl.ajaxSubmit({
 					success: function(data) {
+                        console.log(data)
 						KTApp.unprogress(btn);
                         //KTApp.unblock(formEl);
 						swal.fire({

@@ -148,7 +148,7 @@
                                                         <label>Features</label>
 
                                                         <textarea class="form-control" rows="5" name="features"
-                                                            data-name="geatures"
+                                                            data-name="features"
                                                             placeholder="Example: color: white, size: 3, etc..."
                                                             required></textarea>
 
@@ -176,7 +176,7 @@
                             <div class="kt-section mb-0">
                                 <div class="kt-wizard-v4__form">
                                     <div class="form-group row mb-0 justify-content-center">
-                                        <!--
+
                                         <div class="col-xl-3 col-lg-3 col-form-label">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                     id="productImages">
@@ -193,7 +193,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    -->
+
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                 id="kt_apps_user_add_avatar">
@@ -231,11 +231,11 @@
                                             Product Details
                                         </div>
                                         <div class="kt-wizard-v4__review-content">
-                                            Name: <span id="name-preview"></span>
-                                            <br> Price: {{__('default.currency')}}<span class="preview"
+                                            <b>Name:</b> <span id="name-preview"></span>
+                                            <br> <b>Price:</b> {{__('default.currency')}}<span class="preview"
                                                 id="price-preview"></span>
-                                            <br> Category: <span class="preview" id="category-preview"></span>
-                                            <br> Brand: <span class="preview" id="brand-preview"></span>
+                                            <br> <b>Category:</b> <span class="preview" id="category-preview"></span>
+                                            <br> <b>Brand:</b> <span class="preview" id="brand-preview"></span>
                                         </div>
                                     </div>
                                     <div class="kt-wizard-v4__review-item">
@@ -243,9 +243,9 @@
                                             Product Description, Features and Keywords
                                         </div>
                                         <div class="kt-wizard-v4__review-content">
-                                            Description: <span class="preview" id="description-preview"></span>
-                                            <br> Features: <span class="preview" id="features-preview"></span>
-                                            <br> Keywords: <span class="preview" id="keywords-preview"></span>
+                                            <b>Description:</b> <span class="preview" id="description-preview"></span>
+                                            <br> <b>Features:</b> <span class="preview" id="features-preview"></span>
+                                            <br> <b>Keywords:</b> <span class="preview" id="keywords-preview"></span>
                                         </div>
                                     </div>
                                     <div class="kt-wizard-v4__review-item">

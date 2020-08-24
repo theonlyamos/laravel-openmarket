@@ -26,7 +26,7 @@ var KTAppUserAdd = function () {
         }
 
     }
-
+/*
     var initialize = ()=> {
         var btn = document.getElementById("buy");
         btn.onclick = function(e){
@@ -35,18 +35,35 @@ var KTAppUserAdd = function () {
         }
     }
 
-
+*/
 
 	return {
 		// public functions
 		init: function() {
-            initialize();
+            //initialize();
 		}
-	};
+    };
+
 }();
 
 window.addEventListener('load', () => {
-    KTAppUserAdd.init();
+    //KTAppUserAdd.init();
+
+    let terms = document.getElementById("termsSwitch");
+    terms.onchange = function(e){
+        let checkoutBtn = document.getElementById("checkoutButton");
+        if (e.target.checked){
+            checkoutBtn.classList.remove("disabled");
+            checkoutBtn.removeAttribute('disabled');
+            checkoutBtn.style.cursor = 'pointer';
+
+        }
+        else {
+            checkoutBtn.classList.add("disabled");
+            checkoutBtn.setAttribute("disabled", "disabled");
+            checkoutBtn.style.cursor = 'not-allowed'
+        }
+    }
 })
 
 

@@ -30,6 +30,11 @@ var handleFiles = function(e) {
             reader.onload = (function (athumbnail) {
                 return function (e) {
                     athumbnail.style.backgroundImage = `url(${e.target.result})`;
+
+                    if (target == 'thumbnailSelect'){
+                        const thumbView = document.getElementById("thumbnail-preview");
+                        thumbView.style.backgroundImage = `url(${e.target.result})`;
+                    }
                 };
             })(thumbnail);
             reader.readAsDataURL(file);
