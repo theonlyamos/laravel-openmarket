@@ -275,6 +275,19 @@
         </div>
     </footer>
     @yield('scripts')
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function () {
+                console.log('Service Worker Registered');
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }
+
+    </script>
 </body>
 
 </html>
