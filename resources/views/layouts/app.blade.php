@@ -283,7 +283,6 @@
     </footer>
     @yield('scripts')
     <script>
-        console.log('hello')
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
             .register('/service-worker.js')
@@ -294,10 +293,6 @@
                 console.log(error)
             })
         }
-        else {
-            console.log('no service worker')
-        }
-
     </script>
 </body>
 

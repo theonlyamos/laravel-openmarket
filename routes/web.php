@@ -119,5 +119,7 @@ Route::get('/about', 'ContactUs\ContactUsController@about')->name('aboutus');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/pay', 'Payment\PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'Payment\PaymentController@handleGatewayCallback');
 
 ?>

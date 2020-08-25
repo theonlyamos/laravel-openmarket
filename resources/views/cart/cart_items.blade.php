@@ -91,10 +91,13 @@
 
                             <p>
                                 @if (Auth::check())
+                                <!--
                                 <form>
                                     <script src="https://checkout.flutterwave.com/v3.js"></script>
                                     <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
                                   </form>
+                                -->
+    <button type="button" class="btn btn-info btn-block py-2" onclick="payWithPaystack()"> Pay </button>
                                 @else
                                     <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
                                 @endif
@@ -191,8 +194,30 @@
 @section('scripts')
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/custom/apps/user/cart.js')}}" type="text/javascript"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 @if (Auth::check())
 <script>
+const paymentForm = document.getElementById('paymentForm');
+
+function payWithPaystack() {
+  let handler = PaystackPop.setup({
+    key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}},    
+		email: "{{Auth::user()->email}}",
+    amount: "{{$total}}",
+    firstname: "{{explode(' ', Auth::user()->name)[0]}}",
+    lastname: "{{explode(' ', Auth::user()->name)[1]}}",
+    // label: "Optional string that replaces customer email"
+    onClose: function(){
+      alert('Window closed.');
+    },
+    callback: function(response){
+      let message = 'Payment complete! Reference: ' + response.reference;
+			console.log(message');
+    }
+  });
+  handler.openIframe();
+}
+/*
 function makePayment() {
     FlutterwaveCheckout({
       public_key: "{{env('FLUTTERWAVE_PUBLIC_KEY')}}",
@@ -224,6 +249,7 @@ function makePayment() {
       },
     });
   }
+ */
 </script>
 @endif
 <!--end::Page Scripts -->
