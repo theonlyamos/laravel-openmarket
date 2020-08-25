@@ -90,10 +90,14 @@
                             </div>
 
                             <p>
+                                @if (Auth::check())
                                 <form>
                                     <script src="https://checkout.flutterwave.com/v3.js"></script>
                                     <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
                                   </form>
+                                @else
+                                    <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -187,6 +191,7 @@
 @section('scripts')
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/custom/apps/user/cart.js')}}" type="text/javascript"></script>
+@if (Auth::check())
 <script>
 function makePayment() {
     FlutterwaveCheckout({
@@ -220,5 +225,6 @@ function makePayment() {
     });
   }
 </script>
+@endif
 <!--end::Page Scripts -->
 @endsection

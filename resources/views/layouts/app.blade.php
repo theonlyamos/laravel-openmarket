@@ -3,11 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Page Title -->
     <title>{{ config('app.name', 'OpenMarket') }}</title>
 
     <!-- Fonts -->
@@ -35,15 +40,16 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Scripts -->
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
-    <link rel="manifest" href="/manifest.json">
-		<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body>
@@ -277,6 +283,7 @@
     </footer>
     @yield('scripts')
     <script>
+        console.log('hello')
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
             .register('/service-worker.js')
@@ -286,6 +293,9 @@
             .catch((error) => {
                 console.log(error)
             })
+        }
+        else {
+            console.log('no service worker')
         }
 
     </script>
