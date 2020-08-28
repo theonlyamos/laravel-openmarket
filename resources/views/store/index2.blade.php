@@ -107,7 +107,7 @@
                 <div class="product d-flex flex-column">
                     <a href="{{route('productDetails', $item->id)}}" class="img-prod">
                         <img class="img-fluid" src="{{asset('storage/'.$item->thumbnail)}}"
-                            alt="{{$item->name}}">
+                            alt="{{$item->name}}" loading="lazy">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3">

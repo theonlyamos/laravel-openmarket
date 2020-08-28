@@ -109,7 +109,7 @@
                             <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod"
                                 title="{{$item->name}}">
                                 <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}'
-                                    alt="{{$item->name}}" />
+                                    alt="{{$item->name}}" loading="lazy"/>
                                 <div class="overlay"></div>
                             </a>
                             <div class="text py-3 pb-4 px-3">

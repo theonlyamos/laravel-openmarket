@@ -11,7 +11,7 @@
             <div class="col-6 col-sm-6 col-xs-6 col-md-3  col-lg-2 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
                     <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod"  title="{{$item->name}}">
-                        <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"/>
+                        <img class="img-fluid" src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}" loading="lazy"/>
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3">

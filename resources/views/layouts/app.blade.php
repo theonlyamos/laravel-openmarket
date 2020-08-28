@@ -100,9 +100,15 @@
         <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light pt-0 scrolled awake"
             id="ftco-navbar">
             <div class="container">
+                @if (Auth::check())
+                <a class="navbar-brand" href="{{url('/home')}}">
+                    <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                </a>
+                @else
                 <a class="navbar-brand" href="{{url('/')}}">
                     <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                 </a>
+                @endif
                 <form
                     class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"
                     style="border: 1px solid #ced4da !important; height: 40px;">

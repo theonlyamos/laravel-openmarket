@@ -1,137 +1,137 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
-@section('content')
-<div class="hero-wrap hero-bread bg-light py-5" style="background-image: url('images/bg_6.jpg');">
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
-                <h1 class="mb-0 bread"
-                    style='font-family: "Lato", Arial, sans-serif; font-weight: 100; font-size: 40px;'>My Cart</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">{{__('home')}}</a></span>
-                    <span>Cart</span></p>
+    @section('content')
+    <div class="hero-wrap hero-bread bg-light py-5" style="background-image: url('images/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                    <h1 class="mb-0 bread"
+                        style='font-family: "Lato", Arial, sans-serif; font-weight: 100; font-size: 40px;'>My Cart</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">{{__('home')}}</a></span>
+                        <span>Cart</span></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<section class="ftco-section ftco-cart">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ftco-animate fadeInUp ftco-animated cart-items" style="overflow-x: scroll">
-                <div class="cart-list" style="overflow-x: auto">
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr class="text-center">
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>
-                                    <a href="{{route('cart.empty')}}" class="btn btn-danger px-3" title="Empty Cart">
-                                        <i class="fa fa-trash fa-fw"></i>
-                                    </a>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($products)
-                                @foreach ($products as $index => $item)
-                                    <tr class="text-center">
-                                        <td class="image-prod py-1">
-                                            <div class="img" style="background-image:url(storage/{{$item->thumbnail}}); width: 80px; height: 100px; background-size: contain;"></div>
-                                        </td>
-                                        <td class="product-name py-1">
-                                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 40, '...')}}</a></h3>
-                                        </td>
-                                        <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
-                                        <td class="quantity py-1">
-                                            <div class="input-group mb-1">
-                                                <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->quantity}}" min="1" max="100">
-                                            </div>
-                                        </td>
-                                        <td class="total py-1">{{__('default.currency')}}{{number_format($item->price * $item->quantity, 2)}}</td>
-                                        <td class="product-remove py-1"><a href="{{route('cart.remove', $index)}}"><span class="ion-ios-close"></span></a></td>
-                                    </tr>
-                                @endforeach
-                            @else
-
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
-                <div class="row justify-content-end">
-                    <div class="col-md-4 cart-wrap ftco-animate fadeInUp ftco-animated">
-                        <div class="cart-total mb-3">
-                            <h3>Cart Totals</h3>
-                            <p class="d-flex">
-                                <span>Subtotal</span>
-                                <span>{{__('default.currency')}}{{number_format($total, 2)}}</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Delivery</span>
-                                <span>{{__('default.currency')}}0.00</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Discount</span>
-                                <span>{{__('default.currency')}}0.00</span>
-                            </p>
-                            <hr>
-                            <p class="d-flex total-price">
-                                <span>Total</span>
-                                <span>{{__('default.currency')}}{{number_format($total, 2)}}</span>
-                            </p>
-                            <div class="form-group">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="termsSwitch" required>
-                                    <label class="custom-control-label" for="termsSwitch">I have read and accept the terms & conditions.</label>
-                                  </div>
-                            </div>
-
-                            <p>
-                                @if (Auth::check())
-                                <!--
-                                <form>
-                                    <script src="https://checkout.flutterwave.com/v3.js"></script>
-                                    <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
-                                  </form>
-                                -->
-    <button type="button" class="btn btn-info btn-block py-2" onclick="payWithPaystack()"> Pay </button>
+    <section class="ftco-section ftco-cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ftco-animate fadeInUp ftco-animated cart-items" style="overflow-x: scroll">
+                    <div class="cart-list" style="overflow-x: auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr class="text-center">
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>
+                                        <a href="{{route('cart.empty')}}" class="btn btn-danger px-3" title="Empty Cart">
+                                            <i class="fa fa-trash fa-fw"></i>
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($products)
+                                    @foreach ($products as $index => $item)
+                                        <tr class="text-center">
+                                            <td class="image-prod py-1">
+                                                <div class="img" style="background-image:url(storage/{{$item->thumbnail}}); width: 80px; height: 100px; background-size: contain;"></div>
+                                            </td>
+                                            <td class="product-name py-1">
+                                            <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 40, '...')}}</a></h3>
+                                            </td>
+                                            <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
+                                            <td class="quantity py-1">
+                                                <div class="input-group mb-1">
+                                                    <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->quantity}}" min="1" max="100">
+                                                </div>
+                                            </td>
+                                            <td class="total py-1">{{__('default.currency')}}{{number_format($item->price * $item->quantity, 2)}}</td>
+                                            <td class="product-remove py-1"><a href="{{route('cart.remove', $index)}}"><span class="ion-ios-close"></span></a></td>
+                                        </tr>
+                                    @endforeach
                                 @else
-                                    <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
+
                                 @endif
-                            </p>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+                    <div class="row justify-content-end">
+                        <div class="col-md-4 cart-wrap ftco-animate fadeInUp ftco-animated">
+                            <div class="cart-total mb-3">
+                                <h3>Cart Totals</h3>
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>{{__('default.currency')}}{{number_format($total, 2)}}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    <span>{{__('default.currency')}}0.00</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span>{{__('default.currency')}}0.00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>{{__('default.currency')}}{{number_format($total, 2)}}</span>
+                                </p>
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="termsSwitch" required>
+                                        <label class="custom-control-label" for="termsSwitch">I have read and accept the terms & conditions.</label>
+                                      </div>
+                                </div>
+
+                                <p>
+                                    @if (Auth::check())
+                                    <!--
+                                    <form>
+                                        <script src="https://checkout.flutterwave.com/v3.js"></script>
+                                        <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
+                                      </form>
+                                    -->
+                                    <button type="button" class="btn btn-info btn-block py-2" onclick="payWithPaystack()" style="color: white!important"> Checkout </button>
+                                    @else
+                                        <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
+                                    @endif
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
-
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 .col-sm-12 mt-2 cart-items" style="overflow-x: scroll">
-            <div class="card p-3 mb-2 border-0 bg-light">
-                <div class="row">
-                    <div class="col-2"><strong></strong></div>
-                    <div class="col-5"><strong>Name</strong></div>
-                    <div class="col-2"><strong>Quantity</strong></div>
-                    <div class="col-3"><strong>Price</strong></div>
+    <!--
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 .col-sm-12 mt-2 cart-items" style="overflow-x: scroll">
+                <div class="card p-3 mb-2 border-0 bg-light">
+                    <div class="row">
+                        <div class="col-2"><strong></strong></div>
+                        <div class="col-5"><strong>Name</strong></div>
+                        <div class="col-2"><strong>Quantity</strong></div>
+                        <div class="col-3"><strong>Price</strong></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-12 mt-2">
-            <div class="card p-3 mb-2 border-0 bg-light text-center">
-                Choose Payment Method
-            </div>
-            <div class="card border-0">
-                <div class="card-body text-center">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="paymentMethod" class="custom-control-input"
+            <div class="col-lg-4 col-md-12 mt-2">
+                <div class="card p-3 mb-2 border-0 bg-light text-center">
+                    Choose Payment Method
+                </div>
+                <div class="card border-0">
+                    <div class="card-body text-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="paymentMethod" class="custom-control-input"
                             value="card">
                         <label class="custom-control-label" for="customRadioInline1">Credit Card</label>
                     </div>
@@ -197,13 +197,13 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
 @if (Auth::check())
 <script>
-const paymentForm = document.getElementById('paymentForm');
+//const paymentForm = document.getElementById('paymentForm');
 
 function payWithPaystack() {
   let handler = PaystackPop.setup({
-    key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}},    
+    key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}}",
 		email: "{{Auth::user()->email}}",
-    amount: "{{$total}}",
+    amount: {{$total}}00,
     firstname: "{{explode(' ', Auth::user()->name)[0]}}",
     lastname: "{{explode(' ', Auth::user()->name)[1]}}",
     // label: "Optional string that replaces customer email"
@@ -212,7 +212,7 @@ function payWithPaystack() {
     },
     callback: function(response){
       let message = 'Payment complete! Reference: ' + response.reference;
-			console.log(message');
+			console.log('message');
     }
   });
   handler.openIframe();
