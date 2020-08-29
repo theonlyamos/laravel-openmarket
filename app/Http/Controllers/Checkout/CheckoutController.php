@@ -10,9 +10,7 @@ class CheckoutController extends Controller
 {
     //
 
-
-
-    public function buy(Request $request){
+    public function index(Request $request){
         $keys = $request->all();
         return response()->json(["keys" => $keys]);
         //$products = DB::select('select * from products where id in ?', [1,2]);

@@ -24,9 +24,9 @@ class CartController extends Controller
                 $product->quantity = $item['quantity'];
                 $total += $product->price * $product->quantity;
                 array_push($products, $product);
+
             }
         }
-
         return view("cart.cart_items", ["title" => "Cart",
                                         "site" => $site_info[0],
                                         "cart" => count($request->session()->get('cart.items', [])),

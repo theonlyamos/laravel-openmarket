@@ -97,7 +97,7 @@
                                         <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
                                       </form>
                                     -->
-                                    <button type="button" class="btn btn-info btn-block py-2" onclick="payWithPaystack()" style="color: white!important"> Checkout </button>
+                                    <button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button>
                                     @else
                                         <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
                                     @endif
@@ -202,17 +202,18 @@
 function payWithPaystack() {
   let handler = PaystackPop.setup({
     key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}}",
-		email: "{{Auth::user()->email}}",
-    amount: {{$total}}00,
+	email: "{{Auth::user()->email}}",
+    amount: "{{$total * 100}}",
     firstname: "{{explode(' ', Auth::user()->name)[0]}}",
     lastname: "{{explode(' ', Auth::user()->name)[1]}}",
-    // label: "Optional string that replaces customer email"
+    ref: `ref-${Math.ceil(Math.random() * 10e13)}`,
+    currency: "GHS",
+    label: "{{Auth::user()->name}}",
     onClose: function(){
       alert('Window closed.');
     },
     callback: function(response){
-      let message = 'Payment complete! Reference: ' + response.reference;
-			console.log('message');
+		console.log(response);
     }
   });
   handler.openIframe();
