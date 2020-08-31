@@ -336,7 +336,6 @@
     </footer>
     @yield('scripts')
     <script>
-        /*
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
             .register('/service-worker.js')
@@ -347,7 +346,6 @@
                 console.log(error)
             })
         }
-        */
     </script>
 </body>
 
