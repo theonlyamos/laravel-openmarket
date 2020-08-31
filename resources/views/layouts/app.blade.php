@@ -45,20 +45,20 @@
     <link rel="manifest" href="/manifest.json">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/fontawesome.js') }}" defer></script>
+   <!-- <script src="{{ asset('js/fontawesome.js') }}" defer></script> -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
 
-	<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script>
 </head>
 
 <body>
     <div id="app">
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
+        <div class="toast bg-dark d-none" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
             style="height: 85px; position: fixed; bottom: 0; right: 0; z-index: 9999;">
             <div class="toast-header">
                 <strong class="mr-auto text-dark toast-title"></strong>
-                <small class="text-muted">just now</small>
+                <small class="text-secondary">just now</small>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -121,10 +121,13 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-                <div>
-                    <button class="btn btn-clear d-md-none mobile-searchbar-toggler" onclick="toggleSearchBar()"><i
+                <div class="d-md-none">
+                    <button class="btn btn-clear mobile-searchbar-toggler" onclick="toggleSearchBar()"><i
                             class="fa fa-search"></i></button>
-                    <div class="btn-group d-md-none">
+                    <a href="{{route('cart')}}" class="btn btn-clear" title="cart"><i
+                        class="fa fa-shopping-cart"></i>[<span
+                        class="cart cart-count">{{$cart ?? 0}}</span>]</a>
+                    <div class="btn-group">
                         <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Stores
@@ -139,10 +142,54 @@
                             @endisset
                         </div>
                     </div>
+                    @if (Auth::check())
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i
+                                class="fa fa-user-circle-o"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    {{__("Orders")}}</a>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa fa-user-circle"></i>
+                                    {{__("Profile")}}</a>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa fa-sliders"></i>
+                                    {{__("Settings")}}</a>
+                                </a>
+                            </div>
+                        </div>
+                    @else
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i
+                                class="fa fa-user-circle-o"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="{{route('login')}}" class="dropdown-item">
+                                    <i class="fa fa-sign-in"></i>
+                                    {{__("Login")}}
+                                </a>
+                                <a href="{{route('register')}}" class="dropdown-item">
+                                    <i class="fa fa-user-plus"></i>
+                                    {{__("Register")}}
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+
+                    <!--
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="oi oi-menu"></span>
                     </button>
+                -->
                 </div>
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
@@ -289,6 +336,7 @@
     </footer>
     @yield('scripts')
     <script>
+        /*
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
             .register('/service-worker.js')
@@ -299,6 +347,7 @@
                 console.log(error)
             })
         }
+        */
     </script>
 </body>
 

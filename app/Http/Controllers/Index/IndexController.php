@@ -14,6 +14,7 @@ class IndexController extends Controller
         $stores = DB::select('select * from stores');
         $site_info = DB::select('select * from site_info');
         $products = DB::select('select * from products LIMIT 12');
-        return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => count($request->session()->get('cart.items', []))]);
+        $cart = count($request->session()->get('cart.items', []));
+        return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => $cart]);
     }
 }

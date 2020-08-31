@@ -6036,7 +6036,8 @@ module.exports = {
     FADE: 'fade',
     HIDE: 'hide',
     SHOW: 'show',
-    SHOWING: 'showing'
+    SHOWING: 'showing',
+    DNONE: 'd-none'
   };
   var DefaultType$7 = {
     animation: 'boolean',
@@ -6158,6 +6159,7 @@ module.exports = {
 
       var complete = function complete() {
         _this4._element.classList.add(ClassName$a.HIDE);
+        _this4._element.classList.add(ClassName$a.DNONE);
 
         $(_this4._element).trigger(Event$a.HIDDEN);
       };

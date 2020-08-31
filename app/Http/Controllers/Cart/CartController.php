@@ -14,7 +14,9 @@ class CartController extends Controller
     //
 
     public function index(Request $request){
+        $items = $request->session()->get('cart.items');
         $site_info = DB::select('select * from site_info');
+        $stores = DB::select('select * from stores');
         $items = $request->session()->get('cart.items', []);
         $products = [];
         $total = 0.00;
@@ -29,14 +31,33 @@ class CartController extends Controller
         }
         return view("cart.cart_items", ["title" => "Cart",
                                         "site" => $site_info[0],
+                                        "stores" => $stores,
                                         "cart" => count($request->session()->get('cart.items', [])),
                                         "products" => $products,
                                         "total" => $total]);
     }
 
     public function add_item(Request $request){
-        if ($request->session()->has('cart'))
+        if ($request->session()->has('cart')){
+/*
+            $items = $request->session()->get('cart.items');
+            $cart = [];
+            if (count($items)){
+                foreach($items as $item){
+                    if ($item['id'] == $request->id){
+                        $item['quantity'] += $request->quantity;
+                    }
+                    array_push($cart, $item);
+
+                }
+            }
+            else {
+                array_push($cart, ['id' => $request->id, 'quantity' => $request->quantity]);
+            }
+            $request->session()->put('cart', ['items' => $cart]);
+*/
             $request->session()->push('cart.items', ['id' => $request->id, 'quantity' => $request->quantity]);
+        }
         else
             $request->session()->put('cart', ['items' => [['id' => $request->id, 'quantity' => $request->quantity]]]);
         $buy = $request->buy;

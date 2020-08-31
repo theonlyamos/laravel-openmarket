@@ -1,6 +1,6 @@
 
 function makeToast(message, level = 'success', title = '<i class="fa fa-check"></i>Success') {
-    $("#notifyToast").removeClass(["bg-info", "bg-warning", "bg-danger", "bg-primary"])
+    $("#notifyToast").removeClass(["bg-info", "bg-warning", "bg-danger", "bg-primary", "d-none"])
     const levels = {
         "success": {
             icon: '<i class="fa fa-check-circle fa-2x fa-fw"></i>',
@@ -40,6 +40,7 @@ const addToCart = (id, quantity = 1, buy = false) => {
             quantity: quantity
         },
         (result) => {
+            console.log(result)
             if (result.success) {
                 let cartLength = parseInt($(".cart").text());
                 $(".cart").text(result.cart)
@@ -64,7 +65,7 @@ const getCart = async function () {
 }
 
 $(() => {
-    
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
