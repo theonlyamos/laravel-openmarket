@@ -42,6 +42,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
+    <link rel="apple-touch-icon" href="{{asset('icons/apple-touch-icon.png')}}">
     <link rel="manifest" href="/manifest.json">
 
     <!-- Scripts -->
