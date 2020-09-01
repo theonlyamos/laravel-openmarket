@@ -80,7 +80,12 @@
 			"src": "/icons/favicon-16x16-openmart-manifest-12124.png",
 			"type": "image/png",
 			"sizes": "16x16"
-		}
+		},
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
 	],
     "prefer_related_applications": false,
     "splash_pages": null
