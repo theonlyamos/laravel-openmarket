@@ -85,6 +85,12 @@
       "src": "/icons/apple-touch-icon.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/icons/maskable_icon.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
     }
 	],
     "prefer_related_applications": false,
