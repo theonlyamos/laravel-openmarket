@@ -21,7 +21,21 @@ var filesToCache = [
   '/service-worker.js',
   '/js/app.js',
   '/js/scripts.js',
-  '/css/styles.css'
+  '/css/styles.css',
+  '/css/style.css',
+  '/css/open-iconic-bootstrap.min.css',
+  '/css/animate.css',
+  '/css/owl.carousel.min.css',
+  '/css/owl.theme.default.min.css',
+  '/css/magnific-popup.css',
+  '/css/aos.css',
+  '/css/ionicons.min.css',
+  '/css/bootstrap-datepicker.css',
+  '/css/jquery.timepicker.css',
+  '/css/fontawesome/font-awesome.css',
+  '/css/flaticon.css',
+  '/css/icomoon.css',
+  '/icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', function(e) {
