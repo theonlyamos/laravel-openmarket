@@ -28,6 +28,18 @@
     <script src="{{ asset('js/fontawesome.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
+		
+		<!-- Global site site (adsbygoogle.js) - Google Adsense --> 
+    <script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TB1D9N6DPJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TB1D9N6DPJ');
+    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
