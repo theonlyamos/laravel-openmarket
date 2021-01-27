@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Store;
+use App\Products;
+
 class IndexController extends Controller
 {
     //
 
     public function index(Request $request){
-        $stores = DB::select('select * from stores');
+
+        $stores = Store::orderBy("created_at", "desc")->get();
         $site_info = DB::select('select * from site_info');
-        $products = DB::select('select * from products LIMIT 12');
+        $products = Products::orderBy("created_at", "desc")->limit(12)->get();
         $cart = count($request->session()->get('cart.items', []));
-        return view("welcome", ["stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => $cart]);
+        $categories = DB::select('select * from categories');
+
+        return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => $cart]);
     }
 }

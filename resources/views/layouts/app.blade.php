@@ -8,7 +8,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MKD3V5H');</script>
-<!-- End Google Tag Manager --> 
+<!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes' />
@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
 
-	<!-- Global site site (adsbygoogle.js) - Google Adsense --> 
+	<!-- Global site site (adsbygoogle.js) - Google Adsense -->
 	<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TB1D9N6DPJ"></script>
@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKD3V5H"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --> 
+<!-- End Google Tag Manager (noscript) -->
     <div id="app">
         <div class="toast bg-dark d-none" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
             style="height: 85px; position: fixed; bottom: 0; right: 0; z-index: 9999;">
@@ -123,13 +123,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             id="ftco-navbar">
             <div class="container">
                 @if (Auth::check())
-                <a class="navbar-brand" href="{{url('/home')}}">
-                    <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
-                </a>
+                    <a class="navbar-brand" href="{{url('/home')}}">
+                        <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                    </a>
                 @else
-                <a class="navbar-brand" href="{{url('/')}}">
-                    <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
-                </a>
+                    <a class="navbar-brand" href="{{url('/')}}">
+                        <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                    </a>
                 @endif
                 <form
                     class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"
@@ -156,11 +156,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             @isset($stores)
-                            @foreach ($stores as $store)
-                            <a href="{{route('products.store', $store->id)}}" class="dropdown-item">
-                                <small>{{$store->name}}</small>
-                            </a>
-                            @endforeach
+                                @foreach ($stores as $store)
+                                    <a href="{{route('products.store', $store->id)}}" class="dropdown-item">
+                                        <small>{{$store->name}}</small>
+                                    </a>
+                                @endforeach
                             @endisset
                         </div>
                     </div>
@@ -184,6 +184,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <i class="fa fa-sliders"></i>
                                     {{__("Settings")}}</a>
                                 </a>
+
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('mobile-logout-form').submit();">
+                                    <i class="fa fa-sign-out fa-fw"></i><small>{{ __('Logout') }}</small>
+                                </a>
+
+                                <form id="mobile-logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     @else

@@ -18,8 +18,10 @@ class StoreController extends Controller
     //
 
     public function index(){
+
         $site_info = DB::select('select * from site_info');
         $products = Products::orderBy("created_at", "desc")->limit(8)->get();
+
         return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info[0]]);
     }
 
@@ -60,12 +62,15 @@ class StoreController extends Controller
         foreach ($items as $item){
             array_push($categories, $item->category);
         }
+
+        $stores = Store::all();
         $categories = array_unique($categories);
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
         $site_info = DB::select('select * from site_info');
-        return view("store.products", ["products" => $products, "store" => $store,
+
+        return view("store.products", ["products" => $products, "store" => $store, "stores" => $stores,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
                                        "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0],

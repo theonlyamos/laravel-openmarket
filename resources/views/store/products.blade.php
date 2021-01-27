@@ -8,7 +8,7 @@
 <section class="store store-products" style="min-height: 90vh;">
     <div class="container">
         <div class="row mt-5">
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb mt-sm-5">
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item"><a class="text-secondary" href="{{config('app.url')}}">Home</a></li>
                     <li class="breadcrumb-item active"><a class="text-secondary"
@@ -193,7 +193,7 @@
                 var directionsService = new google.maps.DirectionsService();
                 var directionsRenderer = new google.maps.DirectionsRenderer();
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 7,
+                    zoom: 12,
                     center: location
                 });
                 directionsRenderer.setMap(map);
