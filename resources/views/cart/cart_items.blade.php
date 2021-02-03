@@ -91,13 +91,13 @@
 
                                 <p>
                                     @if (Auth::check())
-                                    <!--
+                                    
                                     <form>
                                         <script src="https://checkout.flutterwave.com/v3.js"></script>
                                         <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
                                       </form>
-                                    -->
-                                    <button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button>
+                                    
+                                    <!--<button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button> -->
                                     @else
                                         <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
                                     @endif
@@ -198,7 +198,7 @@
 @if (Auth::check())
 <script>
 //const paymentForm = document.getElementById('paymentForm');
-
+/*
 function payWithPaystack() {
   let handler = PaystackPop.setup({
     key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}}",
@@ -218,18 +218,18 @@ function payWithPaystack() {
   });
   handler.openIframe();
 }
-/*
+*/
 function makePayment() {
     FlutterwaveCheckout({
       public_key: "{{env('FLUTTERWAVE_PUBLIC_KEY')}}",
       tx_ref: "hooli-tx-1920bbtyt",
       amount: {{$total}},
       currency: "GHS",
-      payment_options: "mobilemoneyghana",
+      payment_options: "card, mobilemoneyghana",
       redirect_url: // specified redirect URL
         "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
       meta: {
-        consumer_id: 23,
+      consumer_id: {{Auth::user()->id}},
         consumer_mac: "92a3-912ba-1192a",
       },
       customer: {
@@ -250,7 +250,7 @@ function makePayment() {
       },
     });
   }
- */
+ 
 </script>
 @endif
 <!--end::Page Scripts -->
