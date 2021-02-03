@@ -224,8 +224,8 @@ function makePayment() {
       public_key: "{{env('FLUTTERWAVE_PUBLIC_KEY')}}",
       tx_ref: "hooli-tx-1920bbtyt",
       amount: {{$total}},
-      currency: "GHS",
-      payment_options: "card, mobilemoneyghana",
+      currency: "USD",
+      payment_options: "card",
       redirect_url: // specified redirect URL
         "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
       meta: {
@@ -246,7 +246,7 @@ function makePayment() {
       customizations: {
         title: "{{config('app.name')}}",
         description: "Payment for items in cart",
-        logo: "https://cdn.filestackcontent.com/gpDGnRSHToe2Nfwhp8B7",
+        logo: "https://cdn.filestackcontent.com/kMCzb7y9QRWZI5wJGsX3", 
       },
     });
   }
