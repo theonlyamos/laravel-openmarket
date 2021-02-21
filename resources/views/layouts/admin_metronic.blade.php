@@ -92,7 +92,7 @@
 
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
-			<div class="kt-header-mobile__logo">
+			<div class="kt-header-mobile__image">
 				<a href="dashboard">
                     <img style="max-width: 80px; height: auto; filter:invert(100%)" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                 </a>
@@ -113,8 +113,8 @@
 				<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
 
 					<!-- begin:: Aside -->
-					<div class="kt-aside__brand kt-grid__item  " id="kt_aside_brand">
-						<div class="kt-aside__brand-logo">
+					<div class="kt-aside__brand kt-grid__item  mt-4" id="kt_aside_brand">
+						<div class="kt-aside__brand-image">
 							<a href="/">
                                 <img style="max-width: 60px; height: auto; filter:invert(50%)" src="{{asset('images/logo_square_big.png')}}" alt="Open Market">
 							</a>
@@ -130,15 +130,15 @@
 								@foreach ($pages as $page)
                                     @if ($page['name'] == $title)
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @endif
                                     @else
                                         @if ($page['name'] == "dashboard")
-                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @else
-                                            <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                            <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('admin.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                         @endif
                                     @endif
                                 @endforeach
@@ -163,15 +163,15 @@
 									@foreach ($pages as $page)
                                         @if ($page['name'] == $title)
                                             @if ($page['name'] == "dashboard")
-                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                             @else
-                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                             @endif
                                         @else
                                             @if ($page['name'] == "dashboard")
-                                                <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                                <li class="kt-menu__item kt-menu__item" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                             @else
-                                                <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('store.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
+                                                <li class="kt-menu__item" aria-haspopup="true"><a href="{{route('admin.dashboard.page', $page['name'])}}" class="kt-menu__link "><i class="kt-menu__link-icon {{$page['icon']}}"></i><span class="kt-menu__link-text">{{ucfirst($page['name'])}}</span></a></li>
                                             @endif
                                         @endif
                                     @endforeach
@@ -832,10 +832,10 @@
 									<div class="kt-header__topbar-user">
 										<span class="kt-hidden kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
                                         <span class="kt-hidden kt-header__topbar-username kt-hidden-mobile">Sean</span>
-                                        @if ($store->logo)
-                                            <img class="" alt="Pic" src='{{asset("storage/$store->logo")}}' />
+                                        @if ($admin->image)
+                                            <img class="" alt="Pic" src='{{asset("storage/$admin->image->name")}}' />
                                         @else
-                                            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bolder">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+                                            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bolder">{{Str::limit(Auth::guard('admin')->user()->name, 1, "")}}</span>
                                         @endif
 									</div>
 								</div>
@@ -844,14 +844,14 @@
 									<!--begin: Head -->
 									<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url({{asset('assets/media/misc/bg-1.jpg')}})">
 										<div class="kt-user-card__avatar">
-											@if ($store->logo)
-                                                <img class="" alt="Pic" src='{{asset("storage/$store->logo")}}' />
+											@if ($admin->image)
+                                                <img class="" alt="Pic" src='{{asset("storage/$admin->image->name")}}' />
                                             @else
-                                            <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{Str::limit(Auth::guard('store')->user()->name, 1, "")}}</span>
+                                            <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{Str::limit(Auth::guard('admin')->user()->name, 1, "")}}</span>
                                             @endif
 										</div>
 										<div class="kt-user-card__name">
-											{{Auth::guard('store')->user()->name}}
+											{{Auth::guard('admin')->user()->name}}
 										</div>
 										<div class="kt-user-card__badge">
 											<span class="btn btn-success btn-sm btn-bold btn-font-md">0 orders</span>
@@ -928,7 +928,7 @@
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="{{route('store.logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+											<a href="{{route('admin.logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
 											<a href="demo3/custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold" disabled>Upgrade Plan</a>
 										</div>
 									</div>
@@ -961,7 +961,7 @@
                                         </button>
                                     @elseif ($title == "profile")
                                         <span class="kt-subheader__desc" id="kt_subheader_total">
-                                            {{Auth::guard('store')->user()->name}}
+                                            {{Auth::guard('admin')->user()->name}}
                                         </span>
                                     @else
                                         <a href="#" class="btn btn-label-success btn-bold btn-sm btn-icon-h kt-margin-l-10 disabled" disabed>
@@ -1389,7 +1389,7 @@
 							</a>
 							<a href="#" class="kt-notification-v2__item">
 								<div class="kt-notification-v2__item-icon">
-									<i class="flaticon2-hangouts-logo kt-font-warning"></i>
+									<i class="flaticon2-hangouts-image kt-font-warning"></i>
 								</div>
 								<div class="kt-notification-v2__itek-wrapper">
 									<div class="kt-notification-v2__item-title">

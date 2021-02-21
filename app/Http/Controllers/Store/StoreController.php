@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeProductsPost;
+use App\Http\Requests\storeProductPost;
 use App\Http\Requests\storeProductUpdate;
 use App\Http\Requests\storeUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Products;
-use App\Store;
+use App\Models\Product;
+use App\Models\Store;
 
 class StoreController extends Controller
 {
@@ -20,7 +20,7 @@ class StoreController extends Controller
     public function index(){
 
         $site_info = DB::select('select * from site_info');
-        $products = Products::orderBy("created_at", "desc")->limit(8)->get();
+        $products = Product::orderBy("created_at", "desc")->limit(8)->get();
 
         return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info[0]]);
     }
@@ -46,10 +46,10 @@ class StoreController extends Controller
         }
 
         if (count($cats)){
-            $products = Products::whereIn('category', $cats)->paginate(20);
+            $products = Product::whereIn('category', $cats)->paginate(20);
         }
         else {
-            $products = Products::where("store_id", $store_id)
+            $products = Product::where("store_id", $store_id)
             ->orderBy("id", "desc")
             ->paginate(20);
         }
@@ -73,7 +73,7 @@ class StoreController extends Controller
         return view("store.products", ["products" => $products, "store" => $store, "stores" => $stores,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
-                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Products", "site" => $site_info[0],
+                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Product", "site" => $site_info[0],
                                        "cart" => count($request->session()->get('cart.items', [])),
                                        "latitude" => $location[0],
                                        "longitude" => $location[1]]);
@@ -92,7 +92,7 @@ class StoreController extends Controller
             $list = '';
             switch ($page) {
                 case 'products':
-                    $list = Products::where("store_id", Auth::guard('store')->user()->id)
+                    $list = Product::where("store_id", Auth::guard('store')->user()->id)
                                     ->orderBy("id", "asc")
                                     ->get();
             }
@@ -101,18 +101,18 @@ class StoreController extends Controller
         return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages, "store" => $store]);
     }
 
-    public function add_product(storeProductsPost $request){
+    public function add_product(storeProductPost $request){
         $new_product = $request->validated();
         $new_product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         $new_product['store_id'] = Auth::guard('store')->user()->id;
-        Products::create($new_product);
-        $product = Products::where("thumbnail", $new_product['thumbnail'])->first();
+        Product::create($new_product);
+        $product = Product::where("thumbnail", $new_product['thumbnail'])->first();
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
 
     }
 
     public function product_details($store_id, $product_id, Request $request){
-        $product = Products::find($product_id);
+        $product = Product::find($product_id);
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
         $site_info = DB::select('select * from site_info');
@@ -120,13 +120,13 @@ class StoreController extends Controller
     }
 
     public function get_product($product_id, Request $request){
-        $product = Products::find($product_id);
+        $product = Product::find($product_id);
         return response()->json(["success" => true, "message" => "Product retrieved successfully", "product" => $product]);
     }
 
     public function edit_product($product_id, storeProductUpdate $request){
         $product_update = $request->validated();
-        $product = Products::find($product_id);
+        $product = Product::find($product_id);
         if ($request->hasFile('thumbnail')){
             $product->thumbnail['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }

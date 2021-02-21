@@ -54,7 +54,7 @@ Route::domain('store.openmartgh.com')->group(function(){
 });
 
 
-Route::domain('store.openmart.test')->group(function(){
+Route::domain('store.openmartgh.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.test.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.test.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.test.about");
@@ -73,6 +73,49 @@ Route::domain('store.openmart.test')->group(function(){
         Route::post("/update_profile", 'Store\StoreController@update_profile')->name("store.test.profile.update");
 
     });
+});
+
+Route::domain('admin.openmartgh.com')->group(function(){
+    Route::get("/", 'Admin\AdminController@index')->name("admin.index");
+    Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
+    Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
+    Route::get("/logout", 'Admin\AuthController@logout')->name("admin.logout");
+    Route::post("/login", 'Admin\AuthController@postLogin')->name('admin.login.post');
+    Route::prefix('stores')->group(function(){
+        Route::get('/', 'Admin\AdminController@stores')->name('admin.stores');
+        Route::post('/', 'Admin\AdminController@create_store')->name('admin.store.create');
+        Route::get('/{store_id}', 'Admin\AdminController@store')->name('admin.store.get');
+        Route::post('/{store_id}', 'Admin\AdminController@update_store')->name('admin.store.update');
+    });
+    Route::resource('products', 'Admin\ProductController')->names([
+        'index'   => 'admin.products',
+        'store'   => 'admin.product.create',
+        'show'    => 'admin.product.get',
+        'update'  => 'admin.product.update'
+    ]);
+    Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
+});
+
+
+Route::domain('admin.openmartgh.test')->group(function(){
+    Route::get("/", 'Admin\AdminController@index')->name("admin.index");
+    Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
+    Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
+    Route::get("/logout", 'Admin\AuthController@logout')->name("admin.logout");
+    Route::post("/login", 'Admin\AuthController@postLogin')->name('admin.login.post');
+    Route::prefix('stores')->group(function(){
+        Route::get('/', 'Admin\AdminController@stores')->name('admin.stores');
+        Route::post('/', 'Admin\AdminController@create_store')->name('admin.store.create');
+        Route::get('/{store_id}', 'Admin\AdminController@store')->name('admin.store.get');
+        Route::post('/{store_id}', 'Admin\AdminController@update_store')->name('admin.store.update');
+    });
+    Route::resource('products', 'Admin\ProductController')->names([
+        'index'   => 'admin.products',
+        'store'   => 'admin.product.create',
+        'show'    => 'admin.product.get',
+        'update'  => 'admin.product.update'
+    ]);
+    Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
 });
 
 

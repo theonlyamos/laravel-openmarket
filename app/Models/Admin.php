@@ -1,16 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
-class Store extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable 
 {
     use Notifiable;
-
-    protected $guard = "store";
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +16,7 @@ class Store extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'address', 'location', 'region', 'city', 'postal'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -38,4 +36,8 @@ class Store extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function image(){
+        return $this->hasOne('App\Models\AdminImage');
+    }
 }
