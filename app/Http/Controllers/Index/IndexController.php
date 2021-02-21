@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Store;
-use App\Products;
+use App\Models\Store;
+use App\Models\Product;
 
 class IndexController extends Controller
 {
@@ -17,7 +17,7 @@ class IndexController extends Controller
 
         $stores = Store::orderBy("created_at", "desc")->get();
         $site_info = DB::select('select * from site_info');
-        $products = Products::orderBy("created_at", "desc")->limit(12)->get();
+        $products = Product::orderBy("created_at", "desc")->limit(12)->get();
         $cart = count($request->session()->get('cart.items', []));
         $categories = DB::select('select * from categories');
 
