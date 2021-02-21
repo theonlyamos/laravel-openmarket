@@ -32,6 +32,28 @@ Route::domain('store.openmart.ga')->group(function(){
     });
 });
 
+Route::domain('store.openmartgh.test')->group(function(){
+    Route::get("/", 'Store\StoreController@index')->name("store.test.index");
+    Route::get("/contact", 'Store\StoreController@contact')->name("store.test.contact");
+    Route::get("/about", 'Store\StoreController@about')->name("store.test.about");
+    Route::get("/login", 'Store\AuthController@index')->name("store.test.login");
+    Route::get("/register", 'Store\AuthController@register')->name("store.test.register");
+    Route::get("/logout", 'Store\AuthController@logout')->name("store.test.logout");
+    Route::post("/login", 'Store\AuthController@postLogin')->name('store.test.login.post');
+    Route::post("/register", 'Store\AuthController@postRegistration')->name('store.test.register.post');
+    Route::middleware(['store'])->group(function(){
+        Route::get("/get_product/{product_id}", 'Store\StoreController@get_product')->name("store.test.get_product");
+        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.test.dashboard.page");
+        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.test.dashboard");
+        Route::get("/{store_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.test.products");
+        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.test.add_product");
+        Route::post("/edit_product/{product_id}", 'Store\StoreController@edit_product')->name("store.test.edit_product");
+        Route::post("/update_profile", 'Store\StoreController@update_profile')->name("store.test.profile.update");
+
+    });
+});
+
+
 Route::domain('store.openmartgh.com')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
@@ -54,26 +76,6 @@ Route::domain('store.openmartgh.com')->group(function(){
 });
 
 
-Route::domain('store.openmartgh.test')->group(function(){
-    Route::get("/", 'Store\StoreController@index')->name("store.test.index");
-    Route::get("/contact", 'Store\StoreController@contact')->name("store.test.contact");
-    Route::get("/about", 'Store\StoreController@about')->name("store.test.about");
-    Route::get("/login", 'Store\AuthController@index')->name("store.test.login");
-    Route::get("/register", 'Store\AuthController@register')->name("store.test.register");
-    Route::get("/logout", 'Store\AuthController@logout')->name("store.test.logout");
-    Route::post("/login", 'Store\AuthController@postLogin')->name('store.test.login.post');
-    Route::post("/register", 'Store\AuthController@postRegistration')->name('store.test.register.post');
-    Route::middleware(['store'])->group(function(){
-        Route::get("/get_product/{product_id}", 'Store\StoreController@get_product')->name("store.test.get_product");
-        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.test.dashboard.page");
-        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.test.dashboard");
-        Route::get("/{store_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.test.products");
-        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.test.add_product");
-        Route::post("/edit_product/{product_id}", 'Store\StoreController@edit_product')->name("store.test.edit_product");
-        Route::post("/update_profile", 'Store\StoreController@update_profile')->name("store.test.profile.update");
-
-    });
-});
 
 Route::domain('admin.openmartgh.com')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
