@@ -30,7 +30,6 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only("email", "password");
-        var_dump($credentials);
         if (Auth::guard('admin')->attempt($credentials)){
             return redirect()->intended('dashboard');
         }
