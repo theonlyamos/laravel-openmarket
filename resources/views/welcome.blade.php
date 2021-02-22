@@ -90,16 +90,16 @@
                                 <img src="images/carousel1.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/carousel2.jpg" class="d-block w-100" alt="...">
+                                <img src="images/carousel2.jpg" loading="lazy" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/carousel3.jpg" class="d-block w-100" alt="...">
+                                <img src="images/carousel3.jpg" loading="lazy" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/carousel4.jpg" class="d-block w-100" alt="...">
+                                <img src="images/carousel4.jpg" laoding="lazy" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/carousel5.jpg" class="d-block w-100" alt="...">
+                                <img src="images/carousel5.jpg" loading="lazy" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
