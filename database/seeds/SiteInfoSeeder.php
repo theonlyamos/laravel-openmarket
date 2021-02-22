@@ -26,6 +26,6 @@ class SiteInfoSeeder extends Seeder
             'email_support'   => 'support@openmartgh.com',
             'email_admin'     => 'admin@openmartgh.com',
             'description'     => 'Revolutionizing trade with passion'
-        ])
+        ]);
     }
 }
