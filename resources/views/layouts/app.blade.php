@@ -288,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2 text-white" style='font-family: "Lato", Arial, sans-serif;'>{{ config('app.name', 'OpenMarket') }}</h2>
-                        <p>{{$site_info->description}}</p>
+                        <p>{{$site->description}}</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
                                         class="fa fa-twitter"></span></a></li>
@@ -330,15 +330,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h2 class="ftco-heading-2 text-white">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                @if (isset($site_info))
+                                @if (isset($site))
                                     <li><span class="fa fa-map-marker fa-fw"></span><span
-                                        class="text">{{$site_info->address}}</span></li>
+                                        class="text">{{$site->address}}</span></li>
                                     <li><span class="fa fa-plane fa-fw"></span><span
-                                            class="text">{{$site_info->box_office}}</span></li>
+                                            class="text">{{$site->box_office}}</span></li>
                                     <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
-                                                class="text">{{$site_info->phone_developer}}</span></a></li>
+                                                class="text">{{$site->phone_developer}}</span></a></li>
                                     <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
-                                                class="text">{{Str::lower($site_info->email_info)}}</span></a></li>
+                                                class="text">{{Str::lower($site->email)}}</span></a></li>
                                 @else
                                     <li><span class="fa fa-map-marker fa-fw"></span><span
                                         class="text">{{__("Market Circle, Takoradi, WS0034423, Ghana")}}</span></li>
