@@ -336,7 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><span class="fa fa-plane fa-fw"></span><span
                                             class="text">{{$site->box_office}}</span></li>
                                     <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
-                                                class="text">{{$site->phone_1}}</span></a></li>
+                                                class="text">{{$site->phone_developer}}</span></a></li>
                                     <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
                                                 class="text">{{Str::lower($site->email_info)}}</span></a></li>
                                 @else
@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
                                                 class="text">{{__("+233 557 821 030")}}</span></a></li>
                                     <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
-                                                class="text">{{__("info@mail.openmart.ga")}}</span></a></li>
+                                                class="text">{{__("info@openmartgh.com")}}</span></a></li>
                                 @endif
                             </ul>
                         </div>

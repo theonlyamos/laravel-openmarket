@@ -67,7 +67,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="fa fa-phone"></span></div>
-                            <span class="text">{{$site->phone_1}}</span>
+                            <span class="text">{{$site->phone_developer}}</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
@@ -192,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <ul>
                                 <li><span class="fa fa-map-marker fa-fw"></span><span class="text">{{$site->address}}</span></li>
                                 <li><span class="fa fa-plane"></span><span class="text">{{$site->box_office}}</span></li>
-                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_1}}</span></a></li>
+                                <li><a href="#"><span class="fa fa-phone fa-fw"></span><span class="text">{{$site->phone_developer}}</span></a></li>
                                 <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
                                             class="text">{{Str::lower($site->email_support)}}</span></a></li>
                             </ul>

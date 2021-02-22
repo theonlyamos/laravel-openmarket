@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\SiteInfo;
 
 class StoreController extends Controller
 {
@@ -19,20 +20,20 @@ class StoreController extends Controller
 
     public function index(){
 
-        $site_info = DB::select('select * from site_info');
+        $site_info = SiteInfo::first();
         $products = Product::orderBy("created_at", "desc")->limit(8)->get();
 
-        return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info[0]]);
+        return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info]);
     }
 
     public function contact(){
-        $site_info = DB::select('select * from site_info');
-        return view('contact', ['title' => 'Contact Us', 'site' => $site_info[0]]);
+        $site_info = SiteInfo::first();
+        return view('contact', ['title' => 'Contact Us', 'site' => $site_info]);
     }
 
     public function about(){
-        $site_info = DB::select('select * from site_info');
-        return view('about', ['title' => 'About Us', 'site' => $site_info[0]]);
+        $site_info = SiteInfo::first();
+        return view('about', ['title' => 'About Us', 'site' => $site_info]);
     }
 
     public function products($store_id, Request $request){
@@ -68,12 +69,12 @@ class StoreController extends Controller
         $subcategories = DB::select('select id, name from subcategories');
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
-        $site_info = DB::select('select * from site_info');
+        $site_info = SiteInfo::first();
 
         return view("store.products", ["products" => $products, "store" => $store, "stores" => $stores,
                                        "categories" => $categories, "subcategories" => $subcategories,
                                        "min_price" => $min_price, "max_price" => $max_price,
-                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Product", "site" => $site_info[0],
+                                       "cats" => $cats, "subs" => $subs, "catString" => join(",", $cats), "title" => "Product", "site" => $site_info,
                                        "cart" => count($request->session()->get('cart.items', [])),
                                        "latitude" => $location[0],
                                        "longitude" => $location[1]]);
@@ -115,8 +116,8 @@ class StoreController extends Controller
         $product = Product::find($product_id);
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
-        $site_info = DB::select('select * from site_info');
-        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info[0], 'cart' => count($request->session()->get('cart.items', []))]);
+        $site_info = SiteInfo::first();
+        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info, 'cart' => count($request->session()->get('cart.items', []))]);
     }
 
     public function get_product($product_id, Request $request){

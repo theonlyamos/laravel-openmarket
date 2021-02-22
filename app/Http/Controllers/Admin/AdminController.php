@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Store;
 use App\Models\Admin;
 use App\Models\Product;
+use App\Models\SiteInfo;
 
 class AdminController extends Controller
 {
@@ -31,7 +32,7 @@ class AdminController extends Controller
 
     public function __construct(){
         $this->middleware(['admin']);
-        $this->site_info = DB::select('select * from site_info');
+        $this->site_info = SiteInfo::first();
     }
 
     public function index(){

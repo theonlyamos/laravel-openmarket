@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Store;
 use App\Models\Product;
+use App\Models\SiteInfo;
 
 class HomeController extends Controller
 {
@@ -31,9 +32,9 @@ class HomeController extends Controller
         $categories = DB::select('select * from categories');
         $products = Product::orderBy("created_at", "desc")->limit(12)->get();
         $stores = Store::orderBy("created_at", "desc")->get();
-        $site_info = DB::select('select * from site_info');
+        $site_info = SiteInfo::first();
         $cart = count($request->session()->get('cart.items', []));
 
-        return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => $cart]);
+        return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info, "cart" => $cart]);
     }
 }

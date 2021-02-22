@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use App\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Models\Product;
+use App\Models\SiteInfo;
 
 class ProductController extends Controller
 {
@@ -19,7 +21,7 @@ class ProductController extends Controller
         $product = Products::where("id", $id)->first();
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
-        $site = DB::select('select * from site_info');
-        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site[0], 'cart' => count($request->session()->get('cart.items', []))]);
+        $site_info = SiteInfo::first();
+        return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info, 'cart' => count($request->session()->get('cart.items', []))]);
     }
 }
