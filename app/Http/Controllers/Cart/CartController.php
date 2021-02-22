@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Cart;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Cart;
-use App\Products;
 use Illuminate\Contracts\Session\Session;
+
+use App\Models\Cart;
+use App\Models\Store;
+use App\Models\Product;
+use App\Models\SiteInfo;
 
 class CartController extends Controller
 {
@@ -15,14 +18,14 @@ class CartController extends Controller
 
     public function index(Request $request){
         $items = $request->session()->get('cart.items');
-        $site_info = DB::select('select * from site_info');
-        $stores = DB::select('select * from stores');
+        $site_info = SiteInfo::first();
+        $stores = Store::all();
         $items = $request->session()->get('cart.items', []);
         $products = [];
         $total = 0.00;
         if ($items){
             foreach ($items as $item){
-                $product = Products::find($item['id']);
+                $product = Product::find($item['id']);
                 $product->quantity = $item['quantity'];
                 $total += $product->price * $product->quantity;
                 array_push($products, $product);
@@ -30,7 +33,7 @@ class CartController extends Controller
             }
         }
         return view("cart.cart_items", ["title" => "Cart",
-                                        "site" => $site_info[0],
+                                        "site" => $site_info,
                                         "stores" => $stores,
                                         "cart" => count($request->session()->get('cart.items', [])),
                                         "products" => $products,
@@ -77,7 +80,7 @@ class CartController extends Controller
     }
 
     public function checkout(){
-        $site_info = DB::select('select * from site_info');
-        return view("cart.checkout", ["title" => "Checkout", "site" => $site_info[0]]);
+        $site_info = SiteInfo::first();
+        return view("cart.checkout", ["title" => "Checkout", "site" => $site_info]);
     }
 }

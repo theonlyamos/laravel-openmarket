@@ -8,16 +8,19 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use App\Admin;
+
+use App\Models\Admin;
 use App\Http\Requests\adminPost;
+
+use App\Models\SiteInfo;
 
 class AuthController extends Controller
 {
     //
 
     public function index(){
-        $site_info = DB::select('select * from site_info');
-        return view("admin.auth.login", ["title" => "Login", 'site' => $site_info[0]]);
+        $site_info = SiteInfo::first();
+        return view("admin.auth.login", ["title" => "Login", 'site' => $site_info]);
     }
 
     public function postLogin(Request $request){
@@ -37,8 +40,8 @@ class AuthController extends Controller
     }
 
     public function register(){
-        $site_info = DB::select('select * from site_info');
-        return view("admin.auth.register", ["title" => "Register", 'site' => $site_info[0]]);
+        $site_info = SiteInfo::first(); 
+        return view("admin.auth.register", ["title" => "Register", 'site' => $site_info]);
     }
 
     public function postRegistration(adminPost $request){
