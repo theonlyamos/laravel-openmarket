@@ -11,27 +11,6 @@
 |
 */
 
-Route::domain('store.openmart.ga')->group(function(){
-    Route::get("/", 'Store\StoreController@index')->name("store.index");
-    Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
-    Route::get("/about", 'Store\StoreController@about')->name("store.about");
-    Route::get("/login", 'Store\AuthController@index')->name("store.login");
-    Route::get("/register", 'Store\AuthController@register')->name("store.register");
-    Route::get("/logout", 'Store\AuthController@logout')->name("store.logout");
-    Route::post("/login", 'Store\AuthController@postLogin')->name('store.login.post');
-    Route::post("/register", 'Store\AuthController@postRegistration')->name('store.register.post');
-    Route::middleware(['store'])->group(function(){
-        Route::get("/get_product/{product_id}", 'Store\StoreController@get_product')->name("store.get_product");
-        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
-        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
-        Route::get("/{store_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
-        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
-        Route::post("/edit_product/{product_id}", 'Store\StoreController@edit_product')->name("store.edit_product");
-        Route::post("/update_profile", 'Store\StoreController@update_profile')->name("store.profile.update");
-
-    });
-});
-
 
 Route::domain('store.openmartgh.com')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
@@ -76,29 +55,6 @@ Route::domain('admin.openmartgh.com')->group(function(){
     ]);
     Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
 });
-
-
-Route::domain('admin.openmartgh.test')->group(function(){
-    Route::get("/", 'Admin\AdminController@index')->name("admin.index");
-    Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
-    Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
-    Route::get("/logout", 'Admin\AuthController@logout')->name("admin.logout");
-    Route::post("/login", 'Admin\AuthController@postLogin')->name('admin.login.post');
-    Route::prefix('stores')->group(function(){
-        Route::get('/', 'Admin\AdminController@stores')->name('admin.stores');
-        Route::post('/', 'Admin\AdminController@create_store')->name('admin.store.create');
-        Route::get('/{store_id}', 'Admin\AdminController@store')->name('admin.store.get');
-        Route::post('/{store_id}', 'Admin\AdminController@update_store')->name('admin.store.update');
-    });
-    Route::resource('products', 'Admin\ProductController')->names([
-        'index'   => 'admin.products',
-        'store'   => 'admin.product.create',
-        'show'    => 'admin.product.get',
-        'update'  => 'admin.product.update'
-    ]);
-    Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
-});
-
 
 Route::get('/', 'Index\IndexController@index')->name('index');
 
