@@ -22,6 +22,6 @@ class IndexController extends Controller
         $cart = count($request->session()->get('cart.items', []));
         $categories = DB::select('select * from categories');
 
-        return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info[0], "cart" => $cart]);
+        return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info, "cart" => $cart]);
     }
 }
