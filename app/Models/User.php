@@ -41,4 +41,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function image(){
         return $this->hasOne('App\Models\UserImage');
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }
