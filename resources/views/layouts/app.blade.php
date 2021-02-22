@@ -287,8 +287,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2 text-white" style='font-family: "Lato", Arial, sans-serif;'>
-                            {{ config('app.name', 'OpenMarket') }}</h2>
+                        <h2 class="ftco-heading-2 text-white" style='font-family: "Lato", Arial, sans-serif;'>{{ config('app.name', 'OpenMarket') }}</h2>
+                        <p>{{$site->description}}</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
                                         class="fa fa-twitter"></span></a></li>
