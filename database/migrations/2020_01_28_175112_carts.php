@@ -17,7 +17,7 @@ class Carts extends Migration
             $table->bigIncrements('id');
             $table->uuid('reference')->unique();
             $table->bigInteger('user_id')->nullable();
-            $table->json('items')->nullable();
+            $table->text('items');
             $table->decimal('total');
             $table->decimal('discount')->nullable();
             $table->enum('status', [0, 1])->default(0);

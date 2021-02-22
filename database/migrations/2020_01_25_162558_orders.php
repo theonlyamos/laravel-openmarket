@@ -17,7 +17,7 @@ class Orders extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->bigInteger('store_id');
-            $table->json('items')->nullable();
+            $table->text('items');
             $table->timestamps();
             $table->softDeletes();
         });
