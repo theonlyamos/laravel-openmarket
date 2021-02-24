@@ -48,6 +48,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
     <link rel="apple-touch-icon" href="{{asset('icons/apple-touch-icon.png')}}">
@@ -120,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </nav>
         -->
-        <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light pt-0 scrolled awake"
+        <nav class="navbar navbar-expand-md ftco_navbar ftco-navbar-light pt-0 scrolled awake"
             id="ftco-navbar">
             <div class="container">
                 @if (Auth::check())
@@ -133,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </a>
                 @endif
                 <form
-                    class="form-inline d-none d-lg-flex my-2 my-lg-0 bg-white searchbar p-0 justify-content-between air w-50"
+                    class="form-inline d-none d-md-flex my-2 my-md-0 bg-white searchbar p-0 justify-content-between air w-100"
                     style="border: 1px solid #ced4da !important; height: 40px;">
                     <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
                         placeholder="Search" aria-label="Search" name="search" required
@@ -151,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         class="fa fa-shopping-cart"></i>[<span
                         class="cart cart-count">{{$cart ?? 0}}</span>]</a>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
+                        <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Stores
                         </button>
@@ -167,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     @if (Auth::check())
                         <div class="btn-group">
-                            <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i
                                 class="fa fa-user-circle-o"></i>
@@ -199,8 +201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     @else
                         <div class="btn-group">
-                            <button type="button" class="btn btn-clear dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i
                                 class="fa fa-user-circle-o"></i>
                             </button>
@@ -232,8 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     class="cart cart-count">{{$cart ?? 0}}</span>]</a></li>
                         <li class="nav-item dropdown">
                             @if (Auth::check())
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{route('user.dashboard')}}">
                                     <i class="fa fa-tv"></i>
@@ -252,8 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </form>
                             </div>
                             @else
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Account</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{route('login')}}">{{__("Login")}}</a>
                                 <a class="dropdown-item" href="{{route('register')}}">{{__("Register")}}</a>
@@ -288,7 +287,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2 text-white" style='font-family: "Lato", Arial, sans-serif;'>{{ config('app.name', 'OpenMarket') }}</h2>
-                        <p>{{$site->description}}</p>
+                        @if (isset($site))
+                            <p>{{$site->description}}</p>
+                        @else
+                            <p>Revolutionizing trade with passion</p>
+                        @endif
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate fadeInUp ftco-animated"><a href="#" class="bg-dark"><span
                                         class="fa fa-twitter"></span></a></li>
@@ -338,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><a href="#"><span class="fa fa-phone fa-fw"></span><span
                                                 class="text">{{$site->phone_developer}}</span></a></li>
                                     <li><a href="#"><span class="fa fa-envelope fa-fw"></span><span
-                                                class="text">{{Str::lower($site->email)}}</span></a></li>
+                                                class="text">{{Str::lower($site->email_info)}}</span></a></li>
                                 @else
                                     <li><span class="fa fa-map-marker fa-fw"></span><span
                                         class="text">{{__("Market Circle, Takoradi, WS0034423, Ghana")}}</span></li>

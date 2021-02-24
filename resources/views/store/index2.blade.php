@@ -103,41 +103,7 @@
     <div class="container">
         <div class="row">
             @foreach ($products as $item)
-            <div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
-                <div class="product d-flex flex-column">
-                    <a href="{{route('productDetails', $item->id)}}" class="img-prod">
-                        <img class="img-fluid" src="{{asset('storage/'.$item->thumbnail)}}"
-                            alt="{{$item->name}}" loading="lazy">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3">
-                        <div class="d-flex">
-                            <div class="cat">
-                                <span>{{Str::title($item->category)}}</span>
-                            </div>
-                            <div class="rating">
-                                <p class="text-right mb-0">
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                </p>
-                            </div>
-                        </div>
-                        <h3><a href="#">{{$item->name}}</a></h3>
-                        <div class="pricing">
-                            <p class="price"><span>{{__("default.currency")}}{{$item->price}}</span></p>
-                        </div>
-                        <p class="bottom-area d-flex px-3">
-                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i
-                                        class="fa fa-cart-plus ml-1"></i></span></a>
-                            <a href="#" class="buy-now text-center py-2">Buy now<span><i
-                                        class="fa fa-shopping-bag ml-1"></i></span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+
             @endforeach
         </div>
     </div>
@@ -152,27 +118,14 @@
                 <div class="choose-wrap divider-one img p-5 d-flex align-items-end">
 
                     <div class="text text-center text-white px-2">
-                        <span class="subheading">{{$products[5]->category}}</span>
-                        <h2>{{$products[5]->name}}</h2>
-                        <p>{{Str::limit($products[5]->description, 60)}}</p>
-                        <p><a href="{{route('productDetails', $products[5]->id)}}" class="btn btn-black px-3 py-2">Shop now</a></p>
+
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="row no-gutters choose-wrap divider-two align-items-stretch">
                     <div class="col-md-12 bg-primary">
-                        <div class="choose-wrap full-wrap img align-self-stretch d-flex align-item-center justify-content-end"
-                            style="background-color: #4e4e4e; background: url({{asset('storage/'.$products[0]->thumbnail)}}); background-size: contain; background-repeat: no-repeat;">
-                            <div class="col-md-7 d-flex align-items-center">
-                                <div class="text text-dark px-5">
-                                    <span class="subheading">{{$products[0]->category}}</span>
-                                    <h2>{{$products[0]->name}}</h2>
-                                    <p>{{Str::limit($products[0]->description, 60)}}</p>
-                                    <p><a href="{{route('productDetails', $products[0]->id)}}" class="btn btn-black px-3 py-2">Shop now</a></p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="col-md-12">
                         <div class="row no-gutters">
@@ -190,10 +143,7 @@
                             <div class="col-md-6 bg-warning">
                                 <div class="choose-wrap wrap img align-self-stretch d-flex align-items-center">
                                     <div class="text text-center text-white px-5">
-                                        <span class="subheading">{{$products[4]->name}}</span>
-                                        <h2>Best Sellers</h2>
-                                        <p>{{Str::limit($products[4]->description, 60)}}</p>
-                                        <p><a href="{{route('productDetails', $products[0]->id)}}" class="btn btn-black px-3 py-2">Shop now</a></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +159,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{asset('storage/'.$products[1]->thumbnail)}}" class="img-fluid" alt="">
+
             </div>
             <div class="col-md-6">
                 <div class="heading-section heading-section-white">
@@ -223,9 +173,8 @@
                     <div class="time pl-4" id="seconds"></div>
                 </div>
                 <div class="text-deal">
-                    <h2><a href="#">{{$products[1]->name}}</a></h2>
-                    <p class="price"><span class="mr-2 price-dc">{{__('default.currency')}}{{$products[1]->price}}</span><span class="price-sale">{{__('default.currency')}}{{$products[1]->price*0.6}}</span>
-                    </p>
+
+
                     <ul class="thumb-deal d-flex mt-4">
                         <li class="img" style="background-image: url(images/product-6.png);"></li>
                         <li class="img" style="background-image: url(images/product-2.png);"></li>
