@@ -12,6 +12,7 @@ use App\Http\Requests\ProductUpdate;
 
 use App\Models\Admin;
 use App\Models\Product;
+use App\Models\SiteInfo;
 
 class ProductController extends Controller
 {
@@ -33,7 +34,7 @@ class ProductController extends Controller
 
     public function __construct(){
         $this->middleware('admin');
-        $this->site_info = DB::select('select * from site_info');
+        $this->site_info = SiteInfo::first();
     }
 
 
@@ -42,10 +43,12 @@ class ProductController extends Controller
         //
         $admin = Admin::find(Auth::guard('admin')->user()->id);
         $products = Product::orderBy('id', 'desc')->paginate(20);
-        $min_price = DB::table('products')->min('price');
-        $max_price = DB::table('products')->max('price');
+        //$min_price = DB::table('products')->min('price');
+        //$max_price = DB::table('products')->max('price');
+        
+        return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products]);
 
-        return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products, 'min_price' => $min_price, 'max_price' => $max_price]);
+        //return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products, 'min_price' => $min_price, 'max_price' => $max_price]);
     }
 
     /**
