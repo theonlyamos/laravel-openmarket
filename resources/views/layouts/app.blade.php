@@ -126,13 +126,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             id="ftco-navbar">
             <div class="container">
                 @if (Auth::check())
-                    <a class="navbar-brand" href="{{url('/home')}}">
+                    <a class="navbar-brand d-none d-md-block" href="{{url('/home')}}">
                         <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                     </a>
+                    <a class="navbar-brand d-md-none" href="{{url('/home')}}">
+                        <img style="max-width: 50px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                    </a>
+
                 @else
-                    <a class="navbar-brand" href="{{url('/')}}">
+                    <a class="navbar-brand d-none d-md-block" href="{{url('/')}}">
                         <img style="max-width: 80px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
                     </a>
+                    <a class="navbar-brand d-md-none" href="{{url('/')}}">
+                        <img style="max-width: 50px; height: auto;" src="{{asset('images/logo.png')}}" alt="Open Market Logo">
+                    </a>
+
                 @endif
                 <form
                     class="form-inline d-none d-md-flex my-2 my-md-0 bg-white searchbar p-0 justify-content-between air w-100"

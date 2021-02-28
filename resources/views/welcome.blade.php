@@ -62,7 +62,7 @@
                             @endisset
                         </datalist>
                     </form>
-                    <ul class="list-group list-group-flush" style="height: 330px; overflow-y: scroll;">
+                    <ul class="list-group list-group-flush" style="height: 300px; overflow-y: auto;">
                         @isset($stores)
                             @foreach ($stores as $store)
                             <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top"
