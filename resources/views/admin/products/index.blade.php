@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: flex;">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
         <div class="kt-wizard-v4__nav-items nav">
             <div class="kt-wizard-v4__nav-item nav-item" href="#" data-ktwizard-type="step"
-                data-ktwizard-state="current">
+                data-ktwizard-state="pending">
                 <div class="kt-wizard-v4__nav-body">
                     <div class="kt-wizard-v4__nav-number">
                         1
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="kt-wizard-v4__nav-item nav-item" href="#" data-ktwizard-type="step"
-                data-ktwizard-state="pending">
+                data-ktwizard-state="current">
                 <div class="kt-wizard-v4__nav-body">
                     <div class="kt-wizard-v4__nav-number">
                         4
@@ -78,7 +78,7 @@
                         @csrf
                         <!--begin: Form Wizard Step 1-->
                         <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
-                            data-ktwizard-state="current">
+                            data-ktwizard-state="pending">
                             <div class="kt-section kt-section--first mb-0">
                                 <div class="kt-wizard-v4__form">
                                     <div class="row">
@@ -87,7 +87,7 @@
                                                 <div class="row">
                                                     <div class="form-group col-md-9">
                                                         <label>Product Name</label>
-                                                        <input class="form-control" type="text" name="name" value=""
+                                                        <input class="form-control" type="text" name="name" value="Skull Candy"
                                                             data-name="name" required>
                                                     </div>
                                                     <div class="form-group col-md-3">
@@ -97,7 +97,7 @@
                                                                     class="input-group-text">{{__('default.currency')}}</span>
                                                             </div>
                                                             <input type="number" class="form-control" name="price"
-                                                                data-name="price" value="" required>
+                                                                data-name="price" value="22">
                                                         </div>
 
                                                     </div>
@@ -107,7 +107,7 @@
                                                         <label>Product Category</label>
 
                                                         <input type="text" class="form-control" placeholder="Category"
-                                                            name="category" data-name="category" value="" required>
+                                                            name="category" data-name="category" value="Phone" required>
 
                                                     </div>
                                                     <div class="form-group col-md-6">
@@ -119,12 +119,57 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Product Description</label>
-
-                                                        <textarea class="form-control" rows="4" name="description"
-                                                            data-name="description" required minlength="30"></textarea>
-
+                                                    <div class="form-group col-md-4">
+                                                        <label>Height</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="height"
+                                                                data-name="height" value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>Width</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="width"
+                                                                data-name="width" value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>Breadth</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="breadtg"
+                                                                data-name="breadth" value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-4">
+                                                        <label>Weight</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="weight"
+                                                                data-name="weight" value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">{{__('kg')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>Volume</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="width"
+                                                                data-name="width" value="">
+                                                            <div class="input-group-append"><span
+                                                                    class="input-group-text">{{__('litre(s)')}}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,7 +182,7 @@
 
                         <!--begin: Form Wizard Step 2-->
                         <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
-                            data-ktwizard-state="current">
+                            data-ktwizard-state="pending">
                             <div class="kt-section kt-section mb-0">
                                 <div class="kt-wizard-v4__form">
                                     <div class="row">
@@ -145,12 +190,39 @@
                                             <div class="kt-section__body">
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
-                                                        <label>Features</label>
+                                                        <label>Colors</label>
+                                                        <input type="text" class="form-control" name="color"
+                                                            data-name="color" value="" placeholder="E.g: red, green, blue">
 
-                                                        <textarea class="form-control" rows="5" name="features"
-                                                            data-name="features"
-                                                            placeholder="Example: color: white, size: 3, etc..."
-                                                            required></textarea>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Sizes</label>
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" name="size['s']" data-name="size['s']" id="size['s']">
+                                                                <label class="custom-control-label" for="size['s']">Small (S)</label>
+                                                            </div>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" name="size['m']" data-name="size['m']" id="size['m']">
+                                                                <label class="custom-control-label" for="size['m']">Medium (M)</label>
+                                                            </div>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" name="size['l']" data-name="size['l']" id="size['l']">
+                                                                <label class="custom-control-label" for="size['l']">Large (L)</label>
+                                                            </div>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" name="size['xl']" data-name="size['sl']" id="size['sl']">
+                                                                <label class="custom-control-label" for="size['sl']">Extra Large (XL)</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Product Description</label>
+
+                                                        <textarea class="form-control" rows="5" name="description"
+                                                            data-name="description" required minlength="30">Hello World Hello World Hello World Hello World Hello World Hello World</textarea>
 
                                                     </div>
                                                     <div class="form-group col-md-6">
@@ -159,7 +231,7 @@
                                                         <textarea class="form-control" rows="5" name="keywords"
                                                             data-name="keywords"
                                                             placeholder="Example: electronics, phone, infinix, hot 8, etc..."
-                                                            required></textarea>
+                                                            required>Hello World Hello World Hello World Hello World Hello World</textarea>
 
                                                     </div>
                                                 </div>
@@ -172,39 +244,24 @@
                         <!--end: Form Wizard Step 2-->
 
                         <!--begin: Form Wizard Step 3-->
-                        <div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
+                        <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
+                        data-ktwizard-state="current">
                             <div class="kt-section mb-0">
                                 <div class="kt-wizard-v4__form">
-                                    <div class="form-group row mb-0 justify-content-center">
-
-                                        <div class="col-xl-3 col-lg-3 col-form-label">
-                                            <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                    id="productImages">
-                                                <div class="kt-avatar__holder"
-                                                    style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); width: 80px; height: 80px;">
-                                                </div>
-                                                <label class="kt-avatar__upload"
-                                                    data-toggle="kt-tooltip" title=""
-                                                    data-original-title="Add more product images"
-                                                    style="top: 25px; right: 25px;">
-                                                    <i class="fa fa-plus"></i>
-                                                    <input type="file" name="images[]" id="productImagesSelect"
-                                                        accept="image/*" onchange="handleFiles(this)">
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-9 col-xl-6">
+                                    <div class="form-group row mb-0 justify-content-start" id="product_images_preview">
+                                        <div class="col-sm-6 col-md-4">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                 id="kt_apps_user_add_avatar">
-                                                <div class="kt-avatar__holder" id="thumbnail"
+                                                <div class="kt-avatar__holder" id="thumbnailPreview"
                                                     style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
                                                 </div>
-                                                <label class="kt-avatar__upload" data-toggle="kt-tooltip" title=""
-                                                    data-original-title="Select Product Images">
-                                                    <i class="fa fa-pen"></i>
-                                                    <input type="file" name="thumbnail" id="thumbnailSelect"
-                                                        accept="image/*" required onchange="handleFiles(this)">
+                                                <label class="kt-avatar__upload p-5"
+                                                    data-toggle="kt-tooltip" title=""
+                                                    data-original-title="Add product images"
+                                                    style="top: 50%; right: 50%; transform: translate(50%, -50%)">
+                                                    <i class="fa fa-plus fa-3x"></i>
+                                                    <input type="file" name="images[]" id="productImagesSelect"
+                                                        accept="image/*" onchange="handleFiles(this)">
                                                 </label>
                                                 <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title=""
                                                     data-original-title="Cancel avatar">
@@ -255,7 +312,7 @@
                                         <div class="kt-wizard-v4__review-content">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                 id="kt_apps_product_add_product_avatar">
-                                                <div class="kt-avatar__holder" id="thumbnail-preview"
+                                                <div class="kt-avatar__holder" id="images_preview"
                                                     style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
                                                 </div>
                                             </div>
@@ -350,12 +407,12 @@
                         </thead>
                         <tbody>
                             @foreach ($products as $item)
-                            <tr>
+                            <tr id="{{'product_row_'.$item->id}}">
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
-                                <td><a href="{{asset('storage/'.$item->thumbnail)}}" target="_blank">
-                                        <img src='{{asset("storage/$item->thumbnail")}}' alt="{{$item->name}}"
-                                            style="width: 50px; height: 50px; cursor: zoom-in">
+                                <td><a href="{{asset('storage/'.$item->images[0]->name)}}" target="_blank">
+                                        <img src='{{asset("storage/".$item->images[0]->name)}}' alt="{{$item->name}}"
+                                            style="width: 50px; height: 50px; cursor: zoom-in;object-fit:contain">
                                     </a>
                                 </td>
                                 <td>{{$item->category}}</td>
@@ -379,7 +436,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="kt-nav__item">
-                                                        <a href="#" class="kt-nav__link text-danger">
+                                                        <a href="{{route('admin.product.destroy', $item->id)}}" class="kt-nav__link delete text-danger">
                                                             <i class="kt-nav__link-icon flaticon-delete"></i>
                                                             <span class="kt-nav__link-text">Delete</span>
                                                         </a>

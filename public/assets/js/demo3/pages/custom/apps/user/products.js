@@ -40,18 +40,12 @@ var KTAppProduct = function () {
 				name: {
 					required: true
 				},
-				price: {
-					required: true
-				},
 				category: {
 					required: true
 				},
 				description: {
 					required: true
 				},
-				features: {
-					required: true
-                },
                 keywords: {
                     required: true
                 }
@@ -90,7 +84,6 @@ var KTAppProduct = function () {
 				// See: http://malsup.com/jquery/form/#ajaxSubmit
 				formEl.ajaxSubmit({
 					success: function(data) {
-                        console.log(data)
 						KTApp.unprogress(btn);
                         //KTApp.unblock(formEl);
 						swal.fire({
@@ -102,9 +95,9 @@ var KTAppProduct = function () {
                         var product = "<tr>";
                         product += "<td>"+data.product.id+"</td>";
                         product += "<td>"+data.product.name+"</td>";
-                        product += "<td><a href='/storage/"+data.product.thumbnail+"' target='_blank'>"
-                        product += "<img src='/storage/"+data.product.thumbnail+"' alt='"+data.product.name+"' ";
-                        product += "style='width: 50px; height: 50px; cursor: zoom-in'></a></td>";
+                        product += "<td><a href='/storage/"+data.product.images[0].name+"' target='_blank'>"
+                        product += "<img src='/storage/"+data.product.images[0].name+"' alt='"+data.product.name+"' ";
+                        product += "style='width: 50px; height: 50px; cursor: zoom-in;object-fit:contain'></a></td>";
                         product += "<td>"+data.product.category+"</td>";
                         product += "<td>"+data.product.description.substring(0, 40)+"...</td>";
                         product += "<td>"+data.product.features.substring(0, 40)+"...</td>";
@@ -136,7 +129,7 @@ var KTAppProduct = function () {
                         </td>`;
 												product += "</tr>";
 												formEl[0].reset();
-                        //$("#kt_table_1 tbody").prepend(product);
+                        $("#kt_table_1 tbody").prepend(product);
                         $('#kt_apps_user_add_user').css("display", "none");
                         $('#products_view_portlet').show(300);
                     },
@@ -184,9 +177,9 @@ var KTAppProduct = function () {
                         var product = "<tr>";
                         product += "<td>"+data.product.id+"</td>";
                         product += "<td>"+data.product.name+"</td>";
-                        product += "<td><a href='/storage/"+data.product.thumbnail+"' target='_blank'>"
-                        product += "<img src='/storage/"+data.product.thumbnail+"' alt='"+data.product.name+"' ";
-                        product += "style='width: 50px; height: 50px; cursor: zoom-in'></a></td>";
+                        product += "<td><a href='/storage/"+data.product.images[0].name+"' target='_blank'>"
+                        product += "<img src='/storage/"+data.product.images[0].name+"' alt='"+data.product.name+"' ";
+                        product += "style='width: 50px; height: 50px; cursor: zoom-in;object-fit:contain'></a></td>";
                         product += "<td>"+data.product.category+"</td>";
                         product += "<td>"+data.product.description.substring(0, 40)+"...</td>";
                         product += "<td>"+data.product.features.substring(0, 40)+"...</td>";
@@ -243,15 +236,15 @@ var KTAppProduct = function () {
             e.preventDefault();
             $(".show_product_form").hide();
             $("#hide_product_form").show();
-            
+
             const url = $(e.currentTarget).attr('href');
             $.getJSON(url, (result) => {
                 if (result.success == true){
                     var product = result.product;
-                    formEl.attr("action",url); 
+                    formEl.attr("action",url);
                     var btn = formEl.find('[data-ktwizard-type="action-submit"]');
                     btn.text("UPDATE");
-                    
+
                     $("input[name='_method']").val('PUT');
                     $("input[name='name']").val(product.name);
                     $("input[name='price']").val(product.price);
@@ -259,7 +252,7 @@ var KTAppProduct = function () {
                     $("textarea[name='description']").val(product.description);
                     $("textarea[name='features']").val(product.features);
                     $("textarea[name='keywords']").val(product.keywords);
-                    $("#thumbnail").css("background-image", `url('/storage/${product.thumbnail}')`);
+                    $("#thumbnail").css("background-image", `url('/storage/${product.images[0].name}')`);
 
                     $("#name-preview").text(product.name);
                     $("#price-preview").text(product.price);
@@ -267,7 +260,7 @@ var KTAppProduct = function () {
                     $("#description-preview").text(product.description);
                     $("#features-preview").text(product.features);
                     $("#keywords-preview").text(product.keywords);
-                    $("#thumbnail-preview").css("background-image", `url('/storage/${product.thumbnail}')`);
+                    $("#thumbnail-preview").css("background-image", `url('/storage/${product.images[0].name}')`);
 
                     $("input[name='thumbnail']").removeAttr("required");
 
@@ -275,6 +268,25 @@ var KTAppProduct = function () {
                     $('#kt_apps_user_add_user').css("display", "flex");
                 }
             })
+        })
+    }
+
+    const deleteProduct = ()=>{
+        $(".delete").on("click", (e) => {
+            e.preventDefault();
+            const url = $(e.currentTarget).attr('href');
+            $.getJSON(url, {_method: 'delete'}, (result)=>{
+                if (result.success){
+                    $(`#product_row_${result.product.id}`).remove()
+                    swal.fire({
+                        "title": "Success",
+                        "text": result.message,
+                        "type": "success",
+                        "confirmButtonClass": "btn btn-secondary"
+                    });
+                }
+            })
+
         })
     }
 
@@ -296,7 +308,6 @@ var KTAppProduct = function () {
             var btn = formEl.find('[data-ktwizard-type="action-submit"]');
             btn.text("SUBMIT");
 
-            $("input[name='thumbnail']").attr("required", "required");
             $('#kt_apps_product_add_product_form')[0].reset();
 
             $(".preview").text("");
@@ -324,11 +335,12 @@ var KTAppProduct = function () {
             formEl = $('#kt_apps_product_add_product_form');
             //editForm = $('#edit_product_form');
 
-			initWizard();
-			initValidation();
-			initSubmit();
+            initWizard();
+            initValidation();
+            initSubmit();
             initKTAppsProductAdd();
             getProduct();
+            deleteProduct();
             hideProductForm();
             showProductForm();
             previewProductForm();
@@ -336,6 +348,6 @@ var KTAppProduct = function () {
 	};
 }();
 
-jQuery(document).ready(function() {
-	KTAppProduct.init();
+jQuery(() =>{
+    KTAppProduct.init();
 });

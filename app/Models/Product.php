@@ -13,7 +13,9 @@ class Product extends Model
       return $this->hasMany(StoreProduct::class);
     }
 
-    protected $casts = [
-        'images' => 'array'
-    ];
+    public function images(){
+        return $this->hasMany(ProductImage::class);
+    }
+
+    protected $guarded = [];
 }
