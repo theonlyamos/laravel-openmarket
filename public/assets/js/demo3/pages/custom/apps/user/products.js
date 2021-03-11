@@ -13,7 +13,7 @@ var KTAppProduct = function () {
 	var initWizard = function () {
 		// Initialize form wizard
 		wizard = new KTWizard('kt_apps_user_add_user', {
-			startStep: 1,
+			startStep: 3,
 		});
 
 		// Validation before going to next page
@@ -25,6 +25,16 @@ var KTAppProduct = function () {
 
 		// Change event
 		wizard.on('change', function(wizard) {
+            if (wizard.isLastStep()){
+                $("input").each((i, e)=> {
+                    if ($(e).attr('type') !== 'checkbox')
+                        $(`#${$(e).data('name')}-preview`).text($(e).val());
+                })
+
+                $("textarea").each((i, e)=> {
+                    $(`#${$(e).data('name')}-preview`).text($(e).val());
+                })
+            }
 			KTUtil.scrollTop();
 		});
 	}
@@ -44,7 +54,7 @@ var KTAppProduct = function () {
 					required: true
 				},
 				description: {
-					required: true
+                    required: true
 				},
                 keywords: {
                     required: true

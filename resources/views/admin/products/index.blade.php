@@ -142,7 +142,7 @@
                                                     <div class="form-group col-md-4">
                                                         <label>Breadth</label>
                                                         <div class="input-group">
-                                                            <input type="number" class="form-control" name="breadtg"
+                                                            <input type="number" class="form-control" name="breadth"
                                                                 data-name="breadth" value="">
                                                             <div class="input-group-append"><span
                                                                     class="input-group-text">{{__('metre(s)')}}</span>
@@ -191,28 +191,27 @@
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
                                                         <label>Colors</label>
-                                                        <input type="text" class="form-control" name="color"
+                                                        <input type="text" class="form-control" name="colors"
                                                             data-name="color" value="" placeholder="E.g: red, green, blue">
-
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Sizes</label>
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="size['s']" data-name="size['s']" id="size['s']">
-                                                                <label class="custom-control-label" for="size['s']">Small (S)</label>
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="small" data-name="sizes['s']" id="sizes['s']">
+                                                                <label class="custom-control-label" for="sizes['s']">Small (S)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="size['m']" data-name="size['m']" id="size['m']">
-                                                                <label class="custom-control-label" for="size['m']">Medium (M)</label>
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="medium" data-name="sizes['m']" id="sizes['m']">
+                                                                <label class="custom-control-label" for="sizes['m']">Medium (M)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="size['l']" data-name="size['l']" id="size['l']">
-                                                                <label class="custom-control-label" for="size['l']">Large (L)</label>
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="large" data-name="sizes['l']" id="sizes['l']">
+                                                                <label class="custom-control-label" for="sizes['l']">Large (L)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="size['xl']" data-name="size['sl']" id="size['sl']">
-                                                                <label class="custom-control-label" for="size['sl']">Extra Large (XL)</label>
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="extra_large" data-name="sizes['sl']" id="sizes['sl']">
+                                                                <label class="custom-control-label" for="sizes['xl']">Extra Large (XL)</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -248,11 +247,10 @@
                         data-ktwizard-state="current">
                             <div class="kt-section mb-0">
                                 <div class="kt-wizard-v4__form">
-                                    <div class="form-group row mb-0 justify-content-start" id="product_images_preview">
-                                        <div class="col-sm-6 col-md-4">
+                                    <div class="form-group d-flex mb-0 justify-content-start" id="product_images_preview">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
                                                 id="kt_apps_user_add_avatar">
-                                                <div class="kt-avatar__holder" id="thumbnailPreview"
+                                                <div class="kt-avatar__holder" id="thumbnailPreview1"
                                                     style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
                                                 </div>
                                                 <label class="kt-avatar__upload p-5"
@@ -268,7 +266,6 @@
                                                     <i class="fa fa-times"></i>
                                                 </span>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +298,7 @@
                                         </div>
                                         <div class="kt-wizard-v4__review-content">
                                             <b>Description:</b> <span class="preview" id="description-preview"></span>
-                                            <br> <b>Features:</b> <span class="preview" id="features-preview"></span>
+                                            <!--<br> <b>Features:</b> <span class="preview" id="features-preview"></span> -->
                                             <br> <b>Keywords:</b> <span class="preview" id="keywords-preview"></span>
                                         </div>
                                     </div>
@@ -310,11 +307,8 @@
                                             Product Images
                                         </div>
                                         <div class="kt-wizard-v4__review-content">
-                                            <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                id="kt_apps_product_add_product_avatar">
-                                                <div class="kt-avatar__holder" id="images_preview"
-                                                    style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
-                                                </div>
+                                            <div class="d-flex kt-avatar kt-avatar--outline kt-avatar--circle-"
+                                                id="kt_apps_product_add_product_images_preview">
                                             </div>
                                         </div>
                                     </div>

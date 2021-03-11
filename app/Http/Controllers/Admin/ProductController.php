@@ -74,6 +74,7 @@ class ProductController extends Controller
         //
 
         $new_product = $request->validated();
+        //$new_product['colors'] = explode(",", $new_product['colors']);
         $product = Product::create($new_product);
         if ($request->hasFile('thumbnail')){
             $thumbnail = $request->thumbnail->store("public");
@@ -95,7 +96,7 @@ class ProductController extends Controller
                 ]);
             }
         }
-        $product->images = $product->images;
+        //$product->images = $product->images;
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
     }
 
