@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: flex;">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
@@ -164,13 +164,8 @@
                                                     <div class="form-group col-md-4">
                                                         <label>Volume</label>
                                                         <div class="input-group">
-<<<<<<< HEAD
-                                                            <input type="number" class="form-control" name="width"
-                                                                data-name="width" value="">
-=======
                                                             <input type="number" class="form-control" name="volume"
                                                                 data-name="volume" value="">
->>>>>>> product
                                                             <div class="input-group-append"><span
                                                                     class="input-group-text">{{__('litre(s)')}}</span>
                                                             </div>

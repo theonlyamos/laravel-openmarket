@@ -13,7 +13,7 @@ var KTAppProduct = function () {
 	var initWizard = function () {
 		// Initialize form wizard
 		wizard = new KTWizard('kt_apps_user_add_user', {
-			startStep: 3,
+			startStep: 1,
 		});
 
 		// Validation before going to next page

@@ -25,13 +25,6 @@ class ProductPost extends FormRequest
     public function rules()
     {
         return [
-<<<<<<< HEAD
-            'name'      => ['required', 'unique:products'],
-            'category' => 'required',
-            'description' => ['required', 'min:30'],
-            'keywords' => 'required',
-            'features' => 'required'
-=======
             'name'          => ['required'],
             'category'      => 'required',
             'description'   => ['required', 'min:30'],
@@ -45,7 +38,6 @@ class ProductPost extends FormRequest
             'weight'        => ['nullable'],
             'volume'        => ['nullable'],
             'sizes'         => ['nullable']
->>>>>>> product
         ];
     }
 }
