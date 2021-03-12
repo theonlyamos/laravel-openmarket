@@ -13,6 +13,8 @@ use App\Http\Requests\ProductUpdate;
 use App\Models\Admin;
 use App\Models\Product;
 use App\Models\SiteInfo;
+use App\Models\ProductImage;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,7 +27,7 @@ class ProductController extends Controller
                   "stores"    => ["name" => "stores",    "icon" => "flaticon-medal"],
                   "products"  => ["name" => "products",  "icon" => "flaticon-app"],
                   "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
-                  "customers" => ["name" => "customers", "icon" => "flaticon2-customers"],
+                  "customers" => ["name" => "customers", "icon" => "flaticon-users"],
                   "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
                   "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
                   "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
@@ -45,7 +47,7 @@ class ProductController extends Controller
         $products = Product::orderBy('id', 'desc')->paginate(20);
         //$min_price = DB::table('products')->min('price');
         //$max_price = DB::table('products')->max('price');
-        
+
         return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products]);
 
         //return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products, 'min_price' => $min_price, 'max_price' => $max_price]);
@@ -69,7 +71,35 @@ class ProductController extends Controller
      */
     public function store(ProductPost $request)
     {
-        //
+        $new_product = $request->validated();
+        $new_product['colors'] = explode(",", $new_product['colors']);
+        if (in_array('sizes', $new_product)){
+            $new_product['sizes'] = $new_product['sizes'];
+        }
+
+        $product = Product::create($new_product);
+        if ($request->hasFile('thumbnail')){
+            $thumbnail = $request->thumbnail->store("public");
+            ProductImage::create([
+                "product_id" => $product->id,
+                "name" => explode("/", $thumbnail)[1],
+                "fullpath" => $thumbnail
+            ]);
+        }
+
+        if ($request->hasFile('images')){
+            $images = $request->images;
+            foreach ($images as $imageFile){
+                $image = $imageFile->store("public");
+                ProductImage::create([
+                    "product_id" => $product->id,
+                    "name" => explode("/", $image)[1],
+                    "fullpath" => $image
+                ]);
+            }
+        }
+        //$product->images = $product->images;
+        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
     }
 
     /**
@@ -78,16 +108,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //
-        $admin = Admin::find(Auth::guard('admin')->user()->id);
+        if ($request->has('_method') && $request->input('_method') == 'delete'){
+            $product = Product::find($id);
+            if ($product->images){
+                foreach ($product->images as $image){
+                    Storage::delete($image->fullpath);
+                    $image->delete();
+                }
+            }
+            Product::destroy($id);
+            return response()->json(["success" => true, "message" => "Product deleted successfully", "product" => $product]);
+        }
         $product = Product::find($id);
-        $keys = $product->keywords;
-        $keywords = explode(",", $keys);
-        $site_info = DB::select('select * from site_info');
-
-        return response()->json(['success' => true, 'product' => $product]);    
+        return response()->json(['success' => true, 'product' => $product]);
     }
 
     /**

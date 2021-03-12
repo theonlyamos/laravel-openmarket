@@ -12,7 +12,7 @@
 */
 
 
-Route::domain('store.openmartgh.com')->group(function(){
+Route::domain('store.openmartgh.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.about");
@@ -35,7 +35,7 @@ Route::domain('store.openmartgh.com')->group(function(){
 
 
 
-Route::domain('admin.openmartgh.com')->group(function(){
+Route::domain('admin.openmartgh.test')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
     Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
     Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
@@ -51,7 +51,8 @@ Route::domain('admin.openmartgh.com')->group(function(){
         'index'   => 'admin.products',
         'store'   => 'admin.product.create',
         'show'    => 'admin.product.get',
-        'update'  => 'admin.product.update'
+        'update'  => 'admin.product.update',
+        'destroy' => 'admin.product.destroy'
     ]);
     Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
 });
