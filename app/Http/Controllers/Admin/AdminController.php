@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\adminProductPost;
-use App\Http\Requests\adminProductUpdate;
-use App\Http\Requests\adminUpdate;
+use App\Http\Requests\AdminUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,12 +21,12 @@ class AdminController extends Controller
                   "stores"    => ["name" => "stores",    "icon" => "flaticon-medal"],
                   "products"  => ["name" => "products",  "icon" => "flaticon-app"],
                   "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
-                  "customers" => ["name" => "customers", "icon" => "flaticon2-customers"],
+                  "customers" => ["name" => "customers", "icon" => "flaticon-users"],
                   "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
                   "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
                   "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
 
-    public $site_info = ""; 
+    public $site_info = "";
 
     public function __construct(){
         $this->middleware(['admin']);
@@ -36,11 +34,11 @@ class AdminController extends Controller
     }
 
     public function index(){
-        
+
         return redirect()->route('admin.dashboard');
     }
 
-    public function dashboard(){ 
+    public function dashboard(){
         $admin = Admin::find(Auth::guard('admin')->user()->id);
         $products = Product::count();
         $stores = Store::count();
@@ -52,7 +50,7 @@ class AdminController extends Controller
     public function page(){
     }
 
-    public function update_profile(adminUpdate $request){
+    public function update_profile(AdminUpdate $request){
         $admin_update = $request->validated();
         $admin = Admin::find(Auth::guard('admin')->user()->id);
 
@@ -68,19 +66,19 @@ class AdminController extends Controller
         return response()->json(["success" => true, "message" => "Profile updated successfully"]);
     }
 
-    public function stores(Request $request){ 
+    public function stores(Request $request){
         $admin = Admin::find(Auth::guard('admin')->user()->id);
         $stores = Store::all();
-        
+
         return view('admin.stores.index', ['title' => 'stores', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'stores' => $stores]);
     }
 
-    public function products(Request $request){ 
+    public function products(Request $request){
         $admin = Admin::find(Auth::guard('admin')->user()->id);
         $products = Product::orderBy('id', 'desc')->paginate(20);
         $min_price = DB::table('products')->min('price');
         $max_price = DB::table('products')->max('price');
-        
+
         return view('admin.products.index', ['title' => 'products', 'pages' => $this->pages, 'admin' => $admin, 'site_info' => $this->site_info, 'products' => $products, 'min_price' => $min_price, 'max_price' => $max_price]);
     }
 

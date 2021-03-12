@@ -164,8 +164,13 @@
                                                     <div class="form-group col-md-4">
                                                         <label>Volume</label>
                                                         <div class="input-group">
+<<<<<<< HEAD
                                                             <input type="number" class="form-control" name="width"
                                                                 data-name="width" value="">
+=======
+                                                            <input type="number" class="form-control" name="volume"
+                                                                data-name="volume" value="">
+>>>>>>> product
                                                             <div class="input-group-append"><span
                                                                     class="input-group-text">{{__('litre(s)')}}</span>
                                                             </div>

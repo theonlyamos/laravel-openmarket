@@ -17,5 +17,14 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+<<<<<<< HEAD
     protected $guarded = ['id'];
+=======
+    protected $casts = [
+        'colors'    => 'array',
+        'sizes'     => 'array'
+    ];
+
+    protected $guarded = [];
+>>>>>>> product
 }

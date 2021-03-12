@@ -15,9 +15,7 @@ class CreateAdminImagesTable extends Migration
     {
         Schema::create('admin_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('admin_id')
-                  ->constrained()
-                  ->onDelete('cascade');
+            $table->bigInteger('admin_id');
             $table->string('name');
             $table->timestamps();
         });

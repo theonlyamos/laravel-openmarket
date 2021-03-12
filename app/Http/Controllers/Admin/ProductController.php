@@ -71,10 +71,19 @@ class ProductController extends Controller
      */
     public function store(ProductPost $request)
     {
+<<<<<<< HEAD
         //
 
         $new_product = $request->validated();
         //$new_product['colors'] = explode(",", $new_product['colors']);
+=======
+        $new_product = $request->validated();
+        $new_product['colors'] = explode(",", $new_product['colors']);
+        if (in_array('sizes', $new_product)){
+            $new_product['sizes'] = $new_product['sizes'];
+        }
+
+>>>>>>> product
         $product = Product::create($new_product);
         if ($request->hasFile('thumbnail')){
             $thumbnail = $request->thumbnail->store("public");
@@ -92,7 +101,11 @@ class ProductController extends Controller
                 ProductImage::create([
                     "product_id" => $product->id,
                     "name" => explode("/", $image)[1],
+<<<<<<< HEAD
                     "fullpath" => $thumbnail
+=======
+                    "fullpath" => $image
+>>>>>>> product
                 ]);
             }
         }
@@ -121,7 +134,10 @@ class ProductController extends Controller
             return response()->json(["success" => true, "message" => "Product deleted successfully", "product" => $product]);
         }
         $product = Product::find($id);
+<<<<<<< HEAD
         $product->images = $product->images;
+=======
+>>>>>>> product
         return response()->json(['success' => true, 'product' => $product]);
     }
 

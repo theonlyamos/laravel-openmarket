@@ -17,13 +17,19 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->text('features');
             $table->text('keywords');
-            $table->string('url')->nullable();
+            $table->string('brand')->nullable();
             $table->string('category');
             $table->string('subcategory')->nullable();
-            $table->text('images')->nullable();
             $table->boolean('status')->default(0);
+            $table->float('price')->nullable();
+            $table->float('width')->nullable();
+            $table->float('height')->nullable();
+            $table->float('breadth')->nullable();
+            $table->float('weight')->nullable();
+            $table->float('volume')->nullable();
+            $table->text('colors')->nullable();
+            $table->text('sizes')->nullable();
             $table->timestamps();
         });
     }
