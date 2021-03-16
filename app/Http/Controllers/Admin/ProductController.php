@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\ProductPost;
 use App\Http\Requests\ProductUpdate;
@@ -14,7 +15,7 @@ use App\Models\Admin;
 use App\Models\Product;
 use App\Models\SiteInfo;
 use App\Models\ProductImage;
-use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {

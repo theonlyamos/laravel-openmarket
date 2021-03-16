@@ -21,7 +21,7 @@ class AdminController extends Controller
                   "stores"    => ["name" => "stores",    "icon" => "flaticon-medal"],
                   "products"  => ["name" => "products",  "icon" => "flaticon-app"],
                   "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
-                  "customers" => ["name" => "customers", "icon" => "flaticon-users"],
+                  "customers" => ["name" => "customers", "icon" => "flaticon2-group"],
                   "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
                   "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
                   "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
@@ -34,11 +34,10 @@ class AdminController extends Controller
     }
 
     public function index(){
-
         return redirect()->route('admin.dashboard');
     }
 
-    public function dashboard(){
+    public function dashboard($page=""){
         $admin = Admin::find(Auth::guard('admin')->user()->id);
         $products = Product::count();
         $stores = Store::count();

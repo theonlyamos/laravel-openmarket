@@ -25,7 +25,7 @@ class CreateStoresTable extends Migration
             $table->string('region')->nullable();
             $table->string('city')->nullable();
             $table->string('postal')->nullable();
-            $table->geometry('location')->nullable();
+            $table->string('location')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

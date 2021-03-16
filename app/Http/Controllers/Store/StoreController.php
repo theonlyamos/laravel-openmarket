@@ -3,25 +3,38 @@
 namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeProductPost;
-use App\Http\Requests\storeProductUpdate;
-use App\Http\Requests\storeUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Product;
+use App\Http\Requests\storeProductPost;
+use App\Http\Requests\storeProductUpdate;
+use App\Http\Requests\storeUpdate;
+
+use App\Models\StoreProduct;
 use App\Models\Store;
 use App\Models\SiteInfo;
 
 class StoreController extends Controller
 {
-    //
+    protected $pages = ["dashboard" => ["name" => "dashboard", "icon" => "flaticon2-analytics-2"],
+                  "product"  => ["name" => "product",  "icon" => "flaticon-app"],
+                  "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
+                  "customers" => ["name" => "customers", "icon" => "flaticon2-group"],
+                  "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
+                  "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
+                  "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
+
+    public $site_info = "";
+
+    public function __construct(){
+        $this->site_info = SiteInfo::first();
+    }
 
     public function index(){
 
         $site_info = SiteInfo::first();
-        $products = Product::orderBy("created_at", "desc")->limit(8)->get();
+        $products = StoreProduct::orderBy("created_at", "desc")->limit(8)->get();
 
         return view("store.index2", ["products" => $products, "title" => "Home", "site" => $site_info]);
     }
@@ -47,10 +60,10 @@ class StoreController extends Controller
         }
 
         if (count($cats)){
-            $products = Product::whereIn('category', $cats)->paginate(20);
+            $products = StoreProduct::whereIn('category', $cats)->paginate(20);
         }
         else {
-            $products = Product::where("store_id", $store_id)
+            $products = StoreProduct::where("store_id", $store_id)
             ->orderBy("id", "desc")
             ->paginate(20);
         }
@@ -67,8 +80,8 @@ class StoreController extends Controller
         $stores = Store::all();
         $categories = array_unique($categories);
         $subcategories = DB::select('select id, name from subcategories');
-        $min_price = DB::table('products')->min('price');
-        $max_price = DB::table('products')->max('price');
+        $min_price = DB::table('store_products')->min('price');
+        $max_price = DB::table('store_products')->max('price');
         $site_info = SiteInfo::first();
 
         return view("store.products", ["products" => $products, "store" => $store, "stores" => $stores,
@@ -80,40 +93,26 @@ class StoreController extends Controller
                                        "longitude" => $location[1]]);
     }
 
-    public function dashboard($page = ""){
-        $pages = ["dashboard" => ["name" => "dashboard", "icon" => "flaticon2-analytics-2"],
-                  "products"  => ["name" => "products",  "icon" => "flaticon-app"],
-                  "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
-                  "customers" => ["name" => "customers", "icon" => "flaticon2-group"],
-                  "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
-                  "profile"   => ["name" => "profile",   "icon" => "flaticon-user"],
-                  "settings"  => ["name" => "settings",  "icon" => "flaticon2-settings"]];
+    public function dashboard(){
         $store = Auth::guard('store')->user();
-        if (!empty($page)){
-            $list = '';
-            switch ($page) {
-                case 'products':
-                    $list = Product::where("store_id", Auth::guard('store')->user()->id)
-                                    ->orderBy("id", "asc")
-                                    ->get();
-            }
-            return view("store.dashboard.$page", ["title" => $page, "pages" => $pages, "list" => $list, "store" => $store]);
-        }
-        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $pages, "store" => $store]);
+        return view("store.dashboard.dashboard", ["title" => "dashboard", "pages" => $this->pages, "store" => $store]);
+    }
+
+    public function page(){
     }
 
     public function add_product(storeProductPost $request){
         $new_product = $request->validated();
         $new_product['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         $new_product['store_id'] = Auth::guard('store')->user()->id;
-        Product::create($new_product);
-        $product = Product::where("thumbnail", $new_product['thumbnail'])->first();
+        StoreProduct::create($new_product);
+        $product = StoreProduct::where("thumbnail", $new_product['thumbnail'])->first();
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
 
     }
 
     public function product_details($store_id, $product_id, Request $request){
-        $product = Product::find($product_id);
+        $product = StoreProduct::find($product_id);
         $keys = $product->keywords;
         $keywords = explode(",", $keys);
         $site_info = SiteInfo::first();
@@ -121,13 +120,13 @@ class StoreController extends Controller
     }
 
     public function get_product($product_id, Request $request){
-        $product = Product::find($product_id);
+        $product = StoreProduct::find($product_id);
         return response()->json(["success" => true, "message" => "Product retrieved successfully", "product" => $product]);
     }
 
     public function edit_product($product_id, storeProductUpdate $request){
         $product_update = $request->validated();
-        $product = Product::find($product_id);
+        $product = StoreProduct::find($product_id);
         if ($request->hasFile('thumbnail')){
             $product->thumbnail['thumbnail'] = explode("/", $request->thumbnail->store("public"))[1];
         }

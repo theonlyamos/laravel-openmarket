@@ -473,7 +473,7 @@
 
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/demo3/pages/custom/apps/user/products.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo3/pages/custom/apps/admin/products.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/image_preview.js')}}" type="text/javascript"></script>
 <!--end::Page Scripts -->
 

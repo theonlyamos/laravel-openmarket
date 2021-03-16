@@ -12,7 +12,7 @@
 */
 
 
-Route::domain('store.openmartgh.com')->group(function(){
+Route::domain('store.openmartgh.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.about");
@@ -22,12 +22,20 @@ Route::domain('store.openmartgh.com')->group(function(){
     Route::post("/login", 'Store\AuthController@postLogin')->name('store.login.post');
     Route::post("/register", 'Store\AuthController@postRegistration')->name('store.register.post');
     Route::middleware(['store'])->group(function(){
-        Route::get("/get_product/{product_id}", 'Store\StoreController@get_product')->name("store.get_product");
-        Route::get("/dashboard/{page}", 'Store\StoreController@dashboard')->name("store.dashboard.page");
-        Route::get("/dashboard", 'Store\StoreController@dashboard')->name("store.dashboard");
-        Route::get("/{store_id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("store.products");
-        Route::post("/add_product", 'Store\StoreController@add_product')->name("store.add_product");
-        Route::post("/edit_product/{product_id}", 'Store\StoreController@edit_product')->name("store.edit_product");
+        Route::prefix('product')->group(function () {
+            Route::get('/search', 'Store\ProductController@search')->name('store.product.search');
+        });
+        Route::resource('product', 'Store\ProductController')->names([
+            'index'   => 'store.products',
+            'store'   => 'store.product.create',
+            'show'    => 'store.product.get',
+            'update'  => 'store.product.update',
+            'destroy' => 'store.product.destroy'
+        ]);
+
+
+        Route::get('/dashboard', 'Store\StoreController@dashboard')->name('store.dashboard');
+        Route::get('/{page}', 'Store\StoreController@page')->name('store.dashboard.page');
         Route::post("/update_profile", 'Store\StoreController@update_profile')->name("store.profile.update");
 
     });
@@ -35,7 +43,7 @@ Route::domain('store.openmartgh.com')->group(function(){
 
 
 
-Route::domain('admin.openmartgh.com')->group(function(){
+Route::domain('admin.openmartgh.test')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
     Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
     Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
