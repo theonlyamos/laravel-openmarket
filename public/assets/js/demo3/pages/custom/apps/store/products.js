@@ -145,12 +145,12 @@ var KTAppProduct = function () {
                     },
                     error: function(data){
                         swal.fire({
-							"title": "Failure",
-							"text": data.responseText,
-							"type": "error",
-							"confirmButtonClass": "btn btn-secondary"
+                          "title": "Failure",
+                          "text": data.responseText,
+                          "type": "error",
+                          "confirmButtonClass": "btn btn-secondary"
                         });
-                        btn.text("Submit");
+                        btn.text("Add to Store");
                         KTApp.unprogress(btn);
                     }
 				});
@@ -226,14 +226,13 @@ var KTAppProduct = function () {
                         $('#products_view_portlet').show(300);
                     },
                     error: function(data){
-                        console.log(data);
                         swal.fire({
 							"title": "Failure",
 							"text": data.responseText,
 							"type": "error",
 							"confirmButtonClass": "btn btn-secondary"
                         });
-                        btn.text("Submit");
+                        btn.text("Add to Store");
                         KTApp.unprogress(btn);
                     }
 				});
@@ -316,7 +315,7 @@ var KTAppProduct = function () {
             //formEl.attr("action", window.location.origin + "/add_product");
             $("input[name='_method']").val('POST');
             var btn = formEl.find('[data-ktwizard-type="action-submit"]');
-            btn.text("SUBMIT");
+            btn.text("Add to Store");
 
             $('#kt_apps_product_add_product_form')[0].reset();
 
@@ -382,10 +381,56 @@ var KTAppProduct = function () {
 	};
 }();
 
+const loadProduct = (product) => {
+    const EXCLUDES = ['id', 'product_id', '_method', '_token', 'sizes[]', 'colors',
+    'images[]', 'quick_panel_notifications_1', 'color', 'size', 
+    'quick_panel_notifications_2','quick_panel_notifications_3', 
+    'quick_panel_notifications_4']
+    
+    $("input[name='product_id']").val(product.id)
+    
+    $(".kt-form input").each((i, e) => {
+      let key = $(e).attr('name')
+      if (!EXCLUDES.includes(key)){
+        $(`input[name='${key}']`).val(product[key])
+      }
+    })
+    $("select[name='color']").html("<option>Select Color</option>")
+    $("select[name='size']").html("<option>Select Size</option>")
+
+    for (let c in product.colors){
+      let colorOption = `<option value='${product.colors[c]}'>
+      ${product.colors[c]}</option>`
+
+      $("select[name='color']").append(colorOption)
+    }
+
+    for (let c in product.sizes){
+      let sizeOption = `<option value='${product.sizes[c]}'>
+      ${product.sizes[c]}</option>`
+
+      $("select[name='size']").append(sizeOption)
+    }
+
+    $("textarea[name='description']").val(product.description);
+    $("textarea[name='keywords']").val(product.keywords);
+
+    $("#productImages").html("")
+    for (let i in product.images){
+      let imgBox = `<div class="col-xs-6 col-sm-4 col-md-2 card shadow-sm">
+      <img class="img-fluid w-100" 
+      src="/storage/${product.images[i].name}"
+      style="object-fit: cover"></div>
+      `
+      $("#productImages").append(imgBox)
+    }
+    
+}
+
 const productSelect = (id)=>{
     let products = JSON.parse(localStorage.getItem('products'))
     let product = products.filter((e) => e.id == id)[0]
-    console.log(product)
+    loadProduct(product)
 }
 jQuery(() =>{
     KTAppProduct.init();

@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: flex;">
+<div class="kt-wizard-v4" id="kt_apps_user_add_user" data-ktwizard-state="first" style="display: none;">
 
     <!--begin: Form Wizard Nav -->
     <div class="kt-wizard-v4__nav">
@@ -19,46 +19,7 @@
                     </div>
                     <div class="kt-wizard-v4__nav-label">
                         <div class="kt-wizard-v4__nav-label-desc">
-                            Product details
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-wizard-v4__nav-item nav-item" href="#" data-ktwizard-type="step"
-                data-ktwizard-state="pending">
-                <div class="kt-wizard-v4__nav-body">
-                    <div class="kt-wizard-v4__nav-number">
-                        2
-                    </div>
-                    <div class="kt-wizard-v4__nav-label">
-                        <div class="kt-wizard-v4__nav-label-desc">
-                            Features & Keywords
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-wizard-v4__nav-item nav-item" href="#" data-ktwizard-type="step"
-                data-ktwizard-state="pending">
-                <div class="kt-wizard-v4__nav-body">
-                    <div class="kt-wizard-v4__nav-number">
-                        3
-                    </div>
-                    <div class="kt-wizard-v4__nav-label">
-                        <div class="kt-wizard-v4__nav-label-desc">
-                            Product images
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-wizard-v4__nav-item nav-item" href="#" data-ktwizard-type="step"
-                data-ktwizard-state="pending">
-                <div class="kt-wizard-v4__nav-body">
-                    <div class="kt-wizard-v4__nav-number">
-                        4
-                    </div>
-                    <div class="kt-wizard-v4__nav-label">
-                        <div class="kt-wizard-v4__nav-label-desc">
-                            Review and Submit
+                            Add Product
                         </div>
                     </div>
                 </div>
@@ -77,10 +38,10 @@
                             <!--begin: Search Input-->
                             <div class="card p-0 mt-5 w-100 rounded-0 border-0 shadow">
                                 <div class="card-header">
-                                    <label>Search Products</label>
+                                    <label>Search Product</label>
                                 </div>
                                 <div class="card-body p-0">
-                                    <input class="form-control border-0 search-form" autofocus type="text" id="searchForm">
+                                    <input class="form-control border-0 search-form" autocomplete="off" autofocus type="text" id="searchForm">
 
                                     <div class="list-group list-group-flush" id="searchResults">
 
@@ -91,7 +52,7 @@
                         </div>
                         <div class="col-md-8">
                             <!--begin: Form Wizard Form-->
-                            <form class="kt-form pt-0" id="kt_apps_product_add_product_form" novalidate="novalidate"
+                            <form class="kt-form pt-0" style="width: 90%" id="kt_apps_product_add_product_form" novalidate="novalidate"
                                 method="POST" action="{{ route('store.product.create') }}"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -108,48 +69,129 @@
                                                         <div class="row">
                                                             <div class="form-group col-md-9">
                                                                 <label>Product Name</label>
-                                                                <input class="form-control" type="text" name="name"
-                                                                    value="" data-name="name" required>
+                                                                <input class="form-control bg-light" type="text" name="name" value=""
+                                                                    data-name="name" readonly>
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <label>Product Price</label>
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend"><span
-                                                                            class="input-group-text">{{ __('default.currency') }}</span>
+                                                                            class="input-group-text">{{__('default.currency')}}</span>
                                                                     </div>
-                                                                    <input type="number" class="form-control"
-                                                                        name="price" data-name="price" value=""
-                                                                        required>
+                                                                    <input type="number" class="form-control" name="price"
+                                                                        data-name="price" value="">
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-6 col-lg-4">
                                                                 <label>Product Category</label>
 
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Category" name="category"
-                                                                    data-name="category" value="" required>
+                                                                <input type="text" class="form-control bg-light" placeholder="Category"
+                                                                    name="category" data-name="category" value="" readonly>
 
                                                             </div>
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-6 col-lg-4">
                                                                 <label>Product Brand</label>
 
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Brand" data-name="brand" name="brand">
+                                                                <input type="text" class="form-control bg-light" placeholder="Brand"
+                                                                    data-name="brand" name="brand" readonly>
 
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Color</label>
+                                                                <select name="color" id="color" class="custom-select">
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <label>Product Description</label>
 
-                                                                <textarea class="form-control" rows="4"
-                                                                    name="description" data-name="description" required
-                                                                    minlength="30"></textarea>
-
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Size</label>
+                                                                <select name="size" id="size" class="custom-select">
+                                                                </select>
                                                             </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Height</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control bg-light" name="height"
+                                                                        data-name="height" value="" readonly>
+                                                                    <div class="input-group-append"><span
+                                                                            class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Width</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control bg-light" name="width"
+                                                                        data-name="width" value="" readonly>
+                                                                    <div class="input-group-append"><span
+                                                                            class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Breadth</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control bg-light" name="breadth"
+                                                                        data-name="breadth" value="" readonly>
+                                                                    <div class="input-group-append"><span
+                                                                            class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Weight</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control bg-light" name="weight"
+                                                                        data-name="weight" value="" readonly>
+                                                                    <div class="input-group-append"><span
+                                                                            class="input-group-text">{{__('kg')}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
+                                                                <label>Volume</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control bg-light" name="volume"
+                                                                        data-name="volume" value="" readonly>
+                                                                    <div class="input-group-append"><span
+                                                                            class="input-group-text">{{__('litre(s)')}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <div class="kt-section__body">
+
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Product Description</label>
+
+                                                                            <textarea class="form-control bg-light" rows="5" name="description"
+                                                                                data-name="description" readonly minlength="30"></textarea>
+
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Keywords</label>
+
+                                                                            <textarea class="form-control bg-light" rows="5" name="keywords"
+                                                                                data-name="keywords"
+                                                                                placeholder="Example: electronics, phone, infinix, hot 8, etc..."
+                                                                                readonly></textarea>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pl-3" id="productImages">
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,155 +201,11 @@
                                 </div>
                                 <!--end: Form Wizard Step 1-->
 
-                                <!--begin: Form Wizard Step 2-->
-                                <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
-                                    data-ktwizard-state="current">
-                                    <div class="kt-section kt-section mb-0">
-                                        <div class="kt-wizard-v4__form">
-                                            <div class="row">
-                                                <div class="col-xl-12">
-                                                    <div class="kt-section__body">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <label>Features</label>
-
-                                                                <textarea class="form-control" rows="5" name="features"
-                                                                    data-name="features"
-                                                                    placeholder="Example: color: white, size: 3, etc..."
-                                                                    required></textarea>
-
-                                                            </div>
-                                                            <div class="form-group col-md-6">
-                                                                <label>Keywords</label>
-
-                                                                <textarea class="form-control" rows="5" name="keywords"
-                                                                    data-name="keywords"
-                                                                    placeholder="Example: electronics, phone, infinix, hot 8, etc..."
-                                                                    required></textarea>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end: Form Wizard Step 2-->
-
-                                <!--begin: Form Wizard Step 3-->
-                                <div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
-                                    <div class="kt-section mb-0">
-                                        <div class="kt-wizard-v4__form">
-                                            <div class="form-group row mb-0 justify-content-center">
-
-                                                <div class="col-xl-3 col-lg-3 col-form-label">
-                                                    <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                        id="productImages">
-                                                        <div class="kt-avatar__holder"
-                                                            style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); width: 80px; height: 80px;">
-                                                        </div>
-                                                        <label class="kt-avatar__upload" data-toggle="kt-tooltip"
-                                                            title="" data-original-title="Add more product images"
-                                                            style="top: 25px; right: 25px;">
-                                                            <i class="fa fa-plus"></i>
-                                                            <input type="file" name="images[]" id="productImagesSelect"
-                                                                accept="image/*" onchange="handleFiles(this)">
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-9 col-xl-6">
-                                                    <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                        id="kt_apps_user_add_avatar">
-                                                        <div class="kt-avatar__holder" id="thumbnail"
-                                                            style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
-                                                        </div>
-                                                        <label class="kt-avatar__upload" data-toggle="kt-tooltip"
-                                                            title="" data-original-title="Select Product Images">
-                                                            <i class="fa fa-pen"></i>
-                                                            <input type="file" name="thumbnail" id="thumbnailSelect"
-                                                                accept="image/*" required onchange="handleFiles(this)">
-                                                        </label>
-                                                        <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
-                                                            title="" data-original-title="Cancel avatar">
-                                                            <i class="fa fa-times"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--end: Form Wizard Step 3-->
-
-                                <!--begin: Form Wizard Step 4-->
-
-                                <div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
-                                    <div class="kt-heading kt-heading--md">Review your Details and Submit
-                                    </div>
-                                    <div class="kt-form__section">
-                                        <div class="kt-wizard-v4__review">
-                                            <div class="kt-wizard-v4__review-item">
-                                                <div class="kt-wizard-v4__review-title">
-                                                    Product Details
-                                                </div>
-                                                <div class="kt-wizard-v4__review-content">
-                                                    <b>Name:</b> <span id="name-preview"></span>
-                                                    <br> <b>Price:</b>
-                                                    {{ __('default.currency') }}<span class="preview"
-                                                        id="price-preview"></span>
-                                                    <br> <b>Category:</b> <span class="preview"
-                                                        id="category-preview"></span>
-                                                    <br> <b>Brand:</b> <span class="preview" id="brand-preview"></span>
-                                                </div>
-                                            </div>
-                                            <div class="kt-wizard-v4__review-item">
-                                                <div class="kt-wizard-v4__review-title">
-                                                    Product Description, Features and Keywords
-                                                </div>
-                                                <div class="kt-wizard-v4__review-content">
-                                                    <b>Description:</b> <span class="preview"
-                                                        id="description-preview"></span>
-                                                    <br> <b>Features:</b> <span class="preview"
-                                                        id="features-preview"></span>
-                                                    <br> <b>Keywords:</b> <span class="preview"
-                                                        id="keywords-preview"></span>
-                                                </div>
-                                            </div>
-                                            <div class="kt-wizard-v4__review-item">
-                                                <div class="kt-wizard-v4__review-title">
-                                                    Product Images
-                                                </div>
-                                                <div class="kt-wizard-v4__review-content">
-                                                    <div class="kt-avatar kt-avatar--outline kt-avatar--circle-"
-                                                        id="kt_apps_product_add_product_avatar">
-                                                        <div class="kt-avatar__holder" id="thumbnail-preview"
-                                                            style="background-image: url(&quot;/assets/media/files/jpg.svg&quot;); background-position: center; width: 250px; max-width: 100%; height: 300px; max-height: 100vh;">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--end: Form Wizard Step 4-->
-
                                 <!--begin: Form Actions -->
-                                <div class="kt-form__actions">
-                                    <div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
-                                        data-ktwizard-type="action-prev">
-                                        Previous
-                                    </div>
+                                <div class="kt-form__actions d-flex justify-content-end">
                                     <div class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
                                         data-ktwizard-type="action-submit">
-                                        Submit
-                                    </div>
-                                    <div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
-                                        data-ktwizard-type="action-next">
-                                        Next Step
+                                        Add to store
                                     </div>
                                 </div>
 
