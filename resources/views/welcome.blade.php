@@ -164,7 +164,7 @@
     var map, infoWindow, geocoder;
 
     function initMap() {
-        getLocation();
+        //getLocation();
         /*
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {
