@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var dataCacheName = 'openmartgh-v1';
-var cacheName = 'openmartgh-final-1';
+var dataCacheName = 'openmartgh-v2';
+var cacheName = 'openmartgh-final-2';
 var filesToCache = [
   '/',
   '/favicon.ico',
@@ -38,6 +38,13 @@ var filesToCache = [
   '/icons/apple-touch-icon.png'
 ];
 
+const fetchContent = async () => {
+    const url = `/`;
+    const response = await fetch(url);
+    const cache = await caches.open(cacheName);
+    await cache.put(url, response);
+};
+
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
   e.waitUntil(
@@ -47,6 +54,13 @@ self.addEventListener('install', function(e) {
     })
   );
 });
+
+self.addEventListener('periodicsync', (event) => {``
+    if (event.tag === 'content-sync') {
+      console.log('Fetching content in the background!');
+      event.waitUntil(fetchContent());
+    }
+  });
 
 self.addEventListener('activate', function(e) {
   console.log('[ServiceWorker] Activate');
@@ -67,8 +81,7 @@ self.addEventListener('fetch', function(e) {
   console.log('[Service Worker] Fetch', e.request.url);
     e.respondWith(
       caches.match(e.request).then(function(response) {
-        return response || fetch(e.request);
+        return fetch(e.request) || response;
       })
     );
 });
-

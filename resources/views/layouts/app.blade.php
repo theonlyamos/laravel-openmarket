@@ -380,16 +380,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
     @yield('scripts')
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-            .register('/service-worker.js')
-            .then(function () {
-                console.log('Service Worker Registered');
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        }
+
+        const main = async () => {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/service-worker.js');
+            }
+
+            const registration = await navigator.serviceWorker.ready;
+            // Check if periodicSync is supported
+            if ('periodicSync' in registration) {
+                // Request permission
+                const status = await navigator.permissions.query({
+                    name: 'periodic-background-sync',
+                });
+
+                if (status.state === 'granted') {
+                    try {
+                            // Register new sync every 24 hours
+                            await registration.periodicSync.register('content-syncy', {
+                            minInterval: 24 * 60 * 60 * 1000, // 1 day
+                        });
+                        console.log('Periodic background sync registered!');
+                    } catch(e) {
+                        console.error(`Periodic background sync failed:\nx${e}`);
+                    }
+                } else {
+                    console.info('Periodic background sync is not granted.');
+                }
+            } else {
+                console.log('Periodic background sync is not supported.');
+            }
+        };
+
+        main();
     </script>
 </body>
 
