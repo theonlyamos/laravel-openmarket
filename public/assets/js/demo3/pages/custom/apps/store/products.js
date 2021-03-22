@@ -341,7 +341,7 @@ var KTAppProduct = function () {
     const searchFunction = ()=>{
       $("#searchForm").on('keypress', (e)=>{
         let search = e.currentTarget.value + e.key
-
+        $("#searchResults").html("");
         if (search.length > 1){
           $.getJSON('/product/search', {product: search}, (result)=>{
             localStorage.setItem('products', JSON.stringify(result.products))
@@ -354,7 +354,7 @@ var KTAppProduct = function () {
               <div>${e.description.substr(0, 50)}...</div>
               </div>
               </a>`
-              $("#searchResults").html(product);
+              $("#searchResults").append(product);
             })
         })
         }
@@ -372,7 +372,7 @@ var KTAppProduct = function () {
             initSubmit();
             initKTAppsProductAdd();
             getProduct();
-            deleteProduct();
+            //deleteProduct();
             hideProductForm();
             showProductForm();
             previewProductForm();
@@ -380,6 +380,45 @@ var KTAppProduct = function () {
 		}
 	};
 }();
+
+const deleteSchool = (ids)=>{
+  $.ajax(`/dashboard/schools`, {
+      method: "DELETE",
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      data: JSON.stringify({ids: ids}),
+      success: (response) => {
+          ids.forEach((i) => {
+              $(`#row-${i}`).remove();
+          })
+          $('#ajaxToast').toast('hide');
+          showNotification(response.status, response.message);
+      },
+      error: (xhr, error, message) => {
+          showNotification('error', xhr.responseJSON.message)
+      },
+      complete: ()=>{
+          $("#confirmModal").modal('hide');
+          $('#ajaxToast').toast('hide');
+      }
+  })
+}
+
+
+const deleteProduct = (url, id)=>{
+    $.getJSON(url, {_method: 'delete'}, (result)=>{
+        $("#confirmModal").modal('hide');
+        if (result.success){
+            $(`#product_row_${result.product.id}`).remove()
+            swal.fire({
+                "title": "Success",
+                "text": result.message,
+                "type": "success",
+                "confirmButtonClass": "btn btn-secondary"
+            });
+        }
+    })
+}
 
 const loadProduct = (product) => {
     const EXCLUDES = ['id', 'product_id', '_method', '_token', 'sizes[]', 'colors',

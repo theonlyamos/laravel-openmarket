@@ -9,62 +9,69 @@ use Illuminate\Contracts\Session\Session;
 
 use App\Models\Cart;
 use App\Models\Store;
-use App\Models\Product;
 use App\Models\SiteInfo;
+use App\Models\StoreProduct;
 
 class CartController extends Controller
 {
-    //
+    public $site_info = "";
+
+    public function __construct(){
+        $this->site_info = SiteInfo::first();
+    }
 
     public function index(Request $request){
         $items = $request->session()->get('cart.items');
-        $site_info = SiteInfo::first();
         $stores = Store::all();
         $items = $request->session()->get('cart.items', []);
         $products = [];
         $total = 0.00;
+        $quantity = 0;
         if ($items){
             foreach ($items as $item){
-                $product = Product::find($item['id']);
+                $product = StoreProduct::find($item['id']);
                 $product->quantity = $item['quantity'];
                 $total += $product->price * $product->quantity;
+                $quantity += $item['quantity'];
                 array_push($products, $product);
 
             }
         }
         return view("cart.cart_items", ["title" => "Cart",
-                                        "site" => $site_info,
+                                        "site" => $this->site_info,
                                         "stores" => $stores,
-                                        "cart" => count($request->session()->get('cart.items', [])),
+                                        "cart" => $quantity,
                                         "products" => $products,
                                         "total" => $total]);
     }
 
     public function add_item(Request $request){
         if ($request->session()->has('cart')){
-/*
+
             $items = $request->session()->get('cart.items');
             $cart = [];
+            $in_cart = false;
             if (count($items)){
                 foreach($items as $item){
                     if ($item['id'] == $request->id){
                         $item['quantity'] += $request->quantity;
+                        $in_cart = true;
                     }
                     array_push($cart, $item);
-
                 }
             }
-            else {
+
+            if (!$in_cart){
                 array_push($cart, ['id' => $request->id, 'quantity' => $request->quantity]);
             }
+
             $request->session()->put('cart', ['items' => $cart]);
-*/
-            $request->session()->push('cart.items', ['id' => $request->id, 'quantity' => $request->quantity]);
+            //$request->session()->push('cart.items', ['id' => $request->id, 'quantity' => $request->quantity]);
         }
         else
             $request->session()->put('cart', ['items' => [['id' => $request->id, 'quantity' => $request->quantity]]]);
         $buy = $request->buy;
-        return response()->json(["success" => true, 'cart' => count($request->session()->get('cart.items', [])), "buy" => $buy]);
+        return response()->json(["success" => true, 'cart' => $request->session()->get('cart.items', []), "buy" => $buy]);
     }
 
     public function remove_item($index, Request $request){
@@ -80,7 +87,6 @@ class CartController extends Controller
     }
 
     public function checkout(){
-        $site_info = SiteInfo::first();
-        return view("cart.checkout", ["title" => "Checkout", "site" => $site_info]);
+        return view("cart.checkout", ["title" => "Checkout", "site" => $this->site_info]);
     }
 }

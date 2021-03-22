@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class Store extends Authenticatable implements MustVerifyEmail
 {
@@ -41,5 +42,14 @@ class Store extends Authenticatable implements MustVerifyEmail
 
     public function products(){
         return $this->hasMany(StoreProduct::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->slug = Str::of($model->name)->slug('-');
+        });
     }
 }

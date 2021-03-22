@@ -19,8 +19,13 @@ class IndexController extends Controller
         $stores = Store::orderBy("created_at", "desc")->get();
         $site_info = SiteInfo::first();
         $products = StoreProduct::orderBy("created_at", "desc")->limit(12)->get();
-        $cart = count($request->session()->get('cart.items', []));
         $categories = DB::select('select * from categories');
+
+        $cart = 0;
+        $items = $request->session()->get('cart.items', []);
+        foreach($items as $item){
+            $cart += $item['quantity'];
+        }
 
         return view("welcome", ["categories" => $categories, "stores" => $stores, "products" => $products, "site" => $site_info, "cart" => $cart]);
     }

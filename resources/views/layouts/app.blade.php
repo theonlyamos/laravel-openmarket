@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes' />
     <meta name='description' content='Shop from your favourites stores at the comfort of your home'/>
 
     <!-- CSRF Token -->
@@ -28,42 +28,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-
+    <!--<link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">-->
+    <link rel="stylesheet" href="{{asset('css/animate.css')}}" defer>
+    <!--
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+    <link rel="stylesheet" href="{{asset('css/aos.css')}}" defer>
 
     <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
-
+    -->
     <link href="{{asset('css/fontawesome/font-awesome.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!--<link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">-->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" defer>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" defer>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" />
     <link rel="apple-touch-icon" href="{{asset('icons/apple-touch-icon.png')}}">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Scripts -->
-   <!-- <script src="{{ asset('js/fontawesome.js') }}" defer></script> -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/scripts.js') }}" defer></script>
-
 	<!-- Global site site (adsbygoogle.js) - Google Adsense -->
 	<script data-ad-client="ca-pub-3588854090963660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TB1D9N6DPJ"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TB1D9N6DPJ" defer></script>
 	<script>
   	window.dataLayer = window.dataLayer || [];
   	function gtag(){dataLayer.push(arguments);}
@@ -71,6 +66,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   	gtag('config', 'G-TB1D9N6DPJ');
 	</script>
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,7 +80,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <div id="app">
         <div class="toast bg-dark d-none" role="alert" aria-live="assertive" aria-atomic="true" id="notifyToast" data-delay="5000"
-            style="height: 85px; position: fixed; bottom: 0; right: 0; z-index: 9999;">
+            style="height: max-content; position: fixed; bottom: 0; right: 0; z-index: 9999;">
+            <!--
             <div class="toast-header">
                 <strong class="mr-auto text-dark toast-title"></strong>
                 <small class="text-secondary">just now</small>
@@ -88,7 +89,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="toast-body d-flex align-items-center">
+        -->
+            <div class="toast-body d-flex align-items-center p-3">
 
             </div>
         </div>
@@ -143,9 +145,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 @endif
                 <form
-                    class="form-inline d-none d-md-flex my-2 my-md-0 bg-white searchbar p-0 justify-content-between air w-100"
+                    class="form-inline d-none d-md-flex my-2 my-md-0 bg-white searchbar p-0 justify-content-between shadow-sm w-100 rounded-0"
                     style="border: 1px solid #ced4da !important; height: 40px;">
-                    <input class="form-control mr-sm-2 searchinput bg-light text-secondary w-75 border-0" type="search"
+                    <input class="form-control mr-sm-2 searchinput bg-white text-secondary w-75 border-0 rounded-0" type="search"
                         placeholder="Search" aria-label="Search" name="search" required
                         style="font-size: 14px; color: #ced4da; height: auto !important;">
                     <button class="btn btn-light my-2 my-sm-0 d-none d-md-block w-5 rounded-0 border-0 px-4"
@@ -161,11 +163,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         class="fa fa-shopping-cart"></i>[<span
                         class="cart cart-count">{{$cart ?? 0}}</span>]</a>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown"
+                        <button type="button" class="btn btn-clear dropdown-toggle" data-bs-display="static" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Stores
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-end">
                             @isset($stores)
                                 @foreach ($stores as $store)
                                     <a href="{{route('products.store', $store->id)}}" class="dropdown-item">
@@ -177,12 +179,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     @if (Auth::check())
                         <div class="btn-group">
-                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown"
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i
                                 class="fa fa-user-circle-o"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">
                                     <i class="fa fa-shopping-basket"></i>
                                     {{__("Orders")}}</a>
@@ -209,11 +211,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     @else
                         <div class="btn-group">
-                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-clear dropdown-toggle" data-bs-display="static" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i
                                 class="fa fa-user-circle-o"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu-end">
                                 <a href="{{route('login')}}" class="dropdown-item">
                                     <i class="fa fa-sign-in"></i>
                                     {{__("Login")}}
@@ -315,11 +317,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h2 class="ftco-heading-2 text-white">Menu</h2>
                         <ul class="list-unstyled">
                             <li><a href="{{config('app.url', 'https://openmart.ga')}}"
-                                    class="py-2 d-block text-secondary">Home</a></li>
-                            <li><a href="{{route('store.index')}}" class="py-2 d-block text-secondary">Stores</a></li>
-                            <li><a href="{{route('cart')}}" class="py-2 d-block text-secondary">Cart</a></li>
-                            <li><a href="{{route('contactus')}}" class="py-2 d-block text-secondary">Contact Us</a></li>
-                            <li><a href="{{route('aboutus')}}" class="py-2 d-block text-secondary">About Us</a></li>
+                                    class="py-2 d-block">Home</a></li>
+                            <li><a href="{{route('store.index')}}" class="py-2 d-block">Stores</a></li>
+                            <li><a href="{{route('cart')}}" class="py-2 d-block">Cart</a></li>
+                            <li><a href="{{route('contactus')}}" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="{{route('aboutus')}}" class="py-2 d-block">About Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -328,10 +330,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h2 class="ftco-heading-2 text-white">Help</h2>
                         <div class="d-flex">
                             <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                <li><a href="#" class="py-2 d-block text-secondary">Terms &amp; Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">Privacy Policy</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">FAQs</a></li>
-                                <li><a href="#" class="py-2 d-block text-secondary">Contact</a></li>
+                                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
+                                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                                <li><a href="#" class="py-2 d-block">FAQs</a></li>
+                                <li><a href="#" class="py-2 d-block">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -384,36 +386,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const main = async () => {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js');
-            }
 
-            const registration = await navigator.serviceWorker.ready;
-            // Check if periodicSync is supported
-            if ('periodicSync' in registration) {
-                // Request permission
-                const status = await navigator.permissions.query({
-                    name: 'periodic-background-sync',
-                });
+                const registration = await navigator.serviceWorker.ready;
+                // Check if periodicSync is supported
+                if ('periodicSync' in registration) {
+                    // Request permission
+                    const status = await navigator.permissions.query({
+                        name: 'periodic-background-sync',
+                    });
 
-                if (status.state === 'granted') {
-                    try {
-                            // Register new sync every 24 hours
-                            await registration.periodicSync.register('content-syncy', {
-                            minInterval: 24 * 60 * 60 * 1000, // 1 day
-                        });
-                        console.log('Periodic background sync registered!');
-                    } catch(e) {
-                        console.error(`Periodic background sync failed:\nx${e}`);
+                    if (status.state === 'granted') {
+                        try {
+                                // Register new sync every 24 hours
+                                await registration.periodicSync.register('content-syncy', {
+                                minInterval: 24 * 60 * 60 * 1000, // 1 day
+                            });
+                            console.log('Periodic background sync registered!');
+                        } catch(e) {
+                            console.error(`Periodic background sync failed:\nx${e}`);
+                        }
+                    } else {
+                        console.info('Periodic background sync is not granted.');
                     }
                 } else {
-                    console.info('Periodic background sync is not granted.');
+                    console.log('Periodic background sync is not supported.');
                 }
-            } else {
-                console.log('Periodic background sync is not supported.');
             }
         };
 
         main();
     </script>
+    <!-- Scripts -->
+   <!-- <script src="{{ asset('js/fontawesome.js') }}" defer></script> -->
+   <script src="{{ asset('js/app.js') }}" defer></script>
+   <script src="{{ asset('js/scripts.js') }}" defer></script>
 </body>
 
 </html>

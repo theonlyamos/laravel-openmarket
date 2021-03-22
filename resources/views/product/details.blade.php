@@ -5,18 +5,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate fadeInUp ftco-animated">
-                <a href="{{route('productDetails', $product->id)}}" class="image-popup prod-img-bg" style="">
-                    <img data-id="{{$product->id}}" alt="{{$product->name}}"
-                        src="{{ asset('storage/'.$product->thumbnail) }}" alt="" class="w-100"></a>
+                <a href="{{route('products.show', $product->slug)}}" class="image-popup prod-img-bg" style="">
+                    <img data-id="{{$product->id}}" alt="{{$product->product->name}}"
+                        src="{{ asset('storage/'.$product->product->images[0]->name) }}" alt="" class="w-100"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate fadeInUp ftco-animated">
                 <form action="">
                     @csrf
                     <input type="hidden" name="id" value="{{$product->id}}">
-                    <input type="hidden" name="name" value="{{$product->name}}">
+                    <input type="hidden" name="name" value="{{$product->product->name}}">
                     <input type="hidden" name="price" value="{{$product->price}}">
-                    <input type="hidden" name="thumbnail" value="{{$product->thumbnail}}">
-                    <input type="hidden" name="description" value="{{$product->description}}">
+                    <input type="hidden" name="thumbnail" value="{{$product->product->images[0]->name}}">
+                    <input type="hidden" name="description" value="{{$product->product->description}}">
                     <h3>{{$product->name}}</h3>
                     <div class="rating d-flex">
                         <p class="text-left mr-4">
@@ -38,12 +38,14 @@
                     <p class="price"><span>{{__("default.currency")}}{{$product->price}}</span></p>
                     <div class="description">
                         <h5 class="text-dark">Description</h5>
-                        <p style="font-size: .9em; text-align: justify;">{{$product->description}}</p>
+                        <p style="font-size: .9em; text-align: justify;">{{$product->product->description}}</p>
                     </div>
+                    <!--
                     <div class="features">
                         <h5 class="text-dark">Features</h5>
                         <p style="font-size: .9em; text-align: justify;">{{$product->features}}</p>
                     </div>
+                -->
                     <p>
                         @foreach ($keywords as $keyword)
                         <div class="badge badge-light">{{$keyword}}</div>

@@ -112,8 +112,8 @@ class StoreController extends Controller
     }
 
     public function product_details($store_id, $product_id, Request $request){
-        $product = StoreProduct::find($product_id);
-        $keys = $product->keywords;
+        $product = StoreProduct::where('slug', $product_id)->first();
+        $keys = $product->product->keywords;
         $keywords = explode(",", $keys);
         $site_info = SiteInfo::first();
         return view("product.details", ["product" => $product, "keywords" => $keywords, "site" => $site_info, 'cart' => count($request->session()->get('cart.items', []))]);

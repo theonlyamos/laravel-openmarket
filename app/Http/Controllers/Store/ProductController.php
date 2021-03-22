@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeProductPost;
@@ -18,8 +19,7 @@ use App\Models\StoreProduct;
 class ProductController extends Controller
 {
     protected $pages = ["dashboard" => ["name" => "dashboard", "icon" => "flaticon2-analytics-2"],
-                  "stores"    => ["name" => "stores",    "icon" => "flaticon-medal"],
-                  "products"  => ["name" => "products",  "icon" => "flaticon-app"],
+                  "product"  => ["name" => "product",  "icon" => "flaticon-app"],
                   "orders"    => ["name" => "orders",    "icon" => "flaticon-shopping-basket"],
                   "customers" => ["name" => "customers", "icon" => "flaticon2-group"],
                   "reports"   => ["name" => "reports",   "icon" => "flaticon2-graph"],
@@ -40,11 +40,11 @@ class ProductController extends Controller
     public function index()
     {
         $store = Store::find(Auth::guard('store')->user()->id);
-        $products = StoreProduct::orderBy('id', 'desc');
+        $products = StoreProduct::where('store_id',Auth::guard('store')->user()->id)->get();
         //$min_price = DB::table('products')->min('price');
         //$max_price = DB::table('products')->max('price');
 
-        return view('store.products.index', ['title' => 'products', 'pages' => $this->pages, 'store' => $store, 'site_info' => $this->site_info, 'products' => $products]);
+        return view('store.products.index', ['title' => 'product', 'pages' => $this->pages, 'store' => $store, 'site_info' => $this->site_info, 'products' => $products]);
     }
 
     /**
@@ -65,7 +65,9 @@ class ProductController extends Controller
      */
     public function store(storeProductPost $request)
     {
-        $product = StoreProduct::create($request->validated());
+        $new_product = $request->validated();
+        $new_product['store_id'] = Auth::guard('store')->user()->id;
+        $product = StoreProduct::create($new_product);
 
         return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
     }
@@ -103,7 +105,10 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('product');
-        $products = Product::where('name', 'like', "$search%")->get();
+        $products = Product::where('name', 'like', "%$search%")->get();
+        $describes = Product::where('description', 'like', "%$search%")->get();
+        //$products = array_merge($names, $describes);
+        //$products = array_unique($products);
         foreach($products as $product){
             $product->images = $product->images;
         }

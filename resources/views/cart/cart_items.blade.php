@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <section class="ftco-section ftco-cart">
+    <section class="ftco-section ftco-cart pt-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ftco-animate fadeInUp ftco-animated cart-items" style="overflow-x: scroll">
@@ -38,10 +38,10 @@
                                     @foreach ($products as $index => $item)
                                         <tr class="text-center">
                                             <td class="image-prod py-1">
-                                                <div class="img" style="background-image:url(storage/{{$item->thumbnail}}); width: 80px; height: 100px; background-size: contain;"></div>
+                                                <div class="img" style="background-image:url(storage/{{$item->product->images[0]->name}}); width: 80px; height: 100px; background-size: contain; object-fit: fill;"></div>
                                             </td>
                                             <td class="product-name py-1">
-                                            <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 40, '...')}}</a></h3>
+                                            <h3><a href="{{route('products.show', $item->slug)}}" title="{{$item->product->name}}">{{Str::limit($item->product->name, 40, '...')}}</a></h3>
                                             </td>
                                             <td class="price py-1">{{__('default.currency')}}{{number_format($item->price, 2)}}</td>
                                             <td class="quantity py-1">
@@ -91,12 +91,12 @@
 
                                 <p>
                                     @if (Auth::check())
-                                    
+
                                     <form>
                                         <script src="https://checkout.flutterwave.com/v3.js"></script>
                                         <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
                                       </form>
-                                    
+
                                     <!--<button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button> -->
                                     @else
                                         <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
@@ -229,13 +229,13 @@ function makePayment() {
       redirect_url: // specified redirect URL
         "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
       meta: {
-      consumer_id: {{Auth::user()->id}},
+      consumer_id: {{Auth::user()->id ?? ''}},
         consumer_mac: "92a3-912ba-1192a",
       },
       customer: {
-        email: "{{Auth::user()->email}}",
-        phone_number: "{{Auth::user()->phonenumber}}",
-        name: "{{Auth::user()->name}}",
+        email: "{{Auth::user()->email ?? ''}}",
+        phone_number: "{{Auth::user()->phonenumber ?? ''}}",
+        name: "{{Auth::user()->name ?? ''}}",
       },
       callback: function (data) {
         console.log(data);
@@ -246,11 +246,11 @@ function makePayment() {
       customizations: {
         title: "{{config('app.name')}}",
         description: "Payment for items in cart",
-        logo: "https://cdn.filestackcontent.com/kMCzb7y9QRWZI5wJGsX3", 
+        logo: "https://cdn.filestackcontent.com/kMCzb7y9QRWZI5wJGsX3",
       },
     });
   }
- 
+
 </script>
 @endif
 <!--end::Page Scripts -->

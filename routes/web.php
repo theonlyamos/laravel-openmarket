@@ -12,7 +12,7 @@
 */
 
 
-Route::domain('store.openmartgh.test')->group(function(){
+Route::domain('store.openmartgh.com')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.about");
@@ -43,18 +43,19 @@ Route::domain('store.openmartgh.test')->group(function(){
 
 
 
-Route::domain('admin.openmartgh.test')->group(function(){
+Route::domain('admin.openmartgh.com')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
     Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
     Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
     Route::get("/logout", 'Admin\AuthController@logout')->name("admin.logout");
     Route::post("/login", 'Admin\AuthController@postLogin')->name('admin.login.post');
-    Route::prefix('stores')->group(function(){
-        Route::get('/', 'Admin\AdminController@stores')->name('admin.stores');
-        Route::post('/', 'Admin\AdminController@create_store')->name('admin.store.create');
-        Route::get('/{store_id}', 'Admin\AdminController@store')->name('admin.store.get');
-        Route::post('/{store_id}', 'Admin\AdminController@update_store')->name('admin.store.update');
-    });
+    Route::resource('stores', 'Admin\StoreController')->names([
+        'index'   => 'admin.stores',
+        'store'   => 'admin.stores.create',
+        'show'    => 'admin.stores.get',
+        'update'  => 'admin.stores.update',
+        'destroy' => 'admin.stores.destroy'
+    ]);
     Route::resource('products', 'Admin\ProductController')->names([
         'index'   => 'admin.products',
         'store'   => 'admin.product.create',
@@ -90,16 +91,14 @@ Route::prefix("cart")->group(function() {
     Route::post("/checkout", 'Cart\CartController@index')->name("postCheckout");
 });
 
-Route::group(['prefix' => 'product'], function () {
-    Route::get("/", 'Product\ProductController@index');
-    Route::get("/{id}", 'Product\ProductController@store')->where('name', '([A-Za-z]\+)+')->name("store");
+Route::group(['prefix' => 'products'], function () {
+    Route::get("/{id:slug}", 'Product\ProductController@show')->where('name', '([A-Za-z]\+)+')->name("products.show");
 });
 
 Route::group(['prefix' => 'store'], function () {
     Route::get("/", 'Product\ProductController@index');
     Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products.store");
-    Route::get("/{store_id}/product/{product_id}", 'Store\StoreController@product_details')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
-
+    Route::get("/{store_id:slug}/product/{product_id:slug}", 'Store\StoreController@product_details')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
 });
 
 Route::get('/contact', 'ContactUs\ContactUsController@index')->name('contactus');

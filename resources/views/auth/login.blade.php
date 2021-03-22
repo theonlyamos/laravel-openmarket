@@ -15,7 +15,7 @@
 <section class="bg-light">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 pb-5 mb-5">
+            <div class="col-md-8 pb-5 mb-5">
                 <div class="card py-5 border-0 rounded-0">
 
                     <div class="card-body">

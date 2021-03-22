@@ -15,10 +15,13 @@ class CreateStoreProductsTable extends Migration
     {
         Schema::create('store_products', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
             $table->float('price');
+            $table->integer('quantity')->nullable();
+            $table->string('size')->nullable();
+            $table->string('color')->nullable();
             $table->bigInteger('store_id');
             $table->bigInteger('product_id');
+            $table->string('slug');
             $table->timestamps();
         });
     }

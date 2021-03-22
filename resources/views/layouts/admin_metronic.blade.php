@@ -87,7 +87,32 @@
 
 	<!-- begin::Body -->
 	<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+        <!-- Start::Confirm Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalTitle" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header bg-danger text-white rounded-0">
+                        <h5 class="modal-title" id="confirmModalTitle">
+                            <i class="fas fa-exclamation-circle fa-fw"></i> Confirm Action
+                        </h5>
 
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+                    <div class="modal-body justify-content-center bg-light align-items-center">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn text-white">
+                            <i class="fas fa-check-circle"></i> Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--> End::Confirm Modal -->
 		<!-- begin:: Page -->
 
 		<!-- begin:: Header Mobile -->
@@ -153,11 +178,11 @@
 				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
 					<!-- begin:: Header -->
-					<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+					<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed justify-content-end">
 
 						<!-- begin: Header Menu -->
 						<button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
-						<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+						<div class="kt-header-menu-wrapper d-lg-none" id="kt_header_menu_wrapper">
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
 									@foreach ($pages as $page)
@@ -1834,7 +1859,7 @@
 
 		<!--begin::Page Scripts(used by this page) -->
 		<script src="{{asset('assets/js/demo3/pages/dashboard.js')}}" type="text/javascript"></script>
-
+        <script src="{{asset('assets/js/demo3/pages/custom/apps/admin/app.js')}}" type="text/javascript"></script>
         <!--end::Page Scripts -->
 
         @yield('scripts')

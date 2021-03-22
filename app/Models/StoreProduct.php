@@ -9,9 +9,9 @@ class StoreProduct extends Model
 {
     use HasFactory;
 
-    protected $table = 'store_products';
+    //protected $table = 'store_products';
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function product(){
         return $this->belongsTo('App\Models\Product');

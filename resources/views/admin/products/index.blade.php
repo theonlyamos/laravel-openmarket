@@ -125,7 +125,7 @@
                                                             <input type="number" class="form-control" name="height"
                                                                 data-name="height" value="">
                                                             <div class="input-group-append"><span
-                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    class="input-group-text">{{__('mm')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -135,7 +135,7 @@
                                                             <input type="number" class="form-control" name="width"
                                                                 data-name="width" value="">
                                                             <div class="input-group-append"><span
-                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    class="input-group-text">{{__('mm')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -145,7 +145,7 @@
                                                             <input type="number" class="form-control" name="breadth"
                                                                 data-name="breadth" value="">
                                                             <div class="input-group-append"><span
-                                                                    class="input-group-text">{{__('metre(s)')}}</span>
+                                                                    class="input-group-text">{{__('mm')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -167,7 +167,7 @@
                                                             <input type="number" class="form-control" name="volume"
                                                                 data-name="volume" value="">
                                                             <div class="input-group-append"><span
-                                                                    class="input-group-text">{{__('litre(s)')}}</span>
+                                                                    class="input-group-text">{{__('ml')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -198,19 +198,19 @@
                                                         <label>Sizes</label>
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="small" data-name="sizes['s']" id="sizes['s']">
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="s" data-name="sizes['s']" id="sizes['s']">
                                                                 <label class="custom-control-label" for="sizes['s']">Small (S)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="medium" data-name="sizes['m']" id="sizes['m']">
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="m" data-name="sizes['m']" id="sizes['m']">
                                                                 <label class="custom-control-label" for="sizes['m']">Medium (M)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="large" data-name="sizes['l']" id="sizes['l']">
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="l" data-name="sizes['l']" id="sizes['l']">
                                                                 <label class="custom-control-label" for="sizes['l']">Large (L)</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="extra_large" data-name="sizes['sl']" id="sizes['sl']">
+                                                                <input type="checkbox" class="custom-control-input" name="sizes[]" value="xl" data-name="sizes['sl']" id="sizes['xl']">
                                                                 <label class="custom-control-label" for="sizes['xl']">Extra Large (XL)</label>
                                                             </div>
                                                         </div>
@@ -430,7 +430,14 @@
                                                         </a>
                                                     </li>
                                                     <li class="kt-nav__item">
-                                                        <a href="{{route('admin.product.destroy', $item->id)}}" class="kt-nav__link delete text-danger">
+                                                        <a  href="#confirmModal"
+                                                            class="kt-nav__link delete text-danger"
+                                                            data-toggle="modal"
+                                                            data-url="{{ route('admin.product.destroy', $item->id) }}"
+                                                            data-action="delete"
+                                                            data-target="#confirmModal"
+                                                            data-name="{{$item->product->name}}"
+                                                            data-id="{{$item->id}}">
                                                             <i class="kt-nav__link-icon flaticon-delete"></i>
                                                             <span class="kt-nav__link-text">Delete</span>
                                                         </a>

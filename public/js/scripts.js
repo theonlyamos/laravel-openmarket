@@ -40,14 +40,15 @@ const addToCart = (id, quantity = 1, buy = false) => {
             quantity: quantity
         },
         (result) => {
-            console.log(result)
             if (result.success) {
-                let cartLength = parseInt($(".cart").text());
-                $(".cart").text(result.cart)
+                let cart = result.cart.map((e) => e.quantity)
+                cart = cart.reduce((t, i) => t + parseInt(i))
+                //let cartLength = parseInt($(".cart").text());
+                $(".cart").text(cart)
                 if (buy)
                     window.location = '/cart';
                 makeToast("Item added to cart");
-            } else makeToast("Item already in cart", "info");
+            } else makeToast("Couldn't add item to cart", "info");
         })
 }
 
@@ -65,7 +66,6 @@ const getCart = async function () {
 }
 
 $(() => {
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

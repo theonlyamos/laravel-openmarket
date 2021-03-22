@@ -22,6 +22,9 @@ var KTAppUserAdd = function () {
                  body: JSON.stringify(tosend)
             })
             .then((response) => {return response.json()})
+            .then((data) => {
+              console.log(data)
+            })
             .catch((error) => console.error(error));
         }
 

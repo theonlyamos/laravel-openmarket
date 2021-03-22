@@ -358,6 +358,21 @@ var KTAppProduct = function () {
 	};
 }();
 
+const deleteProduct = (url, id)=>{
+  $.getJSON(url, {_method: 'delete'}, (result)=>{
+      $("#confirmModal").modal('hide');
+      if (result.success){
+          $(`#product_row_${result.product.id}`).remove()
+          swal.fire({
+              "title": "Success",
+              "text": result.message,
+              "type": "success",
+              "confirmButtonClass": "btn btn-secondary"
+          });
+      }
+  })
+}
+
 jQuery(() =>{
     KTAppProduct.init();
 });

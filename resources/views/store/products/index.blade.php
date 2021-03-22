@@ -56,8 +56,7 @@
                                 method="POST" action="{{ route('store.product.create') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="store_id"
-                                    value="{{ Auth::guard('store')->user()->id }}" required>
+                                <input type="hidden" name="product_id" value="" required>
                                 <!--begin: Form Wizard Step 1-->
                                 <div class="kt-wizard-v4__content" data-ktwizard-type="step-content"
                                     data-ktwizard-state="current">
@@ -113,6 +112,10 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-md-6 col-lg-4">
+                                                                <label for="quantity">Quantity</label>
+                                                                <input type="text" name="quantity" id="quantity" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-4">
                                                                 <label>Height</label>
                                                                 <div class="input-group">
                                                                     <input type="number" class="form-control bg-light" name="height"
@@ -132,8 +135,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
                                                             <div class="form-group col-md-6 col-lg-4">
                                                                 <label>Breadth</label>
                                                                 <div class="input-group">
@@ -267,7 +268,7 @@
                                     aria-label="Description: activate to sort column descending">Description</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 196.25px;" aria-label="Features: activate to sort column descending">
-                                    Features</th>
+                                    Keywords</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 52.25px;" aria-label="Price: activate to sort column descending">
                                     Price</th>
@@ -280,7 +281,7 @@
                             @foreach($products as $item)
                                 <tr id="{{ 'product_row_'.$item->id }}">
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->product->name }}</td>
                                     <td><a href="{{ asset('storage/'.$item->product->images[0]->name) }}"
                                             target="_blank">
                                             <img src='{{ asset("storage/".$item->product->images[0]->name) }}'
@@ -288,9 +289,9 @@
                                                 style="width: 50px; height: 50px; cursor: zoom-in;object-fit:contain">
                                         </a>
                                     </td>
-                                    <td>{{ $item->category }}</td>
-                                    <td>{{ Str::limit($item->description, 40) }}</td>
-                                    <td>{{ Str::limit($item->features, 40) }}</td>
+                                    <td>{{ $item->product->category }}</td>
+                                    <td>{{ Str::limit($item->product->description, 40) }}</td>
+                                    <td>{{ Str::limit($item->product->keywords, 40) }}</td>
                                     <td>{{ __("default.currency") }}{{ $item->price }}</td>
                                     <td>
                                         <div class="kt-portlet__head-toolbar">
@@ -302,15 +303,21 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="kt-nav">
                                                         <li class="kt-nav__item">
-                                                            <a href="{{ route('admin.product.get', $item->id) }}"
+                                                            <a href="{{ route('store.product.get', $item->id) }}"
                                                                 class="kt-nav__link edit" target="_blank">
                                                                 <i class="kt-nav__link-icon flaticon-eye"></i>
                                                                 <span class="kt-nav__link-text">Update</span>
                                                             </a>
                                                         </li>
                                                         <li class="kt-nav__item">
-                                                            <a href="{{ route('admin.product.destroy', $item->id) }}"
-                                                                class="kt-nav__link delete text-danger">
+                                                            <a  href="#confirmModal"
+                                                                class="kt-nav__link delete text-danger"
+                                                                data-toggle="modal"
+                                                                data-url="{{ route('store.product.destroy', $item->id) }}"
+                                                                data-action="delete"
+                                                                data-target="#confirmModal"
+                                                                data-name="{{$item->product->name}}"
+                                                                data-id="{{$item->id}}">
                                                                 <i class="kt-nav__link-icon flaticon-delete"></i>
                                                                 <span class="kt-nav__link-text">Delete</span>
                                                             </a>
@@ -330,7 +337,7 @@
                                 <th rowspan="1" colspan="1">Image</th>
                                 <th rowspan="1" colspan="1">Category</th>
                                 <th rowspan="1" colspan="1">Description</th>
-                                <th rowspan="1" colspan="1">Features</th>
+                                <th rowspan="1" colspan="1">Keywords</th>
                                 <th rowspan="1" colspan="1">Status</th>
                                 <th rowspan="1" colspan="1">Type</th>
                             </tr>

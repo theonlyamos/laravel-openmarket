@@ -80,11 +80,6 @@
             <div class="col-xl-8 col-lg-10 col-md-12 p-0">
                 <div class="card">
                     <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="images/carousel1.jpg" class="d-block w-100" alt="...">
@@ -234,7 +229,7 @@
     }
 
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap">
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUCHsKcPB42kheop8QdzlUPUSl43LJbVM&callback=initMap" defer>
 </script>
 @endsection

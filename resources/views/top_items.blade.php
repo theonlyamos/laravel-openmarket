@@ -10,14 +10,14 @@
             @foreach ($products as $item)
             <div class="col-6 col-sm-6 col-xs-6 col-md-3  col-lg-2 px-1 ftco-animate d-flex fadeInUp ftco-animated">
                 <div class="product d-flex flex-column">
-                    <a href="{{route('store.product.details', [$item->store_id, $item->id])}}" class="img-prod"  title="{{$item->product->name}}">
-                        <img class="img-fluid" src='{{asset("storage/$item->images[0]->name")}}' alt="{{$item->product->name}}" loading="lazy"/>
+                    <a href="{{route('products.show', $item->slug)}}" class="img-prod"  title="{{$item->product->name}}">
+                        <img class="img-fluid" src='{{ asset("storage/".$item->product->images[0]->name) }}' alt="{{$item->product->name}}" loading="lazy"/>
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3">
                         <div class="d-flex flex-wrap">
                             <div class="cat">
-                                <span>{{$item->product->category}}</span>
+                                <span>{{Str::limit($item->product->category, 7, "...")}}</span>
                             </div>
                             <div class="pricing w-50 text-right">
                                 <p class="price text-right"><span>{{__("default.currency")}}{{$item->price}}</span></p>
@@ -32,7 +32,7 @@
                                 </p>
                             </div>
                         </div>
-                        <h3><a href="{{route('store.product.details', [$item->store_id, $item->id])}}" title="{{$item->name}}">{{Str::limit($item->name, 20, "...")}}</a></h3>
+                        <h3><a href="{{route('products.show', $item->slug)}}" title="{{$item->name}}">{{Str::limit($item->product->name, 25, "...")}}</a></h3>
                         <!--<div class="pricing d-none d-md-block">
                             <p class="price"><span>{{__("default.currency")}}{{$item->product->price}}</span></p>
                         </div> -->

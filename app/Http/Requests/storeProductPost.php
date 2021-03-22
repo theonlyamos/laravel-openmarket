@@ -25,12 +25,12 @@ class storeProductPost extends FormRequest
     public function rules()
     {
         return [
-            'name'      => ['required', 'unique:products'],
-            'category' => 'required',
-            'price' => 'required',
-            'description' => ['required', 'min:30'],
-            'keywords' => 'required',
-            'features' => 'required'
+            'price'         => 'required',
+            'quantity'      => 'present',
+            'size'          => 'nullable',
+            'color'         => 'nullable',
+            'store_id'      => 'nullable',
+            'product_id'    => 'required',
         ];
     }
 }
