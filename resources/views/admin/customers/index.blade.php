@@ -73,7 +73,7 @@
 
                     <!--begin: Form Wizard Form-->
                     <form class="kt-form pt-0" style="width: 90%" id="kt_apps_product_add_product_form" novalidate="novalidate"
-                        method="POST" action="{{route('admin.product.create')}}" enctype="multipart/form-data">
+                        method="POST" action="{{route('admin.stores.create')}}" enctype="multipart/form-data">
                         @method('_POST')
                         @csrf
                         <!--begin: Form Wizard Step 1-->
@@ -255,7 +255,7 @@
                                                 </div>
                                                 <label class="kt-avatar__upload p-5"
                                                     data-toggle="kt-tooltip" title=""
-                                                    data-original-title="Add product images"
+                                                    data-original-title="Add stores images"
                                                     style="top: 50%; right: 50%; transform: translate(50%, -50%)">
                                                     <i class="fa fa-plus fa-3x"></i>
                                                     <input type="file" name="images[]" id="productImagesSelect"
@@ -374,45 +374,56 @@
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 60.25px;" aria-sort="descending"
-                                    aria-label="Product ID: activate to sort column descending">ID</th>
+                                    aria-label="Store ID: activate to sort column descending">ID</th>
+                                <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
+                                    style="width: 104.25px;" aria-label="Name: activate to sort column descending">
+                                    Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 121.25px;"
-                                    aria-label="Product Image: activate to sort column descending">
-                                    Image</th>
-                                    <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 104.25px;" aria-label="Name: activate to sort column descending">
+                                    aria-label="Store Address: activate to sort column descending">
                                     Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 162.25px;" aria-label="Category: activate to sort column descending">
-                                    Category</th>
+                                    style="width: 162.25px;" aria-label="Products: activate to sort column descending">
+                                    Email</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 126.25px;"
-                                    aria-label="Description: activate to sort column descending">Description</th>
+                                    aria-label="Description: activate to sort column descending">Orders</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 196.25px;" aria-label="Features: activate to sort column descending">
-                                    Features</th>
+                                    Registered</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 52.25px;" aria-label="Price: activate to sort column descending">
-                                    Price</th>
+                                    style="width: 196.25px;" aria-label="Features: activate to sort column descending">
+                                    Verification</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 36.25px;" aria-label="Type: activate to sort column descending">Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $item)
-                            <tr id="{{'product_row_'.$item->id}}">
+                            @foreach ($customers as $item)
+                            <tr id="{{'customer_row_'.$item->id}}">
                                 <td>{{$item->id}}</td>
-                                <td><a href="{{asset('storage/'.$item->images[0]->name)}}" target="_blank">
-                                        <img src='{{asset("storage/".$item->images[0]->name)}}' alt="{{$item->name}}"
-                                            style="width: 50px; height: 50px; cursor: zoom-in;object-fit:contain">
-                                    </a>
+                                <td>
+                                    @if ($item->image)
+                                        <a href="{{asset('storage/'.$item->image->name)}}" target="_blank">
+                                            <img src='{{asset("storage/".$item->image->name)}}' alt="{{$item->name}}"
+                                                style="width: 50px; height: 50px; cursor: zoom-in;object-fit:contain">
+                                        </a>
+                                    @else
+                                        <i class="fas flaticon2-user fa-2x"></i>
+                                    @endif
                                 </td>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->category}}</td>
-                                <td>{{Str::limit($item->description, 40)}}</td>
-                                <td>{{Str::limit($item->features, 40)}}</td>
-                                <td>{{__("default.currency")}}{{$item->price}}</td>
+                                <td>{{$item->email}}</td>
+                                <td>{{$item->orders->count()}}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>
+                                    @if ($item->email_verified_at)
+                                        4
+                                    @else
+                                        1
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="kt-portlet__head-toolbar">
                                         <div class="dropdown dropdown-inline">
@@ -423,7 +434,7 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <ul class="kt-nav">
                                                     <li class="kt-nav__item">
-                                                        <a href="{{route('admin.product.get', $item->id)}}"
+                                                        <a href="{{route('admin.stores.get', $item->slug)}}"
                                                             class="kt-nav__link edit" target="_blank">
                                                             <i class="kt-nav__link-icon flaticon-eye"></i>
                                                             <span class="kt-nav__link-text">Update</span>
@@ -433,7 +444,7 @@
                                                         <a  href="#confirmModal"
                                                             class="kt-nav__link delete text-danger"
                                                             data-toggle="modal"
-                                                            data-url="{{ route('admin.product.destroy', $item->id) }}"
+                                                            data-url="{{ route('admin.stores.destroy', $item->id) }}"
                                                             data-action="delete"
                                                             data-target="#confirmModal"
                                                             data-name="{{$item->name}}"
@@ -455,10 +466,10 @@
                                 <th rowspan="1" colspan="1">ID</th>
                                 <th rowspan="1" colspan="1">Image</th>
                                 <th rowspan="1" colspan="1">Name</th>
-                                <th rowspan="1" colspan="1">Category</th>
-                                <th rowspan="1" colspan="1">Description</th>
-                                <th rowspan="1" colspan="1">Features</th>
-                                <th rowspan="1" colspan="1">Status</th>
+                                <th rowspan="1" colspan="1">Email</th>
+                                <th rowspan="1" colspan="1">Orders</th>
+                                <th rowspan="1" colspan="1">Registered</th>
+                                <th rowspan="1" colspan="1">Verification</th>
                                 <th rowspan="1" colspan="1">Type</th>
                             </tr>
                         </tfoot>
@@ -480,7 +491,7 @@
 
 <!--begin::Page Scripts(used by this page) -->
 <script src="{{asset('assets/js/demo3/pages/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/demo3/pages/custom/apps/admin/products.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo3/pages/custom/apps/admin/stores.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/image_preview.js')}}" type="text/javascript"></script>
 <!--end::Page Scripts -->
 

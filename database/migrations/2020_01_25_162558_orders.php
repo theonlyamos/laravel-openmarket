@@ -16,8 +16,8 @@ class Orders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('store_id');
-            $table->text('items');
+            $table->float('discount')->default(0.00);
+            $table->float('total');
             $table->timestamps();
             $table->softDeletes();
         });

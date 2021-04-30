@@ -253,13 +253,13 @@
                                 <th class="sorting_asc" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 60.25px;" aria-sort="descending"
                                     aria-label="Product ID: activate to sort column descending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
+                                        style="width: 121.25px;"
+                                        aria-label="Product Image: activate to sort column descending">
+                                        Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 104.25px;" aria-label="Name: activate to sort column descending">
                                     Name</th>
-                                <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
-                                    style="width: 121.25px;"
-                                    aria-label="Product Image: activate to sort column descending">
-                                    Image</th>
                                 <th class="sorting" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1"
                                     style="width: 162.25px;" aria-label="Category: activate to sort column descending">
                                     Category</th>
@@ -281,7 +281,6 @@
                             @foreach($products as $item)
                                 <tr id="{{ 'product_row_'.$item->id }}">
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->product->name }}</td>
                                     <td><a href="{{ asset('storage/'.$item->product->images[0]->name) }}"
                                             target="_blank">
                                             <img src='{{ asset("storage/".$item->product->images[0]->name) }}'
@@ -289,6 +288,7 @@
                                                 style="width: 50px; height: 50px; cursor: zoom-in;object-fit:contain">
                                         </a>
                                     </td>
+                                    <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->product->category }}</td>
                                     <td>{{ Str::limit($item->product->description, 40) }}</td>
                                     <td>{{ Str::limit($item->product->keywords, 40) }}</td>
@@ -333,8 +333,8 @@
                         <tfoot>
                             <tr>
                                 <th rowspan="1" colspan="1">ID</th>
-                                <th rowspan="1" colspan="1">Name</th>
                                 <th rowspan="1" colspan="1">Image</th>
+                                <th rowspan="1" colspan="1">Name</th>
                                 <th rowspan="1" colspan="1">Category</th>
                                 <th rowspan="1" colspan="1">Description</th>
                                 <th rowspan="1" colspan="1">Keywords</th>

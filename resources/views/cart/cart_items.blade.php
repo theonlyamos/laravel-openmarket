@@ -91,13 +91,13 @@
 
                                 <p>
                                     @if (Auth::check())
-
+                                    <!--
                                     <form>
                                         <script src="https://checkout.flutterwave.com/v3.js"></script>
                                         <button disabled class="btn btn-info btn-block py-2 text-light disabled" id="checkoutButton" onclick="makePayment()">Proceed to checkout</button>
-                                      </form>
-
-                                    <!--<button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button> -->
+                                    </form>
+                                    -->
+                                    <button disabled type="button" class="btn btn-info btn-block py-2 disabled" id="checkoutButton" onclick="payWithPaystack()" style="color: white!important"> Checkout </button>
                                     @else
                                         <a href="{{route('login')}}" class="btn btn-info btn-block py-2 text-light">Login</a>
                                     @endif
@@ -197,8 +197,8 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
 @if (Auth::check())
 <script>
-//const paymentForm = document.getElementById('paymentForm');
-/*
+const paymentForm = document.getElementById('paymentForm');
+
 function payWithPaystack() {
   let handler = PaystackPop.setup({
     key: "{{env('PAYSTACK_TEST_PUBLIC_KEY')}}",
@@ -218,7 +218,7 @@ function payWithPaystack() {
   });
   handler.openIframe();
 }
-*/
+/*
 function makePayment() {
     FlutterwaveCheckout({
       public_key: "{{env('FLUTTERWAVE_PUBLIC_KEY')}}",
@@ -250,6 +250,7 @@ function makePayment() {
       },
     });
   }
+  */
 
 </script>
 @endif

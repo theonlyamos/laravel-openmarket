@@ -63,6 +63,13 @@ Route::domain('admin.openmartgh.com')->group(function(){
         'update'  => 'admin.product.update',
         'destroy' => 'admin.product.destroy'
     ]);
+    Route::resource('customers', 'Admin\UserController')->names([
+        'index'   => 'admin.customers',
+        'store'   => 'admin.customer.create',
+        'show'    => 'admin.customer.get',
+        'update'  => 'admin.customer.update',
+        'destroy' => 'admin.customer.destroy'
+    ]);
     Route::get('/{page}', 'Admin\AdminController@page')->name('admin.dashboard.page');
 });
 

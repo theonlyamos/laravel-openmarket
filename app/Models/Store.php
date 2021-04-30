@@ -44,6 +44,10 @@ class Store extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(StoreProduct::class);
     }
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
     public static function boot()
     {
         parent::boot();

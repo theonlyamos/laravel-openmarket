@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Illuminate\Auth\Passwords\CanResetPassword;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -44,5 +45,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function orders(){
         return $this->hasMany(Order::class);
+    }
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->slug = Str::of($model->name)->slug('-');
+        });
     }
 }

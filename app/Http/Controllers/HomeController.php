@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Store;
 use App\Models\Product;
 use App\Models\SiteInfo;
-use Illuminate\Contracts\Session\Session;
+use App\Models\StoreProduct;
 
 class HomeController extends Controller
 {
@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $categories = DB::select('select * from categories');
-        $products = Product::orderBy("created_at", "desc")->limit(12)->get();
+        $products = StoreProduct::orderBy("created_at", "desc")->limit(12)->get();
         $stores = Store::orderBy("created_at", "desc")->get();
         $site_info = SiteInfo::first();
 
