@@ -17,7 +17,7 @@ class UserController extends Controller
     }
 
 
-    public function page($page = "", Request $request){
+    public function page(Request $request, $page = ""){
         $page_names = ['dashboard', 'orders', 'profile', 'settings'];
         $pages = ['dashboard' => ['name' => 'dashboard', 'icon' => 'fa-tv'],
                   'orders' => ['name' => 'orders', 'icon' => 'fa-shopping-cart'],

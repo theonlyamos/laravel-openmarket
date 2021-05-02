@@ -12,7 +12,7 @@
 */
 
 
-Route::domain('store.openmartgh.com')->group(function(){
+Route::domain('store.openmartgh.test')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.about");
@@ -24,6 +24,7 @@ Route::domain('store.openmartgh.com')->group(function(){
     Route::middleware(['store'])->group(function(){
         Route::prefix('product')->group(function () {
             Route::get('/search', 'Store\ProductController@search')->name('store.product.search');
+            Route::post('/new', 'Store\ProductController@new')->name('store.product.new');
         });
         Route::resource('product', 'Store\ProductController')->names([
             'index'   => 'store.products',
@@ -43,7 +44,7 @@ Route::domain('store.openmartgh.com')->group(function(){
 
 
 
-Route::domain('admin.openmartgh.com')->group(function(){
+Route::domain('admin.openmartgh.test')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
     Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
     Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
@@ -86,7 +87,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('/', 'User\UserController@index')->name('user.index');
     Route::get('dashboard', 'User\UserController@dashboard')->name('user.dashboard');
     Route::get('account', 'User\UserController@account')->name('user.account');
-    Route::get('settings', 'User\UserControlller@settings')->name('user.settings');
+    Route::get('settings', 'User\UserController@settings')->name('user.settings');
 });
 
 Route::prefix("cart")->group(function() {

@@ -37,7 +37,8 @@ class ProductPost extends FormRequest
             'breadth'       => ['nullable'],
             'weight'        => ['nullable'],
             'volume'        => ['nullable'],
-            'sizes'         => ['nullable']
+            'sizes'         => ['nullable'],
+            'quantity'      => ['nullable']
         ];
     }
 }

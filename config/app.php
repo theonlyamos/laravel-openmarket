@@ -229,4 +229,6 @@ return [
 
     ],
 
+    'extension' => env('APP_EXTENSION','test')
+
 ];

@@ -29,6 +29,7 @@ class storePost extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:255'],
             'location' => ['required', 'string', 'max:255'],
+            'category' => ['required', 'string', 'max:255'],
             'region' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'postal' => ['required', 'string', 'max:255']

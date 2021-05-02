@@ -26,6 +26,7 @@ class CreateStoresTable extends Migration
             $table->string('city')->nullable();
             $table->string('postal')->nullable();
             $table->string('location')->nullable();
+            $table->string('category');
             $table->string('slug');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -19,7 +19,9 @@ class Store extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','country', 'address', 'location', 'region', 'city', 'postal'
+        'name', 'email', 'password','country', 
+        'address', 'location', 'category',
+        'region', 'city', 'postal'
     ];
 
     /**

@@ -61,6 +61,7 @@ class AuthController extends Controller
             "email" => $data["email"],
             "address" => $data['address'],
             "location" => $data['location'],
+            "category" => $data['category'],
             "region" => $data['region'],
             "city" => $data['city'],
             "postal" => $data['postal'],

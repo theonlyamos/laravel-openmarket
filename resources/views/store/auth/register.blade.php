@@ -8,53 +8,74 @@
         </div>
         <h1 class="text-white">Register</h1>
     </div>
-    <div class="col-md-6 container  d-flex flex-column justify-content-center align-items-center">
-        <div class="card p3-5 my-5 rounded-0">
+    <div class="col-md-6 p-0 d-flex flex-column justify-content-center align-items-center">
+        <div class="card my-5 rounded-0">
             <div class="card-body">
                 <form method="POST" action="{{route('store.register.post')}}">
                     @csrf
                     <div class="row">
-                    <div class="form-group col-12">
-                        <label for="name" class="text-md-right">{{ __('Name') }}</label>
+                        <div class="form-group col-12">
+                            <label for="category" class="text-md-right">{{ __('Store') }} {{ __('Category') }}</label>
 
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <select id="category" class="custom-select @error('category') is-invalid @enderror"
+                                name="category" required>
+                                <option></option>
+                                <option value="groceries"> Groceries &amp; General Goods</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="software">Software</option>
+                            </select>
 
-                            @error('name')
+                            @error('category')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                    </div>
+                        </div>
                     </div>
                     <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="email"
-                            class="text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="form-group col-12">
+                            <label for="name" class="text-md-right">{{ __('Name') }}</label>
 
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" required autocomplete="name">
 
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="email"
+                                class="text-md-right">{{ __('E-Mail Address') }}</label>
 
-                    <div class="form-group col-sm-6">
-                        <label for="address"
-                            class="text-md-right">{{ __('Address') }}</label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                                name="address" value="{{ old('address') }}" required autocomplete placeholder="Street name">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
 
-                            @error('address')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                    </div>
+                        <div class="form-group col-sm-6">
+                            <label for="address"
+                                class="text-md-right">{{ __('Address') }}</label>
+
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                                    name="address" value="{{ old('address') }}" required autocomplete placeholder="Street name">
+
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
                     </div>
 
                     <div class="row">

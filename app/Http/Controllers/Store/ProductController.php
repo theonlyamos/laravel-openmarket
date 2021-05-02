@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductPost;
 use App\Http\Requests\storeProductPost;
 use App\Http\Requests\storeProductUpdate;
 
@@ -15,6 +16,7 @@ use App\Models\Store;
 use App\Models\Product;
 use App\Models\SiteInfo;
 use App\Models\StoreProduct;
+use App\Models\ProductImage;
 
 class ProductController extends Controller
 {
@@ -152,5 +154,61 @@ class ProductController extends Controller
     public function destroy(StoreProduct $storeProduct)
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\productPost  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function new(ProductPost $request)
+    {
+        $new_product = $request->validated();
+        $new_product['colors'] = explode(",", $new_product['colors']);
+        if (in_array('sizes', $new_product)){
+            $new_product['sizes'] = $new_product['sizes'];
+        }
+
+        $product = Product::create($new_product);
+        if ($request->hasFile('thumbnail')){
+            $thumbnail = $request->thumbnail->store("public");
+            ProductImage::create([
+                "product_id" => $product->id,
+                "name" => explode("/", $thumbnail)[1],
+                "fullpath" => $thumbnail
+            ]);
+        }
+
+        if ($request->hasFile('images')){
+            $images = $request->images;
+            foreach ($images as $imageFile){
+                $image = $imageFile->store("public");
+                ProductImage::create([
+                    "product_id" => $product->id,
+                    "name" => explode("/", $image)[1],
+                    "fullpath" => $image
+                ]);
+            }
+        }
+
+        $store_product =  [
+            'price'         => $product->price,
+            'quantity'      => $new_product['quantity'],
+            'store_id'      => Auth::guard('store')->user()->id,
+            'product_id'    => $product->id,
+        ];
+
+        if (!empty($product->colors)){
+            $store_product['color'] = $product->colors[0];
+        }
+
+        if (!empty($product->sizes)){
+            $store_product['size'] = $product->sizes[0];
+        }
+
+        $product = StoreProduct::create($store_product);
+        //$product->images = $product->images;
+        return response()->json(["success" => true, "message" => "Product added successfully", "product" => $product, "title" => "Add Product"]);
     }
 }
