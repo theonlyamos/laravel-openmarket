@@ -12,6 +12,8 @@ use App\Http\Requests\ProductPost;
 use App\Http\Requests\storeProductPost;
 use App\Http\Requests\storeProductUpdate;
 
+use App\Jobs\OptimizeImage;
+
 use App\Models\Store;
 use App\Models\Product;
 use App\Models\SiteInfo;
@@ -165,6 +167,8 @@ class ProductController extends Controller
     public function new(ProductPost $request)
     {
         $new_product = $request->validated();
+        $product_quantity = $new_product['quantity'];
+        unset($new_product['quantity']);
         $new_product['colors'] = explode(",", $new_product['colors']);
         if (in_array('sizes', $new_product)){
             $new_product['sizes'] = $new_product['sizes'];
@@ -178,6 +182,7 @@ class ProductController extends Controller
                 "name" => explode("/", $thumbnail)[1],
                 "fullpath" => $thumbnail
             ]);
+            OptimizeImage::dispatch($request->thumbnail);
         }
 
         if ($request->hasFile('images')){
@@ -189,12 +194,13 @@ class ProductController extends Controller
                     "name" => explode("/", $image)[1],
                     "fullpath" => $image
                 ]);
+                OptimizeImage::dispatch($imageFile);
             }
         }
 
         $store_product =  [
             'price'         => $product->price,
-            'quantity'      => $new_product['quantity'],
+            'quantity'      => $product_quantity,
             'store_id'      => Auth::guard('store')->user()->id,
             'product_id'    => $product->id,
         ];

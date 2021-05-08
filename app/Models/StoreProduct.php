@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+use Laravel\Scout\Searchable;
+
 class StoreProduct extends Model
 {
     use HasFactory;
+    use Searchable;
 
     //protected $table = 'store_products';
 

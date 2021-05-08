@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Passwords\CanResetPassword;
 
+use Laravel\Scout\Searchable;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.

@@ -158,6 +158,7 @@ class ProductController extends Controller
                 "product_id" => $product->id,
                 "name" => explode("/", $thumbnail)[1]
             ]);
+            OptimizeImage::dispatch($request->thumbnail);
         }
 
         if ($request->hasFile('images')){
@@ -168,6 +169,7 @@ class ProductController extends Controller
                     "product_id" => $product->id,
                     "name" => explode("/", $image)[1]
                 ]);
+                OptimizeImage::dispatch($imageFile);
             }
         }
         $product->images = $product->images;

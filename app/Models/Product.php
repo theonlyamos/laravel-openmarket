@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+use Laravel\Scout\Searchable;
+
 class Product extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $casts = [
         'colors'    => 'array',
@@ -24,7 +27,7 @@ class Product extends Model
     public function images(){
         return $this->hasMany(ProductImage::class);
     }
-
+    /*
     public function getRouteKey()
     {
         return $this->slug;
@@ -38,4 +41,5 @@ class Product extends Model
             $model->slug = Str::of($model->name)->slug('-');
         });
     }
+    */
 }

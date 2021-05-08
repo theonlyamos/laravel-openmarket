@@ -225,9 +225,20 @@
         </div>
         <div class="kt-portlet__head-toolbar">
             <div class="kt-portlet__head-wrapper">
+            <!--
                 <button type="button" class="btn btn-brand btn-icon-sm show_product_form" aria-expanded="false">
                     <i class="flaticon2-plus"></i> Add New
                 </button>
+            -->
+                <div class="dropdown">
+                    <button class="btn btn-brand btn-icon-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="flaticon2-plus"></i> Add New
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-item show_product_form">From Catalog</li>
+                        <li class="dropdown-item">From Computer</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
