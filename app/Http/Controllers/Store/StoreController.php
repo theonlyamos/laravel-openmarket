@@ -49,9 +49,13 @@ class StoreController extends Controller
         return view('about', ['title' => 'About Us', 'site' => $site_info]);
     }
 
-    public function products($store_id, Request $request){
+    public function products($slug, Request $request){
         $cats = Array();
         $subs = Array();
+        if (Auth::guard('store'))
+            $store = Auth::guard('store')->user();
+        else
+          $store = Store::find($slug);
         if ($request->has('categories')){
             $cats = explode(",", $request->query('categories'));
         }
@@ -63,13 +67,12 @@ class StoreController extends Controller
             $products = StoreProduct::whereIn('category', $cats)->paginate(20);
         }
         else {
-            $products = StoreProduct::where("store_id", $store_id)
+            $products = StoreProduct::where("store_id", $store->id)
             ->orderBy("id", "desc")
             ->paginate(20);
         }
         $prod = $products[0];
         // $products = DB::select('select * from products limit 20 offset ?', [$from]);
-        $store = Store::find($store_id);
         $location = explode(",", $store->location);
         $items = DB::select('select category from products');
         $categories = [];

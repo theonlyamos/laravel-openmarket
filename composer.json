@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4||^8.0",
+        "algolia/algoliasearch-client-php": "^3.0",
         "cloudinary-labs/cloudinary-laravel": "^1.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^7.2",

@@ -1,4 +1,5 @@
 {
     "emmet.triggerExpansionOnTab": true,
-    "blade.format.enable": true
+    "blade.format.enable": true,
+    "FSharp.suggestGitignore": false
 }

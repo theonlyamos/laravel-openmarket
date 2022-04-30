@@ -65,9 +65,8 @@
                     <ul class="list-group list-group-flush" style="height: 300px; overflow-y: auto;">
                         @isset($stores)
                             @foreach ($stores as $store)
-                            <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top"
-                                title="{{$store->name}}">
-                                <a href="{{route('products.store', $store->id)}}" class="nav-link text-secondary p-0">
+                            <li class="list-group-item py-1 px-2" data-toggle="tooltip" data-position="top">
+                                <a href="{{route('products.store', $store->slug)}}" title="{{$store->name}}" class="nav-link text-secondary p-0">
                                     <small>{{$store->name}}</small>
                                 </a>
                             </li>

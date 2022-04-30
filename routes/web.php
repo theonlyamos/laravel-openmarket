@@ -12,7 +12,7 @@
 */
 
 
-Route::domain('store.openmartgh.test')->group(function(){
+Route::domain('store.openmartgh.com')->group(function(){
     Route::get("/", 'Store\StoreController@index')->name("store.index");
     Route::get("/contact", 'Store\StoreController@contact')->name("store.contact");
     Route::get("/about", 'Store\StoreController@about')->name("store.about");
@@ -44,7 +44,7 @@ Route::domain('store.openmartgh.test')->group(function(){
 
 
 
-Route::domain('admin.openmartgh.test')->group(function(){
+Route::domain('admin.openmartgh.com')->group(function(){
     Route::get("/", 'Admin\AdminController@index')->name("admin.index");
     Route::get("/dashboard", 'Admin\AdminController@dashboard')->name("admin.dashboard");
     Route::get("/login", 'Admin\AuthController@index')->name("admin.login");
@@ -105,7 +105,7 @@ Route::group(['prefix' => 'products'], function () {
 
 Route::group(['prefix' => 'store'], function () {
     Route::get("/", 'Product\ProductController@index');
-    Route::get("/{id}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products.store");
+    Route::get("/{slug}", 'Store\StoreController@products')->where('name', '([A-Za-z]\+)+')->name("products.store");
     Route::get("/{store_id:slug}/product/{product_id:slug}", 'Store\StoreController@product_details')->where('name', '([A-Za-z]\+)+')->name("store.product.details");
 });
 

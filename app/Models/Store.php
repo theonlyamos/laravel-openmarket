@@ -16,13 +16,15 @@ class Store extends Authenticatable implements MustVerifyEmail
 
     protected $guard = "store";
 
+    protected $primaryKey = "slug";
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','country', 
+        'name', 'email', 'password','country',
         'address', 'location', 'category',
         'region', 'city', 'postal'
     ];
